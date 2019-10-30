@@ -9,12 +9,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Frustum;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
+import com.pixel.behavior.PlacementBehavior;
 import com.pixel.map.Map;
+
 import java.util.ArrayList;
 
-public class MapObject extends Actor {
+public class MapObject extends Group {
 
 	//private ArrayList<ObjectBehavior> behaviors;	// holds a list of added ObjectBehaviors
 
@@ -25,6 +27,8 @@ public class MapObject extends Actor {
 	private boolean placeable = false;			// indicates if this object can be placed over others
 
 	private Polygon boundaryPolygon;
+
+	private ArrayList<PlacementBehavior> placementBehaviors;
 
 	// animation-based properties
 	private Animation<TextureRegion> animation;
@@ -176,6 +180,25 @@ public class MapObject extends Actor {
 		return placeable;
 	}
 
+	//
+	// placeObject
+	// This function is called when an object is supposed to be placed on
+	// the location of this object.
+	//
+	public boolean placeObject(MapObject object) {
+
+		if(placeable && !placementBehaviors.isEmpty()) {
+
+			for(PlacementBehavior behavior : placementBehaviors) {
+				behavior.setPlacement(object);
+				behavior.act();
+			}
+
+			return true;
+		}
+		else return false;
+	}
+
 	public void act(float dt)
 	{
 
@@ -208,6 +231,5 @@ public class MapObject extends Actor {
 
 			super.draw(batch, parentAlpha);
 		}
-
 	}
 }

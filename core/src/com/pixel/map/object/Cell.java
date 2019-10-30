@@ -10,5 +10,7 @@ public class Cell extends MapObject {
 		// This cell has a basic texture within it
 		loadTexture("assets/landscape/PNG/landscapeTiles_075.png");
 		setSize(width, height);
+
+
 	}
 }

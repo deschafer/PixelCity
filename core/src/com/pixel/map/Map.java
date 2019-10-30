@@ -167,4 +167,12 @@ public class Map extends Group {
 		}
 		return null;
 	}
+
+	//
+	//
+	//
+	//
+	public Cell getCell(MapCoord coord) {
+		return getCell(coord.x, coord.y);
+	}
 }
