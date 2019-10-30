@@ -11,9 +11,9 @@ public class PixelCityGame extends AbstractGame
 
 	public void create()
 	{
-
+		GameScene gameScene = GameScene.getInstance();
 
 		super.create();
-		setActiveScreen( new GameScene() );
+		setActiveScreen( gameScene );
 	}
 }

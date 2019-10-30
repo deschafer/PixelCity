@@ -1,23 +1,36 @@
 package com.pixel.scene;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Vector2;
-import com.pixel.map.BaseActor;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
-
-import java.lang.invoke.VolatileCallSite;
+import com.pixel.tools.RoadTool;
+import com.pixel.tools.Tool;
 
 public class GameScene extends Scene {
 
 	private Map gameMap;     // our actual game map
+	private static GameScene instance;
+	private Tool activeTool;
+
+	// TODO: for now, tools will be manually set, but in the future, it will be set by the UI system
+
+	private GameScene() {
+		super();
+	}
+
+	public static GameScene getInstance() {
+		if(instance == null) instance = new GameScene();
+		return instance;
+	}
 
 	@Override
 	public void initialize() {
 
-		// TODO: need to initialize our game map here
+		// Create and initialize our game map here
 		gameMap = new Map(50, 50, mainStage);
 
 
@@ -45,6 +58,9 @@ public class GameScene extends Scene {
 		if (Gdx.input.isKeyPressed(Input.Keys.D)) {
 			mainStage.getCamera().translate(10, 0, 0);
 		}
+
+		if(activeTool == null)
+			activeTool = new RoadTool();
 	}
 
 	public boolean keyDown(int keycode) {
@@ -64,25 +80,31 @@ public class GameScene extends Scene {
 
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 
-		Camera camera = mainStage.getCamera();
-
-		// translate camera coordinates to the actual coordinate system
-		//float x = screenX + camera.position.x - 960/2 - 32;
-		//float y = Math.abs(screenY - 540) + camera.position.y - 540/2;
-
 		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
-
-		//System.out.println("x: " + x + " y: " + y);
-
-		// check if this point is within the map, and if there is a cell at the point
-		//Cell cell = gameMap.checkPosition(screenX, screenY);
-
-		Cell cell = gameMap.checkPosition(stageCoords.x, stageCoords.y);
-
-		if (cell != null) cell.setColor(0, 0, 0, 1);
-		else System.out.println("No cell");
-
+		activeTool.onTouchDown(stageCoords.x, stageCoords.y);
 
 		return false;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+
+		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
+		activeTool.onTouchMove(stageCoords.x, stageCoords.y);
+
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+
+		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
+		activeTool.onTouchUp(stageCoords.x, stageCoords.y);
+
+		return false;
+	}
+
+	public Map getGameMap() {
+		return gameMap;
 	}
 }
