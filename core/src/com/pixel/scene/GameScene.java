@@ -3,8 +3,12 @@ package com.pixel.scene;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.math.Vector2;
 import com.pixel.map.BaseActor;
 import com.pixel.map.Map;
+import com.pixel.map.object.Cell;
+
+import java.lang.invoke.VolatileCallSite;
 
 public class GameScene extends Scene {
 
@@ -63,14 +67,20 @@ public class GameScene extends Scene {
 		Camera camera = mainStage.getCamera();
 
 		// translate camera coordinates to the actual coordinate system
-		float x = screenX + camera.position.x - 960/2 - 32;
-		float y = Math.abs(screenY - 540) + camera.position.y - 540/2;
+		//float x = screenX + camera.position.x - 960/2 - 32;
+		//float y = Math.abs(screenY - 540) + camera.position.y - 540/2;
+
+		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
 
 		//System.out.println("x: " + x + " y: " + y);
 
 		// check if this point is within the map, and if there is a cell at the point
-		gameMap.checkPosition(x, y);
+		//Cell cell = gameMap.checkPosition(screenX, screenY);
 
+		Cell cell = gameMap.checkPosition(stageCoords.x, stageCoords.y);
+
+		if (cell != null) cell.setColor(0, 0, 0, 1);
+		else System.out.println("No cell");
 
 
 		return false;

@@ -1,9 +1,13 @@
 package com.pixel.map;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pixel.map.object.Cell;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class Map extends Group {
@@ -25,12 +29,12 @@ public class Map extends Group {
 	private int heightPixels;          // height of the map in pixels
 	private Stage parentStage;
 	private Cell[][] mapArray;
-	private ArrayList<ArrayList<Cell>> rectangularBounds;     // the non iso-formatted array of cells
 	private final int cellWidth = 64;     // width of the cell in pixels
 	private final int cellHeight = 64;     // height of the cell in pixels
 	private final int cellRowWidth = 64;
 	private final int cellRowHeight = 42;
 	private Stage stage;
+	private Vector2 topOfMap;
 
 	public Map(int width, int height, Stage stage) {
 
@@ -45,8 +49,6 @@ public class Map extends Group {
 		stage.addActor(this);
 
 		generateArray();
-		setRectangularBounds();
-
 	}
 
 	public void update() {
@@ -71,6 +73,7 @@ public class Map extends Group {
 		// Find our initial position at the very top of the array
 		float topPositionX = middleWidth;
 		float topPositionY = heightPixels;
+		topOfMap = new Vector2(topPositionX, topPositionY);
 
 		for (int countX = 0; countX < width; countX++) {
 			for (int countY = 0; countY < width; countY++) {
@@ -87,39 +90,6 @@ public class Map extends Group {
 		}
 	}
 
-	private void setRectangularBounds() {
-
-		rectangularBounds = new ArrayList<>();
-		ArrayList<Cell> currentColumn;
-
-		int currentCellX = 0;
-		int currentCellY = height - 1;
-
-		for (int i = 0; i < width; i++) {
-			rectangularBounds.add(new ArrayList<>());
-			currentColumn = rectangularBounds.get(i);
-
-			currentCellX = i;
-
-			// then we want to move as far down as possible
-			// to move down, we add one x, then we add one y
-
-			while(true) {
-
-				if (currentCellY < height) {
-					currentColumn.add(mapArray[currentCellX][currentCellY]);
-				} else break;
-
-				currentCellX += 1;
-				currentCellY += 1;
-			}
-		}
-
-		// first, get the far left position
-		// then move from the furthest left all the way to the right
-
-	}
-
 	//
 	// CheckPosition()
 	// If there is a cell at the position within the parent scene, then it returns that cell
@@ -127,47 +97,74 @@ public class Map extends Group {
 	//
 	public Cell checkPosition(float x, float y) {
 
-		ArrayList<Cell> column1;
-		ArrayList<Cell> column2;
+		Vector2 point = new Vector2(x, y);
+		Actor actor = stage.hit(x, y, true);
+		Cell cell = (Cell) actor;
+		Cell otherCell = null;
+		Map.MapCoord cellCoord;
 
-		Cell cell1;
-		Cell cell2;
+		if (cell != null) {
 
-		if (x < 0) return null;
+			Vector2 centerCellPosition = new Vector2(cell.getX() + cell.getWidth() / 2, cell.getY() + + 2*cell.getHeight()/3);
+			cellCoord = cell.getMapPosition();
 
-		int cellX = Math.round(x) / (cellWidth / 2);     // this will get the correct column
+			// we need to find the next closest cell, and determine if this click is
+			// within this cell or the other cell
 
-		// We will collide within two of the columns
-		// so we need to find the specific cell within either of these
-		// two columns, then we check the closest cell
+			// then the other cell is on the right of this cell
+			if (point.x > centerCellPosition.x) {
+				// The point is in the upper half of this cell
+				if (point.y > centerCellPosition.y) {
+					otherCell = getCell(cellCoord.x, cellCoord.y - 1);
+				}
+				// the point is in the lower half of the cell
+				else if (point.y < centerCellPosition.y) {
+					otherCell = getCell(cellCoord.x + 1, cellCoord.y);
+				}
+			}
+			// then the other cell is on the left of this cell
+			else if (point.x < centerCellPosition.x) {
+				// The point is in the upper half of this cell
+				if (point.y > centerCellPosition.y) {
+					otherCell = getCell(cellCoord.x - 1, cellCoord.y);
+				}
+				// the point is in the lower half of the cell
+				else if (point.y < centerCellPosition.y) {
+					otherCell = getCell(cellCoord.x, cellCoord.y + 1);
+				}
+			}
 
-		// this does a preliminary check
-		if (cellX < 2 * width && cellX >= 0) {
-			System.out.println("Column found x: " + cellX);
-
-			// we grab the cell denoted by cellX,
-			// then we also grab cellX - 1
-
-			column1 = rectangularBounds.get(cellX);
-
-			// search this array for the cell
-			for(Cell cell : column1)
+			if(otherCell != null)
 			{
-				//if(cell.overlaps())
+				// Then get center positions for each of these two cells
+				Vector2 centerOtherCellPosition = new Vector2(otherCell.getX() + otherCell.getWidth() / 2, otherCell.getY() + 2*otherCell.getHeight()/3);
+
+				// then find the distance from the center of each cell to the point of interest
+				Vector2 position = new Vector2(x, y);
+
+				// find the actual distances between the vector positions
+				float distance1 = centerCellPosition.dst(position);
+				float distance2 = centerOtherCellPosition.dst(position);
+
+				// return the cell assoc with the smallest distance
+				return (distance1 > distance2) ? otherCell : cell;
 			}
-
-			if(cellX - 1 > 0) {
-				column2 = rectangularBounds.get(cellX - 1);
-			}
-
-
+			else return cell;
 		}
 
 		return null;
 	}
-	/*
 
-	mouse_grid_x = floor((mouse_y / tile_height) + (mouse_x / tile_width));
-	mouse_grid_y = floor((-mouse_x / tile_width) + (mouse_y / tile_height));
-	 */
+	//
+	//
+	//
+	//
+	public Cell getCell(int x, int y) {
+
+		if (x >= 0 && x < width &&
+			   y >= 0 && y < height) {
+			return mapArray[x][y];
+		}
+		return null;
+	}
 }
