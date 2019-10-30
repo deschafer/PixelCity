@@ -155,10 +155,6 @@ public class Map extends Group {
 		return null;
 	}
 
-	//
-	//
-	//
-	//
 	public Cell getCell(int x, int y) {
 
 		if (x >= 0 && x < width &&
@@ -168,11 +164,19 @@ public class Map extends Group {
 		return null;
 	}
 
-	//
-	//
-	//
-	//
 	public Cell getCell(MapCoord coord) {
 		return getCell(coord.x, coord.y);
+	}
+
+	public int getCellWidth() {
+		return cellWidth;
+	}
+
+	public int getCellHeight() {
+		return cellHeight;
+	}
+
+	public int getCellRowHeight() {
+		return cellRowHeight;
 	}
 }

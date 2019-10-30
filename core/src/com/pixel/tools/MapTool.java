@@ -13,6 +13,8 @@ public class MapTool extends Tool {
 	protected Cell currCell;
 	protected Cell endCell;
 	protected Map gameMap = GameScene.getInstance().getGameMap();
+	protected final int cellWidth = GameScene.getInstance().getGameMap().getCellWidth();
+	protected final int cellHeight = GameScene.getInstance().getGameMap().getCellRowHeight();
 
 	@Override
 	public boolean onTouchDown(float x, float y) {
@@ -37,17 +39,20 @@ public class MapTool extends Tool {
 			return false;
 		}
 
-		// first check if we have a different coordinate
-		// so we can check if we have moved more than a cell
-
 		// get the current cell corresponding to the location
-		currCell = gameMap.checkPosition(x, y);
+		Cell cell = gameMap.checkPosition(x, y);
 
-		if (currCell == null) return false;
+		// If this cell is different
+		if (cell != currCell && cell != null) {
 
-		currentCells.add(currCell);
+			currCell = cell;
 
-		return true;
+			currentCells.add(currCell);
+
+			return true;
+		}
+
+		return false;
 	}
 
 	@Override
