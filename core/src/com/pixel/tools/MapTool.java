@@ -13,8 +13,8 @@ public class MapTool extends Tool {
 	protected Cell currCell;
 	protected Cell endCell;
 	protected Map gameMap = GameScene.getInstance().getGameMap();
-	protected final int cellWidth = GameScene.getInstance().getGameMap().getCellWidth();
-	protected final int cellHeight = GameScene.getInstance().getGameMap().getCellRowHeight();
+	protected final float cellWidth = GameScene.getInstance().getGameMap().getCellWidth();
+	protected final float cellHeight = GameScene.getInstance().getGameMap().getCellRowHeight();
 
 	@Override
 	public boolean onTouchDown(float x, float y) {

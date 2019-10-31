@@ -66,14 +66,9 @@ public class GameScene extends Scene {
 
 	public boolean keyDown(int keycode) {
 
-		if (keycode == Input.Keys.W) {
-			mainStage.getCamera().translate(0, 10, 0);
-		} else if (keycode == Input.Keys.A) {
-			mainStage.getCamera().translate(-10, 0, 0);
-		} else if (keycode == Input.Keys.S) {
-			mainStage.getCamera().translate(0, -10, 0);
-		} else if (keycode == Input.Keys.D) {
-			mainStage.getCamera().translate(10, 0, 0);
+		if (keycode == Input.Keys.ESCAPE) {
+			if (activeTool != null)
+				activeTool.cancel();
 		}
 
 		return false;

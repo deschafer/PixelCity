@@ -25,14 +25,14 @@ public class Map extends Group {
 
 	private int width;                    // width of the map array in cells
 	private int height;                    // height ...
-	private int widthPixels;               // width of the map in pixels
-	private int heightPixels;          // height of the map in pixels
+	private float widthPixels;               // width of the map in pixels
+	private float heightPixels;          // height of the map in pixels
 	private Stage parentStage;
 	private Cell[][] mapArray;
 	private final int cellWidth = 64;     // width of the cell in pixels
 	private final int cellHeight = 64;     // height of the cell in pixels
-	private final int cellRowWidth = 64;
-	private final int cellRowHeight = 42;
+	private final float cellRowWidth = 64;
+	private final float cellRowHeight = 2.0f/3.0f * 64.0f;
 	private Stage stage;
 	private Vector2 topOfMap;
 
@@ -176,7 +176,7 @@ public class Map extends Group {
 		return cellHeight;
 	}
 
-	public int getCellRowHeight() {
+	public float getCellRowHeight() {
 		return cellRowHeight;
 	}
 }

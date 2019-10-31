@@ -21,14 +21,14 @@ public class MapObject extends Group {
 	//private ArrayList<ObjectBehavior> behaviors;	// holds a list of added ObjectBehaviors
 
 	// General map-based properties
-	private Map.MapCoord mapPosition;			// holds the current position of this object
+	protected Map.MapCoord mapPosition;			// holds the current position of this object
 	private float timeSpeed;
-	private boolean replaceable = false;		// flag indicating if this object can be replaced with another object
-	private boolean placeable = false;			// indicates if this object can be placed over others
+	protected boolean replaceable = false;		// flag indicating if this object can be replaced with another object
+	protected boolean placeable = false;			// indicates if this object can be placed over others
 
 	private Polygon boundaryPolygon;
 
-	private ArrayList<PlacementBehavior> placementBehaviors;
+	protected ArrayList<PlacementBehavior> placementBehaviors;
 
 	// animation-based properties
 	private Animation<TextureRegion> animation;
@@ -181,13 +181,13 @@ public class MapObject extends Group {
 	}
 
 	//
-	// placeObject
+	// placeOverObject
 	// This function is called when an object is supposed to be placed on
 	// the location of this object.
 	//
-	public boolean placeObject(MapObject object) {
+	public boolean placeOverObject(MapObject object) {
 
-		if(placeable && !placementBehaviors.isEmpty()) {
+		if(replaceable && !placementBehaviors.isEmpty()) {
 
 			for(PlacementBehavior behavior : placementBehaviors) {
 				behavior.setPlacement(object);
@@ -231,5 +231,9 @@ public class MapObject extends Group {
 
 			super.draw(batch, parentAlpha);
 		}
+	}
+
+	public MapObject copy() {
+		return null;
 	}
 }
