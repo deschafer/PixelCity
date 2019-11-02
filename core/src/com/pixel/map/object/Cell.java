@@ -1,6 +1,13 @@
 package com.pixel.map.object;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.SnapshotArray;
+import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+
+import java.util.ArrayList;
 
 //
 // Cell
@@ -11,14 +18,55 @@ import com.pixel.map.Map;
 public class Cell extends MapObject {
 
 	public Cell(float x, float y, float width, float height, Map.MapCoord coord) {
-		super(x, y, width,height, coord, "com.pixel.map.object.Cell");
+		super(x, y, width,height, coord, "Cell");
 
 		// This cell has a basic texture within it
-		loadTexture("assets/landscape/PNG/landscapeTiles_075.png");
+		Texture texture = PixelAssetManager.manager.get(PixelAssetManager.grass);
+		loadTexture(texture, PixelAssetManager.grass);
 		setSize(width, height);
 	}
+
+	// TODO: implement some way of knowing if this cell contains any additional map objects
 
 	// TODO:
 	// cell should also override placeOverObject
 	// contain a place on top of placementBehavior
+
+	public MapObject getTopObject() {
+
+		if(!hasChildren()) return null;
+
+		SnapshotArray<Actor> actors = getChildren();
+		MapObject object = null;
+
+		for(int i = actors.size - 1; i >= 0; i--) {
+			Actor actor = actors.get(i);
+
+			if (actor.getName() != "Visualizer") {
+				object = (MapObject)actor;
+				break;
+			}
+		}
+
+		return object;
+	}
+
+	public boolean containsMapObject() {
+		for (Actor actor : getChildren()) {
+			if (actor.getName() != "Visualizer") {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public void draw(Batch batch, float parentAlpha) {
+		if (containsMapObject())
+			setOpacity(0.0f);
+		else
+			setOpacity(1.0f);
+
+		super.draw(batch, parentAlpha);
+	}
 }

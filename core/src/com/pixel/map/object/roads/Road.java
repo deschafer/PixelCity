@@ -19,11 +19,10 @@ public class Road extends MapObject {
 	public Road(float x, float y, float width, float height, Map.MapCoord coord, String ID) {
 		super(x, y, width, height, coord, ID);
 
+		replaceable = true;
+
 		// For each derived object, we will need to set neighbors if they exist,
 		// and we will need to set the type correctly
-
-		setName("Road");	// used to identify the general road type
-
 	}
 
 	public void updateSurroundings() {

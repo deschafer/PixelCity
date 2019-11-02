@@ -24,7 +24,6 @@ public class MapObject extends Group {
 	protected Map.MapCoord mapPosition;			// holds the current position of this object
 	private float timeSpeed;
 	protected boolean replaceable = false;		// flag indicating if this object can be replaced with another object
-	protected boolean placeable = false;			// indicates if this object can be placed over others
 
 	private Polygon boundaryPolygon;
 
@@ -32,6 +31,7 @@ public class MapObject extends Group {
 
 	// animation-based properties
 	private Animation<TextureRegion> animation;
+	private String sourceTexture;
 	private float elapsedTime;
 	private boolean animationPaused;
 
@@ -43,16 +43,13 @@ public class MapObject extends Group {
 		setHeight(height);
 		setName(ID);
 		mapPosition = coord;
+		placementBehaviors = new ArrayList<>();
 	}
 
-	public void setAnimation(Animation<TextureRegion> anim)
-	{
+	public void setAnimation(Animation<TextureRegion> anim) {
 		animation = anim;
 		TextureRegion tr = animation.getKeyFrame(0);
-		float w = tr.getRegionWidth();
-		float h = tr.getRegionHeight();
-		setSize( w, h );
-		setOrigin( w/2, h/2 );
+		setOrigin(getWidth() / 2, getHeight() / 2);
 
 		if (boundaryPolygon == null)
 			setBoundaryRectangle();
@@ -67,6 +64,31 @@ public class MapObject extends Group {
 		{
 			String fileName = fileNames[n];
 			Texture texture = new Texture( Gdx.files.internal(fileName) );
+			texture.setFilter( Texture.TextureFilter.Linear, Texture.TextureFilter.Linear );
+			textureArray.add( new TextureRegion( texture ) );
+		}
+
+		Animation<TextureRegion> anim = new Animation<TextureRegion>(frameDuration, textureArray);
+
+		if (loop)
+			anim.setPlayMode(Animation.PlayMode.LOOP);
+		else
+			anim.setPlayMode(Animation.PlayMode.NORMAL);
+
+		if (animation == null)
+			setAnimation(anim);
+
+		return anim;
+	}
+
+	public Animation<TextureRegion> loadAnimationFromFiles(Texture[] textures, float frameDuration, boolean loop)
+	{
+		int fileCount = textures.length;
+		Array<TextureRegion> textureArray = new Array<TextureRegion>();
+
+		for (int n = 0; n < fileCount; n++)
+		{
+			Texture texture = textures[n];
 			texture.setFilter( Texture.TextureFilter.Linear, Texture.TextureFilter.Linear );
 			textureArray.add( new TextureRegion( texture ) );
 		}
@@ -114,9 +136,18 @@ public class MapObject extends Group {
 
 	public Animation<TextureRegion> loadTexture(String fileName)
 	{
+		sourceTexture = fileName;
 		String[] fileNames = new String[1];
 		fileNames[0] = fileName;
 		return loadAnimationFromFiles(fileNames, 1, true);
+	}
+
+	public Animation<TextureRegion> loadTexture(Texture texture, String fileName)
+	{
+		sourceTexture = fileName;
+		Texture[] textures = new Texture[1];
+		textures[0] = texture;
+		return loadAnimationFromFiles(textures, 1, true);
 	}
 
 	public void setAnimationPaused(boolean pause)
@@ -167,6 +198,8 @@ public class MapObject extends Group {
 		return mapPosition;
 	}
 
+	public String getSourceTexture() { return sourceTexture; }
+
 	public void setMapPosition(int x, int y) {
 		mapPosition.x = x;
 		mapPosition.y = y;
@@ -174,10 +207,6 @@ public class MapObject extends Group {
 
 	public boolean isReplaceable() {
 		return replaceable;
-	}
-
-	public boolean isPlaceable() {
-		return placeable;
 	}
 
 	//
@@ -211,26 +240,20 @@ public class MapObject extends Group {
 	}
 
 	public void draw(Batch batch, float parentAlpha) {
-		// We should only draw if we are in the camera of this object's scene
-		Frustum frustum = getStage().getCamera().frustum;
 
-		// Check if any corner of this given object is within the camera's view
-		if (frustum.pointInFrustum(getX(), getY(), 0) ||
-			   frustum.pointInFrustum(getX() + getWidth(), getY(), 0) ||
-			   frustum.pointInFrustum(getX(), getY() + getHeight(), 0) ||
-			   frustum.pointInFrustum(getX() + getWidth(), getY() + getHeight(), 0)) {
+		if (getStage() == null) return;
 
-			// apply color tint effect
-			Color c = getColor();
-			batch.setColor(c.r, c.g, c.b, c.a);
+		// apply color tint effect
+		Color c = getColor();
+		batch.setColor(c.r, c.g, c.b, c.a);
 
-			if (animation != null && isVisible())
-				batch.draw(animation.getKeyFrame(elapsedTime),
-					   getX(), getY(), getOriginX(), getOriginY(),
-					   getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+		if (animation != null && isVisible())
+			batch.draw(animation.getKeyFrame(elapsedTime),
+				   getX(), getY(), getOriginX(), getOriginY(),
+				   getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 
-			super.draw(batch, parentAlpha);
-		}
+		super.draw(batch, parentAlpha);
+
 	}
 
 	public MapObject copy() {

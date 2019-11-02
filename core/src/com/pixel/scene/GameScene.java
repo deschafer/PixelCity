@@ -33,6 +33,7 @@ public class GameScene extends Scene {
 
 		// Create and initialize our game map here
 		gameMap = new Map(50, 50, mainStage);
+		gameMap.initialize();
 
 
 		// TODO: set up and init. all UI elements as well

@@ -6,6 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pixel.map.object.Cell;
+import com.pixel.map.object.roads.RoadFactory;
+import com.pixel.map.object.roads.RoadwayEastWest;
+import com.pixel.map.object.roads.RoadwayNorthSouth;
+import com.pixel.map.visualizer.VisualizerFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -29,10 +33,10 @@ public class Map extends Group {
 	private float heightPixels;          // height of the map in pixels
 	private Stage parentStage;
 	private Cell[][] mapArray;
-	private final int cellWidth = 64;     // width of the cell in pixels
-	private final int cellHeight = 64;     // height of the cell in pixels
-	private final float cellRowWidth = 64;
-	private final float cellRowHeight = 2.0f/3.0f * 64.0f;
+	private final int cellWidth = 132;     // width of the cell in pixels
+	private final int cellHeight = 102;     // height of the cell in pixels
+	private final float cellRowWidth = 132;
+	private final float cellRowHeight = 2.0f/3.0f * 101.0f;
 	private Stage stage;
 	private Vector2 topOfMap;
 
@@ -49,6 +53,29 @@ public class Map extends Group {
 		stage.addActor(this);
 
 		generateArray();
+	}
+
+	//
+	// initialize()
+	// Do all initialization for objects that require a created map here
+	// otherwise, a loop of map creation will occur
+	//
+	public void initialize() {
+
+		// register all of our different road types
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.ROADWAY_NS,
+			   new RoadwayNorthSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.ROADWAY_EW,
+			   new RoadwayEastWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+
+		// register all of the visualizers we use in the map tools
+		VisualizerFactory.getInstance().registerMapObject(
+			   new RoadwayNorthSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new RoadwayEastWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+
 	}
 
 	public void update() {
@@ -99,9 +126,18 @@ public class Map extends Group {
 
 		Vector2 point = new Vector2(x, y);
 		Actor actor = stage.hit(x, y, true);
-		Cell cell = (Cell) actor;
+		Cell cell = null;
 		Cell otherCell = null;
 		Map.MapCoord cellCoord;
+
+		if(actor == null)
+			return null;
+
+		if(actor.getName() == "Cell") {
+			cell = (Cell)actor;
+		} else {
+			cell = (Cell)actor.getParent();
+		}
 
 		if (cell != null) {
 
