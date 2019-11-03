@@ -6,19 +6,19 @@ public class RoadFactory {
 	public enum RoadType {
 		ROADWAY_NS(0, "RoadwayNorthSouth"),
 		ROADWAY_EW(1, "RoadwayEastWest"),
-		INTERSECT_4(2, "Intersection4"),
-		INTERSECT_3_N(3, "Intersection3North"),
-		INTERSECT_3_E(4, "Intersection3East"),
-		INTERSECT_3_S(5, "Intersection3South"),
-		INTERSECT_3_W(6, "Intersection3West"),
-		END_N(7, "EndNorth"),
-		END_E(8, "EndEast"),
-		END_S(9, "EndSouth"),
-		END_W(10, "EndWest"),
-		CORNER_EN(11, "CornerEastNorth"),
-		CORNER_NE(12, "CornerNorthEast"),
-		CORNER_WN(13, "CornerWestNorth"),
-		CORNER_NW(14, "CornerNorthWest");
+		INTERSECT_4(2, "RoadIntersection4"),
+		INTERSECT_3_N(3, "RoadIntersection3North"),
+		INTERSECT_3_E(4, "RoadIntersection3East"),
+		INTERSECT_3_S(5, "RoadIntersection3South"),
+		INTERSECT_3_W(6, "RoadIntersection3West"),
+		END_N(7, "RoadEndNorth"),
+		END_E(8, "RoadEndEast"),
+		END_S(9, "RoadEndSouth"),
+		END_W(10, "RoadEndWest"),
+		CORNER_EN(11, "RoadCornerEastNorth"),
+		CORNER_NE(12, "RoadCornerNorthEast"),
+		CORNER_WN(13, "RoadCornerWestNorth"),
+		CORNER_NW(14, "RoadCornerNorthWest");
 
 		private int value;
 		private String name;

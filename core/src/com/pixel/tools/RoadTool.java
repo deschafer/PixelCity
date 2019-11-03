@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
+import com.pixel.map.object.roads.Road;
 import com.pixel.map.object.roads.RoadFactory;
 import com.pixel.map.visualizer.Visualizer;
 import com.pixel.map.visualizer.VisualizerFactory;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 public class RoadTool extends MapTool {
 
-	private enum Direction {NORTH_SOUTH, EAST_WEST}
+	private enum Direction {NORTH, SOUTH, EAST, WEST}
 	private ArrayList<RoadFactory.RoadType> proposedRoadTypes = new ArrayList<>();
 	private ArrayList<Cell> proposedCells = new ArrayList<>();
 	private ArrayList<Visualizer> visualizers = new ArrayList<>();
@@ -40,10 +41,13 @@ public class RoadTool extends MapTool {
 		int numberCells = 0;
 		int xChange = 0;
 		int yChange = 0;
-		Direction roadDirection = Direction.NORTH_SOUTH;
+		Direction roadDirection = Direction.NORTH;
 
 		// we get the loc of the beginning point and the current point
 		// we know that currCell is not null due to overridden method
+
+		if(begCell == null)
+			return false;
 
 		Map.MapCoord begCoord = begCell.getMapPosition();
 		float currCellX = currCell.getX();
@@ -58,25 +62,25 @@ public class RoadTool extends MapTool {
 		if(distance.x >= 0 && distance.y >= 0) {
 			System.out.println("Quad 0");
 			yChange = -1;
-			roadDirection = Direction.NORTH_SOUTH;
+			roadDirection = Direction.NORTH;
 		}
 		// The top left corner
 		else if(distance.x < 0 && distance.y >= 0) {
 			System.out.println("Quad 1");
 			xChange = -1;
-			roadDirection = Direction.EAST_WEST;
+			roadDirection = Direction.WEST;
 		}
 		// The bottom left corner
 		else if(distance.x < 0 && distance.y < 0) {
 			System.out.println("Quad 2");
 			yChange = 1;
-			roadDirection = Direction.NORTH_SOUTH;
+			roadDirection = Direction.SOUTH;
 		}
 		// The bottom right corner
 		else if(distance.x >= 0 && distance.y < 0) {
 			System.out.println("Quad 3");
 			xChange = 1;
-			roadDirection = Direction.EAST_WEST;
+			roadDirection = Direction.EAST;
 		}
 
 		numberCells = (int)Math.abs(distance.x / (cellWidth / 2)) + 1;
@@ -97,7 +101,7 @@ public class RoadTool extends MapTool {
 			proposedCells.add(checkedCell);
 
 			// determine which cell to add, return a road type
-			proposedRoadTypes.add(findRoadType(roadDirection, false, false, checkedCell));
+			proposedRoadTypes.add(findRoadType(roadDirection, i == (numberCells - 1), i == 0, checkedCell));
 		}
 
 		// then we create our visualizers
@@ -122,32 +126,35 @@ public class RoadTool extends MapTool {
 		RoadFactory.RoadType roadType = RoadFactory.RoadType.ROADWAY_NS;
 
 		// check the direction first
-		if(direction == Direction.NORTH_SOUTH) {
+		if(direction == Direction.NORTH || direction == Direction.SOUTH) {
 
 			if(lastRoad) {
 
-				// TODO: should add the road type for the end of a road here
-				roadType = RoadFactory.RoadType.ROADWAY_NS;
+				roadType = (direction == Direction.NORTH) ?
+					   RoadFactory.RoadType.END_N :
+					   RoadFactory.RoadType.END_S;
 			}
 			else if (firstRoad) {
-				// TODO: should add the road type for the end of a road here
-				roadType = RoadFactory.RoadType.ROADWAY_NS;
+				roadType = (direction == Direction.NORTH) ?
+					   RoadFactory.RoadType.END_S :
+					   RoadFactory.RoadType.END_N;
 			}
 			else {
 				// Just a normal road in this direction will be placed
 				roadType = RoadFactory.RoadType.ROADWAY_NS;
 			}
 		}
-		else if (direction == Direction.EAST_WEST) {
+		else if (direction == Direction.WEST || direction == Direction.EAST) {
 
 			if(lastRoad) {
-
-				// TODO: should add the road type for the end of a road here
-				roadType = RoadFactory.RoadType.ROADWAY_EW;
+				roadType = (direction == Direction.WEST) ?
+					   RoadFactory.RoadType.END_W :
+					   RoadFactory.RoadType.END_E;
 			}
 			else if (firstRoad) {
-				// TODO: should add the road type for the end of a road here
-				roadType = RoadFactory.RoadType.ROADWAY_EW;
+				roadType = (direction == Direction.WEST) ?
+					   RoadFactory.RoadType.END_E :
+					   RoadFactory.RoadType.END_W;
 			}
 			else {
 				// Just a normal road in this direction will be placed
@@ -210,20 +217,28 @@ public class RoadTool extends MapTool {
 			return false;
 		}
 
-		for(int i = 0; i < proposedCells.size(); i++) {
+		for (int i = 0; i < proposedCells.size(); i++) {
 
 			Cell cell = proposedCells.get(i);
 			RoadFactory.RoadType type = proposedRoadTypes.get(i);
 
+			// create our new map object
 			MapObject object = RoadFactory.getInstance().getRoad(type);
-			if(cell.containsMapObject()  && cell.getTopObject().isReplaceable()) {
+
+			// We need to set the object's position as well
+			object.setMapPosition(cell.getMapPosition().x, cell.getMapPosition().y);
+
+			// Then we attempt to place this new object
+			if (cell.containsMapObject() && cell.getTopObject().isReplaceable()) {
+
 				cell.getTopObject().placeOverObject(object);
-			}
-			else
-			{
+			} else {
 				cell.addActor(object);
 			}
 		}
+
+		proposedCells.clear();
+		proposedRoadTypes.clear();
 
 		return true;
 	}

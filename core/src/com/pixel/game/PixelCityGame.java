@@ -18,6 +18,19 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.roadwayNorthSouth, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.roadwayEastWest, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.grass, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.roadwayEndWest, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.roadwayEndEast, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.roadwayEndSouth, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.roadwayEndNorth, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.cornerEastNorth, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.cornerNorthEast, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.cornerNorthWest, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.cornerWestNorth, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.intersectionFour, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.intersectionThreeSouth, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.intersectionThreeEast, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.intersectionThreeWest, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.intersectionThreeNorth, Texture.class);
 
 		PixelAssetManager.manager.finishLoading();
 

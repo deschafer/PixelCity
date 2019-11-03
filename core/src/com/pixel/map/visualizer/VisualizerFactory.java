@@ -1,14 +1,13 @@
 package com.pixel.map.visualizer;
 
 import com.pixel.map.object.MapObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class VisualizerFactory {
 
 	private HashMap<String, MapObject> registeredTypes;
-	private HashMap<String, ArrayList<Visualizer>> sortedVisualizers;	// lists for each different visualizer
+	private HashMap<String, ArrayList<Visualizer>> sortedVisualizers;     // lists for each different visualizer
 
 	private static VisualizerFactory instance;
 
@@ -21,7 +20,7 @@ public class VisualizerFactory {
 	}
 
 	public static VisualizerFactory getInstance() {
-		if(instance == null) instance = new VisualizerFactory();
+		if (instance == null) instance = new VisualizerFactory();
 		return instance;
 	}
 
@@ -89,5 +88,4 @@ public class VisualizerFactory {
 			sortedVisualizers.put(object.getName(), new ArrayList<>());
 		}
 	}
-
 }

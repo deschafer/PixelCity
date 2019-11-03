@@ -6,13 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pixel.map.object.Cell;
-import com.pixel.map.object.roads.RoadFactory;
-import com.pixel.map.object.roads.RoadwayEastWest;
-import com.pixel.map.object.roads.RoadwayNorthSouth;
+import com.pixel.map.object.roads.*;
 import com.pixel.map.visualizer.VisualizerFactory;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 
 public class Map extends Group {
 
@@ -69,13 +64,61 @@ public class Map extends Group {
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.ROADWAY_EW,
 			   new RoadwayEastWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.END_E,
+			   new RoadwayEndEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.END_N,
+			   new RoadwayEndNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.END_S,
+			   new RoadwayEndSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.END_W,
+			   new RoadwayEndWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.CORNER_EN,
+			   new CornerEastNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.CORNER_NE,
+			   new CornerNorthEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.CORNER_NW,
+			   new CornerNorthWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.CORNER_WN,
+			   new CornerWestNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.INTERSECT_4,
+			   new IntersectionFour(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.INTERSECT_3_E,
+			   new IntersectionThreeEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.INTERSECT_3_N,
+			   new IntersectionThreeNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.INTERSECT_3_S,
+			   new IntersectionThreeSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		RoadFactory.getInstance().registerRoadType(
+			   RoadFactory.RoadType.INTERSECT_3_W,
+			   new IntersectionThreeWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+
 
 		// register all of the visualizers we use in the map tools
+		// We only need to placeable tiles for visualizers
 		VisualizerFactory.getInstance().registerMapObject(
 			   new RoadwayNorthSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
 		VisualizerFactory.getInstance().registerMapObject(
 			   new RoadwayEastWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
-
+		VisualizerFactory.getInstance().registerMapObject(
+			   new RoadwayEndEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new RoadwayEndNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new RoadwayEndSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new RoadwayEndWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
 	}
 
 	public void update() {

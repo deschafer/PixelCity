@@ -1,6 +1,7 @@
 package com.pixel.map.object.roads;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.pixel.behavior.RoadPlacement;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
@@ -13,6 +14,7 @@ public class Road extends MapObject {
 	protected Road easternRoad;               // references to surrounding and connected roads
 	protected Road southernRoad;               // references to surrounding and connected roads
 	protected Road westernRoad;               // references to surrounding and connected roads
+	protected RoadPlacement placementBehavior;
 
 	public enum Axis {HORIZ, VERTI}		// the axis types for this object
 
@@ -68,4 +70,22 @@ public class Road extends MapObject {
 		return null;
 	}
 
+	public RoadFactory.RoadType getType() {
+		return type;
+	}
+
+	@Override
+	public boolean placeOverObject(MapObject object) {
+
+		if(object.getName().contains("Road") && placementBehavior != null) {
+
+			placementBehavior.setOtherRoad((Road)object);
+			placementBehavior.act();
+		}
+		else {
+			System.out.println("Non road object attempted to be added on top of a road object");
+		}
+
+		return true;
+	}
 }

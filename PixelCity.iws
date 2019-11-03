@@ -2,314 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05fdd495-9b0b-42fe-b267-3cc5a59f5536" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEastWest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/Visualizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadNorthPlacement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/behavior/RoadPlacement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/behavior/RoadwayNorthSouthPlacement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerEastNorth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerNorthEast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerNorthWest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerWestNorth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionFour.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeEast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeNorth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeSouth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeWest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndEast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndNorth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndSouth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndWest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PixelCity.iws" beforeDir="false" afterPath="$PROJECT_DIR$/PixelCity.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_000.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_000.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_001.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_001.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_002.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_002.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_003.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_003.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_004.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_004.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_005.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_005.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_006.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_006.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_007.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_007.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_008.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_008.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_009.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_009.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Details/cityDetails_010.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_010.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Donate.url" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Donate.url" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Facebook.url" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Facebook.url" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/License.txt" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/License.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_000.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_000.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_001.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_001.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_002.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_002.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_003.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_003.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_004.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_004.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_005.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_005.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_006.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_006.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_007.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_007.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_008.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_008.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_009.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_009.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_010.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_010.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_011.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_011.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_012.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_012.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_013.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_013.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_014.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_014.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_015.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_015.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_016.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_016.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_017.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_017.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_018.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_018.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_019.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_019.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_020.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_020.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_021.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_021.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_022.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_022.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_023.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_023.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_024.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_024.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_025.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_025.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_026.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_026.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_027.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_027.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_028.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_028.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_029.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_029.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_030.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_030.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_031.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_031.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_032.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_032.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_033.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_033.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_034.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_034.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_035.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_035.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_036.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_036.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_037.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_037.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_038.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_038.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_039.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_039.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_040.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_040.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_041.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_041.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_042.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_042.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_043.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_043.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_044.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_044.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_045.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_045.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_046.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_046.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_047.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_047.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_048.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_048.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_049.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_049.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_050.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_050.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_051.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_051.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_052.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_052.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_053.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_053.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_054.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_054.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_055.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_055.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_056.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_056.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_057.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_057.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_058.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_058.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_059.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_059.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_060.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_060.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_061.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_061.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_062.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_062.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_063.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_063.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_064.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_064.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_065.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_065.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_066.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_066.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_067.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_067.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_068.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_068.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_069.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_069.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_070.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_070.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_071.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_071.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_072.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_072.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_073.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_073.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_074.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_074.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_075.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_075.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_076.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_076.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_077.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_077.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_078.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_078.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_079.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_079.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_080.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_080.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_081.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_081.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_082.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_082.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_083.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_083.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_084.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_084.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_085.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_085.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_086.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_086.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_087.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_087.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_088.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_088.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_089.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_089.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_090.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_090.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_091.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_091.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_092.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_092.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_093.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_093.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_094.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_094.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_095.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_095.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_096.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_096.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_097.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_097.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_098.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_098.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_099.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_099.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_101.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_101.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_102.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_102.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_103.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_103.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_104.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_104.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_105.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_105.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_106.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_106.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_107.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_107.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_108.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_108.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_109.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_109.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_110.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_110.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_111.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_111.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_112.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_112.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_113.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_113.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_114.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_114.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_115.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_115.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_116.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_116.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_117.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_117.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_118.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_118.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_119.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_119.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_120.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_120.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_121.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_121.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_122.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_122.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_123.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_123.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_124.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_124.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_125.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_125.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_126.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_126.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/PNG/cityTiles_127.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_127.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Preview.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Preview.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Spritesheet/cityDetails_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityDetails_sheet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Spritesheet/cityDetails_sheet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityDetails_sheet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Spritesheet/cityTiles_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityTiles_sheet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometriccity/Spritesheet/cityTiles_sheet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityTiles_sheet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/behavior/ReplaceBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/behavior/ReplaceBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayNorthSouth.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayNorthSouth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Details/cityDetails_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Donate.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Facebook.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/License.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_028.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_029.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_032.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_034.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_039.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_041.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_042.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_044.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_045.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_047.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_051.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_052.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_054.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_055.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_056.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_057.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_058.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_059.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_060.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_061.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_062.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_063.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_064.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_065.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_068.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_069.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_070.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_071.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_073.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_074.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_075.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_076.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_077.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_079.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_080.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_081.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_082.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_088.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_089.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_091.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_094.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_095.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_096.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_098.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_099.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_103.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_104.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_107.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_109.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_110.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_111.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_115.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_116.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_118.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_123.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_124.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_125.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_126.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/PNG/cityTiles_127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Spritesheet/cityDetails_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Spritesheet/cityDetails_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Spritesheet/cityTiles_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometriccity/Spritesheet/cityTiles_sheet.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -345,12 +63,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="174" column="43" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
+            <state relative-caret-position="435">
+              <caret line="58" column="42" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="44" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1129#1130#0" expanded="true" />
+                <element signature="e#1151#1152#0" expanded="true" />
+                <element signature="e#1506#1507#0" expanded="true" />
+                <element signature="e#1554#1555#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -359,101 +80,66 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1224">
-              <caret line="42" column="53" lean-forward="true" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+            <state relative-caret-position="16">
+              <caret line="77" column="87" selection-start-line="77" selection-start-column="87" selection-end-line="77" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#MapCoord#0;class#Map#0" />
-                <element signature="e#6179#6180#0" expanded="true" />
-                <element signature="e#6218#6219#0" expanded="true" />
-                <element signature="e#6248#6249#0" expanded="true" />
-                <element signature="e#6271#6272#0" expanded="true" />
-                <element signature="e#6302#6303#0" expanded="true" />
-                <element signature="e#6326#6327#0" expanded="true" />
-                <element signature="e#6362#6363#0" expanded="true" />
-                <element signature="e#6389#6390#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/RoadwayNorthSouthPlacement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadNorthPlacement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="21" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerNorthEast.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="55" column="6" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/ReplaceBehavior.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="25" column="61" lean-forward="true" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/Visualizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-126">
-              <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEastWest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="22" column="80" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
             </state>
           </provider>
         </entry>
@@ -477,6 +163,9 @@
       <find>RoadWa</find>
       <find>setColor</find>
       <find>placementBehaviors</find>
+      <find>EndSouth</find>
+      <find>remove()</find>
+      <find>create(Road</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -491,30 +180,47 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/Tool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/PlacementBehavior.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/Behavior.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/ReplaceBehavior.java" />
         <option value="$PROJECT_DIR$/desktop/src/com/pixel/game/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/MapTool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/game/AssetManager.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayNorthSouth.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEastWest.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/Visualizer.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndSouth.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndEast.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndWest.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndNorth.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/ReplaceBehavior.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/RoadPlacement.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadNorthPlacement.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/RoadwayNorthSouthPlacement.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayNorthSouth.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerEastNorth.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerNorthEast.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeWest.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeEast.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeSouth.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionFour.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerNorthWest.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeNorth.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerWestNorth.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="952" />
+    <option name="y" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -534,12 +240,6 @@
               <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
               <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="assets" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
@@ -586,6 +286,33 @@
               <item name="pixel" type="462c0819:PsiDirectoryNode" />
               <item name="map" type="462c0819:PsiDirectoryNode" />
               <item name="object" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="roads" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="visualizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -671,7 +398,7 @@
       <window_info anchor="bottom" id="Build" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
       <window_info anchor="right" id="Palette" order="0" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.1705757" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.20255864" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Maven" order="4" />
@@ -691,7 +418,7 @@
       <window_info id="Build Variants" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3109426" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -702,7 +429,7 @@
       <window_info anchor="bottom" id="Build" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
       <window_info anchor="right" id="Palette" order="0" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.1705757" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.20042644" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Maven" order="4" />
@@ -718,17 +445,64 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java</url>
-          <line>178</line>
+          <line>185</line>
           <properties />
           <option name="timeStamp" value="57" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/src/com/pixel/behavior/RoadPlacement.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/src/com/pixel/behavior/RoadPlacement.java</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="newRoad" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>cell.getChildren()</expression-string>
+        <expression-string>(Road)roadTypes[type.value]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>owner.getMapPosition()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cell1.mapPosition</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cell1.getParent()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cell1.hasChildren()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cell1.getX()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cell</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -738,101 +512,13 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cell.getTopObject()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>object</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>object.isVisible()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>object.sourceTexture</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>object.getHeight()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>object.getWidth()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>getStage()</expression-string>
+        <expression-string>newRoad.getParent()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../BookSourceCode/java-game-dev-LibGDX-master/Ch11/Framework/LevelScreen.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BookSourceCode/java-game-dev-LibGDX-master/Ch11/Framework/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BookSourceCode/java-game-dev-LibGDX-master/Ch11/Framework/CustomGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BookSourceCode/java-game-dev-LibGDX-master/Ch11/Framework/BaseScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="45" lean-forward="true" selection-end-line="125" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BookSourceCode/java-game-dev-LibGDX-master/Ch11/Framework/BaseGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="3" lean-forward="true" selection-end-line="81" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BookSourceCode/java-game-dev-LibGDX-master/Ch11/Framework/BaseActor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="47" lean-forward="true" selection-end-line="661" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/scenes/scene2d/Stage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="724" column="20" selection-start-line="724" selection-start-column="20" selection-end-line="724" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/math/Vector2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="195" column="18" selection-start-line="195" selection-start-column="18" selection-end-line="195" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/scenes/scene2d/Actor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
@@ -918,9 +604,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_3dgamecode.zip/Buildinga3DGamewithLibGDX_code/Chapter 3/Space Gladiators/core/src/com/deeep/spaceglad/bullet/MotionState.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_3dgamecode.zip/Buildinga3DGamewithLibGDX_code/Chapter 3/Space Gladiators/core/src/com/deeep/spaceglad/bullet/MotionState.java" />
     <entry file="file://$PROJECT_DIR$/desktop/src/com/pixel/game/desktop/DesktopLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -938,16 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -955,44 +629,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/scenes/scene2d/Group.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="261" selection-start-line="261" selection-end-line="261" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.9.10/bc819db135041daf18548095a4224fdf91128d4c/gdx-backend-lwjgl-1.9.10-sources.jar!/com/badlogic/gdx/backends/lwjgl/LwjglInput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="386" selection-start-line="386" selection-end-line="386" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/InputMultiplexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="65" column="68" selection-start-line="65" selection-start-column="68" selection-end-line="65" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1006,77 +646,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayNorthSouth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="49" column="81" lean-forward="true" selection-start-line="49" selection-start-column="81" selection-end-line="49" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="174" column="43" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
-          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/Visualizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
+        <state relative-caret-position="996">
+          <caret line="59" column="49" lean-forward="true" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndWest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+        <state>
+          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndSouth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/city/Donate.url">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEastWest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="170">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="32" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/scenes/scene2d/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="261" selection-start-line="261" selection-end-line="261" />
         </state>
       </provider>
     </entry>
@@ -1087,10 +703,157 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/InputMultiplexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="98" column="21" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/ReplaceBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="61" lean-forward="true" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+        <state relative-caret-position="493">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="216" column="20" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="77" column="54" lean-forward="true" selection-start-line="77" selection-start-column="54" selection-end-line="77" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="243" column="6" selection-start-line="243" selection-start-column="6" selection-end-line="243" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndEast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="6" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="32" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerWestNorth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="32" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerNorthWest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionFour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="32" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeEast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="32" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeNorth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="32" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeSouth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="32" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/IntersectionThreeWest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1099,30 +862,106 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1224">
-          <caret line="42" column="53" lean-forward="true" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+        <state relative-caret-position="16">
+          <caret line="77" column="87" selection-start-line="77" selection-start-column="87" selection-end-line="77" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#MapCoord#0;class#Map#0" />
-            <element signature="e#6179#6180#0" expanded="true" />
-            <element signature="e#6218#6219#0" expanded="true" />
-            <element signature="e#6248#6249#0" expanded="true" />
-            <element signature="e#6271#6272#0" expanded="true" />
-            <element signature="e#6302#6303#0" expanded="true" />
-            <element signature="e#6326#6327#0" expanded="true" />
-            <element signature="e#6362#6363#0" expanded="true" />
-            <element signature="e#6389#6390#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/RoadwayNorthSouthPlacement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="55" column="6" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
+        <state relative-caret-position="442">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerEastNorth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="58" column="42" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="44" />
+          <folding>
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
+            <element signature="e#1554#1555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndNorth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="20" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/RoadPlacement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayNorthSouth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadNorthPlacement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="21" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerNorthEast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="80" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
         </state>
       </provider>
     </entry>
