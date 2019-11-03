@@ -1,7 +1,7 @@
 package com.pixel.map.object.roads;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.pixel.behavior.ReplaceBehavior;
+import com.pixel.behavior.RoadwayEastWestPlacement;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
 import com.pixel.map.object.MapObject;
@@ -18,7 +18,7 @@ public class RoadwayEastWest extends Road {
 		loadTexture(texture, PixelAssetManager.roadwayEastWest);
 
 		// we need to add our own placementBehavior here
-		placementBehaviors.add(new ReplaceBehavior(this));
+		placementBehavior = new RoadwayEastWestPlacement(this);
 	}
 
 	@Override

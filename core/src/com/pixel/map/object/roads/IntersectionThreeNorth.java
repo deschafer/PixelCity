@@ -1,7 +1,7 @@
 package com.pixel.map.object.roads;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.pixel.behavior.ReplaceBehavior;
+import com.pixel.behavior.IntersectionThreeNorthPlacement;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
 import com.pixel.map.object.MapObject;
@@ -18,7 +18,7 @@ public class IntersectionThreeNorth extends Road{
 		loadTexture(texture, PixelAssetManager.intersectionThreeNorth);
 
 		// we need to add our own placementBehavior here
-		placementBehaviors.add(new ReplaceBehavior(this));
+		placementBehavior = new IntersectionThreeNorthPlacement(this);
 	}
 
 	@Override
