@@ -6,8 +6,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pixel.map.object.Cell;
+import com.pixel.map.object.building.Building;
 import com.pixel.map.object.roads.*;
+import com.pixel.map.object.zoning.Zone;
+import com.pixel.map.object.zoning.ZoneCell;
 import com.pixel.map.visualizer.VisualizerFactory;
+
+import java.util.ArrayList;
 
 public class Map extends Group {
 
@@ -34,6 +39,7 @@ public class Map extends Group {
 	private final float cellRowHeight = 2.0f/3.0f * 101.0f;
 	private Stage stage;
 	private Vector2 topOfMap;
+	private ArrayList<Zone> zones;
 
 	public Map(int width, int height, Stage stage) {
 
@@ -44,6 +50,7 @@ public class Map extends Group {
 		parentStage = stage;
 		widthPixels = width * cellRowWidth;
 		heightPixels = height * cellRowHeight;
+		zones = new ArrayList<>();
 
 		stage.addActor(this);
 
@@ -119,6 +126,12 @@ public class Map extends Group {
 			   new RoadwayEndSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
 		VisualizerFactory.getInstance().registerMapObject(
 			   new RoadwayEndWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.RESIDENTIAL, null));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.COMMERCIAL, null));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.OFFICE, null));
 	}
 
 	public void update() {
@@ -232,6 +245,10 @@ public class Map extends Group {
 		}
 
 		return null;
+	}
+
+	public void addZone(Zone zone) {
+		zones.add(zone);
 	}
 
 	public Cell getCell(int x, int y) {

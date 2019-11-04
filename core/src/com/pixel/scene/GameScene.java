@@ -10,6 +10,7 @@ import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.tools.RoadTool;
 import com.pixel.tools.Tool;
+import com.pixel.tools.ZoneTool;
 
 public class GameScene extends Scene {
 
@@ -62,7 +63,8 @@ public class GameScene extends Scene {
 		}
 
 		if(activeTool == null)
-			activeTool = new RoadTool();
+			//activeTool = new RoadTool();
+			activeTool = new ZoneTool();
 	}
 
 	public boolean keyDown(int keycode) {
@@ -70,6 +72,16 @@ public class GameScene extends Scene {
 		if (keycode == Input.Keys.ESCAPE) {
 			if (activeTool != null)
 				activeTool.cancel();
+		}
+
+		if(keycode == Input.Keys.R) {
+			System.out.println("Road tool selected");
+			activeTool = new RoadTool();
+		}
+
+		if(keycode == Input.Keys.Z) {
+			System.out.println("Zone tool selected");
+			activeTool = new ZoneTool();
 		}
 
 		return false;

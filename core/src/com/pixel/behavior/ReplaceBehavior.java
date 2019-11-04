@@ -20,7 +20,6 @@ public class ReplaceBehavior extends PlacementBehavior {
 
 		if(other != null) {
 
-			/*
 			// get the cell assoc with this map object
 			Cell cell = GameScene.getInstance().getGameMap().getCell(owner.getMapPosition());
 
@@ -32,8 +31,6 @@ public class ReplaceBehavior extends PlacementBehavior {
 			cell.addActor(other);
 
 			other = null;
-			 */
 		}
-
 	}
 }

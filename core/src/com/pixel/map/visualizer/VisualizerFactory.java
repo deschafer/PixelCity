@@ -11,9 +11,6 @@ public class VisualizerFactory {
 
 	private static VisualizerFactory instance;
 
-	// TODO: needs to be thread safe
-	// TODO: singleton initialization
-
 	private VisualizerFactory() {
 		registeredTypes = new HashMap<>();
 		sortedVisualizers = new HashMap<>();

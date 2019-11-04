@@ -4,7 +4,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
-import com.pixel.map.object.roads.Road;
 import com.pixel.map.object.roads.RoadFactory;
 import com.pixel.map.visualizer.Visualizer;
 import com.pixel.map.visualizer.VisualizerFactory;
@@ -85,36 +84,39 @@ public class RoadTool extends MapTool {
 
 		numberCells = (int)Math.abs(distance.x / (cellWidth / 2)) + 1;
 
-		for(int i = 0; i < numberCells; i++) {
+		// If there is more than one cell to be placed
+		if(numberCells > 1) {
 
-			Cell checkedCell = gameMap.getCell(begCoord.x + i * xChange, begCoord.y + i * yChange);
-			if (checkedCell == null) {
+			for (int i = 0; i < numberCells; i++) {
 
-				// clear all of our lists of objects
-				proposedCells.clear();
-				proposedRoadTypes.clear();
+				Cell checkedCell = gameMap.getCell(begCoord.x + i * xChange, begCoord.y + i * yChange);
+				if (checkedCell == null) {
 
-				return false;
+					// clear all of our lists of objects
+					proposedCells.clear();
+					proposedRoadTypes.clear();
+
+					return false;
+				}
+
+				// add this cell to the end of this list of proposed cell
+				proposedCells.add(checkedCell);
+
+				// determine which cell to add, return a road type
+				proposedRoadTypes.add(findRoadType(roadDirection, i == (numberCells - 1), i == 0, checkedCell));
 			}
 
-			// add this cell to the end of this list of proposed cell
-			proposedCells.add(checkedCell);
+			// then we create our visualizers
+			for (int i = 0; i < numberCells; i++) {
 
-			// determine which cell to add, return a road type
-			proposedRoadTypes.add(findRoadType(roadDirection, i == (numberCells - 1), i == 0, checkedCell));
+				// for each of our proposed cells, we need to create a new visualizer for this cell
+				Visualizer visualizer = VisualizerFactory.getInstance().createVisualizer(proposedRoadTypes.get(i).getName());
+				visualizers.add(visualizer);
+
+				// then we need to add this visualizer to the cell
+				addVisualizerToCell(proposedCells.get(i), visualizer);
+			}
 		}
-
-		// then we create our visualizers
-		for(int i = 0; i < numberCells; i++) {
-
-			// for each of our proposed cells, we need to create a new visualizer for this cell
-			Visualizer visualizer = VisualizerFactory.getInstance().createVisualizer(proposedRoadTypes.get(i).getName());
-			visualizers.add(visualizer);
-
-			// then we need to add this visualizer to the cell
-			addVisualizerToCell(proposedCells.get(i), visualizer);
-		}
-
 		return true;
 	}
 
@@ -181,11 +183,6 @@ public class RoadTool extends MapTool {
 			// get the top MapObject of the cell
 			MapObject object = cell.getTopObject();
 
-			if(object == null)
-			{
-				int g = 9;
-			}
-
 			// the top object can be placed on, the visualizer is yellow
 			if(object.isReplaceable()) {
 				visualizer.setType(Visualizer.VisualizerType.YELLOW);
@@ -232,7 +229,7 @@ public class RoadTool extends MapTool {
 			if (cell.containsMapObject() && cell.getTopObject().isReplaceable()) {
 
 				cell.getTopObject().placeOverObject(object);
-			} else {
+			} else if (!cell.hasChildren()) {
 				cell.addActor(object);
 			}
 		}

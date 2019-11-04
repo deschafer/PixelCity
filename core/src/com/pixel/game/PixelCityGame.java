@@ -31,6 +31,10 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.intersectionThreeEast, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.intersectionThreeWest, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.intersectionThreeNorth, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.residentialZoning, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.commercialZoning, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.officeZoning, Texture.class);
+
 
 		PixelAssetManager.manager.finishLoading();
 

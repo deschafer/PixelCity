@@ -22,5 +22,9 @@ public class PixelAssetManager {
 	public static String intersectionThreeSouth = "assets/city/PNG/cityTiles_096.png";
 	public static String intersectionThreeEast = "assets/city/PNG/cityTiles_095.png";
 	public static String intersectionThreeWest = "assets/city/PNG/cityTiles_088.png";
+	public static String residentialZoning = "assets/zoning/resZone.png";
+	public static String commercialZoning = "assets/zoning/commZone.png";
+	public static String officeZoning = "assets/zoning/offZone.png";
+
 
 }
