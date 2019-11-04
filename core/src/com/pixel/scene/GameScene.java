@@ -1,13 +1,11 @@
 package com.pixel.scene;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.pixel.map.Map;
-import com.pixel.map.object.Cell;
+import com.pixel.map.object.building.Building;
 import com.pixel.tools.RoadTool;
 import com.pixel.tools.Tool;
 import com.pixel.tools.ZoneTool;
@@ -63,8 +61,7 @@ public class GameScene extends Scene {
 		}
 
 		if(activeTool == null)
-			//activeTool = new RoadTool();
-			activeTool = new ZoneTool();
+			activeTool = new ZoneTool(Building.BuildingType.RESIDENTIAL);
 	}
 
 	public boolean keyDown(int keycode) {
