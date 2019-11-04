@@ -69,17 +69,20 @@ public class GameScene extends Scene {
 		if (keycode == Input.Keys.ESCAPE) {
 			if (activeTool != null)
 				activeTool.cancel();
-		}
-
-		if(keycode == Input.Keys.R) {
+		} else if (keycode == Input.Keys.R) {
 			System.out.println("Road tool selected");
 			activeTool = new RoadTool();
+		} else if (keycode == Input.Keys.NUM_1) {
+			System.out.println("Zone tool selected");
+			activeTool = new ZoneTool(Building.BuildingType.RESIDENTIAL);
+		} else if (keycode == Input.Keys.NUM_2) {
+			System.out.println("Zone tool selected");
+			activeTool = new ZoneTool(Building.BuildingType.COMMERCIAL);
+		} else if (keycode == Input.Keys.NUM_3) {
+			System.out.println("Zone tool selected");
+			activeTool = new ZoneTool(Building.BuildingType.OFFICE);
 		}
 
-		if(keycode == Input.Keys.Z) {
-			System.out.println("Zone tool selected");
-			activeTool = new ZoneTool();
-		}
 
 		return false;
 	}
