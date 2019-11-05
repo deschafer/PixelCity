@@ -5,8 +5,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.pixel.game.PixelAssetManager;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.building.Building;
+import com.pixel.map.object.building.BuildingDisplay.BuildingDisplay;
+import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.map.object.roads.*;
 import com.pixel.map.object.zoning.Zone;
 import com.pixel.map.object.zoning.ZoneCell;
@@ -35,6 +38,10 @@ public class Map extends Group {
 	private Cell[][] mapArray;
 	private final int cellWidth = 132;     // width of the cell in pixels
 	private final int cellHeight = 102;     // height of the cell in pixels
+	public static final int cellWidthPixels = 132;
+	public static final int cellHeightPixels = 102;
+	public static final int cellExtraWidthPixels = 99;
+	public static final int cellExtraHeightPixels = 85;
 	private final float cellRowWidth = 132;
 	private final float cellRowHeight = 2.0f/3.0f * 101.0f;
 	private Stage stage;
@@ -132,10 +139,205 @@ public class Map extends Group {
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.COMMERCIAL, null));
 		VisualizerFactory.getInstance().registerMapObject(
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.OFFICE, null));
+
+		// set up all of our building displays
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.residentialBase22, true), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.residentialBase14, true), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.residentialBase30, true), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.residentialBase37, true), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory32), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory38), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory39), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory43), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory44), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory45), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory47), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory48), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory49), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory50), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory51), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory52), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory53), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory54), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory55), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.residentialStory56), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof57), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof58), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof59), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof60), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof61), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof62), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof63), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof64), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof65), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof66), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof67), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof68), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof69), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof70), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof71), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof72), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof73), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof74), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof75), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof76), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof77), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof80), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof81), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof82), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof83), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof84), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof88), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof89), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof90), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof91), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof96), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof97), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof98), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof104), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof105), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.residentialRoof112), true, false, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase18, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase20, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase04, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase108, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase113, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase115, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase109, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.commercialBase101, true), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.commercialStory00), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.commercialStory07), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.commercialStory08), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.commercialStory16), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.commercialStory24), false, true, false);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof05), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof06), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof13), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof79), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof86), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof87), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof91), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof111), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof119), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof118), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof120), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof121), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof126), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof127), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayRoof(
+			   new BuildingDisplay(PixelAssetManager.commercialRoof128), false, true, true);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.officeBase02, true), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.officeBase10, true), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.officeBase109, true), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.officeBase125, true), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.officeBase117, true), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayBase(
+			   new BuildingDisplay(PixelAssetManager.officeBase123, true), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.officeStory07), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.officeStory15), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.officeStory23), false, false, true);
+		BuildingFactory.getInstance().registerBuildingDisplayStory(
+			   new BuildingDisplay(PixelAssetManager.officeStory31), false, false, true);
+
 	}
 
 	public void update() {
 
+		// update all of our zones
+		for(Zone zone : zones) {
+			zone.update();
+		}
 	}
 
 	//

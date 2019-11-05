@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.pixel.city.City;
+import com.pixel.city.Demand;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
 import com.pixel.tools.RoadTool;
@@ -36,16 +38,23 @@ public class GameScene extends Scene {
 
 
 		// TODO: set up and init. all UI elements as well
+
+		//activeTool = new RoadTool();
 	}
 
 	@Override
 	public void update(float dt) {
-		// TODO: Update our game map
 
-		// TODO: Update any user input-related modifications made to the ui elements
+		// update our city object
+		City.getInstance().update();
 
-		// TODO: handle any related tools for the user
+		// update our demand object
+		Demand.getInstance().update();
 
+		// update our map object
+		gameMap.update();
+
+		// We move around the map
 		// non-discrete input, so we poll automatically
 		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
 			mainStage.getCamera().translate(0, 10, 0);
@@ -59,9 +68,6 @@ public class GameScene extends Scene {
 		if (Gdx.input.isKeyPressed(Input.Keys.D)) {
 			mainStage.getCamera().translate(10, 0, 0);
 		}
-
-		if(activeTool == null)
-			activeTool = new ZoneTool(Building.BuildingType.RESIDENTIAL);
 	}
 
 	public boolean keyDown(int keycode) {
@@ -83,11 +89,12 @@ public class GameScene extends Scene {
 			activeTool = new ZoneTool(Building.BuildingType.OFFICE);
 		}
 
-
 		return false;
 	}
 
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
+		if(activeTool == null) return false;
 
 		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
 		activeTool.onTouchDown(stageCoords.x, stageCoords.y);
@@ -98,6 +105,8 @@ public class GameScene extends Scene {
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 
+		if(activeTool == null) return false;
+
 		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
 		activeTool.onTouchMove(stageCoords.x, stageCoords.y);
 
@@ -106,6 +115,8 @@ public class GameScene extends Scene {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+
+		if(activeTool == null) return false;
 
 		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
 		activeTool.onTouchUp(stageCoords.x, stageCoords.y);

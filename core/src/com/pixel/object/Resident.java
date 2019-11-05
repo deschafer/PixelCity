@@ -1,0 +1,49 @@
+package com.pixel.object;
+
+import com.pixel.map.object.building.Building;
+
+public class Resident {
+
+	private int level = 0;
+	private String name;
+	private Building residence = null;
+	private Building employer = null;
+	private float happiness = 0.0f;
+
+	public Resident(String name) {
+		this.name = name;
+	}
+
+	public Building getEmployer() {
+		return employer;
+	}
+
+	public void setEmployer(Building employer) {
+		this.employer = employer;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public Building getResidence() {
+		return residence;
+	}
+
+	public void setResidence(Building residence) {
+		this.residence = residence;
+	}
+
+	public float getHappiness() {
+		return happiness;
+	}
+
+	public void setHappiness(float happiness) {
+		this.happiness = happiness;
+	}
+}
+

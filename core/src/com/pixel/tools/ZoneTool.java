@@ -3,6 +3,8 @@ package com.pixel.tools;
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.building.Building;
+import com.pixel.map.object.zoning.CommercialZone;
+import com.pixel.map.object.zoning.OfficeZone;
 import com.pixel.map.object.zoning.ResidentialZone;
 import com.pixel.map.object.zoning.Zone;
 import com.pixel.map.visualizer.Visualizer;
@@ -41,7 +43,7 @@ public class ZoneTool extends MapTool {
 
 	@Override
 	public boolean onTouchMove(float x, float y) {
-		if (!super.onTouchMove(x, y)) {
+		if (!super.onTouchMove(x, y) || begCell == null) {
 			return false;
 		}
 
@@ -120,8 +122,16 @@ public class ZoneTool extends MapTool {
 		// we need to clear all visualizers
 		clearVisualizers();
 
-		Zone zone = new ResidentialZone(rectangle);
-		if (!zone.isEmpty()) {
+		Zone zone = null;
+
+		if(zoneType == Building.BuildingType.RESIDENTIAL)
+			zone = new ResidentialZone(rectangle);
+		else if (zoneType == Building.BuildingType.COMMERCIAL)
+			zone = new CommercialZone(rectangle);
+		else if(zoneType == Building.BuildingType.OFFICE)
+			zone = new OfficeZone(rectangle);
+
+		if (zone != null && !zone.isEmpty()) {
 			gameMap.addZone(zone);
 		}
 

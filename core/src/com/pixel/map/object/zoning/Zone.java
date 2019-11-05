@@ -6,17 +6,24 @@ import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
 import com.pixel.scene.GameScene;
-import javafx.beans.property.MapProperty;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Zone {
 
 	protected Rectangle rectangle;		// defining rectangle for this object
+	protected ArrayList<ZoneCell> availableCells = new ArrayList<>();	// cells open for construction
 	protected ZoneCell[][] zoneCells;		// references to the cells of the map within this zone
 	protected Building[][] buildings;	// the buildings inside this zone
 	protected Building.BuildingType zoneType;	// The types of buildings that belong within this zone
 	protected Map parentMap = GameScene.getInstance().getGameMap();
 	protected boolean empty = true;
 	protected final int distanceFromRoad = 4;
+
+	protected float timer = 0;
+	protected float timeMax = 1.0f;
+	protected Random random = new Random();
 
 	public Zone(Rectangle dimensions, Building.BuildingType type) {
 
@@ -36,8 +43,12 @@ public abstract class Zone {
 				Cell cell = parentMap.getCell(mapX, mapY);
 
 				if(cell.getTopObject() == null && isCellNearRoad(cell)) {
-					cell.addActor(new ZoneCell(parentMap.getCellWidth(), parentMap.getCellHeight(),
-						   cell.getMapPosition(), zoneType, this));
+
+					ZoneCell zoneCell = new ZoneCell(parentMap.getCellWidth(), parentMap.getCellHeight(),
+						   cell.getMapPosition(), zoneType, this);
+
+					cell.addActor(zoneCell);
+					availableCells.add(zoneCell);
 					empty = false;
 				}
 			}

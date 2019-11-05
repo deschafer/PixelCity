@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05fdd495-9b0b-42fe-b267-3cc5a59f5536" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/city/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/city/Demand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingDisplay/BuildingDisplay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/object/Resident.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PixelCity.iws" beforeDir="false" afterPath="$PROJECT_DIR$/PixelCity.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/OfficeZoning.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/OfficeZone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ResidentialZone.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ResidentialZone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -40,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ResidentialZone.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="48" lean-forward="true" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+            <state relative-caret-position="439">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#216#217#0" expanded="true" />
@@ -52,38 +66,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/CommercialZone.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/city/Demand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="416">
+              <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#243#244#0" expanded="true" />
-                <element signature="e#273#274#0" expanded="true" />
+                <element signature="e#548#549#0" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#608#609#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
+                <element signature="e#2454#2455#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/OfficeZoning.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#239#240#0" expanded="true" />
-                <element signature="e#269#270#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+            <state relative-caret-position="84">
+              <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,29 +104,76 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="-8">
+              <caret line="89" column="40" lean-forward="true" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#706#707#0" expanded="true" />
-                <element signature="e#728#729#0" expanded="true" />
-                <element signature="e#4432#4433#0" expanded="true" />
-                <element signature="e#4463#4464#0" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
+                <element signature="e#242#243#0" expanded="true" />
+                <element signature="method#getBases#0;class#BuildingFactory#0" />
+                <element signature="method#getStories#0;class#BuildingFactory#0" />
+                <element signature="method#getStories#1;class#BuildingFactory#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingDisplay/BuildingDisplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="87" column="6" selection-start-line="87" selection-start-column="6" selection-end-line="87" selection-end-column="6" />
+            <state relative-caret-position="357">
+              <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2137">
+              <caret line="149" selection-start-line="149" selection-end-line="149" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2099">
+              <caret line="135" selection-start-line="135" selection-end-line="135" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="196" selection-start-line="196" selection-end-line="196" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5635#5636#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -144,6 +203,7 @@
       <find>visualiz</find>
       <find>Map</find>
       <find>MapCoord</find>
+      <find>Factory</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,13 +212,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/Visualizer.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadFactory.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndNorth.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/RoadPlacement.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/RoadwayNorthSouthPlacement.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayNorthSouth.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadNorthPlacement.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndEast.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadEastPlacement.java" />
@@ -188,28 +241,36 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/Zoning/Zone.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/ReplaceBehavior.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ResidentialZone.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/CommercialZoning.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/CommercialZone.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/OfficeZoning.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/OfficeZone.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/object/Resident.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/city/City.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingDisplay.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/city/Demand.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ResidentialZone.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingDisplay/BuildingDisplay.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -255,7 +316,7 @@
               <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pixel" type="462c0819:PsiDirectoryNode" />
-              <item name="behavior" type="462c0819:PsiDirectoryNode" />
+              <item name="city" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
@@ -290,7 +351,18 @@
               <item name="pixel" type="462c0819:PsiDirectoryNode" />
               <item name="map" type="462c0819:PsiDirectoryNode" />
               <item name="object" type="462c0819:PsiDirectoryNode" />
-              <item name="roads" type="462c0819:PsiDirectoryNode" />
+              <item name="building" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="building" type="462c0819:PsiDirectoryNode" />
+              <item name="BuildingDisplay" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
@@ -308,7 +380,8 @@
               <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pixel" type="462c0819:PsiDirectoryNode" />
-              <item name="scene" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="visualizer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
@@ -316,7 +389,15 @@
               <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pixel" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="scene" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -391,7 +472,7 @@
       <window_info id="Build Variants" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23293608" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3109426" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -400,9 +481,9 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.23185265" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.23185265" />
       <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.20682302" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.17430703" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Maven" order="4" />
@@ -445,16 +526,6 @@
     </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java</url>
-          <line>38</line>
-          <properties />
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="newRoad" />
@@ -463,6 +534,31 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>base.getHeight()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>bases.get(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>display.getHeight()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>display.getWidth()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>display.getX()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>parentMap.getCell((int)rectangle.x + 4, 0)</expression-string>
         <language-id>JAVA</language-id>
@@ -483,129 +579,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>rectangle.width</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cell.getTopObject()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(Road)roadTypes[type.value]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>owner.getMapPosition()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cell1.mapPosition</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cell1.getParent()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndEast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndSouth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/RoadwayNorthSouthPlacement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/RoadwayEastWestPlacement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadEastPlacement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="24" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadSouthPlacement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="25" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEndWest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/RoadwayEastWest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="58" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/EndRoadWestPlacement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/behavior/IntersectionThreeSouthPlacement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -778,23 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="74" lean-forward="true" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="88" selection-start-line="35" selection-start-column="88" selection-end-line="35" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/roads/CornerWestNorth.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -802,43 +761,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="61" lean-forward="true" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
-          <folding>
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/Visualizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>
@@ -865,16 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="220" lean-forward="true" selection-start-line="220" selection-end-line="220" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -897,32 +809,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4250">
-          <caret line="250" column="26" selection-start-line="250" selection-start-column="26" selection-end-line="250" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9230#9231#0" expanded="true" />
-            <element signature="e#9247#9248#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/CommercialZone">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -938,22 +835,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ResidentialZone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="48" lean-forward="true" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#216#217#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/OfficeZoning.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/OfficeZone.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#239#240#0" expanded="true" />
@@ -962,34 +847,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/Tool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/MapTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="377">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#706#707#0" expanded="true" />
@@ -1000,10 +861,224 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/VisualizerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/city/City.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/test.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/visualizer/Visualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="243" column="24" selection-start-line="243" selection-start-column="24" selection-end-line="243" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/MapTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/object/Resident.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#475#476#0" expanded="true" />
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+            <element signature="e#670#671#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#818#819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.9.10/bc819db135041daf18548095a4224fdf91128d4c/gdx-backend-lwjgl-1.9.10-sources.jar!/com/badlogic/gdx/backends/lwjgl/LwjglApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="87" column="6" selection-start-line="87" selection-start-column="6" selection-end-line="87" selection-end-column="6" />
+        <state relative-caret-position="84">
+          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2099">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="196" selection-start-line="196" selection-end-line="196" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5635#5636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ResidentialZone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#216#217#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/city/Demand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2137">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#2454#2455#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="89" column="40" lean-forward="true" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+            <element signature="e#242#243#0" expanded="true" />
+            <element signature="method#getBases#0;class#BuildingFactory#0" />
+            <element signature="method#getStories#0;class#BuildingFactory#0" />
+            <element signature="method#getStories#1;class#BuildingFactory#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingDisplay/BuildingDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
