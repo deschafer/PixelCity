@@ -1,5 +1,6 @@
 package com.pixel.map;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -7,15 +8,16 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.object.Cell;
+import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.BuildingDisplay.BuildingDisplay;
 import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.map.object.roads.*;
-import com.pixel.map.object.zoning.Zone;
-import com.pixel.map.object.zoning.ZoneCell;
+import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Map extends Group {
 
@@ -30,23 +32,34 @@ public class Map extends Group {
 		}
 	}
 
-	private int width;                    // width of the map array in cells
-	private int height;                    // height ...
+	private int width;                   	 // width of the map array in cells
+	private int height;                   	 // height ...
 	private float widthPixels;               // width of the map in pixels
-	private float heightPixels;          // height of the map in pixels
+	private float heightPixels;         	 // height of the map in pixels
 	private Stage parentStage;
 	private Cell[][] mapArray;
-	private final int cellWidth = 132;     // width of the cell in pixels
+	private final int cellWidth = 132;     	// width of the cell in pixels
 	private final int cellHeight = 102;     // height of the cell in pixels
-	public static final int cellWidthPixels = 132;
-	public static final int cellHeightPixels = 102;
-	public static final int cellExtraWidthPixels = 99;
-	public static final int cellExtraHeightPixels = 85;
+	public static final int cellBuildingBaseWidth = 132;
+	public static final int cellBuildingBaseHeight = 127;
+	public static final int cellStoryWidth = 99;
+	public static final int cellStoryHeight = 85;
 	private final float cellRowWidth = 132;
 	private final float cellRowHeight = 2.0f/3.0f * 101.0f;
 	private Stage stage;
 	private Vector2 topOfMap;
-	private ArrayList<Zone> zones;
+	private ArrayList<ResidentialZone> residentialZones = new ArrayList<>();
+	private ArrayList<CommercialZone> commercialZones = new ArrayList<>();
+	private ArrayList<OfficeZone> officeZones = new ArrayList<>();
+
+	private float residentialTimer = 0;
+	private float residentialTime = 1.0f;
+	private float commericalTimer = 0;
+	private float commercialTime = 1.0f;
+	private float officeTimer = 0;
+	private float officeTime = 1.0f;
+
+	private Random random = new Random();
 
 	public Map(int width, int height, Stage stage) {
 
@@ -57,7 +70,6 @@ public class Map extends Group {
 		parentStage = stage;
 		widthPixels = width * cellRowWidth;
 		heightPixels = height * cellRowHeight;
-		zones = new ArrayList<>();
 
 		stage.addActor(this);
 
@@ -334,9 +346,81 @@ public class Map extends Group {
 
 	public void update() {
 
-		// update all of our zones
-		for(Zone zone : zones) {
-			zone.update();
+		updateResidentialZones();
+		updateCommercialZones();
+		updateOfficeZones();
+	}
+
+	private void updateResidentialZones() {
+
+		residentialTimer += Gdx.graphics.getDeltaTime();
+		if(residentialTimer >= residentialTime && !residentialZones.isEmpty()) {
+
+			int index = random.nextInt(residentialZones.size());
+			Zone zone = null;
+
+			if((zone = residentialZones.get(index)).isZoneFull()) {
+				for(Zone resZone : residentialZones) {
+					if(!resZone.isZoneFull()) {
+						zone = resZone;
+						break;
+					}
+				}
+			}
+
+			if(zone != null) {
+				zone.update();
+			}
+
+			residentialTimer = 0;
+		}
+	}
+
+	private void updateCommercialZones() {
+		commericalTimer += Gdx.graphics.getDeltaTime();
+		if(commericalTimer >= commercialTime && !commercialZones.isEmpty()) {
+
+			int index = random.nextInt(commercialZones.size());
+			Zone zone = null;
+
+			if((zone = commercialZones.get(index)).isZoneFull()) {
+				for(Zone resZone : commercialZones) {
+					if(!resZone.isZoneFull()) {
+						zone = resZone;
+						break;
+					}
+				}
+			}
+
+			if(zone != null) {
+				zone.update();
+			}
+
+			commericalTimer = 0;
+		}
+	}
+
+	private void updateOfficeZones() {
+		officeTimer += Gdx.graphics.getDeltaTime();
+		if(officeTimer >= officeTime && !officeZones.isEmpty()) {
+
+			int index = random.nextInt(officeZones.size());
+			Zone zone = null;
+
+			if((zone = officeZones.get(index)).isZoneFull()) {
+				for(Zone offZone : officeZones) {
+					if(!offZone.isZoneFull()) {
+						zone = offZone;
+						break;
+					}
+				}
+			}
+
+			if(zone != null) {
+				zone.update();
+			}
+
+			officeTimer = 0;
 		}
 	}
 
@@ -394,7 +478,8 @@ public class Map extends Group {
 		if(actor.getName() == "Cell") {
 			cell = (Cell)actor;
 		} else {
-			cell = (Cell)actor.getParent();
+			MapObject object = (MapObject)actor.getParent();
+			cell = getCell(object.getMapPosition());
 		}
 
 		if (cell != null) {
@@ -450,7 +535,13 @@ public class Map extends Group {
 	}
 
 	public void addZone(Zone zone) {
-		zones.add(zone);
+
+		if(zone.getZoneType() == Building.BuildingType.RESIDENTIAL)
+			residentialZones.add((ResidentialZone)zone);
+		else if(zone.getZoneType() == Building.BuildingType.COMMERCIAL)
+			commercialZones.add((CommercialZone) zone);
+		else if(zone.getZoneType() == Building.BuildingType.OFFICE)
+			officeZones.add((OfficeZone) zone);
 	}
 
 	public Cell getCell(int x, int y) {

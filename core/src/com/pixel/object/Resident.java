@@ -30,8 +30,14 @@ public class Resident {
 		this.level = level;
 	}
 
+	public void levelUp() { level++; }
+
 	public Building getResidence() {
 		return residence;
+	}
+
+	public boolean isUnemployed() {
+		return employer == null;
 	}
 
 	public void setResidence(Building residence) {

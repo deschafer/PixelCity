@@ -17,10 +17,9 @@ public class BuildingDisplay extends Actor {
 	public BuildingDisplay(String texture) {
 
 		this.texture = texture;
-		setSize(Map.cellExtraWidthPixels, Map.cellExtraHeightPixels);
+		setSize(Map.cellStoryWidth, Map.cellStoryHeight);
 
-		setName("NotBase");
-
+		setName("BuildingStory");
 		loadTexture(texture);
 	}
 
@@ -28,15 +27,15 @@ public class BuildingDisplay extends Actor {
 
 		this.base = true;
 		this.texture = texture;
-		setSize(Map.cellWidthPixels, 127);
+		setSize(Map.cellBuildingBaseWidth, Map.cellBuildingBaseHeight);
 
-		setName("Base");
-
+		setName("BuildingBase");
 		loadTexture(texture);
 	}
 
 	public void loadTexture(String texture) {
 		textureRegion = new TextureRegion((Texture) PixelAssetManager.manager.get(texture));
+		setSize(textureRegion.getRegionWidth(), textureRegion.getRegionHeight());
 	}
 
 	public void draw(Batch batch, float parentAlpha) {

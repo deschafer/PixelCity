@@ -1,8 +1,7 @@
 package com.pixel.map.object.zoning;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.math.Rectangle;
+import com.pixel.city.Demand;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.BuildingFactory;
 
@@ -15,17 +14,14 @@ public class ResidentialZone extends Zone {
 	@Override
 	public void update() {
 
-		timer += Gdx.graphics.getDeltaTime();
+		// If no cells are available, then we cannot build a new building
+		if (availableCells.isEmpty()) {
+			zoneFull = true;
+			return;
+		}
 
-		if(timer >= timeMax){
-
-			// reset our timer
-			timer = 0;
-
-			// If no cells are available, then we cannot build a new building
-			if(availableCells.isEmpty())
-				return;
-
+		// then we need to verify that we have demand prior to building
+		if(Demand.getInstance().isResidentalDemanded()) {
 			// get our cell position from those available
 			ZoneCell zoneCell = availableCells.get(random.nextInt(availableCells.size()));
 

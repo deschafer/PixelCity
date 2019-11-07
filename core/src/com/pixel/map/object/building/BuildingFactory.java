@@ -12,6 +12,14 @@ public class BuildingFactory {
 
 	private final int numberResidentsPerLevel = 10;
 	private final int minimumResidents = 10;
+
+	private final float minHappinessRequired = 80.0f;
+	private final float happinessRequiredPerLevel = 2.5f;
+	private final float maxHappinessRequired = 97.5f;
+
+	private final float minLevelUpTime = 5.0f;
+	private final float timePerLevel = 2.0f;
+
 	private Random random = new Random();
 
 	// lists for residential types
@@ -50,9 +58,14 @@ public class BuildingFactory {
 
 	public Building create(Map.MapCoord position, Building.BuildingType type, int level) {
 
+		float happiness = minHappinessRequired + level * happinessRequiredPerLevel;
+		if(happiness > maxHappinessRequired)
+			happiness = maxHappinessRequired;
+
 		// we create a new building
 		Building building = new Building(position, type.name(), type, level,
-			   level * numberResidentsPerLevel + minimumResidents);
+			   level * numberResidentsPerLevel + minimumResidents,
+			  	happiness, minLevelUpTime + level * timePerLevel);
 
 		// then we need to add the displays to this object
 		ArrayList<BuildingDisplay> bases = getBases(type);

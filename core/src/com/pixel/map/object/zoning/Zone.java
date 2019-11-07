@@ -21,9 +21,8 @@ public abstract class Zone {
 	protected boolean empty = true;
 	protected final int distanceFromRoad = 4;
 
-	protected float timer = 0;
-	protected float timeMax = 1.0f;
 	protected Random random = new Random();
+	protected boolean zoneFull = false;
 
 	public Zone(Rectangle dimensions, Building.BuildingType type) {
 
@@ -109,5 +108,9 @@ public abstract class Zone {
 
 	public boolean isEmpty() {
 		return empty;
+	}
+
+	public boolean isZoneFull() {
+		return zoneFull;
 	}
 }

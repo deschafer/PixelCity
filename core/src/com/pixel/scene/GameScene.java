@@ -12,6 +12,8 @@ import com.pixel.tools.RoadTool;
 import com.pixel.tools.Tool;
 import com.pixel.tools.ZoneTool;
 
+import java.time.Instant;
+
 public class GameScene extends Scene {
 
 	private Map gameMap;     // our actual game map
@@ -87,6 +89,8 @@ public class GameScene extends Scene {
 		} else if (keycode == Input.Keys.NUM_3) {
 			System.out.println("Zone tool selected");
 			activeTool = new ZoneTool(Building.BuildingType.OFFICE);
+		} else if (keycode == Input.Keys.L) {
+			Demand.getInstance().print();
 		}
 
 		return false;

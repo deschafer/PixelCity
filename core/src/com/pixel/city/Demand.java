@@ -6,9 +6,9 @@ public class Demand {
 	private int commercialDemand;		// set by the number of unemployed citizens
 	private int officeDemand;			// ..
 
-	private int projectedResidentialDemand;
-	private int projectedCommericalDemand;
-	private int projectedOfficeDemand;
+	private int projectedResidentialDemand = 0;
+	private int projectedCommericalDemand = 0;
+	private int projectedOfficeDemand = 0;
 
 	private int residentialDemandSupplied = 0;
 	private int commercialDemandSupplied = 0;
@@ -78,10 +78,21 @@ public class Demand {
 		synchronized (this) {
 			// update each of our demands
 			residentialDemand = City.getInstance().getIncomingResidentsCount();
-
 			projectedResidentialDemand = residentialDemand - residentialDemandSupplied;
 
+			commercialDemand = City.getInstance().getUnemployedResidentCount();
+			projectedCommericalDemand = commercialDemand - commercialDemandSupplied;
+
+			// TODO: come up with a better supply and demand system - should keep track of too much demand
+
 		}
+	}
+
+	public void print() {
+		System.out.println("Actual Demands R C O:" + residentialDemand + " " + commercialDemand + " " + officeDemand);
+		System.out.println("Projected Demands R C O:" + projectedResidentialDemand +
+			   " " + projectedCommericalDemand + " " + projectedOfficeDemand);
+
 	}
 
 
