@@ -72,12 +72,16 @@ public class Building extends MapObject {
 
 		replaceable = false;
 
-		if (type == BuildingType.RESIDENTIAL)
-			Demand.getInstance().addSuppliedResidentialDemand(numberResidents);
+		// then we need to add this building to the vacant buildings, as it can now accept residents
+		if(type == BuildingType.RESIDENTIAL)
+			City.getInstance().addVacantBuilding(this);
 		else if (type == BuildingType.COMMERCIAL)
-			Demand.getInstance().addSuppliedCommercialDemand(numberResidents);
+			City.getInstance().addHiringCommercialBuilding(this);
 		else if (type == BuildingType.OFFICE)
-			Demand.getInstance().addSuppliedOfficeDemand(numberResidents);
+			City.getInstance().addHiringOfficeBuilding(this);
+
+		// then also add it to the list of all buildings
+		City.getInstance().addCityBuilding(this);
 	}
 
 	public void addBuildingDisplay(BuildingDisplay display) {
@@ -151,28 +155,8 @@ public class Building extends MapObject {
 					// we are no longer building
 					building = false;
 
-					// then we need to add this building to the vacant buildings, as it can now accept residents
-					if(type == BuildingType.RESIDENTIAL)
-						City.getInstance().addVacantBuilding(this);
-					else if (type == BuildingType.COMMERCIAL)
-						City.getInstance().addHiringCommercialBuilding(this);
-					else if (type == BuildingType.OFFICE)
-						City.getInstance().addHiringOfficeBuilding(this);
-
-					// then also add it to the list of all buildings
-					City.getInstance().addCityBuilding(this);
-
 					// This building is built, so visualize it normally
 					setOpacity(1);
-
-					// since this building can take residents, it will soon change the actual demand, so we remove
-					// it as supplied demand
-					if (type == BuildingType.RESIDENTIAL)
-						Demand.getInstance().removeSuppliedResidentialDemand(numberResidents - residents.size());
-					else if (type == BuildingType.COMMERCIAL)
-						Demand.getInstance().removeSuppliedCommercialDemand(numberResidents - residents.size());
-					else if (type == BuildingType.OFFICE)
-						Demand.getInstance().removeSuppliedOfficeDemand(numberResidents - residents.size());
 				}
 			}
 			// If this building has been built

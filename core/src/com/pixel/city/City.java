@@ -39,8 +39,6 @@ public class City {
 
 	public void update() {
 
-		incomingResidents += getAvailableJobs();
-
 		// here we put waiting residents into vacant buildings
 		if(incomingResidents > 0 && !vacantBuildings.isEmpty()) {
 
@@ -112,6 +110,23 @@ public class City {
 
 			// then get the mean of all of these individual happiness values
 			cityHappiness = happiness /= cityBuildings.size();
+		}
+
+
+		// adding incoming citizens to the city
+		// TODO: need to incorporate office as well
+		if(incomingResidents == 0
+			   && unemployedResidents.isEmpty()
+			   && !hiringCommercialBuildings.isEmpty()) {
+
+			int total = 0;
+
+			// add up all of the available jobs
+			for(Building building : hiringCommercialBuildings) {
+				total += building.getSpace();
+			}
+
+			incomingResidents = total;
 		}
 
 	}
