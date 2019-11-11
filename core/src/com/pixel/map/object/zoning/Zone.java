@@ -46,7 +46,7 @@ public abstract class Zone {
 					ZoneCell zoneCell = new ZoneCell(parentMap.getCellWidth(), parentMap.getCellHeight(),
 						   cell.getMapPosition(), zoneType, this);
 
-					cell.addActor(zoneCell);
+					cell.addMapObject(zoneCell);
 					availableCells.add(zoneCell);
 					empty = false;
 				}

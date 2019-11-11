@@ -19,7 +19,11 @@ public class Resident {
 	}
 
 	public void setEmployer(Building employer) {
+
 		this.employer = employer;
+		if(residence != null) {
+			residence.updateHappiness();
+		}
 	}
 
 	public int getLevel() {

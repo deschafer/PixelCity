@@ -69,4 +69,17 @@ public class Cell extends MapObject {
 
 		super.draw(batch, parentAlpha);
 	}
+
+	@Override
+	public void addActor(Actor actor) {
+		super.addActor(actor);
+
+		//MapObject object =
+	}
+
+	public void addMapObject(MapObject object) {
+		addActor(object);
+
+		object.validateSources();
+	}
 }

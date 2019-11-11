@@ -32,7 +32,7 @@ public class CommercialZone extends Zone {
 			Building building = BuildingFactory.getInstance().create(zoneCell.getMapPosition(), zoneType, 0);
 
 			// We add our building on top of this cell position
-			parentMap.getCell(zoneCell.getMapPosition()).addActor(building);
+			parentMap.getCell(zoneCell.getMapPosition()).addMapObject(building);
 		}
 	}
 }

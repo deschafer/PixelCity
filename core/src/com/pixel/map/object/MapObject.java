@@ -11,6 +11,8 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
 import com.pixel.behavior.PlacementBehavior;
+import com.pixel.city.FinancialManager;
+import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
 
 import java.util.ArrayList;
@@ -34,6 +36,11 @@ public class MapObject extends Group {
 	private float elapsedTime;
 	private boolean animationPaused;
 
+	protected boolean financialInfluence = false;	// indicates whether this object has a source over time
+	protected float placedownCost = 0.0f;		// the cost for this object to be placed
+	protected ArrayList<Source> sources;			// all the sources associated with this object
+	private boolean prototypeObject = false;		// this means this object is only used for copying, never actually added to the map
+
 	public MapObject(float x, float y, float width, float height, Map.MapCoord coord, String ID)
 	{
 		setX(x);
@@ -43,6 +50,7 @@ public class MapObject extends Group {
 		setName(ID);
 		mapPosition = coord;
 		placementBehaviors = new ArrayList<>();
+		sources = new ArrayList<>();
 	}
 
 	public void setAnimation(Animation<TextureRegion> anim) {
@@ -257,5 +265,43 @@ public class MapObject extends Group {
 
 	public MapObject copy() {
 		return null;
+	}
+
+	@Override
+	public boolean remove() {
+
+		if(sources.isEmpty()) {
+			for(Source source : sources)
+				source.setInvalid();
+			sources.clear();
+		}
+
+		return super.remove();
+	}
+
+	protected void addSource(Source source) {
+
+		// we should only add a source if this object is attached to the map
+		// so if it has a parent, or a cell
+		sources.add(source);
+		financialInfluence = true;
+	}
+
+	//
+	// validateSources()
+	// Indicates that the financial sources stored in this object should be passed to the financial manager
+	//
+	public void validateSources() {
+		for(Source source : sources) {
+			FinancialManager.getInstance().addSource(source);
+		}
+	}
+
+	public void setPrototypeObject(boolean prototypeObject) {
+		this.prototypeObject = prototypeObject;
+	}
+
+	public boolean isPrototypeObject() {
+		return prototypeObject;
 	}
 }

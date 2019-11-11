@@ -17,6 +17,9 @@ public class BuildingFactory {
 	private final float happinessRequiredPerLevel = 2.5f;
 	private final float maxHappinessRequired = 97.5f;
 
+	private final float buildTimePerLevel = 1.5f;
+	private final float buildTime = 1.0f;
+
 	private final float minLevelUpTime = 5.0f;
 	private final float timePerLevel = 2.0f;
 
@@ -59,13 +62,14 @@ public class BuildingFactory {
 	public Building create(Map.MapCoord position, Building.BuildingType type, int level) {
 
 		float happiness = minHappinessRequired + level * happinessRequiredPerLevel;
-		if(happiness > maxHappinessRequired)
+		if (happiness > maxHappinessRequired)
 			happiness = maxHappinessRequired;
 
 		// we create a new building
 		Building building = new Building(position, type.name(), type, level,
 			   level * numberResidentsPerLevel + minimumResidents,
-			  	happiness, minLevelUpTime + level * timePerLevel);
+			   happiness, minLevelUpTime + level * level * timePerLevel,
+			   buildTime + buildTimePerLevel * level);
 
 		// then we need to add the displays to this object
 		ArrayList<BuildingDisplay> bases = getBases(type);
@@ -79,7 +83,7 @@ public class BuildingFactory {
 		// then we will get all of our stories for each of these levels
 		ArrayList<BuildingDisplay> buildingStories = new ArrayList<>();
 
-		for(int i = 0; i < level; i++) {
+		for (int i = 0; i < level; i++) {
 			buildingStories.add(stories.get(random.nextInt(stories.size())).copy());
 			building.addBuildingDisplay(buildingStories.get(i));
 		}

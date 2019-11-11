@@ -57,7 +57,7 @@ public class Building extends MapObject {
 	private float happinessRequired;		// happiness required to start level up timer
 
 	public Building(Map.MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
-				 float happinessRequired, float levelUpTime) {
+				 float happinessRequired, float levelUpTime, float buildTime) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
 			   GameScene.getInstance().getGameMap().getCellHeight(), coord, ID);
 
@@ -65,6 +65,7 @@ public class Building extends MapObject {
 		this.level = level;
 		this.numberResidents = numberResidents;
 		this.levelUpTime = levelUpTime;
+		this.buildTime = buildTime;
 		this.happinessRequired = happinessRequired;
 		residents = new ArrayList<>();
 		drawableComponents = new ArrayList<>();
@@ -75,8 +76,10 @@ public class Building extends MapObject {
 		// then we need to add this building to the vacant buildings, as it can now accept residents
 		if(type == BuildingType.RESIDENTIAL)
 			City.getInstance().addVacantBuilding(this);
-		else if (type == BuildingType.COMMERCIAL)
+		else if (type == BuildingType.COMMERCIAL) {
 			City.getInstance().addHiringCommercialBuilding(this);
+			City.getInstance().addCommercialRating(numberResidents);
+		}
 		else if (type == BuildingType.OFFICE)
 			City.getInstance().addHiringOfficeBuilding(this);
 
@@ -245,13 +248,17 @@ public class Building extends MapObject {
 		remove();
 
 		// add the new building to the map
-		cell.addActor(levelledBuilding);
+		cell.addMapObject(levelledBuilding);
 
 		// make changes to the city lists
 		// We know this building was not vacant, and that it was full,
 		// so it must only be removed from the city buildings list
 		City.getInstance().removeCityBuilding(this);
 		City.getInstance().addCityBuilding(levelledBuilding);
+
+		if(type == BuildingType.COMMERCIAL) {
+			City.getInstance().removeCommercialRating(numberResidents);
+		}
 	}
 
 	//

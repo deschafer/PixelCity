@@ -1,5 +1,7 @@
 package com.pixel.city;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.MathUtils;
 import com.pixel.map.object.building.Building;
 import com.pixel.object.Resident;
 
@@ -10,7 +12,7 @@ public class City {
 	private String name;			// the name of this city
 
 	private int population = 0;					// the population of this city
-	private float cityHappiness = 1.0f;
+	private float cityHappiness = 100.0f;
 	private int incomingResidents = 100;			// count of residents that are waiting to live in this city
 	private ArrayList<Resident> unemployedResidents;	// residents that are waiting for a job
 	private ArrayList<Resident> unemployedEducatedResidents; // residents waiting for an office job
@@ -20,7 +22,17 @@ public class City {
 	private ArrayList<Building> hiringCommercialBuildings;	// commercial buildings that have jobs available
 	private ArrayList<Building> hiringOfficeBuildings;	// office buildings that have jobs available
 
+	private int commercialRating = 0;
+
 	private int residentNumber = 0;
+
+	private float residentialDemandBoostTimer = 0;
+	private float residentialDemandBoostTime = 15.0f;
+
+	private float externalCommercialDemandTimer = 0;
+	private float externalCommercialDemandTime = 5.0f;
+	private int numberExternalWorkers = 0;
+	private float externalWorkerToResidentRatio = 0.1f;
 
 	private static City instance = new City();
 
@@ -47,7 +59,7 @@ public class City {
 			Resident res = null;
 
 			// then add residents to this building
-			while(building.addResident(res = new Resident("Citizen" + population))) {
+			while(building.addResident(res = new Resident("Citizen" + residentNumber++))) {
 				// add to our total pop.
 				population++;
 
@@ -61,6 +73,9 @@ public class City {
 				if(--incomingResidents == 0)
 					break;
 			}
+
+			// added new residents, so we should update
+			building.updateHappiness();
 
 			if (building.isFull())
 				vacantBuildings.remove(building);
@@ -87,7 +102,8 @@ public class City {
 					break;
 
 				// tell the building of this previously unemployed resident to update its happiness
-				res.getResidence().updateHappiness();
+				if(res.getResidence() != null)
+					res.getResidence().updateHappiness();
 
 				// get a new resident
 				res = unemployedResidents.get(0);
@@ -129,6 +145,46 @@ public class City {
 			incomingResidents = total;
 		}
 
+		residentialDemandBoostTimer += Gdx.graphics.getDeltaTime();
+
+		// handle residential demand waves
+		if(residentialDemandBoostTimer >= residentialDemandBoostTime && incomingResidents < 100) {
+
+			residentialDemandBoostTimer = 0;
+			residentialDemandBoostTime += 0.01f * population;
+
+			float boost = (0.1f * population) * (cityHappiness / 100);
+
+			incomingResidents += (int)boost;
+
+			System.out.println("Residential boosted " + boost);
+		}
+
+		externalCommercialDemandTimer += Gdx.graphics.getDeltaTime();
+
+		// handle external commercial demand
+		if(externalCommercialDemandTimer >= externalCommercialDemandTime) {
+			externalCommercialDemandTimer = 0;
+			externalCommercialDemandTimer += 1.0f;
+
+			int ratio = MathUtils.round(externalWorkerToResidentRatio * commercialRating);
+
+			// if we need more to meet the 10% ratio
+			if(numberExternalWorkers < ratio) {
+
+				int difference = ratio - numberExternalWorkers;
+
+				// TODO: incorporate office as well
+
+				for (int i = 0; i < difference; i++) {
+					Resident resident = new Resident("ExternalWorker" + numberExternalWorkers);
+					addUnemployedResident(resident);
+					numberExternalWorkers++;
+				}
+
+				System.out.println(difference + " workers added");
+			}
+		}
 	}
 
 	public void addVacantBuilding(Building building) {
@@ -252,5 +308,12 @@ public class City {
 		synchronized (this) {
 			return unemployedEducatedResidents.size();
 		}
+	}
+
+	public void addCommercialRating(int addition) {
+		commercialRating += addition;
+	}
+	public void removeCommercialRating(int removal) {
+		commercialRating -= removal;
 	}
 }

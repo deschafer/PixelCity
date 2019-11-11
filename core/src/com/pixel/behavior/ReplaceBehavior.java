@@ -28,7 +28,7 @@ public class ReplaceBehavior extends PlacementBehavior {
 			owner.remove();
 
 			// then add the new object to this same cell
-			cell.addActor(other);
+			cell.addMapObject(other);
 
 			other = null;
 		}

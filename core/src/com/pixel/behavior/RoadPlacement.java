@@ -30,7 +30,7 @@ public abstract class RoadPlacement extends PlacementBehavior {
 		Road newRoad = RoadFactory.getInstance().getRoad(newType);
 		newRoad.setMapPosition(owner.getMapPosition().x, owner.getMapPosition().y);
 		newRoad.setSize(owner.getWidth(), owner.getHeight());
-		cell.addActor(newRoad);
+		cell.addMapObject(newRoad);
 
 		// finally, remove our owner cell
 		owner = null;

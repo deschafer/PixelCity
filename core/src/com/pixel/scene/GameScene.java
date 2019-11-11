@@ -4,21 +4,26 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.pixel.city.City;
 import com.pixel.city.Demand;
+import com.pixel.city.FinancialManager;
+import com.pixel.game.styles.Styles;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
 import com.pixel.tools.RoadTool;
 import com.pixel.tools.Tool;
 import com.pixel.tools.ZoneTool;
 
-import java.time.Instant;
-
 public class GameScene extends Scene {
 
 	private Map gameMap;     // our actual game map
 	private static GameScene instance;
 	private Tool activeTool;
+
+	private Label financeLabel;
 
 	// TODO: for now, tools will be manually set, but in the future, it will be set by the UI system
 
@@ -38,6 +43,11 @@ public class GameScene extends Scene {
 		gameMap = new Map(50, 50, mainStage);
 		gameMap.initialize();
 
+		uiTable.add(financeLabel = new Label("", Styles.testFinanceLabelStyle));
+		uiTable.add().expandX();
+		uiTable.row();
+		uiTable.add().expandY();
+
 
 		// TODO: set up and init. all UI elements as well
 
@@ -46,6 +56,12 @@ public class GameScene extends Scene {
 
 	@Override
 	public void update(float dt) {
+
+		// update our finances
+		FinancialManager.getInstance().update();
+
+		// update our financial label
+		financeLabel.setText("" + FinancialManager.getInstance().getBalance());
 
 		// update our city object
 		City.getInstance().update();
@@ -143,5 +159,17 @@ public class GameScene extends Scene {
 		}
 
 		return false;
+	}
+
+	public void addUIElement(Widget widget) {
+		uiStage.addActor(widget);
+	}
+
+	public Stage getUIStage() {
+		return uiStage;
+	}
+
+	public Stage getMainStage() {
+		return mainStage;
 	}
 }

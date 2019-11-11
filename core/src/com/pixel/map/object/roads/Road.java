@@ -2,6 +2,7 @@ package com.pixel.map.object.roads;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.pixel.behavior.RoadPlacement;
+import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
@@ -16,12 +17,37 @@ public class Road extends MapObject {
 	protected Road westernRoad;               // references to surrounding and connected roads
 	protected RoadPlacement placementBehavior;
 
+	private static float upkeepCost = -0.10f;
+	public static float cost = 50.0f;
+
 	public enum Axis {HORIZ, VERTI}		// the axis types for this object
 
 	public Road(float x, float y, float width, float height, Map.MapCoord coord, String ID) {
 		super(x, y, width, height, coord, ID);
 
 		replaceable = true;
+
+		// every road has an upkeep cost associated with it
+		addSource(new Source(this, upkeepCost));
+
+		// this object also has a placedown cost
+		placedownCost = cost;
+
+		// For each derived object, we will need to set neighbors if they exist,
+		// and we will need to set the type correctly
+	}
+
+	public Road(float x, float y, float width, float height, Map.MapCoord coord, String ID, boolean prototype) {
+		super(x, y, width, height, coord, ID);
+
+		setPrototypeObject(prototype);
+		replaceable = true;
+
+		// every road has an upkeep cost associated with it
+		addSource(new Source(this, upkeepCost));
+
+		// this object also has a placedown cost
+		placedownCost = 50.0f;
 
 		// For each derived object, we will need to set neighbors if they exist,
 		// and we will need to set the type correctly

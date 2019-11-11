@@ -12,6 +12,7 @@ public class Visualizer extends Actor {
 
 	private TextureRegion textureRegion;
 	private VisualizerType type;
+	private String textureString;
 
 	public enum VisualizerType {GREEN, YELLOW, RED}
 
@@ -22,6 +23,8 @@ public class Visualizer extends Actor {
 		loadTexture(copiedType.getSourceTexture());
 		setWidth(copiedType.getWidth());
 		setHeight(copiedType.getHeight());
+
+		textureString = copiedType.getSourceTexture();
 
 		setName("Visualizer");
 	}
@@ -63,5 +66,9 @@ public class Visualizer extends Actor {
 				setColor(1,1,0,getColor().a);
 				break;
 		}
+	}
+
+	public String getTextureString() {
+		return textureString;
 	}
 }

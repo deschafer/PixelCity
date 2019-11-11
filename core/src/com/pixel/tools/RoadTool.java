@@ -1,9 +1,11 @@
 package com.pixel.tools;
 
 import com.badlogic.gdx.math.Vector2;
+import com.pixel.city.FinancialManager;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
+import com.pixel.map.object.roads.Road;
 import com.pixel.map.object.roads.RoadFactory;
 import com.pixel.map.visualizer.Visualizer;
 import com.pixel.map.visualizer.VisualizerFactory;
@@ -16,6 +18,9 @@ public class RoadTool extends MapTool {
 	private ArrayList<RoadFactory.RoadType> proposedRoadTypes = new ArrayList<>();
 	private ArrayList<Cell> proposedCells = new ArrayList<>();
 	private ArrayList<Visualizer> visualizers = new ArrayList<>();
+	private int numberAffordableRoads = 0;
+	private int discountedRoads = 0;
+	private int currentVisualizer = 0;
 
 	@Override
 	public boolean onTouchDown(float x, float y) {
@@ -84,6 +89,13 @@ public class RoadTool extends MapTool {
 
 		numberCells = (int)Math.abs(distance.x / (cellWidth / 2)) + 1;
 
+		// calculate the number of cells that are affordable
+		totalCost = numberCells * Road.cost;
+		float balance = FinancialManager.getInstance().getBalance();
+
+		numberAffordableRoads = (int)(((totalCost > balance) ? balance : totalCost) / Road.cost);
+
+
 		// If there is more than one cell to be placed
 		if(numberCells > 1) {
 
@@ -106,6 +118,9 @@ public class RoadTool extends MapTool {
 				proposedRoadTypes.add(findRoadType(roadDirection, i == (numberCells - 1), i == 0, checkedCell));
 			}
 
+			currentVisualizer = 0;
+			discountedRoads = 0;
+
 			// then we create our visualizers
 			for (int i = 0; i < numberCells; i++) {
 
@@ -121,8 +136,6 @@ public class RoadTool extends MapTool {
 	}
 
 	private RoadFactory.RoadType findRoadType(Direction direction, boolean lastRoad, boolean firstRoad, Cell cell) {
-
-		// TODO: will also need to check surrounding cells
 
 		// set to a default road type to handle edge cases
 		RoadFactory.RoadType roadType = RoadFactory.RoadType.ROADWAY_NS;
@@ -174,8 +187,12 @@ public class RoadTool extends MapTool {
 
 		cell.addActor(visualizer);
 
+		// if this cell is unaffordable, then set it as red
+		if(currentVisualizer >= numberAffordableRoads) {
+			visualizer.setType(Visualizer.VisualizerType.RED);
+		}
 		// if the cell is empty of MapObjects, then we can add an object here, and the visualizer is green
-		if (cellEmpty) {
+		else if (cellEmpty) {
 			visualizer.setType(Visualizer.VisualizerType.GREEN);
 		}
 		// the cell contains MapObjects
@@ -186,12 +203,15 @@ public class RoadTool extends MapTool {
 			// the top object can be placed on, the visualizer is yellow
 			if(object.isReplaceable()) {
 				visualizer.setType(Visualizer.VisualizerType.YELLOW);
+				discountedRoads++;
 			}
 			// the top object cannot be placed over, the visualizer is red
 			else {
 				visualizer.setType(Visualizer.VisualizerType.RED);
 			}
 		}
+
+		currentVisualizer++;
 	}
 
 	private void clearVisualizers() {
@@ -214,12 +234,21 @@ public class RoadTool extends MapTool {
 			return false;
 		}
 
-		for (int i = 0; i < proposedCells.size(); i++) {
+		if(proposedCells.isEmpty()) {
+			return false;
+		}
+
+		for (int i = 0; i < numberAffordableRoads; i++) {
 
 			Cell cell = proposedCells.get(i);
-			RoadFactory.RoadType type = proposedRoadTypes.get(i);
+			RoadFactory.RoadType type;
 
-			// create our new map object
+			if (numberAffordableRoads - 1 == i)
+				type = proposedRoadTypes.get(proposedRoadTypes.size() - 1);
+			else
+				type = proposedRoadTypes.get(i);
+
+			// create our new map objects
 			MapObject object = RoadFactory.getInstance().getRoad(type);
 
 			// We need to set the object's position as well
@@ -230,8 +259,14 @@ public class RoadTool extends MapTool {
 
 				cell.getTopObject().placeOverObject(object);
 			} else if (!cell.hasChildren()) {
-				cell.addActor(object);
+				cell.addMapObject(object);
 			}
+		}
+
+		// then subtract the cost of the new roads
+		if (numberAffordableRoads > 0) {
+			totalCost -= discountedRoads * Road.cost;
+			FinancialManager.getInstance().withdrawFunds(totalCost);
 		}
 
 		proposedCells.clear();

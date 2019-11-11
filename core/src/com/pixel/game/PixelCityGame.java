@@ -1,6 +1,7 @@
 package com.pixel.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.pixel.game.styles.Styles;
 import com.pixel.scene.GameScene;
 
 public class PixelCityGame extends AbstractGame
@@ -131,6 +132,8 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.officeStory31, Texture.class);
 
 		PixelAssetManager.manager.finishLoading();
+
+		Styles.initialize();
 
 		super.create();
 
