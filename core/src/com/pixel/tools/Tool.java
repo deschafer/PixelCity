@@ -4,9 +4,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class Tool {
 
-	private Vector2 begPoint = new Vector2();
-	private Vector2 currentPoint = new Vector2();
-	private Vector2 endPoint = new Vector2();
+	protected Vector2 begPoint = new Vector2();
+	protected Vector2 currentPoint = new Vector2();
+	protected Vector2 endPoint = new Vector2();
 
 	private enum TouchState {NO_TOUCH, TOUCH}
 	private TouchState currentState = TouchState.NO_TOUCH;

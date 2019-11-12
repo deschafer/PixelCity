@@ -6,6 +6,7 @@ import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
 import com.pixel.scene.GameScene;
+import javafx.collections.MapChangeListener;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -116,5 +117,13 @@ public abstract class Zone {
 
 	public boolean isZoneFull() {
 		return zoneFull;
+	}
+
+	public void removeZoneCell(Map.MapCoord coord) {
+
+		if (coord.x < rectangle.width && coord.x >= 0 &&
+			coord.y < rectangle.height && coord.y >= 0) {
+			zoneCells[coord.x][coord.y] = null;
+		}
 	}
 }

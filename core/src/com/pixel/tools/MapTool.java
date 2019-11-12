@@ -29,6 +29,13 @@ public class MapTool extends Tool {
 	}
 
 	@Override
+	public void cancel() {
+		super.cancel();
+
+		costLabel.setVisible(false);
+	}
+
+	@Override
 	public boolean onTouchDown(float x, float y) {
 		if (!super.onTouchDown(x, y)) {
 			return false;

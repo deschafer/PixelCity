@@ -13,6 +13,7 @@ import com.pixel.city.FinancialManager;
 import com.pixel.game.styles.Styles;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
+import com.pixel.tools.DeleteTool;
 import com.pixel.tools.RoadTool;
 import com.pixel.tools.Tool;
 import com.pixel.tools.ZoneTool;
@@ -105,8 +106,13 @@ public class GameScene extends Scene {
 		} else if (keycode == Input.Keys.NUM_3) {
 			System.out.println("Zone tool selected");
 			activeTool = new ZoneTool(Building.BuildingType.OFFICE);
+		} else if (keycode == Input.Keys.B) {
+			System.out.println("Deletion tool selected");
+			activeTool = new DeleteTool();
 		} else if (keycode == Input.Keys.L) {
 			Demand.getInstance().print();
+		} else if (keycode == Input.Keys.M) {
+			FinancialManager.getInstance().addFunds(10000);
 		}
 
 		return false;

@@ -24,4 +24,12 @@ public class ZoneCell extends MapObject {
 		replaceable = true;
 		placementBehaviors.add(new ReplaceBehavior(this));
 	}
+
+
+	@Override
+	public boolean remove() {
+		parentZone.removeZoneCell(getMapPosition());
+
+		return super.remove();
+	}
 }

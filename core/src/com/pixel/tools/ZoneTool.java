@@ -26,21 +26,6 @@ public class ZoneTool extends MapTool {
 	}
 
 	@Override
-	public boolean onTouchDown(float x, float y) {
-		if (!super.onTouchDown(x, y)) {
-			return false;
-		}
-
-		// Clear the rectangle
-		dimensions.x = begCell.getMapPosition().x;
-		dimensions.y = begCell.getMapPosition().y;
-		dimensions.width = 0;
-		dimensions.height = 0;
-
-		return true;
-	}
-
-	@Override
 	public boolean onTouchMove(float x, float y) {
 		if (!super.onTouchMove(x, y) || begCell == null) {
 			return false;
