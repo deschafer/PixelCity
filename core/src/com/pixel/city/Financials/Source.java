@@ -25,18 +25,31 @@ public class Source {
 	//
 	public float act()
 	{
-		if(sourceObject == null) {
-			valid = false;
-			return 0;
-		}
+		synchronized (this) {
 
-		return change;
+			if (sourceObject == null) {
+				valid = false;
+				return 0;
+			}
+
+			return change;
+		}
+	}
+
+	public void setChange(float change) {
+		synchronized (this) {
+			this.change = change;
+		}
 	}
 
 	public boolean isValid() {
-		return valid;
+		synchronized (this) {
+			return valid;
+		}
 	}
 	public void setInvalid() {
-		valid = false;
+		synchronized (this) {
+			valid = false;
+		}
 	}
 }

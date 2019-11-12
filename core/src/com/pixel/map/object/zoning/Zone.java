@@ -21,6 +21,10 @@ public abstract class Zone {
 	protected boolean empty = true;
 	protected final int distanceFromRoad = 4;
 
+	public static float residentialZonePlacementCost = 25.0f;
+	public static float commercialZonePlacementCost = 50.0f;
+	public static float officeZonePlacementCost = 75.0f;
+
 	protected Random random = new Random();
 	protected boolean zoneFull = false;
 

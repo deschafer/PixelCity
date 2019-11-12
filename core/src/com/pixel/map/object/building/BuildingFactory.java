@@ -20,6 +20,13 @@ public class BuildingFactory {
 	private final float buildTimePerLevel = 1.5f;
 	private final float buildTime = 1.0f;
 
+	private final float residentialBaseIncomePerResident = 0.05f;
+	private final float residentialLevelIncomeBonusPerResident = 0.025f;
+	private final float commercialBaseIncomePerResident = 0.10f;
+	private final float commercialLevelIncomeBonusPerResident = 0.05f;
+	private final float officeBaseIncomePerResident = 0.15f;
+	private final float officeLevelIncomeBonusPerResident = 0.10f;
+
 	private final float minLevelUpTime = 5.0f;
 	private final float timePerLevel = 2.0f;
 
@@ -65,11 +72,21 @@ public class BuildingFactory {
 		if (happiness > maxHappinessRequired)
 			happiness = maxHappinessRequired;
 
+		float incomePerResident = 0;
+		if(type == Building.BuildingType.RESIDENTIAL) {
+			incomePerResident = residentialBaseIncomePerResident + level * residentialLevelIncomeBonusPerResident;
+		} else if (type == Building.BuildingType.COMMERCIAL) {
+			incomePerResident = commercialBaseIncomePerResident + level * commercialLevelIncomeBonusPerResident;
+		} else {
+			incomePerResident = officeBaseIncomePerResident + level * officeLevelIncomeBonusPerResident;
+		}
+
+
 		// we create a new building
 		Building building = new Building(position, type.name(), type, level,
 			   level * numberResidentsPerLevel + minimumResidents,
 			   happiness, minLevelUpTime + level * level * timePerLevel,
-			   buildTime + buildTimePerLevel * level);
+			   buildTime + buildTimePerLevel * level, incomePerResident);
 
 		// then we need to add the displays to this object
 		ArrayList<BuildingDisplay> bases = getBases(type);

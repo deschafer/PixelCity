@@ -1,6 +1,7 @@
 package com.pixel.tools;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.pixel.city.FinancialManager;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.zoning.CommercialZone;
@@ -18,6 +19,7 @@ public class ZoneTool extends MapTool {
 	private Rectangle dimensions = new Rectangle(0, 0, 0, 0);
 	private Rectangle rectangle = new Rectangle();
 	private Building.BuildingType zoneType;
+	private boolean affordable = true;
 
 	public ZoneTool(Building.BuildingType type) {
 		zoneType = type;
@@ -35,9 +37,6 @@ public class ZoneTool extends MapTool {
 		dimensions.width = 0;
 		dimensions.height = 0;
 
-		// Clear our visualizers
-		clearVisualizers();
-
 		return true;
 	}
 
@@ -48,6 +47,7 @@ public class ZoneTool extends MapTool {
 		}
 
 		clearVisualizers();
+		affordable = true;
 
 		rectangle.x = 0;
 		rectangle.y = 0;
@@ -100,6 +100,20 @@ public class ZoneTool extends MapTool {
 			return false;
 		}
 
+		// Calculate the cost of these new cells
+		if(zoneType == Building.BuildingType.RESIDENTIAL) {
+			totalCost = Zone.residentialZonePlacementCost * rectangle.width * rectangle.height;
+		} else if (zoneType == Building.BuildingType.COMMERCIAL) {
+			totalCost = Zone.commercialZonePlacementCost * rectangle.width * rectangle.height;
+		} else {
+			totalCost = Zone.officeZonePlacementCost * rectangle.width * rectangle.height;
+		}
+
+		// if the cells cost too much
+		if(totalCost > FinancialManager.getInstance().getBalance()) {
+			affordable = false;
+		}
+
 		for (int i = 0, mapX = (int) rectangle.x; i < (int) rectangle.width; i++, mapX++) {
 			for (int j = 0, mapY = (int) rectangle.y; j < (int) rectangle.height; j++, mapY++) {
 				Cell cell = gameMap.getCell(mapX, mapY);
@@ -124,7 +138,9 @@ public class ZoneTool extends MapTool {
 
 		Zone zone = null;
 
-		if(zoneType == Building.BuildingType.RESIDENTIAL)
+		if(!affordable)
+			return false;
+		else if(zoneType == Building.BuildingType.RESIDENTIAL)
 			zone = new ResidentialZone(rectangle);
 		else if (zoneType == Building.BuildingType.COMMERCIAL)
 			zone = new CommercialZone(rectangle);
@@ -134,6 +150,9 @@ public class ZoneTool extends MapTool {
 		if (zone != null && !zone.isEmpty()) {
 			gameMap.addZone(zone);
 		}
+
+		// deduct the cost from the balance
+		FinancialManager.getInstance().withdrawFunds(totalCost);
 
 		return true;
 	}
@@ -148,8 +167,11 @@ public class ZoneTool extends MapTool {
 		cell.addActor(visualizer);
 		visualizers.add(visualizer);
 
+		if(!affordable) {
+			visualizer.setType(Visualizer.VisualizerType.RED);
+		}
 		// if the cell is empty of MapObjects, then we can add an object here, and the visualizer is green
-		if (cellEmpty) {
+		else if (cellEmpty) {
 			visualizer.setType(Visualizer.VisualizerType.GREEN);
 		}
 		// the cell contains MapObjects

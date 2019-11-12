@@ -2,6 +2,7 @@ package com.pixel.map.object.building;
 
 import com.pixel.city.City;
 import com.pixel.city.Demand;
+import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
@@ -49,6 +50,8 @@ public class Building extends MapObject {
 	private float buildTime = 1.0f;
 	private boolean containsUnemployed = true;
 
+	private float incomePerResident = 0;
+
 	// levelling data
 	private float levelUpTimer = 0;		// timer used to keep track of the time of level up time
 	//private float levelUpTime = 25.0f;		// time needed to pass for this object to level up
@@ -57,7 +60,7 @@ public class Building extends MapObject {
 	private float happinessRequired;		// happiness required to start level up timer
 
 	public Building(Map.MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
-				 float happinessRequired, float levelUpTime, float buildTime) {
+				 float happinessRequired, float levelUpTime, float buildTime, float incomePerResident) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
 			   GameScene.getInstance().getGameMap().getCellHeight(), coord, ID);
 
@@ -67,11 +70,15 @@ public class Building extends MapObject {
 		this.levelUpTime = levelUpTime;
 		this.buildTime = buildTime;
 		this.happinessRequired = happinessRequired;
+		this.incomePerResident = incomePerResident;
 		residents = new ArrayList<>();
 		drawableComponents = new ArrayList<>();
 		happiness = 50.0f;
 
 		replaceable = false;
+
+		Source income = new Source(this ,residents.size() * incomePerResident * happiness / 100.0f);
+		addSource(income);
 
 		// then we need to add this building to the vacant buildings, as it can now accept residents
 		if(type == BuildingType.RESIDENTIAL)
@@ -116,6 +123,10 @@ public class Building extends MapObject {
 
 			if (residents.size() < numberResidents) {
 				residents.add(resident);
+
+				for(Source source : sources) {
+					source.setChange(residents.size() * incomePerResident * happiness / 100.0f);
+				}
 
 				return true;
 			}
@@ -290,6 +301,9 @@ public class Building extends MapObject {
 		happiness = (citizenHappiness + buildingHappiness) / 2;
 		happiness *= 100;
 
+		for(Source source : sources) {
+			source.setChange(residents.size() * incomePerResident * happiness / 100.0f);
+		}
 	}
 
 	public boolean containsUnemployedResidents() {
