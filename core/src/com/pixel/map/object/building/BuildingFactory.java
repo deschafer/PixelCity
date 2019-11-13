@@ -1,7 +1,7 @@
 package com.pixel.map.object.building;
 
 import com.pixel.map.Map;
-import com.pixel.map.object.building.BuildingDisplay.BuildingDisplay;
+import com.pixel.map.object.building.display.BuildingDisplay;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,8 +27,10 @@ public class BuildingFactory {
 	private final float officeBaseIncomePerResident = 0.15f;
 	private final float officeLevelIncomeBonusPerResident = 0.10f;
 
-	private final float minLevelUpTime = 5.0f;
-	private final float timePerLevel = 2.0f;
+	//private final float minLevelUpTime = 5.0f;
+	//private final float timePerLevel = 2.0f;
+	private final float minLevelUpTime = 1.0f;
+	private final float timePerLevel = .0f;
 
 	private Random random = new Random();
 
@@ -83,7 +85,7 @@ public class BuildingFactory {
 
 
 		// we create a new building
-		Building building = new Building(position, type.name(), type, level,
+		Building building = new Building(position, type.name() + "Building", type, level,
 			   level * numberResidentsPerLevel + minimumResidents,
 			   happiness, minLevelUpTime + level * level * timePerLevel,
 			   buildTime + buildTimePerLevel * level, incomePerResident);

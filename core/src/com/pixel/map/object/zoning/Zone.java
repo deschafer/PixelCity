@@ -119,11 +119,8 @@ public abstract class Zone {
 		return zoneFull;
 	}
 
-	public void removeZoneCell(Map.MapCoord coord) {
+	public void removeZoneCell(ZoneCell zoneCell) {
 
-		if (coord.x < rectangle.width && coord.x >= 0 &&
-			coord.y < rectangle.height && coord.y >= 0) {
-			zoneCells[coord.x][coord.y] = null;
-		}
+		availableCells.remove(zoneCell);
 	}
 }

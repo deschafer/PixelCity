@@ -23,6 +23,9 @@ public class City {
 	private ArrayList<Building> hiringOfficeBuildings;	// office buildings that have jobs available
 
 	private int commercialRating = 0;
+	private int officeRating = 0;
+
+	private boolean commercialBoosted = true;
 
 	private int residentNumber = 0;
 
@@ -116,6 +119,41 @@ public class City {
 			building.updateHappiness();
 		}
 
+		// and we assign office jobs to unemployed citizens as well
+		if(!hiringOfficeBuildings.isEmpty() && !unemployedEducatedResidents.isEmpty()) {
+
+			// get the first building in the list
+			Building building = hiringOfficeBuildings.get(0);
+			Resident res = unemployedEducatedResidents.get(0);
+
+			// adding residents to this building as employees until full
+			while(building.addResident(res)) {
+
+				// set this building as this residents employer
+				res.setEmployer(building);
+
+				// remove the last resident from the list
+				unemployedEducatedResidents.remove(res);
+
+				// verify we still have residents that are unemployed
+				if(unemployedEducatedResidents.isEmpty())
+					break;
+
+				// tell the building of this previously unemployed resident to update its happiness
+				if(res.getResidence() != null)
+					res.getResidence().updateHappiness();
+
+				// get a new resident
+				res = unemployedEducatedResidents.get(0);
+			}
+
+			if (building.isFull())
+				hiringOfficeBuildings.remove(building);
+
+			// since we have added residents to this building, we should update happiness
+			building.updateHappiness();
+		}
+
 		if(!cityBuildings.isEmpty()) {
 			int happiness = 0;
 
@@ -130,8 +168,7 @@ public class City {
 
 
 		// adding incoming citizens to the city
-		// TODO: need to incorporate office as well
-		if(incomingResidents == 0
+		if (incomingResidents == 0
 			   && unemployedResidents.isEmpty()
 			   && !hiringCommercialBuildings.isEmpty()) {
 
@@ -145,10 +182,25 @@ public class City {
 			incomingResidents = total;
 		}
 
+		// adding incoming citizens to the city
+		if (incomingResidents == 0
+			   && unemployedEducatedResidents.isEmpty()
+			   && !hiringOfficeBuildings.isEmpty()) {
+
+			int total = 0;
+
+			// add up all of the available jobs
+			for(Building building : hiringOfficeBuildings) {
+				total += building.getSpace();
+			}
+
+			incomingResidents = total;
+		}
+
 		residentialDemandBoostTimer += Gdx.graphics.getDeltaTime();
 
 		// handle residential demand waves
-		if(residentialDemandBoostTimer >= residentialDemandBoostTime && incomingResidents < 100) {
+		if (residentialDemandBoostTimer >= residentialDemandBoostTime && incomingResidents < 100) {
 
 			residentialDemandBoostTimer = 0;
 			residentialDemandBoostTime += 0.01f * population;
@@ -167,14 +219,15 @@ public class City {
 			externalCommercialDemandTimer = 0;
 			externalCommercialDemandTimer += 1.0f;
 
-			int ratio = MathUtils.round(externalWorkerToResidentRatio * commercialRating);
+			int commercialRatio = MathUtils.round(externalWorkerToResidentRatio * commercialRating);
+			int officeRatio = MathUtils.round(externalWorkerToResidentRatio * officeRating);
 
 			// if we need more to meet the 10% ratio
-			if(numberExternalWorkers < ratio) {
+			if (numberExternalWorkers < commercialRatio && commercialBoosted) {
 
-				int difference = ratio - numberExternalWorkers;
+				commercialBoosted = false;
 
-				// TODO: incorporate office as well
+				int difference = commercialRatio - numberExternalWorkers;
 
 				for (int i = 0; i < difference; i++) {
 					Resident resident = new Resident("ExternalWorker" + numberExternalWorkers);
@@ -182,7 +235,22 @@ public class City {
 					numberExternalWorkers++;
 				}
 
-				System.out.println(difference + " workers added");
+				System.out.println(difference + " commercial workers added");
+			}
+			// if we need more to meet the 10% ratio
+			else if(numberExternalWorkers < commercialRatio) {
+
+				commercialBoosted = true;
+
+				int difference = officeRatio - numberExternalWorkers;
+
+				for (int i = 0; i < difference; i++) {
+					Resident resident = new Resident("ExternalWorker" + numberExternalWorkers);
+					addUnemployedEducatedResident(resident);
+					numberExternalWorkers++;
+				}
+
+				System.out.println(difference + "office workers added");
 			}
 		}
 	}
@@ -236,9 +304,9 @@ public class City {
 			population++;
 		}
 	}
-	public void decrementPopulation() {
+	public void decrementPopulation(int amount) {
 		synchronized (this) {
-			population--;
+			population -= amount;
 		}
 	}
 	public int getPopulation() {
@@ -311,9 +379,24 @@ public class City {
 	}
 
 	public void addCommercialRating(int addition) {
-		commercialRating += addition;
+		synchronized (this) {
+			commercialRating += addition;
+		}
 	}
 	public void removeCommercialRating(int removal) {
-		commercialRating -= removal;
+		synchronized (this) {
+			commercialRating -= removal;
+		}
+	}
+
+	public void addOfficeRating(int addition) {
+		synchronized (this) {
+			officeRating += addition;
+		}
+	}
+	public void removeOfficeRating(int removal) {
+		synchronized (this) {
+			officeRating -= removal;
+		}
 	}
 }

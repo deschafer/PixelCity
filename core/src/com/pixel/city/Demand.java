@@ -41,7 +41,7 @@ public class Demand {
 
 			commercialDemand = City.getInstance().getUnemployedResidentCount();
 
-			// TODO: come up with a better supply and demand system - should keep track of too much demand
+			officeDemand = City.getInstance().getUnemployedEducatedResidentCount();
 		}
 	}
 

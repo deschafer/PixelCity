@@ -1,6 +1,8 @@
 package com.pixel.map.object.zoning;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.pixel.behavior.ReplaceBehavior;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
@@ -11,6 +13,7 @@ public class ZoneCell extends MapObject {
 
 	private Building.BuildingType type;
 	private Zone parentZone;
+	private boolean valid = true;
 
 	public ZoneCell(float width, float height, Map.MapCoord coord, Building.BuildingType type, Zone parentZone) {
 		super(0, 0, width, height, coord, type.getZoneName());
@@ -25,10 +28,13 @@ public class ZoneCell extends MapObject {
 		placementBehaviors.add(new ReplaceBehavior(this));
 	}
 
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
 
 	@Override
 	public boolean remove() {
-		parentZone.removeZoneCell(getMapPosition());
+		parentZone.removeZoneCell(this);
 
 		return super.remove();
 	}

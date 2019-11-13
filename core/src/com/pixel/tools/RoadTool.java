@@ -195,6 +195,7 @@ public class RoadTool extends MapTool {
 			if(object.isReplaceable()) {
 				visualizer.setType(Visualizer.VisualizerType.YELLOW);
 				discountedRoads++;
+				totalCost -= Road.cost;
 			}
 			// the top object cannot be placed over, the visualizer is red
 			else {
@@ -256,7 +257,7 @@ public class RoadTool extends MapTool {
 
 		// then subtract the cost of the new roads
 		if (numberAffordableRoads > 0) {
-			totalCost -= discountedRoads * Road.cost;
+			totalCost = (numberAffordableRoads * Road.cost) -  discountedRoads * Road.cost;
 			FinancialManager.getInstance().withdrawFunds(totalCost);
 		}
 

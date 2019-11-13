@@ -31,8 +31,22 @@ public class FinancialManager {
 
 			if (updateTimer >= updateTime) {
 
+				ArrayList<Source> invalidSources = new ArrayList<>();
+
 				for (Source source : sources) {
-					balance += source.act();
+
+					// remove the source if its no longer valid
+					if(!source.isValid()) {
+						invalidSources.add(source);
+					}
+					// otherwise, grab the value of the source
+					else {
+						balance += source.act();
+					}
+				}
+
+				for (Source source : invalidSources) {
+					sources.remove(source);
 				}
 
 				updateTimer = 0;

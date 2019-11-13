@@ -1,13 +1,12 @@
 package com.pixel.map.object.building;
 
 import com.pixel.city.City;
-import com.pixel.city.Demand;
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
-import com.pixel.map.object.building.BuildingDisplay.BuildingDisplay;
+import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.object.Resident;
 import com.pixel.scene.GameScene;
 
@@ -49,6 +48,7 @@ public class Building extends MapObject {
 	private float buildingTimer = 0;
 	private float buildTime = 1.0f;
 	private boolean containsUnemployed = true;
+	private boolean replacedByUpgrade = false;
 
 	private float incomePerResident = 0;
 
@@ -87,8 +87,10 @@ public class Building extends MapObject {
 			City.getInstance().addHiringCommercialBuilding(this);
 			City.getInstance().addCommercialRating(numberResidents);
 		}
-		else if (type == BuildingType.OFFICE)
+		else if (type == BuildingType.OFFICE) {
 			City.getInstance().addHiringOfficeBuilding(this);
+			City.getInstance().addOfficeRating(numberResidents);
+		}
 
 		// then also add it to the list of all buildings
 		City.getInstance().addCityBuilding(this);
@@ -202,15 +204,12 @@ public class Building extends MapObject {
 						// then we can finally level up
 						levelUp();
 					}
-
 				}
 				// Then we started the timer, but our requirements are no longer met
 				else if (levelTimerActive) {
 					levelTimerActive = false;
 					levelUpTimer = 0;
 				}
-
-
 			}
 		}
 	}
@@ -220,6 +219,8 @@ public class Building extends MapObject {
 	//
 	//
 	private void levelUp() {
+
+		replacedByUpgrade = true;
 
 		// we first get the cell of this building
 		Cell cell = GameScene.getInstance().getGameMap().getCell(getMapPosition());
@@ -236,12 +237,14 @@ public class Building extends MapObject {
 			// also add to the level of this resident
 			resident.levelUp();
 
-			// If this citizen has become educated, then it needs an office job
-			if(resident.getLevel() >= residentLevelOfficeRequirement &&
+			// If this building has met the educated citizen requirement, then it contains educated residents
+			// who need office jobs
+			if(resident.getLevel() == residentLevelOfficeRequirement &&
 				type != BuildingType.OFFICE) {
 
 				// then this resident needs a higher level job, so set it as unemployed
 				resident.setEmployer(null);
+				resident.setEducated(true);
 				City.getInstance().addUnemployedEducatedResident(resident);
 			}
 
@@ -265,10 +268,11 @@ public class Building extends MapObject {
 		// We know this building was not vacant, and that it was full,
 		// so it must only be removed from the city buildings list
 		City.getInstance().removeCityBuilding(this);
-		City.getInstance().addCityBuilding(levelledBuilding);
 
-		if(type == BuildingType.COMMERCIAL) {
+		if (type == BuildingType.COMMERCIAL) {
 			City.getInstance().removeCommercialRating(numberResidents);
+		} else if(type == BuildingType.OFFICE) {
+			City.getInstance().removeOfficeRating(numberResidents);
 		}
 	}
 
@@ -313,5 +317,37 @@ public class Building extends MapObject {
 			return !isFull();
 
 		return containsUnemployed;
+	}
+
+	@Override
+	public boolean remove() {
+
+		if (!replacedByUpgrade) {
+			// Make sure all the residents are no longer looking for jobs as they do not exist anymore
+			for (Resident resident : residents) {
+				if (resident.isEducated())
+					City.getInstance().removeUnemployedEducatedResident(resident);
+				else
+					City.getInstance().removeUnemployedResident(resident);
+			}
+
+			// remove from the cities population
+			if (type == BuildingType.RESIDENTIAL)
+				City.getInstance().decrementPopulation(numberResidents);
+
+			// remove this building from any lists in the City class based on type
+			if (type == BuildingType.RESIDENTIAL) {
+				City.getInstance().removeVacantBuilding(this);
+			} else if (type == BuildingType.COMMERCIAL) {
+				City.getInstance().removeHiringCommercialBuilding(this);
+				City.getInstance().removeCommercialRating(numberResidents);
+			} else if (type == BuildingType.OFFICE) {
+				City.getInstance().removeHiringOfficeBuilding(this);
+				City.getInstance().removeOfficeRating(numberResidents);
+			}
+			City.getInstance().removeCityBuilding(this);
+		}
+
+		return super.remove();
 	}
 }

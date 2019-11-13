@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.pixel.behavior.PlacementBehavior;
 import com.pixel.city.FinancialManager;
@@ -41,6 +42,7 @@ public class MapObject extends Group {
 	protected ArrayList<Source> sources;			// all the sources associated with this object
 	private boolean prototypeObject = false;		// this means this object is only used for copying, never actually added to the map
 
+
 	public MapObject(float x, float y, float width, float height, Map.MapCoord coord, String ID)
 	{
 		setX(x);
@@ -51,6 +53,7 @@ public class MapObject extends Group {
 		mapPosition = coord;
 		placementBehaviors = new ArrayList<>();
 		sources = new ArrayList<>();
+		setTouchable(Touchable.disabled);
 	}
 
 	public void setAnimation(Animation<TextureRegion> anim) {
@@ -270,7 +273,7 @@ public class MapObject extends Group {
 	@Override
 	public boolean remove() {
 
-		if(sources.isEmpty()) {
+		if(!sources.isEmpty()) {
 			for(Source source : sources)
 				source.setInvalid();
 			sources.clear();

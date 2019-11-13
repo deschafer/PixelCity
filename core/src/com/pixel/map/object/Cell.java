@@ -3,6 +3,7 @@ package com.pixel.map.object;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
@@ -24,9 +25,10 @@ public class Cell extends MapObject {
 		Texture texture = PixelAssetManager.manager.get(PixelAssetManager.grass);
 		loadTexture(texture, PixelAssetManager.grass);
 		setSize(width, height);
-	}
 
-	// TODO: implement some way of knowing if this cell contains any additional map objects
+		// since we want this to be hit with Stage.hit()
+		setTouchable(Touchable.enabled);
+	}
 
 	// TODO:
 	// cell should also override placeOverObject

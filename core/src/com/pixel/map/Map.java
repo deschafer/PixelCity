@@ -10,7 +10,7 @@ import com.pixel.game.PixelAssetManager;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
-import com.pixel.map.object.building.BuildingDisplay.BuildingDisplay;
+import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.map.object.roads.*;
 import com.pixel.map.object.zoning.*;

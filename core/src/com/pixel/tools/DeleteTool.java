@@ -2,9 +2,12 @@ package com.pixel.tools;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
+import com.pixel.map.object.zoning.Zone;
+import com.pixel.map.object.zoning.ZoneCell;
 import javafx.beans.property.MapProperty;
 
 
@@ -48,6 +51,8 @@ public class DeleteTool extends MapTool {
 		rectangle.y = 0;
 		rectangle.height = 0;
 		rectangle.width = 0;
+
+		if(currCell == null || begCell == null) return false;
 
 		// calculate our rectangle based on the curr cell
 		int width = currCell.getMapPosition().x - begCell.getMapPosition().x;
@@ -131,8 +136,14 @@ public class DeleteTool extends MapTool {
 			Cell cell = gameMap.getCell(object.getMapPosition());
 			cell.removeActor(object);
 			object.remove();
-		}
 
+			for (Actor actor : cell.getParent().getChildren()) {
+				if(actor.getName().contains("Zoning")) {
+					ZoneCell zoneCell = (ZoneCell)actor;
+					zoneCell.setValid(false);
+				}
+			}
+		}
 
 		highlightedObjects.clear();
 		highlightedColors.clear();

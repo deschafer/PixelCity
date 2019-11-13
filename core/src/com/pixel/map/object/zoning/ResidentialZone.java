@@ -28,11 +28,14 @@ public class ResidentialZone extends Zone {
 			// remove this available cell
 			availableCells.remove(zoneCell);
 
-			// then we create our new building
-			Building building = BuildingFactory.getInstance().create(zoneCell.getMapPosition(), zoneType, 0);
+			if(zoneCell.hasParent()) {
 
-			// We add our building on top of this cell position
-			parentMap.getCell(zoneCell.getMapPosition()).addMapObject(building);
+				// then we create our new building
+				Building building = BuildingFactory.getInstance().create(zoneCell.getMapPosition(), zoneType, 0);
+
+				// We add our building on top of this cell position
+				parentMap.getCell(zoneCell.getMapPosition()).addMapObject(building);
+			}
 		}
 	}
 }

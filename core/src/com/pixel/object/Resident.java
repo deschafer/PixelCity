@@ -9,6 +9,7 @@ public class Resident {
 	private Building residence = null;
 	private Building employer = null;
 	private float happiness = 0.0f;
+	private boolean educated = false;
 
 	public Resident(String name) {
 		this.name = name;
@@ -24,6 +25,14 @@ public class Resident {
 		if(residence != null) {
 			residence.updateHappiness();
 		}
+	}
+
+	public void setEducated(boolean educated) {
+		this.educated = educated;
+	}
+
+	public boolean isEducated() {
+		return educated;
 	}
 
 	public int getLevel() {
