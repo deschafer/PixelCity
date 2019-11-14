@@ -27,6 +27,12 @@ public class BuildingFactory {
 	private final float officeBaseIncomePerResident = 0.15f;
 	private final float officeLevelIncomeBonusPerResident = 0.10f;
 
+	private final float basePowerNeeded = 30;
+	private final float powerPerLevel = 50;
+
+	private final float baseWaterNeeded = 10;
+	private final float waterPerLevel = 15;
+
 	//private final float minLevelUpTime = 5.0f;
 	//private final float timePerLevel = 2.0f;
 	private final float minLevelUpTime = 1.0f;
@@ -83,12 +89,19 @@ public class BuildingFactory {
 			incomePerResident = officeBaseIncomePerResident + level * officeLevelIncomeBonusPerResident;
 		}
 
-
 		// we create a new building
-		Building building = new Building(position, type.name() + "Building", type, level,
+		Building building = new Building(
+			   position,
+			   type.name() + "Building",
+			   type,
+			   level,
 			   level * numberResidentsPerLevel + minimumResidents,
-			   happiness, minLevelUpTime + level * level * timePerLevel,
-			   buildTime + buildTimePerLevel * level, incomePerResident);
+			   happiness,
+			   minLevelUpTime + level * level * timePerLevel,
+			   buildTime + buildTimePerLevel * level,
+			   incomePerResident,
+			   basePowerNeeded + powerPerLevel * level,
+			   baseWaterNeeded + waterPerLevel * level);
 
 		// then we need to add the displays to this object
 		ArrayList<BuildingDisplay> bases = getBases(type);

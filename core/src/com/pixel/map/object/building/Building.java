@@ -7,6 +7,8 @@ import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.display.BuildingDisplay;
+import com.pixel.map.object.building.special.ServiceBuilding;
+import com.pixel.map.object.building.special.utilities.UtilityManager;
 import com.pixel.object.Resident;
 import com.pixel.scene.GameScene;
 
@@ -50,7 +52,27 @@ public class Building extends MapObject {
 	private boolean containsUnemployed = true;
 	private boolean replacedByUpgrade = false;
 
+	// TODO: as these get implemented, these should be false to start
+	private boolean fireServiceProvided = true;
+	private boolean policeServiceProvided = true;
+	private boolean healthServiceProvided = true;
+	private boolean educationServiceProvided = true;
+
 	private float incomePerResident = 0;
+
+	private float powerHappinessRatio = 0.125f;
+	private float waterHappinessRatio = 0.125f;
+	private float fireHappinessRatio = 0.075f;
+	private float policeHappinessRatio = 0.075f;
+	private float educationHappinessRatio = 0.05f;
+	private float healthHappinessRatio = 0.05f;
+
+	private float powerNeeded = 0;
+	private float powerClaimed = 0;
+	private boolean powerProvided = false;
+	private float waterNeeded = 0;
+	private float waterClaimed = 0;
+	private boolean waterProvided = false;
 
 	// levelling data
 	private float levelUpTimer = 0;		// timer used to keep track of the time of level up time
@@ -60,7 +82,8 @@ public class Building extends MapObject {
 	private float happinessRequired;		// happiness required to start level up timer
 
 	public Building(Map.MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
-				 float happinessRequired, float levelUpTime, float buildTime, float incomePerResident) {
+				 float happinessRequired, float levelUpTime, float buildTime, float incomePerResident,
+				 float powerNeeded, float waterNeeded) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
 			   GameScene.getInstance().getGameMap().getCellHeight(), coord, ID);
 
@@ -71,6 +94,8 @@ public class Building extends MapObject {
 		this.buildTime = buildTime;
 		this.happinessRequired = happinessRequired;
 		this.incomePerResident = incomePerResident;
+		this.powerNeeded = powerNeeded;
+		this.waterNeeded = waterNeeded;
 		residents = new ArrayList<>();
 		drawableComponents = new ArrayList<>();
 		happiness = 50.0f;
@@ -81,7 +106,7 @@ public class Building extends MapObject {
 		addSource(income);
 
 		// then we need to add this building to the vacant buildings, as it can now accept residents
-		if(type == BuildingType.RESIDENTIAL)
+		if (type == BuildingType.RESIDENTIAL)
 			City.getInstance().addVacantBuilding(this);
 		else if (type == BuildingType.COMMERCIAL) {
 			City.getInstance().addHiringCommercialBuilding(this);
@@ -90,6 +115,16 @@ public class Building extends MapObject {
 		else if (type == BuildingType.OFFICE) {
 			City.getInstance().addHiringOfficeBuilding(this);
 			City.getInstance().addOfficeRating(numberResidents);
+		}
+
+		// also attempt to claim water and power
+		if (UtilityManager.getInstance().claimPower(powerNeeded)) {
+			powerClaimed = powerNeeded;
+			powerProvided = true;
+		}
+		if (UtilityManager.getInstance().claimWater(waterNeeded)) {
+			waterClaimed = waterNeeded;
+			waterProvided = true;
 		}
 
 		// then also add it to the list of all buildings
@@ -179,8 +214,25 @@ public class Building extends MapObject {
 			else {
 				// we need to check if any of our residents do not have a job
 
+				// TODO: needs to be removed
 				if(type == BuildingType.COMMERCIAL) {
 					int nop = 0;
+				}
+
+				if (waterClaimed < waterNeeded) {
+					if (UtilityManager.getInstance().claimWater(waterNeeded)) {
+						waterClaimed = waterNeeded;
+						waterProvided = true;
+						updateHappiness();
+					}
+				}
+
+				if (powerClaimed < powerNeeded) {
+					if (UtilityManager.getInstance().claimPower(powerNeeded)) {
+						powerClaimed = powerNeeded;
+						powerProvided = true;
+						updateHappiness();
+					}
 				}
 
 				// Level up requirements (to start the level timer)
@@ -274,6 +326,10 @@ public class Building extends MapObject {
 		} else if(type == BuildingType.OFFICE) {
 			City.getInstance().removeOfficeRating(numberResidents);
 		}
+
+		// remove the claimed water and power of this old building
+		UtilityManager.getInstance().returnPowerClaimed(powerClaimed);
+		UtilityManager.getInstance().returnWaterClaimed(waterClaimed);
 	}
 
 	//
@@ -295,11 +351,14 @@ public class Building extends MapObject {
 		if(citizenHappiness == 1.0f)
 			containsUnemployed = false;
 
-		// TODO: implement services influencing happiness
-		// then we determine how happy the building is
-		// this will be dependent on how many services are provided
-		// since this is not applicable right now, we just set it as 100%
-		float buildingHappiness = 1.0f;
+		// determine the building happiness based on services provided
+		// TODO: some issue here
+		float buildingHappiness = (powerProvided ? powerHappinessRatio : 0) +
+			   (waterProvided ? waterHappinessRatio : 0) +
+			   (fireServiceProvided ? fireHappinessRatio : 0) +
+			   (policeServiceProvided ? policeHappinessRatio : 0) +
+			   (healthServiceProvided ? healthHappinessRatio : 0) +
+			   (educationServiceProvided ? educationHappinessRatio : 0);
 
 		// each of these two values has equal weight, so..
 		happiness = (citizenHappiness + buildingHappiness) / 2;
@@ -349,5 +408,57 @@ public class Building extends MapObject {
 		}
 
 		return super.remove();
+	}
+
+	public void addService(ServiceBuilding.Services service) {
+
+		boolean changed = false;
+
+		if (service == ServiceBuilding.Services.FIRE) {
+			if (!fireServiceProvided)
+				changed = true;
+			fireServiceProvided = true;
+		} else if (service == ServiceBuilding.Services.POLICE) {
+			if (!policeServiceProvided)
+				changed = true;
+			policeServiceProvided = true;
+		} else if (service == ServiceBuilding.Services.HEALTH) {
+			if (!healthServiceProvided)
+				changed = true;
+			healthServiceProvided = true;
+		} else if (service == ServiceBuilding.Services.EDUCATION) {
+			if (!educationServiceProvided)
+				changed = true;
+			educationServiceProvided = true;
+		}
+
+		if (changed)
+			updateHappiness();
+	}
+
+	public void removeService(ServiceBuilding.Services service) {
+
+		boolean changed = false;
+
+		if (service == ServiceBuilding.Services.FIRE) {
+			if (fireServiceProvided)
+				changed = true;
+			fireServiceProvided = false;
+		} else if (service == ServiceBuilding.Services.POLICE) {
+			if (policeServiceProvided)
+				changed = true;
+			policeServiceProvided = false;
+		} else if (service == ServiceBuilding.Services.HEALTH) {
+			if (healthServiceProvided)
+				changed = true;
+			healthServiceProvided = false;
+		} else if (service == ServiceBuilding.Services.EDUCATION) {
+			if (educationServiceProvided)
+				changed = true;
+			educationServiceProvided = false;
+		}
+
+		if (changed)
+			updateHappiness();
 	}
 }

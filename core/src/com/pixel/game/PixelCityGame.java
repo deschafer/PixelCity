@@ -130,6 +130,8 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.officeStory15, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.officeStory23, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.officeStory31, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.coalPowerPlant, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.waterTank, Texture.class);
 
 		PixelAssetManager.manager.finishLoading();
 

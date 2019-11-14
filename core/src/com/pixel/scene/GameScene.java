@@ -13,10 +13,7 @@ import com.pixel.city.FinancialManager;
 import com.pixel.game.styles.Styles;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
-import com.pixel.tools.DeleteTool;
-import com.pixel.tools.RoadTool;
-import com.pixel.tools.Tool;
-import com.pixel.tools.ZoneTool;
+import com.pixel.tools.*;
 
 public class GameScene extends Scene {
 
@@ -113,6 +110,12 @@ public class GameScene extends Scene {
 			Demand.getInstance().print();
 		} else if (keycode == Input.Keys.M) {
 			FinancialManager.getInstance().addFunds(10000);
+		} else if (keycode == Input.Keys.C) {
+			System.out.println("Specialty Building tool selected");
+			activeTool = new SpecialtyBuildingPlacementTool(0);
+		} else if (keycode == Input.Keys.V) {
+			System.out.println("Specialty Building tool selected");
+			activeTool = new SpecialtyBuildingPlacementTool(1);
 		}
 
 		return false;
