@@ -568,4 +568,8 @@ public class Map extends Group {
 	public float getCellRowHeight() {
 		return cellRowHeight;
 	}
+
+	public int getWidthInCells() { return width; }
+
+	public int getHeightInCells() { return height; }
 }

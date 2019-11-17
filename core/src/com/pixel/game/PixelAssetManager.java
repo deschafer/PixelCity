@@ -125,6 +125,6 @@ public class PixelAssetManager {
 
 	public static String coalPowerPlant = "assets/services/coalPowerPlant.png";
 	public static String waterTank = "assets/services/waterTank.png";
-
+	public static String fireStation = "assets/services/fireStation.png";
 
 }

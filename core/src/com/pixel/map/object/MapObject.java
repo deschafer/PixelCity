@@ -27,7 +27,7 @@ public class MapObject extends Group {
 	private float timeSpeed;
 	protected boolean replaceable = false;		// flag indicating if this object can be replaced with another object
 
-	private Polygon boundaryPolygon;
+	protected Polygon boundaryPolygon;
 
 	protected ArrayList<PlacementBehavior> placementBehaviors;
 

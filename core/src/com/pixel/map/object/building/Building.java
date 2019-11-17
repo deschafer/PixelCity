@@ -60,12 +60,12 @@ public class Building extends MapObject {
 
 	private float incomePerResident = 0;
 
-	private float powerHappinessRatio = 0.125f;
-	private float waterHappinessRatio = 0.125f;
-	private float fireHappinessRatio = 0.075f;
-	private float policeHappinessRatio = 0.075f;
-	private float educationHappinessRatio = 0.05f;
-	private float healthHappinessRatio = 0.05f;
+	private float powerHappinessRatio = 0.250f;
+	private float waterHappinessRatio = 0.250f;
+	private float fireHappinessRatio = 0.150f;
+	private float policeHappinessRatio = 0.150f;
+	private float educationHappinessRatio = 0.10f;
+	private float healthHappinessRatio = 0.10f;
 
 	private float powerNeeded = 0;
 	private float powerClaimed = 0;
@@ -73,6 +73,9 @@ public class Building extends MapObject {
 	private float waterNeeded = 0;
 	private float waterClaimed = 0;
 	private boolean waterProvided = false;
+
+	private float updateHappinessTimer = 0;
+	private float updateHapppinessTime = 5.0f;
 
 	// levelling data
 	private float levelUpTimer = 0;		// timer used to keep track of the time of level up time
@@ -235,6 +238,12 @@ public class Building extends MapObject {
 					}
 				}
 
+				updateHappinessTimer += dt;
+				if (updateHappinessTimer >= updateHapppinessTime) {
+					updateHappiness();
+					updateHappinessTimer = 0;
+				}
+
 				// Level up requirements (to start the level timer)
 				// We must have happiness above a certain point
 				// this building must be full
@@ -352,13 +361,26 @@ public class Building extends MapObject {
 			containsUnemployed = false;
 
 		// determine the building happiness based on services provided
-		// TODO: some issue here
-		float buildingHappiness = (powerProvided ? powerHappinessRatio : 0) +
-			   (waterProvided ? waterHappinessRatio : 0) +
-			   (fireServiceProvided ? fireHappinessRatio : 0) +
-			   (policeServiceProvided ? policeHappinessRatio : 0) +
-			   (healthServiceProvided ? healthHappinessRatio : 0) +
-			   (educationServiceProvided ? educationHappinessRatio : 0);
+		float buildingHappiness = 0;
+		if (powerProvided) {
+			buildingHappiness += powerHappinessRatio;
+		}
+		if (waterProvided) {
+			buildingHappiness += waterHappinessRatio;
+		}
+		if (fireServiceProvided) {
+			buildingHappiness += fireHappinessRatio;
+		}
+		if (policeServiceProvided) {
+			buildingHappiness += policeHappinessRatio;
+		}
+		if (healthServiceProvided) {
+			buildingHappiness += healthHappinessRatio;
+		}
+		if (educationServiceProvided) {
+			buildingHappiness += educationHappinessRatio;
+		}
+
 
 		// each of these two values has equal weight, so..
 		happiness = (citizenHappiness + buildingHappiness) / 2;

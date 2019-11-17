@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class Cell extends MapObject {
 
+	private ArrayList<MapObject> occupyingObjects = new ArrayList<>();
+
 	public Cell(float x, float y, float width, float height, Map.MapCoord coord) {
 		super(x, y, width,height, coord, "Cell");
 
@@ -75,13 +77,35 @@ public class Cell extends MapObject {
 	@Override
 	public void addActor(Actor actor) {
 		super.addActor(actor);
-
-		//MapObject object =
 	}
 
 	public void addMapObject(MapObject object) {
 		addActor(object);
 
+		occupyingObjects.add(object);
+
 		object.validateSources();
+	}
+
+	@Override
+	public boolean removeActor(Actor actor) {
+
+		// remove from the occupying objects
+		occupyingObjects.remove(actor);
+
+		return super.removeActor(actor);
+	}
+
+	@Override
+	public boolean hasChildren() {
+		return super.hasChildren() || !occupyingObjects.isEmpty();
+	}
+
+	public void removeOccupyingObject(MapObject object) {
+		occupyingObjects.remove(object);
+	}
+
+	public void addOccupyingObject(MapObject object) {
+		occupyingObjects.add(object);
 	}
 }
