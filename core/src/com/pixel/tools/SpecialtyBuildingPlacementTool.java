@@ -1,38 +1,101 @@
 package com.pixel.tools;
 
-import com.pixel.map.object.MapObject;
+import com.pixel.city.FinancialManager;
+import com.pixel.map.Map;
+import com.pixel.map.object.Cell;
+import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.special.SpecialtyBuilding;
 import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
-import com.pixel.map.object.building.special.utilities.fire.FireStation;
-import com.pixel.map.object.building.special.utilities.power.CoalPowerPlant;
-import com.pixel.map.object.building.special.utilities.water.WaterTank;
+import com.pixel.map.visualizer.Visualizer;
+import com.pixel.map.visualizer.VisualizerFactory;
+
+import java.util.ArrayList;
 
 public class SpecialtyBuildingPlacementTool extends MapTool {
 
-	// TODO: this is only implemented so we can test water and power utilities quickly
-	private int number = 0;
 	private String buildingName;
+	private Visualizer visualizer;
+	private boolean valid = false;
+	private ArrayList<Cell> placingCells = new ArrayList<>();
+	private SpecialtyBuilding savedBuilding;
 
-	public SpecialtyBuildingPlacementTool(int number) {
-		this.number = number;
-	}
-
+	
 	public void setPlaceableObject(String buildingName) {
 		this.buildingName = buildingName;
+		visualizer = VisualizerFactory.getInstance().createVisualizer(buildingName);
+		visualizer.setX(-visualizer.getWidth() + visualizer.getWidth() / 2 + cellWidth / 2);
+
+		// create our new building
+		savedBuilding = SpecialtyBuildingFactory.getInstance().create(buildingName, Map.zeroCoordinate);
+		totalCost = savedBuilding.getPlacedownCost();
 	}
 
 	@Override
-	public boolean onTouchDown(float x, float y) {
-		if(!super.onTouchDown(x, y))
+	public boolean onUpdate() {
+		onTouchDown(0,0);
+
+		if (!super.onUpdate()) {
 			return false;
+		}
 
+		// update the position of the visualizer
+		visualizer.remove();
+		currCell.addActor(visualizer);
 
-		
-		if(begCell != null) {
+		valid = true;
+		visualizer.setType(Visualizer.VisualizerType.GREEN);
+		placingCells.clear();
+
+		// also check the positions of the cell placement
+		float width = visualizer.getWidth() / gameMap.getCellWidth();
+		float height = visualizer.getWidth() / gameMap.getCellHeight();
+		int widthInCells = (int)width;
+		int heightInCells = (int)height;
+		Cell cell = null;
+
+		int currentX = currCell.getMapPosition().x;
+		int currentY = currCell.getMapPosition().y;
+
+		// checking each cell to verify that this object can be placed
+		for (int i = 0; i < widthInCells; i++) {
+			for (int j = 0; j < heightInCells; j++) {
+
+				// if the cell is null, obviously cannot place this object as its off the map
+				if ((cell = gameMap.getCell(currentX - i, currentY - j)) == null) {
+					valid = false;
+				} else {
+
+					placingCells.add(cell);
+					if (cell.containsMapObject()) {
+						// if the cell contains an object, and if that object is replaceable, another object
+						// can be placed on top
+						if (cell.getTopObject().isReplaceable()) {
+							visualizer.setType(Visualizer.VisualizerType.YELLOW);
+						} else {
+							valid = false;
+						}
+					}
+				}
+			}
+		}
+		if (savedBuilding.getPlacedownCost() > FinancialManager.getInstance().getBalance()) {
+			valid = false;
+		}
+		if (!valid) {
+			visualizer.setType(Visualizer.VisualizerType.RED);
+		}
+
+		return true;
+	}
+
+	@Override
+	public boolean onTouchUp(float x, float y) {
+
+		if (super.onTouchUp(x, y) && valid) {
 
 			// create our new building
 			SpecialtyBuilding building =
-				   SpecialtyBuildingFactory.getInstance().create(buildingName, begCell.getMapPosition());
+				   SpecialtyBuildingFactory.getInstance().create(buildingName, currCell.getMapPosition());
 
 			// if this object was not found
 			if (building == null) {
@@ -41,21 +104,18 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 
 			// Offset the image to center the building in the cell grid
 			building.setX(-building.getDimensions().width * cellWidth + building.getWidth() / 2 + cellWidth / 2);
-			building.setY(35);	// accounts for the vertical section of the tiles
 
-			begCell.addMapObject(building);
+			// since we know that the object can be placed without any issues, just place it
+			currCell.addMapObject(building);
+
+			// setting each cell as occupied
+			for (Cell cell : placingCells) {
+				cell.addOccupyingObject(building);
+			}
+
+			return true;
 		}
 
-		return true;
-	}
-
-	@Override
-	public boolean onTouchMove(float x, float y) {
-		return super.onTouchMove(x, y);
-	}
-
-	@Override
-	public boolean onTouchUp(float x, float y) {
-		return super.onTouchUp(x, y);
+		return false;
 	}
 }

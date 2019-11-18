@@ -1,14 +1,12 @@
 package com.pixel.map.object.building.special;
 
 import com.pixel.map.Map;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SpecialtyBuildingFactory {
 
 	private static SpecialtyBuildingFactory instance = new SpecialtyBuildingFactory();
-	HashMap<String, SpecialtyBuilding> registeredObjects;
+	HashMap<String, SpecialtyBuilding> registeredObjects = new HashMap<>();
 
 	private SpecialtyBuildingFactory() {}
 

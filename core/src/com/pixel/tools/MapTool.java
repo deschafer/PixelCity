@@ -2,7 +2,6 @@ package com.pixel.tools;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.pixel.game.styles.Styles;
 import com.pixel.map.Map;
@@ -44,9 +43,6 @@ public class MapTool extends Tool {
 		// clear the previous saved current cells
 		currentCells.clear();
 
-		// clear the cost
-		totalCost = 0.0f;
-
 		// reset our cost label
 		costLabel.setText("$" + totalCost);
 		Vector2 position = GameScene.getInstance().getUIStage().screenToStageCoordinates( new Vector2(Gdx.input.getX(), Gdx.input.getY()) );
@@ -62,13 +58,13 @@ public class MapTool extends Tool {
 	}
 
 	@Override
-	public boolean onTouchMove(float x, float y) {
-		if (!super.onTouchMove(x, y)) {
+	public boolean onUpdate() {
+		if (!super.onUpdate()) {
 			return false;
 		}
 
 		// get the current cell corresponding to the location
-		Cell cell = gameMap.checkPosition(x, y);
+		Cell cell = gameMap.checkPosition(currentPoint.x, currentPoint.y);
 
 		Vector2 position = GameScene.getInstance().getUIStage().screenToStageCoordinates( new Vector2(Gdx.input.getX(), Gdx.input.getY()) );
 

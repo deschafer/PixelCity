@@ -18,7 +18,7 @@ import com.pixel.tools.*;
 public class GameScene extends Scene {
 
 	private Map gameMap;     // our actual game map
-	private static GameScene instance;
+	private static GameScene instance = new GameScene();
 	private Tool activeTool;
 
 	private Label financeLabel;
@@ -30,7 +30,6 @@ public class GameScene extends Scene {
 	}
 
 	public static GameScene getInstance() {
-		if(instance == null) instance = new GameScene();
 		return instance;
 	}
 
@@ -69,6 +68,10 @@ public class GameScene extends Scene {
 
 		// update our map object
 		gameMap.update();
+
+		if (activeTool != null) {
+			activeTool.onUpdate();
+		}
 
 		// We move around the map
 		// non-discrete input, so we poll automatically
@@ -112,10 +115,13 @@ public class GameScene extends Scene {
 			FinancialManager.getInstance().addFunds(10000);
 		} else if (keycode == Input.Keys.C) {
 			System.out.println("Specialty Building tool selected");
-			activeTool = new SpecialtyBuildingPlacementTool(0);
+			activeTool = new SpecialtyBuildingPlacementTool();
+			((SpecialtyBuildingPlacementTool)activeTool).setPlaceableObject("CoalPowerPlantUtility");
+
 		} else if (keycode == Input.Keys.V) {
 			System.out.println("Specialty Building tool selected");
-			activeTool = new SpecialtyBuildingPlacementTool(1);
+			activeTool = new SpecialtyBuildingPlacementTool();
+			((SpecialtyBuildingPlacementTool)activeTool).setPlaceableObject("FireStation");
 		}
 
 		return false;
@@ -136,8 +142,7 @@ public class GameScene extends Scene {
 
 		if(activeTool == null) return false;
 
-		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
-		activeTool.onTouchMove(stageCoords.x, stageCoords.y);
+		activeTool.onUpdate();
 
 		return false;
 	}

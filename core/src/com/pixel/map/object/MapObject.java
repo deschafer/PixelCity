@@ -307,4 +307,8 @@ public class MapObject extends Group {
 	public boolean isPrototypeObject() {
 		return prototypeObject;
 	}
+
+	public float getPlacedownCost() {
+		return placedownCost;
+	}
 }

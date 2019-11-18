@@ -3,12 +3,9 @@ package com.pixel.tools;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
-import com.pixel.map.object.zoning.Zone;
 import com.pixel.map.object.zoning.ZoneCell;
-import javafx.beans.property.MapProperty;
 
 
 import java.util.ArrayList;
@@ -31,12 +28,12 @@ public class DeleteTool extends MapTool {
 	}
 
 	//
-	// onTouchMove()
+	// onUpdate()
 	// Called on each movement of the current touch
 	//
-	public boolean onTouchMove(float x, float y) {
+	public boolean onUpdate() {
 
-		if (!super.onTouchMove(x,y)) return false;
+		if (!super.onUpdate()) return false;
 
 		costLabel.setVisible(false);
 

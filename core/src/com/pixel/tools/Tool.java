@@ -1,6 +1,8 @@
 package com.pixel.tools;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.pixel.scene.GameScene;
 
 public abstract class Tool {
 
@@ -28,18 +30,21 @@ public abstract class Tool {
 	}
 
 	//
-	// onTouchMove()
+	// onUpdate()
 	// Called on each movement of the current touch
 	//
-	public boolean onTouchMove(float x, float y) {
+	public boolean onUpdate() {
 
 		// continue only if we have already touched the screen
 		if(currentState != TouchState.TOUCH) {
 			return false;
 		}
 
-		currentPoint.x = x;
-		currentPoint.y = y;
+		Vector2 stageCoords =
+			   GameScene.getInstance().getMainStage().screenToStageCoordinates(new Vector2( Gdx.input.getX(), Gdx.input.getY()));
+
+		currentPoint.x = stageCoords.x;
+		currentPoint.y = stageCoords.y;
 
 		return true;
 	}

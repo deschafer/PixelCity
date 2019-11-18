@@ -40,6 +40,10 @@ public class Cell extends MapObject {
 
 		if(!hasChildren()) return null;
 
+		if (!occupyingObjects.isEmpty()) {
+			return occupyingObjects.get(occupyingObjects.size() - 1);
+		}
+
 		SnapshotArray<Actor> actors = getChildren();
 		MapObject object = null;
 
@@ -56,6 +60,10 @@ public class Cell extends MapObject {
 	}
 
 	public boolean containsMapObject() {
+
+		if (!occupyingObjects.isEmpty())
+			return true;
+
 		for (Actor actor : getChildren()) {
 			if (actor.getName() != "Visualizer") {
 				return true;

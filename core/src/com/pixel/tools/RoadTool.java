@@ -23,8 +23,8 @@ public class RoadTool extends MapTool {
 	private int currentVisualizer = 0;
 
 	@Override
-	public boolean onTouchMove(float x, float y) {
-		if (!super.onTouchMove(x, y)) {
+	public boolean onUpdate() {
+		if (!super.onUpdate()) {
 			return false;
 		}
 

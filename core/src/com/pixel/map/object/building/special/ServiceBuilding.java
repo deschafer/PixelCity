@@ -31,11 +31,14 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 	private float updateTimer = 5.0f;
 	private float updateTime = 5.0f;
 
+	public static boolean placedOnMap = true;
+
 	public ServiceBuilding(float x, float y, float width, float height, Map.MapCoord coord, String ID) {
 		super(x, y, width, height, coord, ID);
 
-
-		setZoneOfInfluence();
+		if (placedOnMap) {
+			setZoneOfInfluence();
+		}
 	}
 
 	protected void setZoneOfInfluence() {

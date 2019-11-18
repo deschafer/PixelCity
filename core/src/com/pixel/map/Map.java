@@ -12,6 +12,11 @@ import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.map.object.building.BuildingFactory;
+import com.pixel.map.object.building.special.ServiceBuilding;
+import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
+import com.pixel.map.object.building.special.utilities.fire.FireStation;
+import com.pixel.map.object.building.special.utilities.power.CoalPowerPlant;
+import com.pixel.map.object.building.special.utilities.water.WaterTank;
 import com.pixel.map.object.roads.*;
 import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
@@ -31,6 +36,7 @@ public class Map extends Group {
 			this.y = y;
 		}
 	}
+	public static MapCoord zeroCoordinate;
 
 	private int width;                   	 // width of the map array in cells
 	private int height;                   	 // height ...
@@ -38,8 +44,8 @@ public class Map extends Group {
 	private float heightPixels;         	 // height of the map in pixels
 	private Stage parentStage;
 	private Cell[][] mapArray;
-	private final int cellWidth = 132;     	// width of the cell in pixels
-	private final int cellHeight = 102;     // height of the cell in pixels
+	public static final int cellWidth = 132;     	// width of the cell in pixels
+	public static final int cellHeight = 102;     // height of the cell in pixels
 	public static final int cellBuildingBaseWidth = 132;
 	public static final int cellBuildingBaseHeight = 127;
 	public static final int cellStoryWidth = 99;
@@ -70,6 +76,8 @@ public class Map extends Group {
 		parentStage = stage;
 		widthPixels = width * cellRowWidth;
 		heightPixels = height * cellRowHeight;
+
+		zeroCoordinate = new MapCoord(0,0);
 
 		stage.addActor(this);
 
@@ -151,6 +159,16 @@ public class Map extends Group {
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.COMMERCIAL, null));
 		VisualizerFactory.getInstance().registerMapObject(
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.OFFICE, null));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new CoalPowerPlant(0,0, new MapCoord(0,0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new WaterTank(0,0, new MapCoord(0,0)));
+
+		// since these are service buildings, they attempt to connect to the map. Prevent this in the class
+		ServiceBuilding.placedOnMap = false;
+		VisualizerFactory.getInstance().registerMapObject(
+			   new FireStation(0,0, new MapCoord(0,0)));
+
 
 		// set up all of our building displays
 		BuildingFactory.getInstance().registerBuildingDisplayBase(
@@ -342,6 +360,19 @@ public class Map extends Group {
 		BuildingFactory.getInstance().registerBuildingDisplayStory(
 			   new BuildingDisplay(PixelAssetManager.officeStory31), false, false, true);
 
+		// register our specialty buildings
+		CoalPowerPlant coalPowerPlant;
+		SpecialtyBuildingFactory.getInstance().registerObject( coalPowerPlant =
+			   new CoalPowerPlant(0,0, new MapCoord(0,0)), coalPowerPlant.getName());
+		WaterTank waterTank;
+		SpecialtyBuildingFactory.getInstance().registerObject( waterTank =
+			   new WaterTank(0,0, new MapCoord(0,0)), waterTank.getName());
+		FireStation fireStation;
+		SpecialtyBuildingFactory.getInstance().registerObject( fireStation =
+			   new FireStation(0,0, new MapCoord(0,0)), fireStation.getName());
+
+		// Reset it back to normal
+		ServiceBuilding.placedOnMap = true;
 	}
 
 	public void update() {

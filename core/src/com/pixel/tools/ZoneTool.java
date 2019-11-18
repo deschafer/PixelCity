@@ -26,8 +26,8 @@ public class ZoneTool extends MapTool {
 	}
 
 	@Override
-	public boolean onTouchMove(float x, float y) {
-		if (!super.onTouchMove(x, y) || begCell == null) {
+	public boolean onUpdate() {
+		if (!super.onUpdate() || begCell == null) {
 			return false;
 		}
 

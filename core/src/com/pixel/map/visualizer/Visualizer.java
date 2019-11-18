@@ -18,8 +18,8 @@ public class Visualizer extends Actor {
 
 	public Visualizer(float x, float y, MapObject copiedType) {
 
-		setX(x);
-		setY(y);
+		setX(copiedType.getX());
+		setY(copiedType.getY());
 		loadTexture(copiedType.getSourceTexture());
 		setWidth(copiedType.getWidth());
 		setHeight(copiedType.getHeight());
