@@ -8,6 +8,7 @@ import com.pixel.map.object.building.special.SpecialtyBuilding;
 import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
 import com.pixel.map.visualizer.Visualizer;
 import com.pixel.map.visualizer.VisualizerFactory;
+import com.pixel.scene.GameScene;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,9 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	
 	public void setPlaceableObject(String buildingName) {
 		this.buildingName = buildingName;
+
+		clearVisualizers();
+
 		visualizer = VisualizerFactory.getInstance().createVisualizer(buildingName);
 		visualizer.setX(-visualizer.getWidth() + visualizer.getWidth() / 2 + cellWidth / 2);
 
@@ -81,6 +85,9 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		if (savedBuilding.getPlacedownCost() > FinancialManager.getInstance().getBalance()) {
 			valid = false;
 		}
+		if (!checkRoadRequirement()) {
+			valid = false;
+		}
 		if (!valid) {
 			visualizer.setType(Visualizer.VisualizerType.RED);
 		}
@@ -117,5 +124,70 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		}
 
 		return false;
+	}
+
+	private boolean checkRoadRequirement() {
+
+		System.out.println("Checking road");
+
+		Map.MapCoord southCorner =  currCell.getMapPosition();
+		Cell checkedCell;
+
+		for (int x = 0, width = (int)savedBuilding.getDimensions().width; x < width; x++) {
+
+			// checking bottom
+			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - x, southCorner.y + 1))) != null) &&
+				   checkedCell.containsMapObject() &&
+				   checkedCell.getTopObject().getName().contains("Road")) {
+
+				return true;
+			}
+			// checking top
+			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - x, southCorner.y - (int)savedBuilding.getDimensions().height - 1))) != null) &&
+				   checkedCell.containsMapObject() &&
+				   checkedCell.getTopObject().getName().contains("Road")) {
+
+				return true;
+			}
+		}
+
+		for (int y = 0, height = (int)savedBuilding.getDimensions().width; y < height; y++) {
+
+			// checking right
+			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x + 1, southCorner.y - y))) != null) &&
+				   checkedCell.containsMapObject() &&
+				   checkedCell.getTopObject().getName().contains("Road")) {
+
+				return true;
+			}
+			// checking left
+			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - (int)savedBuilding.getDimensions().width, southCorner.y - y))) != null) &&
+				   checkedCell.containsMapObject() &&
+				   checkedCell.getTopObject().getName().contains("Road")) {
+
+				return true;
+			}
+		}
+
+
+		return false;
+	}
+
+	@Override
+	public void cancel() {
+
+		GameScene.getInstance().clearActiveTool();
+		clearVisualizers();
+
+		super.cancel();
+	}
+
+	private void clearVisualizers() {
+		// return our visualizer
+		if (visualizer != null) {
+			visualizer.remove();
+			VisualizerFactory.getInstance().returnVisualizer(visualizer);
+			visualizer = null;
+		}
 	}
 }

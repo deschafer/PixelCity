@@ -19,8 +19,17 @@ public class GameScene extends Scene {
 
 	private Map gameMap;     // our actual game map
 	private static GameScene instance = new GameScene();
-	private Tool activeTool;
 
+	// Tools
+	private Tool activeTool;
+	private SpecialtyBuildingPlacementTool specialtyBuildingPlacementTool;
+	private RoadTool roadTool;
+	private ZoneTool residentialZoneTool;
+	private ZoneTool commercialZoneTool;
+	private ZoneTool officeZoneTool;
+	private DeleteTool deleteTool;
+
+	// UI elements
 	private Label financeLabel;
 
 	// TODO: for now, tools will be manually set, but in the future, it will be set by the UI system
@@ -47,12 +56,19 @@ public class GameScene extends Scene {
 
 
 		// TODO: set up and init. all UI elements as well
-
-		//activeTool = new RoadTool();
 	}
 
 	@Override
 	public void update(float dt) {
+
+		if (specialtyBuildingPlacementTool == null) {
+			specialtyBuildingPlacementTool = new SpecialtyBuildingPlacementTool();
+			roadTool = new RoadTool();
+			residentialZoneTool = new ZoneTool(Building.BuildingType.RESIDENTIAL);
+			commercialZoneTool = new ZoneTool(Building.BuildingType.COMMERCIAL);
+			officeZoneTool = new ZoneTool(Building.BuildingType.OFFICE);
+			deleteTool = new DeleteTool();
+		}
 
 		// update our finances
 		FinancialManager.getInstance().update();
@@ -96,35 +112,47 @@ public class GameScene extends Scene {
 				activeTool.cancel();
 		} else if (keycode == Input.Keys.R) {
 			System.out.println("Road tool selected");
-			activeTool = new RoadTool();
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = roadTool;
 		} else if (keycode == Input.Keys.NUM_1) {
 			System.out.println("Zone tool selected");
-			activeTool = new ZoneTool(Building.BuildingType.RESIDENTIAL);
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = residentialZoneTool;
 		} else if (keycode == Input.Keys.NUM_2) {
 			System.out.println("Zone tool selected");
-			activeTool = new ZoneTool(Building.BuildingType.COMMERCIAL);
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = commercialZoneTool;
 		} else if (keycode == Input.Keys.NUM_3) {
+			if (activeTool != null) activeTool.switchOut();
 			System.out.println("Zone tool selected");
-			activeTool = new ZoneTool(Building.BuildingType.OFFICE);
+			activeTool = officeZoneTool;
 		} else if (keycode == Input.Keys.B) {
 			System.out.println("Deletion tool selected");
-			activeTool = new DeleteTool();
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = deleteTool;
 		} else if (keycode == Input.Keys.L) {
 			Demand.getInstance().print();
 		} else if (keycode == Input.Keys.M) {
 			FinancialManager.getInstance().addFunds(10000);
 		} else if (keycode == Input.Keys.C) {
 			System.out.println("Specialty Building tool selected");
-			activeTool = new SpecialtyBuildingPlacementTool();
-			((SpecialtyBuildingPlacementTool)activeTool).setPlaceableObject("CoalPowerPlantUtility");
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = specialtyBuildingPlacementTool;
+			specialtyBuildingPlacementTool.setPlaceableObject("CoalPowerPlantUtility");
 
 		} else if (keycode == Input.Keys.V) {
 			System.out.println("Specialty Building tool selected");
-			activeTool = new SpecialtyBuildingPlacementTool();
-			((SpecialtyBuildingPlacementTool)activeTool).setPlaceableObject("FireStation");
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = specialtyBuildingPlacementTool;
+			specialtyBuildingPlacementTool.setPlaceableObject("FireStation");
 		}
 
+
 		return false;
+	}
+
+	public void clearActiveTool() {
+		activeTool = null;
 	}
 
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {

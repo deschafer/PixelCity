@@ -157,5 +157,4 @@ public class DeleteTool extends MapTool {
 			highlightedObjects.get(i).setColor(highlightedColors.get(i));
 		}
 	}
-
 }

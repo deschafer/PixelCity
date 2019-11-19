@@ -31,7 +31,7 @@ public class Map extends Group {
 		public int x;
 		public int y;
 
-		MapCoord(int x, int y) {
+		public MapCoord(int x, int y) {
 			this.x = x;
 			this.y = y;
 		}

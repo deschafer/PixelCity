@@ -97,4 +97,13 @@ public class MapTool extends Tool {
 
 		return true;
 	}
+
+	@Override
+	public void switchOut() {
+		cancel();
+		begCell = null;
+		endCell = null;
+		currentCells.clear();
+		currCell = null;
+	}
 }

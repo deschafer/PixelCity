@@ -76,4 +76,6 @@ public abstract class Tool {
 		currentState = TouchState.NO_TOUCH;
 	}
 
+	public abstract void switchOut();
+
 }
