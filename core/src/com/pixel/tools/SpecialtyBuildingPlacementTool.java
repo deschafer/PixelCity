@@ -169,7 +169,6 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 			}
 		}
 
-
 		return false;
 	}
 

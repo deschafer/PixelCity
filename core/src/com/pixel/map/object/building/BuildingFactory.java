@@ -1,5 +1,6 @@
 package com.pixel.map.object.building;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.display.BuildingDisplay;
 
@@ -101,7 +102,8 @@ public class BuildingFactory {
 			   buildTime + buildTimePerLevel * level,
 			   incomePerResident,
 			   basePowerNeeded + powerPerLevel * level,
-			   baseWaterNeeded + waterPerLevel * level);
+			   baseWaterNeeded + waterPerLevel * level,
+			   new Rectangle(position.x, position.y, 1,1));
 
 		// then we need to add the displays to this object
 		ArrayList<BuildingDisplay> bases = getBases(type);

@@ -145,6 +145,16 @@ public class GameScene extends Scene {
 			if (activeTool != null) activeTool.switchOut();
 			activeTool = specialtyBuildingPlacementTool;
 			specialtyBuildingPlacementTool.setPlaceableObject("FireStation");
+		} else if (keycode == Input.Keys.P) {
+			System.out.println("Specialty Building tool selected");
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = specialtyBuildingPlacementTool;
+			specialtyBuildingPlacementTool.setPlaceableObject("PoliceStation");
+		} else if (keycode == Input.Keys.H) {
+			System.out.println("Specialty Building tool selected");
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = specialtyBuildingPlacementTool;
+			specialtyBuildingPlacementTool.setPlaceableObject("Hospital");
 		}
 
 

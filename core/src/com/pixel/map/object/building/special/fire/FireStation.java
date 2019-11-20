@@ -1,4 +1,4 @@
-package com.pixel.map.object.building.special.utilities.fire;
+package com.pixel.map.object.building.special.fire;
 
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;

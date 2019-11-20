@@ -1,5 +1,6 @@
 package com.pixel.map.object.building;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.pixel.city.City;
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
@@ -40,6 +41,7 @@ public class Building extends MapObject {
 
 	public static final int residentLevelOfficeRequirement = 5;
 
+	protected Rectangle dimensions = new Rectangle();	// refers to the coordinates in the map
 	private BuildingType type;               // the type of this building
 	private int level;                       // the level of this object
 	private int numberResidents = 0;         // the number of residents
@@ -86,7 +88,7 @@ public class Building extends MapObject {
 
 	public Building(Map.MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
 				 float happinessRequired, float levelUpTime, float buildTime, float incomePerResident,
-				 float powerNeeded, float waterNeeded) {
+				 float powerNeeded, float waterNeeded, Rectangle dimensions) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
 			   GameScene.getInstance().getGameMap().getCellHeight(), coord, ID);
 
@@ -102,6 +104,7 @@ public class Building extends MapObject {
 		residents = new ArrayList<>();
 		drawableComponents = new ArrayList<>();
 		happiness = 50.0f;
+		this.dimensions = dimensions;
 
 		replaceable = false;
 
@@ -216,11 +219,6 @@ public class Building extends MapObject {
 			// If this building has been built
 			else {
 				// we need to check if any of our residents do not have a job
-
-				// TODO: needs to be removed
-				if(type == BuildingType.COMMERCIAL) {
-					int nop = 0;
-				}
 
 				if (waterClaimed < waterNeeded) {
 					if (UtilityManager.getInstance().claimWater(waterNeeded)) {

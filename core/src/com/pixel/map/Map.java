@@ -14,7 +14,9 @@ import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
-import com.pixel.map.object.building.special.utilities.fire.FireStation;
+import com.pixel.map.object.building.special.fire.FireStation;
+import com.pixel.map.object.building.special.health.Hospital;
+import com.pixel.map.object.building.special.police.PoliceStation;
 import com.pixel.map.object.building.special.utilities.power.CoalPowerPlant;
 import com.pixel.map.object.building.special.utilities.water.WaterTank;
 import com.pixel.map.object.roads.*;
@@ -168,6 +170,10 @@ public class Map extends Group {
 		ServiceBuilding.placedOnMap = false;
 		VisualizerFactory.getInstance().registerMapObject(
 			   new FireStation(0,0, new MapCoord(0,0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new PoliceStation(0,0, new MapCoord(0,0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new Hospital(0,0, new MapCoord(0,0)));
 
 
 		// set up all of our building displays
@@ -370,6 +376,12 @@ public class Map extends Group {
 		FireStation fireStation;
 		SpecialtyBuildingFactory.getInstance().registerObject( fireStation =
 			   new FireStation(0,0, new MapCoord(0,0)), fireStation.getName());
+		PoliceStation policeStation;
+		SpecialtyBuildingFactory.getInstance().registerObject( policeStation =
+			   new PoliceStation(0,0, new MapCoord(0,0)), policeStation.getName());
+		Hospital hospital;
+		SpecialtyBuildingFactory.getInstance().registerObject( hospital =
+			   new Hospital(0,0, new MapCoord(0,0)), hospital.getName());
 
 		// Reset it back to normal
 		ServiceBuilding.placedOnMap = true;
