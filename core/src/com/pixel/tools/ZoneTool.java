@@ -2,6 +2,7 @@ package com.pixel.tools;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.city.FinancialManager;
+import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.zoning.CommercialZone;
@@ -20,6 +21,7 @@ public class ZoneTool extends MapTool {
 	private Rectangle rectangle = new Rectangle();
 	private Building.BuildingType zoneType;
 	private boolean affordable = true;
+	private int distanceFromRoad = 4;
 
 	public ZoneTool(Building.BuildingType type) {
 		zoneType = type;
@@ -33,6 +35,7 @@ public class ZoneTool extends MapTool {
 
 		clearVisualizers();
 		affordable = true;
+		totalCost = 0;
 
 		rectangle.x = 0;
 		rectangle.y = 0;
@@ -85,13 +88,25 @@ public class ZoneTool extends MapTool {
 			return false;
 		}
 
-		// Calculate the cost of these new cells
-		if(zoneType == Building.BuildingType.RESIDENTIAL) {
-			totalCost = Zone.residentialZonePlacementCost * rectangle.width * rectangle.height;
-		} else if (zoneType == Building.BuildingType.COMMERCIAL) {
-			totalCost = Zone.commercialZonePlacementCost * rectangle.width * rectangle.height;
-		} else {
-			totalCost = Zone.officeZonePlacementCost * rectangle.width * rectangle.height;
+		// find the actual cost of these cells
+		// zones can only be placed on top of blank/empty cells.
+		for (int i = 0; i < rectangle.width; i++) {
+			for (int j = 0; j < rectangle.height; j++) {
+				// Calculate the cost of these new cells
+				Cell cell = gameMap.getCell((int)rectangle.x + i, (int)rectangle.y + j);
+
+				// only for empty cells
+				if (cell != null && !cell.containsMapObject() && checkRoadRequirement(cell)) {
+
+					if (zoneType == Building.BuildingType.RESIDENTIAL) {
+						totalCost += Zone.residentialZonePlacementCost;
+					} else if (zoneType == Building.BuildingType.COMMERCIAL) {
+						totalCost += Zone.commercialZonePlacementCost;
+					} else {
+						totalCost += Zone.officeZonePlacementCost;
+					}
+				}
+			}
 		}
 
 		// if the cells cost too much
@@ -142,6 +157,45 @@ public class ZoneTool extends MapTool {
 		return true;
 	}
 
+	private boolean checkRoadRequirement(Cell cell) {
+
+		Map.MapCoord position = cell.getMapPosition();
+
+		// check all the cells in the x axis
+		for ( int x = position.x, i = x; i >= 0 && i >= position.x - distanceFromRoad; x++, i--) {
+			Cell cell1 = (Cell)gameMap.getCell(x,cell.getMapPosition().y);
+			if (cell1 != null &&
+				   cell1.containsMapObject() &&
+				   cell1.getTopObject().getName().contains("Road")) {
+				return true;
+			}
+
+			cell1 = (Cell)gameMap.getCell(i,cell.getMapPosition().y);
+			if (cell1 != null &&
+				   cell1.containsMapObject() &&
+				   cell1.getTopObject().getName().contains("Road")) {
+				return true;
+			}
+		}
+		// check all the cells in the x axis
+		for ( int y = position.y, j = y; j >= 0 && j >= position.y - distanceFromRoad; y++, j--) {
+			Cell cell1 = (Cell)gameMap.getCell(position.x, y);
+			if (cell1 != null &&
+				   cell1.containsMapObject() &&
+				   cell1.getTopObject().getName().contains("Road")) {
+				return true;
+			}
+
+			cell1 = (Cell)gameMap.getCell(position.x, j);
+			if (cell1 != null &&
+				   cell1.containsMapObject() &&
+				   cell1.getTopObject().getName().contains("Road")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private void addVisualizer(Cell cell, Visualizer visualizer) {
 
 		if (cell == null) return;
@@ -152,12 +206,12 @@ public class ZoneTool extends MapTool {
 		cell.addActor(visualizer);
 		visualizers.add(visualizer);
 
-		if(!affordable) {
+		if(!affordable || !checkRoadRequirement(cell)) {
 			visualizer.setType(Visualizer.VisualizerType.RED);
 		}
 		// if the cell is empty of MapObjects, then we can add an object here, and the visualizer is green
 		else if (cellEmpty) {
-			visualizer.setType(Visualizer.VisualizerType.GREEN);
+			visualizer.setType(Visualizer.VisualizerType.BLANK);
 		}
 		// the cell contains MapObjects
 		else {

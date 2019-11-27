@@ -15,6 +15,7 @@ import com.pixel.behavior.PlacementBehavior;
 import com.pixel.city.FinancialManager;
 import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
+import com.sun.org.apache.bcel.internal.generic.NOP;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class MapObject extends Group {
 	private String sourceTexture;
 	private float elapsedTime;
 	private boolean animationPaused;
+
+	protected boolean deleted = false;
 
 	protected boolean financialInfluence = false;	// indicates whether this object has a source over time
 	protected float placedownCost = 0.0f;		// the cost for this object to be placed
@@ -91,16 +94,14 @@ public class MapObject extends Group {
 		return anim;
 	}
 
-	public Animation<TextureRegion> loadAnimationFromFiles(Texture[] textures, float frameDuration, boolean loop)
-	{
+	public Animation<TextureRegion> loadAnimationFromFiles(Texture[] textures, float frameDuration, boolean loop) {
 		int fileCount = textures.length;
 		Array<TextureRegion> textureArray = new Array<TextureRegion>();
 
-		for (int n = 0; n < fileCount; n++)
-		{
+		for (int n = 0; n < fileCount; n++) {
 			Texture texture = textures[n];
-			texture.setFilter( Texture.TextureFilter.Linear, Texture.TextureFilter.Linear );
-			textureArray.add( new TextureRegion( texture ) );
+			texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+			textureArray.add(new TextureRegion(texture));
 		}
 
 		Animation<TextureRegion> anim = new Animation<TextureRegion>(frameDuration, textureArray);
@@ -110,8 +111,7 @@ public class MapObject extends Group {
 		else
 			anim.setPlayMode(Animation.PlayMode.NORMAL);
 
-		if (animation == null)
-			setAnimation(anim);
+		setAnimation(anim);
 
 		return anim;
 	}
@@ -278,7 +278,6 @@ public class MapObject extends Group {
 				source.setInvalid();
 			sources.clear();
 		}
-
 		return super.remove();
 	}
 
@@ -298,6 +297,10 @@ public class MapObject extends Group {
 		for(Source source : sources) {
 			FinancialManager.getInstance().addSource(source);
 		}
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public void setPrototypeObject(boolean prototypeObject) {

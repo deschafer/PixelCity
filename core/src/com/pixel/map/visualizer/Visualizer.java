@@ -14,7 +14,7 @@ public class Visualizer extends Actor {
 	private VisualizerType type;
 	private String textureString;
 
-	public enum VisualizerType {GREEN, YELLOW, RED}
+	public enum VisualizerType {GREEN, YELLOW, RED, BLANK}
 
 	public Visualizer(float x, float y, MapObject copiedType) {
 
@@ -64,6 +64,9 @@ public class Visualizer extends Actor {
 				break;
 			case YELLOW:
 				setColor(1,1,0,getColor().a);
+				break;
+			case BLANK:
+				setColor(1,1,1,getColor().a);
 				break;
 		}
 	}

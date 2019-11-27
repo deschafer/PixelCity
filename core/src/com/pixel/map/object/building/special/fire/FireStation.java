@@ -8,11 +8,13 @@ import com.pixel.map.object.building.special.ServiceBuilding;
 
 public class FireStation extends ServiceBuilding {
 
-	private static final float textureWidth = 132 * 3;
-	private static final float textureHeight = 83 * 3;
+	private static final int widthInCells = 3;
+	private static final int heightInCells = 3;
+	private static final float textureWidth = 132 * widthInCells;
+	private static final float textureHeight = 83 * heightInCells;
 
 	public FireStation(float x, float y, Map.MapCoord coord) {
-		super(x, isometricCorrection, textureWidth, textureHeight, coord, "FireStation");
+		super(x, isometricCorrection, textureWidth, textureHeight, widthInCells, heightInCells, coord, "FireStation");
 
 		// we need to load our texture here
 		// and set the width and height of it

@@ -53,6 +53,7 @@ public class Building extends MapObject {
 	private float buildTime = 1.0f;
 	private boolean containsUnemployed = true;
 	private boolean replacedByUpgrade = false;
+	private boolean specefic = false;
 
 	// TODO: as these get implemented, these should be false to start
 	private boolean fireServiceProvided = true;
@@ -77,7 +78,7 @@ public class Building extends MapObject {
 	private boolean waterProvided = false;
 
 	private float updateHappinessTimer = 0;
-	private float updateHapppinessTime = 5.0f;
+	private float updateHappinessTime = 5.0f;
 
 	// levelling data
 	private float levelUpTimer = 0;		// timer used to keep track of the time of level up time
@@ -88,7 +89,7 @@ public class Building extends MapObject {
 
 	public Building(Map.MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
 				 float happinessRequired, float levelUpTime, float buildTime, float incomePerResident,
-				 float powerNeeded, float waterNeeded, Rectangle dimensions) {
+				 float powerNeeded, float waterNeeded, Rectangle dimensions, boolean specefic) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
 			   GameScene.getInstance().getGameMap().getCellHeight(), coord, ID);
 
@@ -105,6 +106,7 @@ public class Building extends MapObject {
 		drawableComponents = new ArrayList<>();
 		happiness = 50.0f;
 		this.dimensions = dimensions;
+		this.specefic = specefic;
 
 		replaceable = false;
 
@@ -193,6 +195,8 @@ public class Building extends MapObject {
 		return numberResidents - residents.size();
 	}
 
+	public Rectangle getDimensions() { return dimensions; }
+
 	@Override
 	public void act(float dt) {
 		super.act(dt);
@@ -237,7 +241,7 @@ public class Building extends MapObject {
 				}
 
 				updateHappinessTimer += dt;
-				if (updateHappinessTimer >= updateHapppinessTime) {
+				if (updateHappinessTimer >= updateHappinessTime) {
 					updateHappiness();
 					updateHappinessTimer = 0;
 				}
@@ -377,6 +381,10 @@ public class Building extends MapObject {
 		}
 		if (educationServiceProvided) {
 			buildingHappiness += educationHappinessRatio;
+		}
+
+		if (buildingHappiness == 1.0f) {
+			setColor(0,1,0,1);
 		}
 
 

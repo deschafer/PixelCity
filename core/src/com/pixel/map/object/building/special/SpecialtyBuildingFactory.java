@@ -32,7 +32,6 @@ public class SpecialtyBuildingFactory {
 
 				building.setMapPosition(position.x, position.y);
 				return building;
-
 			}
 			return null;
 		}

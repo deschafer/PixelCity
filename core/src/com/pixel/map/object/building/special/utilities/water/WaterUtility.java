@@ -8,8 +8,8 @@ public class WaterUtility extends SpecialtyBuilding {
 
 	private float waterSupplied;
 
-	public WaterUtility(float x, float y, float width, float height, Map.MapCoord coord, String ID, float waterSupplied) {
-		super(x, y, width, height, coord, ID + "Utility");
+	public WaterUtility(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID, float powerSupplied) {
+		super(x, y, width, height, widthInCells, heightInCells, coord, ID + "Utility");
 
 		this.waterSupplied = waterSupplied;
 

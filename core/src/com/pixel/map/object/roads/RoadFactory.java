@@ -46,6 +46,7 @@ public class RoadFactory {
 
 	public void registerRoadType(RoadType type, Road road) {
 		int position = type.value;
+		road.setPrototypeObject(true);
 
 		// save the association between this road type and an actual road class
 		roadTypes[position] = road;

@@ -8,12 +8,13 @@ import com.pixel.map.object.building.special.ServiceBuilding;
 
 public class Hospital extends ServiceBuilding {
 
-
-	private static final float textureWidth = 132 * 2;
-	private static final float textureHeight = 112 * 2;
+	private static final int widthInCells = 2;
+	private static final int heightInCells = 2;
+	private static final float textureWidth = 132 * widthInCells;
+	private static final float textureHeight = 112 * heightInCells;
 
 	public Hospital(float x, float y, Map.MapCoord coord) {
-		super(x, isometricCorrection, textureWidth, textureHeight, coord, "Hospital");
+		super(x, isometricCorrection, textureWidth, textureHeight, widthInCells, heightInCells, coord, "Hospital");
 
 		// we need to load our texture here
 		// and set the width and height of it

@@ -3,8 +3,6 @@ package com.pixel.map.object.building.special;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.pixel.map.BaseActor;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
@@ -25,16 +23,16 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 	protected ArrayList<Cell> influencedCells = new ArrayList<>();
 	private Services serviceType;
 	private Polygon zoneOfInfluence;
-	private float zoneWidth = 1500;
-	private float zoneHeight = 1500;
+	private float zoneWidth = 500;
+	private float zoneHeight = 500;
 	private final static int numSides = 8;
 	private float updateTimer = 5.0f;
 	private float updateTime = 5.0f;
 
 	public static boolean placedOnMap = true;
 
-	public ServiceBuilding(float x, float y, float width, float height, Map.MapCoord coord, String ID) {
-		super(x, y, width, height, coord, ID);
+	public ServiceBuilding(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID) {
+		super(x, y, width, height, widthInCells, heightInCells, coord, ID);
 
 		if (placedOnMap) {
 			setZoneOfInfluence();
@@ -62,6 +60,9 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 		int mapHeight = map.getHeightInCells();
 
 		Cell occupiedCell = map.getCell(getMapPosition());
+		if (getMapPosition() == Map.zeroCoordinate) {
+			System.out.println("Zero coord issue");
+		}
 
 		boundaryPolygon.setPosition(occupiedCell.getX() - zoneWidth / 2, occupiedCell.getY() - zoneHeight / 2);
 
@@ -109,7 +110,6 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 					// then we add this service
 					Building building = (Building)object;
 					building.addService(serviceType);
-					building.setColor(0,1,0,1);
 				}
 			}
 		}

@@ -83,6 +83,8 @@ public class VisualizerFactory {
 
 			// create a new list of visualizers for it
 			sortedVisualizers.put(object.getName(), new ArrayList<>());
+
+			object.setPrototypeObject(true);
 		}
 	}
 }

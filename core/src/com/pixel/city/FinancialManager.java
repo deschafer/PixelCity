@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class FinancialManager {
 
 	private static FinancialManager instance = new FinancialManager();
-	private float balance = 500.0f;
+	private float balance = 50000.0f;
 	private ArrayList<Source> sources;
 
 	private float updateTimer = 0;

@@ -131,15 +131,12 @@ public class DeleteTool extends MapTool {
 		for(MapObject object : highlightedObjects) {
 
 			Cell cell = gameMap.getCell(object.getMapPosition());
-			cell.removeActor(object);
-			object.remove();
-
-			for (Actor actor : cell.getParent().getChildren()) {
-				if(actor.getName().contains("Zoning")) {
-					ZoneCell zoneCell = (ZoneCell)actor;
-					zoneCell.setValid(false);
-				}
+			if (object.hasParent()) {
+				object.getParent().removeActor(object);
 			}
+			cell.removeActor(object);
+			object.setDeleted(true);
+			object.remove();
 		}
 
 		highlightedObjects.clear();

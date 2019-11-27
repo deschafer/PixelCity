@@ -6,6 +6,7 @@ public class PixelAssetManager {
 
 	public static AssetManager manager = new AssetManager();
 
+	// road tiles
 	public static String roadwayNorthSouth = "assets/city/PNG/cityTiles_081.png";
 	public static String roadwayEastWest = "assets/city/PNG/cityTiles_073.png";
 	public static String grass = "assets/landscape/PNG/landscapeTiles_075.png";
@@ -22,11 +23,13 @@ public class PixelAssetManager {
 	public static String intersectionThreeSouth = "assets/city/PNG/cityTiles_096.png";
 	public static String intersectionThreeEast = "assets/city/PNG/cityTiles_095.png";
 	public static String intersectionThreeWest = "assets/city/PNG/cityTiles_088.png";
+
+	// zone tiles
 	public static String residentialZoning = "assets/zoning/resZone.png";
 	public static String commercialZoning = "assets/zoning/commZone.png";
 	public static String officeZoning = "assets/zoning/offZone.png";
 
-
+	// generic building components
 	public static String residentialBase22 = "assets/buildings/PNG/buildingTiles_022.png";
 	public static String residentialBase14 = "assets/buildings/PNG/buildingTiles_014.png";
 	public static String residentialBase30 = "assets/buildings/PNG/buildingTiles_030.png";
@@ -123,10 +126,16 @@ public class PixelAssetManager {
 	public static String officeStory23 = "assets/buildings/PNG/buildingTiles_023.png";
 	public static String officeStory31 = "assets/buildings/PNG/buildingTiles_031.png";
 
+	// Specialty and Service Buildings
 	public static String coalPowerPlant = "assets/services/coalPowerPlant.png";
 	public static String waterTank = "assets/services/waterTank.png";
 	public static String fireStation = "assets/services/fireStation.png";
 	public static String policeStation = "assets/services/policeStation.png";
 	public static String hospital = "assets/services/hospital.png";
+	public static String secondarySchool = "assets/services/secondarySchool.png";
 
+	// SpecificBuilding components
+	public static String blueSkyscraperBase = "assets/specificBuildings/officeSkyBase.png";
+	public static String blueSkyscraperStory = "assets/specificBuildings/officeSkyFloor.png";
+	public static String blueSkyscraperRoof = "assets/specificBuildings/officeSkyRoof.png";
 }

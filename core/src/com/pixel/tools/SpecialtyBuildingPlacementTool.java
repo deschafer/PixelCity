@@ -4,6 +4,7 @@ import com.pixel.city.FinancialManager;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.building.Building;
+import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.map.object.building.special.SpecialtyBuilding;
 import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
 import com.pixel.map.visualizer.Visualizer;
@@ -30,8 +31,10 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		visualizer.setX(-visualizer.getWidth() + visualizer.getWidth() / 2 + cellWidth / 2);
 
 		// create our new building
+		ServiceBuilding.placedOnMap = false;
 		savedBuilding = SpecialtyBuildingFactory.getInstance().create(buildingName, Map.zeroCoordinate);
 		totalCost = savedBuilding.getPlacedownCost();
+		ServiceBuilding.placedOnMap = true;
 	}
 
 	@Override
@@ -51,8 +54,8 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		placingCells.clear();
 
 		// also check the positions of the cell placement
-		float width = visualizer.getWidth() / gameMap.getCellWidth();
-		float height = visualizer.getWidth() / gameMap.getCellHeight();
+		float width = savedBuilding.getDimensions().width;
+		float height = savedBuilding.getDimensions().height;
 		int widthInCells = (int)width;
 		int heightInCells = (int)height;
 		Cell cell = null;
@@ -86,6 +89,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 			valid = false;
 		}
 		if (!checkRoadRequirement()) {
+			System.out.println("No road found");
 			valid = false;
 		}
 		if (!valid) {
@@ -118,6 +122,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 			// setting each cell as occupied
 			for (Cell cell : placingCells) {
 				cell.addOccupyingObject(building);
+				building.addOccupyingCell(cell);
 			}
 
 			return true;
@@ -127,9 +132,6 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	}
 
 	private boolean checkRoadRequirement() {
-
-		System.out.println("Checking road");
-
 		Map.MapCoord southCorner =  currCell.getMapPosition();
 		Cell checkedCell;
 
@@ -143,7 +145,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 				return true;
 			}
 			// checking top
-			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - x, southCorner.y - (int)savedBuilding.getDimensions().height - 1))) != null) &&
+			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - x, southCorner.y - (int)savedBuilding.getDimensions().height))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 
@@ -151,7 +153,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 			}
 		}
 
-		for (int y = 0, height = (int)savedBuilding.getDimensions().width; y < height; y++) {
+		for (int y = 0, height = (int)savedBuilding.getDimensions().height; y < height; y++) {
 
 			// checking right
 			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x + 1, southCorner.y - y))) != null) &&

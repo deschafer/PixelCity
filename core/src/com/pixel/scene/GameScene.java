@@ -54,6 +54,9 @@ public class GameScene extends Scene {
 		uiTable.row();
 		uiTable.add().expandY();
 
+		mainStage.getCamera().translate(gameMap.getWidthInCells() * Map.cellWidth / 2,
+			   gameMap.getHeightInCells() * Map.cellHeight / 2, 0);
+
 
 		// TODO: set up and init. all UI elements as well
 	}
@@ -155,6 +158,16 @@ public class GameScene extends Scene {
 			if (activeTool != null) activeTool.switchOut();
 			activeTool = specialtyBuildingPlacementTool;
 			specialtyBuildingPlacementTool.setPlaceableObject("Hospital");
+		} else if (keycode == Input.Keys.E) {
+			System.out.println("Specialty Building tool selected");
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = specialtyBuildingPlacementTool;
+			specialtyBuildingPlacementTool.setPlaceableObject("SecondarySchool");
+		} else if (keycode == Input.Keys.T) {
+			System.out.println("Specialty Building tool selected");
+			if (activeTool != null) activeTool.switchOut();
+			activeTool = specialtyBuildingPlacementTool;
+			specialtyBuildingPlacementTool.setPlaceableObject("WaterTankUtility");
 		}
 
 

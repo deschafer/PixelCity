@@ -35,6 +35,7 @@ public class ZoneCell extends MapObject {
 	@Override
 	public boolean remove() {
 		parentZone.removeZoneCell(this);
+		valid = false;
 
 		return super.remove();
 	}

@@ -8,8 +8,8 @@ public class PowerUtility extends SpecialtyBuilding {
 
 	private float powerSupplied;
 
-	public PowerUtility(float x, float y, float width, float height, Map.MapCoord coord, String ID, float powerSupplied) {
-		super(x, y, width, height, coord, ID + "Utility");
+	public PowerUtility(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID, float powerSupplied) {
+		super(x, y, width, height, widthInCells, heightInCells, coord, ID + "Utility");
 
 		this.powerSupplied = powerSupplied;
 

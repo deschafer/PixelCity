@@ -55,25 +55,21 @@ public class RoadTool extends MapTool {
 
 		// The top right corner
 		if(distance.x >= 0 && distance.y >= 0) {
-			System.out.println("Quad 0");
 			yChange = -1;
 			roadDirection = Direction.NORTH;
 		}
 		// The top left corner
 		else if(distance.x < 0 && distance.y >= 0) {
-			System.out.println("Quad 1");
 			xChange = -1;
 			roadDirection = Direction.WEST;
 		}
 		// The bottom left corner
 		else if(distance.x < 0 && distance.y < 0) {
-			System.out.println("Quad 2");
 			yChange = 1;
 			roadDirection = Direction.SOUTH;
 		}
 		// The bottom right corner
 		else if(distance.x >= 0 && distance.y < 0) {
-			System.out.println("Quad 3");
 			xChange = 1;
 			roadDirection = Direction.EAST;
 		}
@@ -81,7 +77,11 @@ public class RoadTool extends MapTool {
 		numberCells = (int)Math.abs(distance.x / (cellWidth / 2)) + 1;
 
 		// calculate the number of cells that are affordable
-		totalCost = numberCells * Road.cost;
+		if (numberCells == 1) {
+			totalCost = 0;
+		} else {
+			totalCost = numberCells * Road.cost;
+		}
 		float balance = FinancialManager.getInstance().getBalance();
 
 		numberAffordableRoads = (int)(((totalCost > balance) ? balance : totalCost) / Road.cost);
@@ -192,10 +192,13 @@ public class RoadTool extends MapTool {
 			MapObject object = cell.getTopObject();
 
 			// the top object can be placed on, the visualizer is yellow
-			if(object.isReplaceable()) {
+			if(object.isReplaceable() && object.getName().contains("Road")) {
 				visualizer.setType(Visualizer.VisualizerType.YELLOW);
 				discountedRoads++;
 				totalCost -= Road.cost;
+			}
+			else if (object.isReplaceable()) {
+				visualizer.setType(Visualizer.VisualizerType.YELLOW);
 			}
 			// the top object cannot be placed over, the visualizer is red
 			else {

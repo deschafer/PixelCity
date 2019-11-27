@@ -2,8 +2,11 @@ package com.pixel.map.object.zoning;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.city.Demand;
+import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.BuildingFactory;
+
+import java.util.ArrayList;
 
 public class ResidentialZone extends Zone {
 
@@ -21,20 +24,27 @@ public class ResidentialZone extends Zone {
 		}
 
 		// then we need to verify that we have demand prior to building
-		if(Demand.getInstance().isResidentalDemanded()) {
-			// get our cell position from those available
-			ZoneCell zoneCell = availableCells.get(random.nextInt(availableCells.size()));
+		if (Demand.getInstance().isResidentalDemanded()) {
 
-			// remove this available cell
-			availableCells.remove(zoneCell);
+			// get a building from the BuildingFactory
+			Building building =
+				   BuildingFactory.getInstance().create(parentMap.new MapCoord(0,0), Building.BuildingType.RESIDENTIAL, 0);
 
-			if(zoneCell.hasParent()) {
+			ZoneCell suitableCell;
+			ArrayList<Map.MapCoord> suitableCellLocations;
 
-				// then we create our new building
-				Building building = BuildingFactory.getInstance().create(zoneCell.getMapPosition(), zoneType, 0);
+			// now we need to find a position for this building if there is one available
+			// use our findSuitableLocation function from zone to get a placement for this building
 
-				// We add our building on top of this cell position
-				parentMap.getCell(zoneCell.getMapPosition()).addMapObject(building);
+			//  if there is a suitable location
+			if (!(suitableCellLocations = findSuitableLocation(building.getDimensions())).isEmpty()) {
+
+				// then we found a suitableCell, and we need to place this object
+				placeBuilding(suitableCellLocations.get(random.nextInt(suitableCellLocations.size())), building);
+				System.out.println("X: " + building.getMapPosition().x + "\nY:" + building.getMapPosition().y);
+			}
+			else {
+				System.out.println("Position not found for building");
 			}
 		}
 	}

@@ -2,6 +2,7 @@ package com.pixel.map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -14,6 +15,7 @@ import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
+import com.pixel.map.object.building.special.education.SecondarySchool;
 import com.pixel.map.object.building.special.fire.FireStation;
 import com.pixel.map.object.building.special.health.Hospital;
 import com.pixel.map.object.building.special.police.PoliceStation;
@@ -94,67 +96,69 @@ public class Map extends Group {
 	public void initialize() {
 
 		// register all of our different road types
+
+		// TODO: change all of the road creation below to be a road class only
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.ROADWAY_NS,
-			   new RoadwayNorthSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.ROADWAY_NS));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.ROADWAY_EW,
-			   new RoadwayEastWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.ROADWAY_EW));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.END_E,
-			   new RoadwayEndEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_E));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.END_N,
-			   new RoadwayEndNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_N));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.END_S,
-			   new RoadwayEndSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_S));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.END_W,
-			   new RoadwayEndWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_W));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.CORNER_EN,
-			   new CornerEastNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.CORNER_EN));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.CORNER_NE,
-			   new CornerNorthEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.CORNER_NE));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.CORNER_NW,
-			   new CornerNorthWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.CORNER_NW));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.CORNER_WN,
-			   new CornerWestNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.CORNER_WN));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.INTERSECT_4,
-			   new IntersectionFour(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.INTERSECT_4));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.INTERSECT_3_E,
-			   new IntersectionThreeEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.INTERSECT_3_E));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.INTERSECT_3_N,
-			   new IntersectionThreeNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.INTERSECT_3_N));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.INTERSECT_3_S,
-			   new IntersectionThreeSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.INTERSECT_3_S));
 		RoadFactory.getInstance().registerRoadType(
 			   RoadFactory.RoadType.INTERSECT_3_W,
-			   new IntersectionThreeWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.INTERSECT_3_W));
 
 
 		// register all of the visualizers we use in the map tools
 		// We only need to placeable tiles for visualizers
 		VisualizerFactory.getInstance().registerMapObject(
-			   new RoadwayNorthSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.ROADWAY_NS));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new RoadwayEastWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.ROADWAY_EW));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new RoadwayEndEast(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_E));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new RoadwayEndNorth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_N));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new RoadwayEndSouth(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_S));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new RoadwayEndWest(0, 0, cellWidth, cellHeight, new MapCoord(0, 0)));
+			   new Road(0, 0, new MapCoord(0, 0), RoadFactory.RoadType.END_W));
 		VisualizerFactory.getInstance().registerMapObject(
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.RESIDENTIAL, null));
 		VisualizerFactory.getInstance().registerMapObject(
@@ -174,6 +178,8 @@ public class Map extends Group {
 			   new PoliceStation(0,0, new MapCoord(0,0)));
 		VisualizerFactory.getInstance().registerMapObject(
 			   new Hospital(0,0, new MapCoord(0,0)));
+		VisualizerFactory.getInstance().registerMapObject(
+			   new SecondarySchool(0,0, new MapCoord(0,0)));
 
 
 		// set up all of our building displays
@@ -366,6 +372,20 @@ public class Map extends Group {
 		BuildingFactory.getInstance().registerBuildingDisplayStory(
 			   new BuildingDisplay(PixelAssetManager.officeStory31), false, false, true);
 
+		// register our specific, RCO buildings
+		BuildingFactory.getInstance().registerSpeceficBuildingDisplayBase(
+			   new BuildingDisplay((PixelAssetManager.blueSkyscraperBase), true),
+			   BuildingFactory.SpecificBuildingTypes.BLUE_SKYSCRAPER.getName(),
+			   Building.BuildingType.RESIDENTIAL, new Rectangle(0,0,2,2));
+		BuildingFactory.getInstance().registerSpeceficBuildingDisplayStory(
+			   new BuildingDisplay((PixelAssetManager.blueSkyscraperStory)),
+			   BuildingFactory.SpecificBuildingTypes.BLUE_SKYSCRAPER.getName(),
+			   Building.BuildingType.RESIDENTIAL);
+		BuildingFactory.getInstance().registerSpeceficBuildingDisplayRoof(
+			   new BuildingDisplay((PixelAssetManager.blueSkyscraperRoof)),
+			   BuildingFactory.SpecificBuildingTypes.BLUE_SKYSCRAPER.getName(),
+			   Building.BuildingType.RESIDENTIAL);
+
 		// register our specialty buildings
 		CoalPowerPlant coalPowerPlant;
 		SpecialtyBuildingFactory.getInstance().registerObject( coalPowerPlant =
@@ -382,6 +402,9 @@ public class Map extends Group {
 		Hospital hospital;
 		SpecialtyBuildingFactory.getInstance().registerObject( hospital =
 			   new Hospital(0,0, new MapCoord(0,0)), hospital.getName());
+		SecondarySchool school;
+		SpecialtyBuildingFactory.getInstance().registerObject( school =
+			   new SecondarySchool(0,0, new MapCoord(0,0)), school.getName());
 
 		// Reset it back to normal
 		ServiceBuilding.placedOnMap = true;
@@ -392,6 +415,9 @@ public class Map extends Group {
 		updateResidentialZones();
 		updateCommercialZones();
 		updateOfficeZones();
+		if (Road.roadsNeedToUpdate) {
+			Road.updateRoads();
+		}
 	}
 
 	private void updateResidentialZones() {
