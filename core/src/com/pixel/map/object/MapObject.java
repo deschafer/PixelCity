@@ -215,6 +215,10 @@ public class MapObject extends Group {
 		mapPosition.y = y;
 	}
 
+	public void setMapPosition(Map.MapCoord coord) {
+		setMapPosition(coord.x, coord.y);
+	}
+
 	public boolean isReplaceable() {
 		return replaceable;
 	}

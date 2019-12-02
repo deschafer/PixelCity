@@ -138,4 +138,32 @@ public class PixelAssetManager {
 	public static String blueSkyscraperBase = "assets/specificBuildings/officeSkyBase.png";
 	public static String blueSkyscraperStory = "assets/specificBuildings/officeSkyFloor.png";
 	public static String blueSkyscraperRoof = "assets/specificBuildings/officeSkyRoof.png";
+
+	// UI elements
+	public static String blueBox = "assets/UI/elements/blueCircle.png";
+	public static String blueZoningIcon = "assets/UI/elements/commZoningIcon.png";
+	public static String greenZoningIcon = "assets/UI/elements/resZoningIcon.png";
+	public static String amberZoningIcon = "assets/UI/elements/offZoningIcon.png";
+	public static String pauseIcon = "assets/UI/elements/pauseIcon.png";
+	public static String deleteIcon = "assets/UI/elements/deleteIcon.png";
+	public static String demandIcon = "assets/UI/elements/demandIcon.png";
+	public static String educationIcon = "assets/UI/elements/educationIcon.png";
+	public static String fireIcon = "assets/UI/elements/fireIcon.png";
+	public static String grayCircle = "assets/UI/elements/grayCircle.png";
+	public static String healthIcon = "assets/UI/elements/healthIcon.png";
+	public static String policeIcon = "assets/UI/elements/policeIcon.png";
+	public static String powerPlantIcon = "assets/UI/elements/powerPlantIcon.png";
+	public static String utilityIcon = "assets/UI/elements/utilityIcon.png";
+	public static String waterUtilityIcon = "assets/UI/elements/waterIcon.png";
+	public static String zoningIcon = "assets/UI/elements/zoningIcon.png";
+	public static String serviceBuildingIcon = "assets/UI/elements/serviceBuildingIcon.png";
+	public static String sidebarGradient = "assets/UI/elements/sideBar.png";
+	public static String roadIcon = "assets/UI/elements/roadIcon.png";
+	public static String blueRectangle = "assets/UI/elements/blueRectangle.png";
+	public static String statIcon = "assets/UI/elements/statIcon.png";
+	public static String closeButton = "assets/UI/elements/closeButton.png";
+
+
+	// skins
+	public static String defaultUISkin = "assets/skins/uiskin.json";
 }

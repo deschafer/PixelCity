@@ -25,6 +25,8 @@ public abstract class SpecialtyBuilding extends MapObject {
 		dimensions.height = heightInCells;
 	}
 
+	public void initialize() { }
+
 	public Rectangle getDimensions() {
 		return dimensions;
 	}

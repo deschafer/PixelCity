@@ -1,14 +1,23 @@
 package com.pixel.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pixel.game.styles.Styles;
 import com.pixel.scene.GameScene;
+import com.pixel.scene.MenuScene;
 
 public class PixelCityGame extends AbstractGame
 {
 
-	public PixelCityGame(int width, int height) {
+	static public float width;
+	static public float height;
+	private GameScene gameScene;
+	private MenuScene menuScene;
 
+	public PixelCityGame(int width, int height) {
+		PixelCityGame.width = width;
+		PixelCityGame.height = height;
 	}
 
 	public void create()
@@ -139,13 +148,47 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperBase, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperStory, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperRoof, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.blueBox, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.blueZoningIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.amberZoningIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.greenZoningIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.pauseIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.deleteIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.demandIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.educationIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.healthIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.fireIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.policeIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.grayCircle, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.powerPlantIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.utilityIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.waterUtilityIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.zoningIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.serviceBuildingIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.sidebarGradient, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.roadIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.blueRectangle, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.statIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.closeButton, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.defaultUISkin, Skin.class);
 
 		PixelAssetManager.manager.finishLoading();
-
 		Styles.initialize();
 
 		super.create();
 
-		setActiveScreen( GameScene.getInstance() );
+		gameScene = GameScene.getInstance();
+		menuScene = MenuScene.getInstance();
+
+		// set the main menu by default
+		setActiveScreen(menuScene);
+	}
+
+	public GameScene getGameScene() {
+		return gameScene;
+	}
+
+	public MenuScene getMenuScene() {
+		return menuScene;
 	}
 }

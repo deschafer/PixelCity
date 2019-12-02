@@ -20,7 +20,7 @@ public class Building extends MapObject {
 	public enum BuildingType {
 		RESIDENTIAL(PixelAssetManager.residentialZoning, "ResidentialZoning"),
 		COMMERCIAL(PixelAssetManager.commercialZoning, "CommercialZoning"),
-		OFFICE(PixelAssetManager.officeZoning, "OfficeZone");
+		OFFICE(PixelAssetManager.officeZoning, "OfficeZoning");
 
 		private String zoneTexture;
 		private String zoneName;
@@ -55,11 +55,10 @@ public class Building extends MapObject {
 	private boolean replacedByUpgrade = false;
 	private boolean specefic = false;
 
-	// TODO: as these get implemented, these should be false to start
-	private boolean fireServiceProvided = true;
-	private boolean policeServiceProvided = true;
-	private boolean healthServiceProvided = true;
-	private boolean educationServiceProvided = true;
+	private boolean fireServiceProvided = false;
+	private boolean policeServiceProvided = false;
+	private boolean healthServiceProvided = false;
+	private boolean educationServiceProvided = false;
 
 	private float incomePerResident = 0;
 
@@ -357,7 +356,7 @@ public class Building extends MapObject {
 				employed++;
 		}
 
-		float citizenHappiness = employed / numberResidents;
+		float citizenHappiness = (float)employed / (float)numberResidents;
 
 		if(citizenHappiness == 1.0f)
 			containsUnemployed = false;
@@ -383,11 +382,6 @@ public class Building extends MapObject {
 			buildingHappiness += educationHappinessRatio;
 		}
 
-		if (buildingHappiness == 1.0f) {
-			setColor(0,1,0,1);
-		}
-
-
 		// each of these two values has equal weight, so..
 		happiness = (citizenHappiness + buildingHappiness) / 2;
 		happiness *= 100;
@@ -410,12 +404,29 @@ public class Building extends MapObject {
 	public boolean remove() {
 
 		if (!replacedByUpgrade) {
-			// Make sure all the residents are no longer looking for jobs as they do not exist anymore
-			for (Resident resident : residents) {
-				if (resident.isEducated())
-					City.getInstance().removeUnemployedEducatedResident(resident);
-				else
-					City.getInstance().removeUnemployedResident(resident);
+
+			int actualResidents = residents.size();
+
+			// if this is a residential building
+			if (type == BuildingType.RESIDENTIAL) {
+				// Make sure all the residents are no longer looking for jobs as they do not exist anymore
+				for (Resident resident : residents) {
+					if (resident.isEducated())
+						City.getInstance().removeUnemployedEducatedResident(resident);
+					else
+						City.getInstance().removeUnemployedResident(resident);
+				}
+
+				// then add the moved out residents back to the pool
+				City.getInstance().addIncomingResidents(actualResidents);
+			} else if (type == BuildingType.COMMERCIAL || type == BuildingType.OFFICE) {
+				// then we need to return the residents back to the unemployed list as their jobs are no longer there
+				for (Resident resident : residents) {
+					if (resident.isEducated())
+						City.getInstance().addUnemployedEducatedResident(resident);
+					else
+						City.getInstance().addUnemployedResident(resident);
+				}
 			}
 
 			// remove from the cities population

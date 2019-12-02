@@ -21,6 +21,7 @@ public class PoliceStation extends ServiceBuilding {
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.policeStation), PixelAssetManager.policeStation);
 		placedownCost = 20000;
+		serviceType = Services.POLICE;
 
 		sources.add(new Source(this, -70));
 	}

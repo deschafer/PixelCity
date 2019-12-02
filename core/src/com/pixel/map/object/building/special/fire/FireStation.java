@@ -21,6 +21,7 @@ public class FireStation extends ServiceBuilding {
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.fireStation), PixelAssetManager.fireStation);
 		placedownCost = 20000;
+		serviceType = Services.FIRE;
 
 		sources.add(new Source(this, -75));
 	}

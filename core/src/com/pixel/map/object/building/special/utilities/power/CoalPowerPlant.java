@@ -13,12 +13,26 @@ public class CoalPowerPlant extends PowerUtility {
 	private static final float textureHeight = 96 * heightInCells;
 
 	public CoalPowerPlant(float x, float y, Map.MapCoord coord) {
-		super(x, isometricCorrection, (int) textureWidth, (int) textureHeight, widthInCells, heightInCells, coord, "CoalPowerPlant", 100);
+		super(x, isometricCorrection, (int) textureWidth, (int) textureHeight, widthInCells, heightInCells, coord,
+			   "CoalPowerPlant", 490000000, true);
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.coalPowerPlant), PixelAssetManager.coalPowerPlant);
 		placedownCost = 50000;
 
 		sources.add(new Source(this, -100));
+	}
+
+	public CoalPowerPlant(float x, float y, Map.MapCoord coord, boolean placedOnMap) {
+		super(x, isometricCorrection, (int) textureWidth, (int) textureHeight, widthInCells, heightInCells, coord,
+			   "CoalPowerPlant", 490000000, placedOnMap);
+
+		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.coalPowerPlant), PixelAssetManager.coalPowerPlant);
+
+		if (placedOnMap) {
+			placedownCost = 50000;
+
+			sources.add(new Source(this, -100));
+		}
 	}
 
 	@Override

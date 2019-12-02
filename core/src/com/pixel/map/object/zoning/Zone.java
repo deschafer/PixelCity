@@ -1,33 +1,35 @@
 package com.pixel.map.object.zoning;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.pixel.city.Demand;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
+import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.scene.GameScene;
 import javafx.collections.MapChangeListener;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Zone {
+public class Zone {
 
-	protected Rectangle rectangle;		// defining rectangle for this object
-	protected ArrayList<ZoneCell> availableCells = new ArrayList<>();	// cells open for construction
-	protected ZoneCell[][] zoneCells;		// references to the cells of the map within this zone
-	protected Building[][] buildings;	// the buildings inside this zone
-	protected Building.BuildingType zoneType;	// The types of buildings that belong within this zone
-	protected Map parentMap = GameScene.getInstance().getGameMap();
-	protected boolean empty = true;
-	protected final int distanceFromRoad = 4;
+	private Rectangle rectangle;		// defining rectangle for this object
+	private ArrayList<ZoneCell> availableCells = new ArrayList<>();	// cells open for construction
+	private ZoneCell[][] zoneCells;		// references to the cells of the map within this zone
+	private Building[][] buildings;	// the buildings inside this zone
+	private Building.BuildingType zoneType;	// The types of buildings that belong within this zone
+	private Map parentMap = GameScene.getInstance().getGameMap();
+	private boolean empty = true;
+	private final int distanceFromRoad = 4;
 
 	public static float residentialZonePlacementCost = 25.0f;
 	public static float commercialZonePlacementCost = 50.0f;
 	public static float officeZonePlacementCost = 75.0f;
 
-	protected Random random = new Random();
-	protected boolean zoneFull = false;
+	private Random random = new Random();
+	private boolean zoneFull = false;
 
 	public Zone(Rectangle dimensions, Building.BuildingType type) {
 
@@ -113,29 +115,37 @@ public abstract class Zone {
 		return locations;
 	}
 
-	private boolean checkZoneCell(ZoneCell cell, int x, int y, Rectangle dimensions) {
+	private boolean checkZoneCell(ZoneCell zoneCell, int x, int y, Rectangle dimensions) {
 
 		// only proceed if this cell is not null
-		if (cell != null) {
+		if (zoneCell != null) {
 
-			// use these outside of the loop so we can use them later
-			int i = x;
-			int j = y;
+			if (dimensions.height == 1 && dimensions.width == 1) {
+				return checkCell(zoneCell);
+			} else {
 
-			// depending on the dimensions, we need to check to the left and up
-			for (; i > (x - dimensions.width) && i >= 0; i--)
-			{
-				for (; j > (y - dimensions.height) && j >= 0; j--) {
-					if(!checkCell(zoneCells[i][j])) {
-						return false;
+				// TODO: this section below does not work and has been removed.
+
+				/*
+
+				// use these outside of the loop so we can use them later
+				int i = x;
+				int j = y;
+
+				// depending on the dimensions, we need to check to the left and up
+				for (; i > (x - dimensions.width) && i >= 0; i--) {
+					for (j = y; j > (y - dimensions.height) && j >= 0; j--) {
+						if (!checkCell(zoneCells[i][j])) {
+							return false;
+						}
 					}
 				}
-			}
 
-			// if i or j is negative, then we know we have checked off the map, and therefore this is not a
-			// suitable location
-			if (i >= 0 && j >= 0) {
-				return true;
+				// if i or j is negative, then we know we have checked off the map, and therefore this is not a
+				// suitable location
+				if (i >= 0 && j >= 0) {
+					return true;
+				}*/
 			}
 		}
 		return false;
@@ -151,12 +161,26 @@ public abstract class Zone {
 		// we add this building to the desired zone cell as a child actor
 		// Offset the image to center the building in the cell grid
 		cell.addMapObject(building);
-		availableCells.remove(zoneCell);
 		building.setMapPosition(cell.getMapPosition().x, cell.getMapPosition().y);
+		//zoneCell.setColor(1,0,0,1);
+
+		// TODO: this section below is not working, needs to be redone
+		/*
 		if (building.getDimensions().width > 1 || building.getDimensions().height > 1) {
 
+			// TODO: follow our sheet, calc the size variable, then offset it with those equations
+			float sizeInCells = building.getDimensions().width * 0.5f + building.getDimensions().height * 0.5f;
+			float widthPixels = sizeInCells * Map.cellWidth;
+			float heightPixels = sizeInCells * Map.cellRowHeight;
 
-			
+			//float xOffset = zoneCellLocation.x + widthPixels / 2 - building.getWidth() / 2;
+			//float yOffset = zoneCellLocation.y + heightPixels / 2 - building.getHeight() / 2;
+			float xOffset = Map.cellWidth / 2.0f - building.getWidth() / 2;
+			float yOffset = building.getHeight();
+
+			building.setX(xOffset);
+			//building.setY();
+
 			// then we need to add this object as an occupying object to all cells underneath this one
 			// depending on the dimensions, we need to check to the left and up
 			for (int i = zoneCellLocation.x; i >= (zoneCellLocation.x - dimensions.width) && i >= 0; i--) {
@@ -170,16 +194,59 @@ public abstract class Zone {
 				}
 			}
 		}
+		 */
+
+		availableCells.remove(zoneCell);
 	}
 
-	private boolean checkCell(ZoneCell cell) {
-		return cell != null && availableCells.contains(cell);
+	private boolean checkCell(ZoneCell zoneCell) {
+
+		if (zoneCell != null && availableCells.contains(zoneCell) && zoneCell.hasParent()) {
+			Cell cell = (Cell)zoneCell.getParent();
+
+			// then this cell contains the zoneCell as a child, but this must be the top object
+			if (cell.getTopObject().getName().contains("Zoning")) {
+				return true;
+			}
+		}
+		return false;
 	}
 
-	public abstract void update();
+	public void update() {
+		// If no cells are available, then we cannot build a new building
+		if (availableCells.isEmpty()) {
+			zoneFull = true;
+			return;
+		}
 
-	public void updateFromSurroundings() {
+		// then we need to verify that we have demand prior to building
+		if (Demand.getInstance().isTypeDemanded(zoneType)) {
 
+			// get a building from the BuildingFactory
+			Building building =
+				   BuildingFactory.getInstance().create(parentMap.new MapCoord(0,0), zoneType, 0);
+
+			ArrayList<Map.MapCoord> suitableCellLocations;
+
+			// now we need to find a position for this building if there is one available
+			// use our findSuitableLocation function from zone to get a placement for this building
+
+			if (zoneType == Building.BuildingType.OFFICE) {
+				int ref = 0;
+			}
+
+			//  if there is a suitable location
+			if (!(suitableCellLocations = findSuitableLocation(building.getDimensions())).isEmpty()) {
+
+				// then we found a suitableCell, and we need to place this object
+				placeBuilding(suitableCellLocations.get(random.nextInt(suitableCellLocations.size())), building);
+				System.out.println("X: " + building.getMapPosition().x + "\nY:" + building.getMapPosition().y);
+			}
+			else {
+				System.out.println("Position not found for building");
+				building.remove();
+			}
+		}
 	}
 
 	public Building[][] getBuildings() {

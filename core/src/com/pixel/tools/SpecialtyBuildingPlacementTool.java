@@ -32,7 +32,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 
 		// create our new building
 		ServiceBuilding.placedOnMap = false;
-		savedBuilding = SpecialtyBuildingFactory.getInstance().create(buildingName, Map.zeroCoordinate);
+		savedBuilding = SpecialtyBuildingFactory.getInstance().createEmpty(buildingName);
 		totalCost = savedBuilding.getPlacedownCost();
 		ServiceBuilding.placedOnMap = true;
 	}
@@ -42,6 +42,10 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		onTouchDown(0,0);
 
 		if (!super.onUpdate()) {
+			return false;
+		}
+
+		if (visualizer == null) {
 			return false;
 		}
 
@@ -58,7 +62,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		float height = savedBuilding.getDimensions().height;
 		int widthInCells = (int)width;
 		int heightInCells = (int)height;
-		Cell cell = null;
+		Cell cell;
 
 		int currentX = currCell.getMapPosition().x;
 		int currentY = currCell.getMapPosition().y;
@@ -73,6 +77,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 				} else {
 
 					placingCells.add(cell);
+
 					if (cell.containsMapObject()) {
 						// if the cell contains an object, and if that object is replaceable, another object
 						// can be placed on top
@@ -177,7 +182,6 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	@Override
 	public void cancel() {
 
-		GameScene.getInstance().clearActiveTool();
 		clearVisualizers();
 
 		super.cancel();

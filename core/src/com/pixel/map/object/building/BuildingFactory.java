@@ -45,7 +45,7 @@ public class BuildingFactory {
 	private final float officeLevelIncomeBonusPerResident = 0.10f;
 
 	//private final float percentageSpecificBuildings = 0.30f;
-	private final float percentageSpecificBuildings = 1.0f;
+	private final float percentageSpecificBuildings = 0.0f;
 
 	private final float basePowerNeeded = 30;
 	private final float powerPerLevel = 50;

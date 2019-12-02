@@ -6,15 +6,18 @@ import com.pixel.map.object.building.special.utilities.UtilityManager;
 
 public class PowerUtility extends SpecialtyBuilding {
 
-	private float powerSupplied;
+	private float powerSupplied = 0;
 
-	public PowerUtility(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID, float powerSupplied) {
+	public PowerUtility(float x, float y, float width, float height, int widthInCells, int heightInCells,
+					Map.MapCoord coord, String ID, float powerSupplied, boolean placedOnMap) {
 		super(x, y, width, height, widthInCells, heightInCells, coord, ID + "Utility");
 
-		this.powerSupplied = powerSupplied;
+		if (placedOnMap) {
+			this.powerSupplied = powerSupplied;
 
-		// add this utility to the manager
-		UtilityManager.getInstance().addPowerUtility(this);
+			// add this utility to the manager
+			UtilityManager.getInstance().addPowerUtility(this);
+		}
 	}
 
 	@Override

@@ -21,6 +21,7 @@ public class Hospital extends ServiceBuilding {
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.hospital), PixelAssetManager.hospital);
 		placedownCost = 60000;
+		serviceType = Services.HEALTH;
 
 		sources.add(new Source(this, -70));
 	}

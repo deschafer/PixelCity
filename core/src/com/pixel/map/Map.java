@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pixel.game.PixelAssetManager;
+import com.pixel.game.PixelCityGame;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
@@ -24,6 +25,7 @@ import com.pixel.map.object.building.special.utilities.water.WaterTank;
 import com.pixel.map.object.roads.*;
 import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
+import com.pixel.object.SimpleActor;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -54,13 +56,13 @@ public class Map extends Group {
 	public static final int cellBuildingBaseHeight = 127;
 	public static final int cellStoryWidth = 99;
 	public static final int cellStoryHeight = 85;
-	private final float cellRowWidth = 132;
-	private final float cellRowHeight = 2.0f/3.0f * 101.0f;
+	public static final float cellRowWidth = 132;
+	public static final float cellRowHeight = 2.0f/3.0f * 101.0f;
 	private Stage stage;
 	private Vector2 topOfMap;
-	private ArrayList<ResidentialZone> residentialZones = new ArrayList<>();
-	private ArrayList<CommercialZone> commercialZones = new ArrayList<>();
-	private ArrayList<OfficeZone> officeZones = new ArrayList<>();
+	private ArrayList<Zone> residentialZones = new ArrayList<>();
+	private ArrayList<Zone> commercialZones = new ArrayList<>();
+	private ArrayList<Zone> officeZones = new ArrayList<>();
 
 	private float residentialTimer = 0;
 	private float residentialTime = 1.0f;
@@ -166,9 +168,9 @@ public class Map extends Group {
 		VisualizerFactory.getInstance().registerMapObject(
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.OFFICE, null));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new CoalPowerPlant(0,0, new MapCoord(0,0)));
+			   new CoalPowerPlant(0,0, new MapCoord(0,0), false));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new WaterTank(0,0, new MapCoord(0,0)));
+			   new WaterTank(0,0, new MapCoord(0,0), false));
 
 		// since these are service buildings, they attempt to connect to the map. Prevent this in the class
 		ServiceBuilding.placedOnMap = false;
@@ -389,10 +391,10 @@ public class Map extends Group {
 		// register our specialty buildings
 		CoalPowerPlant coalPowerPlant;
 		SpecialtyBuildingFactory.getInstance().registerObject( coalPowerPlant =
-			   new CoalPowerPlant(0,0, new MapCoord(0,0)), coalPowerPlant.getName());
+			   new CoalPowerPlant(0,0, new MapCoord(0,0), false), coalPowerPlant.getName());
 		WaterTank waterTank;
 		SpecialtyBuildingFactory.getInstance().registerObject( waterTank =
-			   new WaterTank(0,0, new MapCoord(0,0)), waterTank.getName());
+			   new WaterTank(0,0, new MapCoord(0,0), false), waterTank.getName());
 		FireStation fireStation;
 		SpecialtyBuildingFactory.getInstance().registerObject( fireStation =
 			   new FireStation(0,0, new MapCoord(0,0)), fireStation.getName());
@@ -606,11 +608,11 @@ public class Map extends Group {
 	public void addZone(Zone zone) {
 
 		if(zone.getZoneType() == Building.BuildingType.RESIDENTIAL)
-			residentialZones.add((ResidentialZone)zone);
+			residentialZones.add(zone);
 		else if(zone.getZoneType() == Building.BuildingType.COMMERCIAL)
-			commercialZones.add((CommercialZone) zone);
+			commercialZones.add(zone);
 		else if(zone.getZoneType() == Building.BuildingType.OFFICE)
-			officeZones.add((OfficeZone) zone);
+			officeZones.add(zone);
 	}
 
 	public Cell getCell(int x, int y) {

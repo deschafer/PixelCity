@@ -30,7 +30,25 @@ public class SpecialtyBuildingFactory {
 				// copy a new object of this type
 				SpecialtyBuilding building = (SpecialtyBuilding) registeredObjects.get(objectName).copy();
 
-				building.setMapPosition(position.x, position.y);
+				// set the position of this object
+				building.setMapPosition(position);
+
+				// then we can have it initialize as needed
+				building.initialize();
+
+				return building;
+			}
+			return null;
+		}
+	}
+
+	public SpecialtyBuilding createEmpty(String objectName) {
+		synchronized (this) {
+			if (registeredObjects.containsKey(objectName)) {
+
+				// copy a new object of this type
+				SpecialtyBuilding building = (SpecialtyBuilding) registeredObjects.get(objectName).copy();
+
 				return building;
 			}
 			return null;

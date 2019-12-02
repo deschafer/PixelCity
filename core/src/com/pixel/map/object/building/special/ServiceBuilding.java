@@ -21,11 +21,12 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 	}
 
 	protected ArrayList<Cell> influencedCells = new ArrayList<>();
-	private Services serviceType;
+
+	protected Services serviceType;
 	private Polygon zoneOfInfluence;
-	private float zoneWidth = 500;
-	private float zoneHeight = 500;
-	private final static int numSides = 8;
+	private float zoneWidth = 2000;
+	private float zoneHeight = 1200;
+	private final static int numSides = 16;
 	private float updateTimer = 5.0f;
 	private float updateTime = 5.0f;
 
@@ -33,13 +34,10 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 
 	public ServiceBuilding(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID) {
 		super(x, y, width, height, widthInCells, heightInCells, coord, ID);
-
-		if (placedOnMap) {
-			setZoneOfInfluence();
-		}
 	}
 
-	protected void setZoneOfInfluence() {
+	@Override
+	public void initialize() {
 		float w = zoneWidth;
 		float h = zoneHeight;
 
@@ -61,10 +59,11 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 
 		Cell occupiedCell = map.getCell(getMapPosition());
 		if (getMapPosition() == Map.zeroCoordinate) {
-			System.out.println("Zero coord issue");
+			System.out.println("Zero coord. issue");
 		}
 
-		boundaryPolygon.setPosition(occupiedCell.getX() - zoneWidth / 2, occupiedCell.getY() - zoneHeight / 2);
+		boundaryPolygon.setPosition(occupiedCell.getX() - boundaryPolygon.getBoundingRectangle().width / 2.0f + Map.cellWidth / 2.0f,
+			   occupiedCell.getY() - boundaryPolygon.getBoundingRectangle().height / 2.0f + getHeight() / 2);
 
 		for (int x = 0; x < mapWidth; x++) {
 			for (int y = 0; y < mapHeight; y++) {

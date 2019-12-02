@@ -22,6 +22,9 @@ public class FinancialManager {
 		return instance;
 	}
 
+	public static void reset() {
+		instance = new FinancialManager();
+	}
 
 	public void update() {
 

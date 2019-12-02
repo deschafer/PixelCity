@@ -38,11 +38,12 @@ public class Cell extends MapObject {
 
 	public MapObject getTopObject() {
 
-		if(!hasChildren()) return null;
-
 		if (!occupyingObjects.isEmpty()) {
 			return occupyingObjects.get(occupyingObjects.size() - 1);
 		}
+
+		if(!hasChildren()) return null;
+
 
 		SnapshotArray<Actor> actors = getChildren();
 		MapObject object = null;

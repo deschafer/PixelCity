@@ -6,15 +6,18 @@ import com.pixel.map.object.building.special.utilities.UtilityManager;
 
 public class WaterUtility extends SpecialtyBuilding {
 
-	private float waterSupplied;
+	private float waterSupplied = 0;
 
-	public WaterUtility(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID, float powerSupplied) {
+	public WaterUtility(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID, float waterSupplied, boolean placedOnMap) {
 		super(x, y, width, height, widthInCells, heightInCells, coord, ID + "Utility");
 
-		this.waterSupplied = waterSupplied;
+		if (placedOnMap) {
 
-		// add this utility to the manager
-		UtilityManager.getInstance().addWaterUtility(this);
+			this.waterSupplied = waterSupplied;
+
+			// add this utility to the manager
+			UtilityManager.getInstance().addWaterUtility(this);
+		}
 	}
 
 	@Override

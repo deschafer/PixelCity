@@ -52,6 +52,10 @@ public class City {
 		return instance;
 	}
 
+	public static void reset() {
+		instance = new City();
+	}
+
 	public void update() {
 
 		// here we put waiting residents into vacant buildings
@@ -237,21 +241,6 @@ public class City {
 
 				System.out.println(difference + " commercial workers added");
 			}
-			// if we need more to meet the 10% ratio
-			else if(numberExternalWorkers < commercialRatio) {
-
-				commercialBoosted = true;
-
-				int difference = officeRatio - numberExternalWorkers;
-
-				for (int i = 0; i < difference; i++) {
-					Resident resident = new Resident("ExternalWorker" + numberExternalWorkers);
-					addUnemployedEducatedResident(resident);
-					numberExternalWorkers++;
-				}
-
-				System.out.println(difference + "office workers added");
-			}
 		}
 	}
 
@@ -318,6 +307,11 @@ public class City {
 	public void addIncomingResident() {
 		synchronized (this) {
 			incomingResidents++;
+		}
+	}
+	public void addIncomingResidents(int count) {
+		synchronized (this) {
+			incomingResidents += count;
 		}
 	}
 	public void removeIncomingResident() {

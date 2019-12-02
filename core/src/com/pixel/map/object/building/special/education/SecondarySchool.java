@@ -21,6 +21,7 @@ public class SecondarySchool extends ServiceBuilding {
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.secondarySchool), PixelAssetManager.secondarySchool);
 		placedownCost = 30000;
+		serviceType = Services.EDUCATION;
 
 		sources.add(new Source(this, -50));
 	}

@@ -7,9 +7,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.pixel.UI.GameSceneUI;
 import com.pixel.city.City;
 import com.pixel.city.Demand;
 import com.pixel.city.FinancialManager;
+import com.pixel.game.PixelCityGame;
 import com.pixel.game.styles.Styles;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
@@ -28,11 +30,23 @@ public class GameScene extends Scene {
 	private ZoneTool commercialZoneTool;
 	private ZoneTool officeZoneTool;
 	private DeleteTool deleteTool;
+	private GameSceneUI gameSceneUI;
+	public static final int mapWidth = 50;
+	public static final int mapHeight = 50;
 
-	// UI elements
-	private Label financeLabel;
-
-	// TODO: for now, tools will be manually set, but in the future, it will be set by the UI system
+	public enum Tools {
+		RES_ZONING,
+		COMM_ZONING,
+		OFF_ZONING,
+		POLICE,
+		FIRE,
+		ED,
+		HEALTH,
+		WATER,
+		POWER,
+		DELETE,
+		ROAD
+	}
 
 	private GameScene() {
 		super();
@@ -45,20 +59,34 @@ public class GameScene extends Scene {
 	@Override
 	public void initialize() {
 
-		// Create and initialize our game map here
-		gameMap = new Map(50, 50, mainStage);
-		gameMap.initialize();
+		gameSceneUI = new GameSceneUI(PixelCityGame.width, PixelCityGame.height);
+		uiStage = gameSceneUI;
 
-		uiTable.add(financeLabel = new Label("", Styles.testFinanceLabelStyle));
-		uiTable.add().expandX();
-		uiTable.row();
-		uiTable.add().expandY();
+		if (gameMap == null) {
+			setNewGame("Default");
+		}
+	}
+
+	public void setNewGame(String cityName) {
+
+		// in this section, we need to...
+		// create a new map, and save this as the current game map
+		// Create and initialize our game map here
+
+		// reset the financials
+		FinancialManager.reset();
+
+		// reset the city class
+		FinancialManager.reset();
+
+		// reset the main stage
+		mainStage = new Stage();
+
+		gameMap = new Map(mapWidth, mapHeight, mainStage);
+		gameMap.initialize();
 
 		mainStage.getCamera().translate(gameMap.getWidthInCells() * Map.cellWidth / 2,
 			   gameMap.getHeightInCells() * Map.cellHeight / 2, 0);
-
-
-		// TODO: set up and init. all UI elements as well
 	}
 
 	@Override
@@ -75,9 +103,6 @@ public class GameScene extends Scene {
 
 		// update our finances
 		FinancialManager.getInstance().update();
-
-		// update our financial label
-		financeLabel.setText("" + FinancialManager.getInstance().getBalance());
 
 		// update our city object
 		City.getInstance().update();
@@ -175,6 +200,7 @@ public class GameScene extends Scene {
 	}
 
 	public void clearActiveTool() {
+		if (activeTool != null) activeTool.switchOut();
 		activeTool = null;
 	}
 
@@ -236,5 +262,51 @@ public class GameScene extends Scene {
 
 	public Stage getMainStage() {
 		return mainStage;
+	}
+
+	public void setActiveTool(Tools tool) {
+		clearActiveTool();
+
+		switch (tool) {
+			case RES_ZONING:
+				activeTool = residentialZoneTool;
+				break;
+			case COMM_ZONING:
+				activeTool = commercialZoneTool;
+				break;
+			case OFF_ZONING:
+				activeTool = officeZoneTool;
+				break;
+			case POLICE:
+				activeTool = specialtyBuildingPlacementTool;
+				specialtyBuildingPlacementTool.setPlaceableObject("PoliceStation");
+				break;
+			case FIRE:
+				activeTool = specialtyBuildingPlacementTool;
+				specialtyBuildingPlacementTool.setPlaceableObject("FireStation");
+				break;
+			case ED:
+				activeTool = specialtyBuildingPlacementTool;
+				specialtyBuildingPlacementTool.setPlaceableObject("SecondarySchool");
+				break;
+			case HEALTH:
+				activeTool = specialtyBuildingPlacementTool;
+				specialtyBuildingPlacementTool.setPlaceableObject("Hospital");
+				break;
+			case WATER:
+				activeTool = specialtyBuildingPlacementTool;
+				specialtyBuildingPlacementTool.setPlaceableObject("WaterTankUtility");
+				break;
+			case POWER:
+				activeTool = specialtyBuildingPlacementTool;
+				specialtyBuildingPlacementTool.setPlaceableObject("CoalPowerPlantUtility");
+				break;
+			case DELETE:
+				activeTool = deleteTool;
+				break;
+			case ROAD:
+				activeTool = roadTool;
+				break;
+		}
 	}
 }

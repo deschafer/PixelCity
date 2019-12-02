@@ -1,5 +1,7 @@
 package com.pixel.city;
 
+import com.pixel.map.object.building.Building;
+
 public class Demand {
 
 	private int residentialDemand;		// set by the number of incoming residents waiting to come into this city
@@ -14,21 +16,15 @@ public class Demand {
 		return instance;
 	}
 
-	public boolean isResidentalDemanded() {
+	public boolean isTypeDemanded(Building.BuildingType type) {
 		synchronized (this) {
-			return residentialDemand > 0;
-		}
-	}
-
-	public boolean isCommercialDemanded() {
-		synchronized (this) {
-			return commercialDemand > 0;
-		}
-	}
-
-	public boolean isOfficeDemanded() {
-		synchronized (this) {
-			return officeDemand > 0;
+			if (type == Building.BuildingType.RESIDENTIAL) {
+				return residentialDemand > 0;
+			} else if (type == Building.BuildingType.COMMERCIAL) {
+				return commercialDemand > 0;
+			} else {
+				return officeDemand > 0;
+			}
 		}
 	}
 
@@ -43,6 +39,18 @@ public class Demand {
 
 			officeDemand = City.getInstance().getUnemployedEducatedResidentCount();
 		}
+	}
+
+	public int getCommercialDemand() {
+		return commercialDemand;
+	}
+
+	public int getOfficeDemand() {
+		return officeDemand;
+	}
+
+	public int getResidentialDemand() {
+		return residentialDemand;
 	}
 
 	public void print() {

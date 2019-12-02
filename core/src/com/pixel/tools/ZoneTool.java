@@ -4,10 +4,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.pixel.city.FinancialManager;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
+import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
-import com.pixel.map.object.zoning.CommercialZone;
-import com.pixel.map.object.zoning.OfficeZone;
-import com.pixel.map.object.zoning.ResidentialZone;
 import com.pixel.map.object.zoning.Zone;
 import com.pixel.map.visualizer.Visualizer;
 import com.pixel.map.visualizer.VisualizerFactory;
@@ -141,11 +139,11 @@ public class ZoneTool extends MapTool {
 		if(!affordable)
 			return false;
 		else if(zoneType == Building.BuildingType.RESIDENTIAL)
-			zone = new ResidentialZone(rectangle);
+			zone = new Zone(rectangle, Building.BuildingType.RESIDENTIAL);
 		else if (zoneType == Building.BuildingType.COMMERCIAL)
-			zone = new CommercialZone(rectangle);
+			zone = new Zone(rectangle, Building.BuildingType.COMMERCIAL);
 		else if(zoneType == Building.BuildingType.OFFICE)
-			zone = new OfficeZone(rectangle);
+			zone = new Zone(rectangle, Building.BuildingType.OFFICE);
 
 		if (zone != null && !zone.isEmpty()) {
 			gameMap.addZone(zone);
@@ -159,38 +157,36 @@ public class ZoneTool extends MapTool {
 
 	private boolean checkRoadRequirement(Cell cell) {
 
-		Map.MapCoord position = cell.getMapPosition();
+		Map.MapCoord coord = cell.getMapPosition();
 
-		// check all the cells in the x axis
-		for ( int x = position.x, i = x; i >= 0 && i >= position.x - distanceFromRoad; x++, i--) {
-			Cell cell1 = (Cell)gameMap.getCell(x,cell.getMapPosition().y);
-			if (cell1 != null &&
-				   cell1.containsMapObject() &&
-				   cell1.getTopObject().getName().contains("Road")) {
-				return true;
+		for (int i = 1; i < distanceFromRoad + 1; i++) {
+			Cell checkedCell = gameMap.getCell((int) coord.x + i, (int) coord.y);
+			if (checkedCell != null) {
+				MapObject object = checkedCell.getTopObject();
+				if (object != null && object.getName().contains("Road")) {
+					return true;
+				}
 			}
-
-			cell1 = (Cell)gameMap.getCell(i,cell.getMapPosition().y);
-			if (cell1 != null &&
-				   cell1.containsMapObject() &&
-				   cell1.getTopObject().getName().contains("Road")) {
-				return true;
+			checkedCell = gameMap.getCell((int) coord.x - i, (int) coord.y);
+			if (checkedCell != null) {
+				MapObject object = checkedCell.getTopObject();
+				if (object != null && object.getName().contains("Road")) {
+					return true;
+				}
 			}
-		}
-		// check all the cells in the x axis
-		for ( int y = position.y, j = y; j >= 0 && j >= position.y - distanceFromRoad; y++, j--) {
-			Cell cell1 = (Cell)gameMap.getCell(position.x, y);
-			if (cell1 != null &&
-				   cell1.containsMapObject() &&
-				   cell1.getTopObject().getName().contains("Road")) {
-				return true;
+			checkedCell = gameMap.getCell((int) coord.x, (int) coord.y + i);
+			if (checkedCell != null) {
+				MapObject object = checkedCell.getTopObject();
+				if (object != null && object.getName().contains("Road")) {
+					return true;
+				}
 			}
-
-			cell1 = (Cell)gameMap.getCell(position.x, j);
-			if (cell1 != null &&
-				   cell1.containsMapObject() &&
-				   cell1.getTopObject().getName().contains("Road")) {
-				return true;
+			checkedCell = gameMap.getCell((int) coord.x, (int) coord.y - i);
+			if (checkedCell != null) {
+				MapObject object = checkedCell.getTopObject();
+				if (object != null && object.getName().contains("Road")) {
+					return true;
+				}
 			}
 		}
 		return false;

@@ -12,8 +12,20 @@ public class WaterTank extends WaterUtility {
 	private static final float textureWidth = 132;
 	private static final float textureHeight = 118;
 
+	public WaterTank(float x, float y, Map.MapCoord coord, boolean placedOnMap) {
+		super(x, y, (int)textureWidth, (int)textureHeight, widthInCells, heightInCells, coord, "WaterTank", 490000000, placedOnMap);
+
+		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.waterTank), PixelAssetManager.waterTank);
+
+		if (placedOnMap) {
+			placedownCost = 5000;
+
+			sources.add(new Source(this, -20));
+		}
+	}
+
 	public WaterTank(float x, float y, Map.MapCoord coord) {
-		super(x, y, (int)textureWidth, (int)textureHeight, widthInCells, heightInCells, coord, "WaterTank", 25);
+		super(x, y, (int)textureWidth, (int)textureHeight, widthInCells, heightInCells, coord, "WaterTank", 490000000, true);
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.waterTank), PixelAssetManager.waterTank);
 		placedownCost = 5000;
@@ -23,6 +35,6 @@ public class WaterTank extends WaterUtility {
 
 	@Override
 	public MapObject copy() {
-		return new WaterTank(getX(), getY(), getMapPosition());
+		return new WaterTank(getX(), getY(), getMapPosition(), true);
 	}
 }
