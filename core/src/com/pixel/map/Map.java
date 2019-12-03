@@ -27,12 +27,13 @@ import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
 import com.pixel.object.SimpleActor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Map extends Group {
+public class Map extends Group implements Serializable {
 
-	public class MapCoord {
+	public class MapCoord implements Serializable {
 
 		public int x;
 		public int y;
@@ -48,7 +49,6 @@ public class Map extends Group {
 	private int height;                   	 // height ...
 	private float widthPixels;               // width of the map in pixels
 	private float heightPixels;         	 // height of the map in pixels
-	private Stage parentStage;
 	private Cell[][] mapArray;
 	public static final int cellWidth = 132;     	// width of the cell in pixels
 	public static final int cellHeight = 102;     // height of the cell in pixels
@@ -58,18 +58,17 @@ public class Map extends Group {
 	public static final int cellStoryHeight = 85;
 	public static final float cellRowWidth = 132;
 	public static final float cellRowHeight = 2.0f/3.0f * 101.0f;
-	private Stage stage;
 	private Vector2 topOfMap;
 	private ArrayList<Zone> residentialZones = new ArrayList<>();
 	private ArrayList<Zone> commercialZones = new ArrayList<>();
 	private ArrayList<Zone> officeZones = new ArrayList<>();
 
-	private float residentialTimer = 0;
-	private float residentialTime = 1.0f;
-	private float commericalTimer = 0;
-	private float commercialTime = 1.0f;
-	private float officeTimer = 0;
-	private float officeTime = 1.0f;
+	private static float residentialTimer = 0;
+	private static float residentialTime = 1.0f;
+	private static float commericalTimer = 0;
+	private static float commercialTime = 1.0f;
+	private static float officeTimer = 0;
+	private static float officeTime = 1.0f;
 
 	private Random random = new Random();
 
@@ -78,13 +77,10 @@ public class Map extends Group {
 		// Set our member variables
 		this.width = width;
 		this.height = height;
-		this.stage = stage;
-		parentStage = stage;
+		setStage(stage);
 		widthPixels = width * cellRowWidth;
 		heightPixels = height * cellRowHeight;
-
 		zeroCoordinate = new MapCoord(0,0);
-
 		stage.addActor(this);
 
 		generateArray();
@@ -374,6 +370,7 @@ public class Map extends Group {
 		BuildingFactory.getInstance().registerBuildingDisplayStory(
 			   new BuildingDisplay(PixelAssetManager.officeStory31), false, false, true);
 
+		/*
 		// register our specific, RCO buildings
 		BuildingFactory.getInstance().registerSpeceficBuildingDisplayBase(
 			   new BuildingDisplay((PixelAssetManager.blueSkyscraperBase), true),
@@ -387,6 +384,7 @@ public class Map extends Group {
 			   new BuildingDisplay((PixelAssetManager.blueSkyscraperRoof)),
 			   BuildingFactory.SpecificBuildingTypes.BLUE_SKYSCRAPER.getName(),
 			   Building.BuildingType.RESIDENTIAL);
+		 */
 
 		// register our specialty buildings
 		CoalPowerPlant coalPowerPlant;
@@ -538,7 +536,7 @@ public class Map extends Group {
 	public Cell checkPosition(float x, float y) {
 
 		Vector2 point = new Vector2(x, y);
-		Actor actor = stage.hit(x, y, true);
+		Actor actor = getStage().hit(x, y, true);
 		Cell cell = null;
 		Cell otherCell = null;
 		Map.MapCoord cellCoord;

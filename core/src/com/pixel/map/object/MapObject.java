@@ -15,11 +15,11 @@ import com.pixel.behavior.PlacementBehavior;
 import com.pixel.city.FinancialManager;
 import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
-import com.sun.org.apache.bcel.internal.generic.NOP;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MapObject extends Group {
+public class MapObject extends Group implements Serializable {
 
 	//private ArrayList<ObjectBehavior> behaviors;	// holds a list of added ObjectBehaviors
 

@@ -2,7 +2,9 @@ package com.pixel.city.Financials;
 
 import com.pixel.map.object.MapObject;
 
-public class Source {
+import java.io.Serializable;
+
+public class Source implements Serializable {
 
 	private MapObject sourceObject;
 	private float change = 0.0f;

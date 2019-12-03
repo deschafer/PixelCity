@@ -13,11 +13,12 @@ import com.pixel.map.object.building.special.utilities.UtilityManager;
 import com.pixel.object.Resident;
 import com.pixel.scene.GameScene;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Building extends MapObject {
 
-	public enum BuildingType {
+	public enum BuildingType implements Serializable {
 		RESIDENTIAL(PixelAssetManager.residentialZoning, "ResidentialZoning"),
 		COMMERCIAL(PixelAssetManager.commercialZoning, "CommercialZoning"),
 		OFFICE(PixelAssetManager.officeZoning, "OfficeZoning");
@@ -88,7 +89,7 @@ public class Building extends MapObject {
 
 	public Building(Map.MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
 				 float happinessRequired, float levelUpTime, float buildTime, float incomePerResident,
-				 float powerNeeded, float waterNeeded, Rectangle dimensions, boolean specefic) {
+				 float powerNeeded, float waterNeeded, Rectangle dimensions, boolean specific) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
 			   GameScene.getInstance().getGameMap().getCellHeight(), coord, ID);
 
@@ -105,7 +106,7 @@ public class Building extends MapObject {
 		drawableComponents = new ArrayList<>();
 		happiness = 50.0f;
 		this.dimensions = dimensions;
-		this.specefic = specefic;
+		this.specefic = specific;
 
 		replaceable = false;
 
@@ -186,6 +187,10 @@ public class Building extends MapObject {
 		return numberResidents;
 	}
 
+	public int getActualNumberResidents() {
+		return residents.size();
+	}
+
 	public boolean isFull() {
 		return numberResidents == residents.size();
 	}
@@ -260,8 +265,6 @@ public class Building extends MapObject {
 
 					// if enough time has take place
 					if(levelUpTimer >= levelUpTime) {
-
-						System.out.println("Attempting to level up");
 
 						// then we can finally level up
 						levelUp();
@@ -499,5 +502,44 @@ public class Building extends MapObject {
 
 		if (changed)
 			updateHappiness();
+	}
+
+	public boolean hasService(ServiceBuilding.Services service) {
+
+		if (service == ServiceBuilding.Services.FIRE) {
+			return fireServiceProvided;
+		} else if (service == ServiceBuilding.Services.POLICE) {
+			return policeServiceProvided;
+		} else if (service == ServiceBuilding.Services.HEALTH) {
+			return healthServiceProvided;
+		} else if (service == ServiceBuilding.Services.EDUCATION) {
+			return educationServiceProvided;
+		} else {
+			return false;
+		}
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public BuildingType getType() {
+		return type;
+	}
+
+	public float getPowerNeeded() {
+		return powerNeeded;
+	}
+
+	public float getPowerClaimed() {
+		return powerClaimed;
+	}
+
+	public float getWaterClaimed() {
+		return waterClaimed;
+	}
+
+	public float getWaterNeeded() {
+		return waterNeeded;
 	}
 }

@@ -7,14 +7,15 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pixel.UI.dialog.DemandDialog;
 import com.pixel.UI.dialog.PauseDialog;
 import com.pixel.UI.dialog.StatsDialog;
 import com.pixel.UI.element.Icon;
 import com.pixel.UI.element.IconList;
+import com.pixel.city.City;
 import com.pixel.city.FinancialManager;
 import com.pixel.game.PixelAssetManager;
+import com.pixel.game.PixelCityGame;
 import com.pixel.game.styles.Styles;
 import com.pixel.object.SimpleActor;
 import com.pixel.scene.GameScene;
@@ -29,6 +30,14 @@ public class GameSceneUI extends Stage {
 	private ArrayList<Icon> icons = new ArrayList<>();
 	private Label balanceLabel;
 	private SimpleActor balanceLabelBackground;
+	private Label cityNameLabel;
+	private SimpleActor cityNameBackground;
+	private Label populationLabel;
+	private SimpleActor populationPersonIcon;
+	private SimpleActor populationBackground;
+
+	private float horizPadding = 10;
+	private float verticalPadding = 10;
 
 	// contain all UI element including Icons and Labels
 
@@ -42,9 +51,15 @@ public class GameSceneUI extends Stage {
 		this.height = height;
 
 		initLeftSideIcons();
-		initBalanceLabel();
 		initRightSideIcons();
+		initLabels();
 
+	}
+
+	public void reset() {
+
+
+		resetNameLabel();
 	}
 
 	private void initLeftSideIcons() {
@@ -285,11 +300,11 @@ public class GameSceneUI extends Stage {
 
 		// set up the background
 		balanceLabelBackground =
-			   new SimpleActor(5,5, 250, 42, "BalanceLabelBg", PixelAssetManager.blueRectangle);
+			   new SimpleActor(horizPadding / 2,verticalPadding / 2, 250, 42, "BalanceLabelBg", PixelAssetManager.blueRectangle);
 		addActor(balanceLabelBackground);
 
 		balanceLabel = new Label("$" + FinancialManager.getInstance().getBalance(), Styles.balanceLabelStyle);
-		balanceLabel.setPosition(10,10);
+		balanceLabel.setPosition(horizPadding,verticalPadding);
 		addActor(balanceLabel);
 	}
 
@@ -307,9 +322,7 @@ public class GameSceneUI extends Stage {
 				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
 					   return false;
 				   }
-				   Dialog dialog =
-						 new PauseDialog();
-				   dialog.show(this);
+				   openInGameDialog();
 				   return true;
 			   }
 		);
@@ -341,6 +354,64 @@ public class GameSceneUI extends Stage {
 				   return true;
 			   }
 		);
+	}
+
+	private void initLabels() {
+
+		initBalanceLabel();
+		initNameLabel();
+		initPopLabel();
+	}
+
+	private void initNameLabel() {
+		cityNameLabel = new Label(City.getInstance().getName(), Styles.balanceLabelStyle);
+		cityNameBackground = new SimpleActor(0, 0, 0, 0,
+			   "CityNameBg", PixelAssetManager.blueRectangle);
+		addActor(cityNameBackground);
+		addActor(cityNameLabel);
+		resetNameLabel();
+	}
+
+	private void resetNameLabel() {
+		cityNameLabel.setText(City.getInstance().getName());
+		float width = cityNameLabel.getText().length * cityNameLabel.getStyle().font.getXHeight();
+
+		// center this label on the top side
+		cityNameLabel.setPosition(PixelCityGame.width / 2 - width / 2,
+			   PixelCityGame.height - cityNameLabel.getHeight());
+
+		cityNameBackground.setPosition(cityNameLabel.getX() - horizPadding, cityNameLabel.getY());
+		cityNameBackground.setWidth(width + horizPadding * 2);
+		cityNameBackground.setHeight(cityNameLabel.getHeight());
+	}
+
+	private void initPopLabel() {
+		populationLabel = new Label(City.getInstance().getPopulation() + "", Styles.balanceLabelStyle);
+
+		populationBackground = new SimpleActor(0,0,0, 0, "PopLabelBg", PixelAssetManager.blueRectangle);
+
+		populationPersonIcon = new SimpleActor(0,0, 32,
+			   32, "PopLabelPersonIcon", PixelAssetManager.personIcon);
+
+		addActor(populationBackground);
+		addActor(populationPersonIcon);
+		addActor(populationLabel);
+
+		resetPopLabel();
+	}
+
+	private void resetPopLabel() {
+		populationLabel.setText(City.getInstance().getPopulation() + "");
+
+		float width = populationLabel.getText().length * populationLabel.getStyle().font.getXHeight();
+
+		populationLabel.setPosition(PixelCityGame.width - width - horizPadding * 2, verticalPadding);
+
+		populationBackground.setPosition(populationLabel.getX() - horizPadding - 30, verticalPadding / 2);
+		populationBackground.setWidth(width + horizPadding * 2 + 30);
+		populationBackground.setHeight(42);
+
+		populationPersonIcon.setPosition(populationBackground.getX(), populationBackground.getY() + verticalPadding);
 	}
 
 	private void clearIconLists(Icon toggledIcon) {
@@ -381,5 +452,13 @@ public class GameSceneUI extends Stage {
 		// then we set the size of the label background based off this count
 		float width = count * balanceLabel.getStyle().font.getXHeight();
 		balanceLabelBackground.setWidth(width);
+
+		resetPopLabel();
+	}
+
+	public void openInGameDialog() {
+		Dialog dialog =
+			   new PauseDialog();
+		dialog.show(this);
 	}
 }

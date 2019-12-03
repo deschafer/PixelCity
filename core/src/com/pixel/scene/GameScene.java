@@ -4,18 +4,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.pixel.UI.GameSceneUI;
+import com.pixel.UI.dialog.BuildingStatDialog;
 import com.pixel.city.City;
 import com.pixel.city.Demand;
 import com.pixel.city.FinancialManager;
 import com.pixel.game.PixelCityGame;
-import com.pixel.game.styles.Styles;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
+import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.tools.*;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class GameScene extends Scene {
 
@@ -77,7 +82,7 @@ public class GameScene extends Scene {
 		FinancialManager.reset();
 
 		// reset the city class
-		FinancialManager.reset();
+		City.reset(cityName);
 
 		// reset the main stage
 		mainStage = new Stage();
@@ -87,6 +92,8 @@ public class GameScene extends Scene {
 
 		mainStage.getCamera().translate(gameMap.getWidthInCells() * Map.cellWidth / 2,
 			   gameMap.getHeightInCells() * Map.cellHeight / 2, 0);
+
+		gameSceneUI.reset();
 	}
 
 	@Override
@@ -136,8 +143,16 @@ public class GameScene extends Scene {
 	public boolean keyDown(int keycode) {
 
 		if (keycode == Input.Keys.ESCAPE) {
-			if (activeTool != null)
+			// if there is a tool selected, we deselect it
+			if (activeTool != null) {
 				activeTool.cancel();
+				activeTool.switchOut();
+				activeTool = null;
+			}
+			// otherwise open the in game menu dialog from the UI
+			else {
+				gameSceneUI.openInGameDialog();
+			}
 		} else if (keycode == Input.Keys.R) {
 			System.out.println("Road tool selected");
 			if (activeTool != null) activeTool.switchOut();
@@ -195,7 +210,6 @@ public class GameScene extends Scene {
 			specialtyBuildingPlacementTool.setPlaceableObject("WaterTankUtility");
 		}
 
-
 		return false;
 	}
 
@@ -206,12 +220,37 @@ public class GameScene extends Scene {
 
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 
-		if(activeTool == null) return false;
-
 		Vector2 stageCoords = mainStage.screenToStageCoordinates(new Vector2(screenX, screenY));
-		activeTool.onTouchDown(stageCoords.x, stageCoords.y);
+
+		if(activeTool == null) {
+			// then we handle mouse clicks as selecting a building from the view
+			handleBuildingSelection(stageCoords);
+		} else {
+
+			activeTool.onTouchDown(stageCoords.x, stageCoords.y);
+		}
 
 		return false;
+	}
+
+	private void handleBuildingSelection(Vector2 coords) {
+
+		// get the actor at this position
+		Actor actor = mainStage.hit(coords.x, coords.y, false);
+		if (actor != null && (actor.getName().contains("Base") || actor.getName().contains("Story") || actor.getName().contains("Roof"))) {
+			// since buildings use bases, we need to get the parent building
+			BuildingDisplay display = (BuildingDisplay)actor;
+			if (display.hasParent()) {
+				Building selectedBuilding = (Building)display.getParent();
+				System.out.println("X: " + selectedBuilding.getMapPosition().x + " Y: " + selectedBuilding.getMapPosition().y);
+
+				// now we need to create a new dialog to look at this building
+				// this will be a non-modal dialog
+				BuildingStatDialog dialog = new BuildingStatDialog();
+				dialog.setBuilding(selectedBuilding);
+				dialog.show(gameSceneUI);
+			}
+		}
 	}
 
 	@Override
@@ -307,6 +346,33 @@ public class GameScene extends Scene {
 			case ROAD:
 				activeTool = roadTool;
 				break;
+		}
+	}
+
+	public void serialize(String filename) {
+
+		// Serialization
+		try {
+
+			filename += ".txt";
+
+			FileOutputStream file = new FileOutputStream(filename);
+			ObjectOutputStream out = new ObjectOutputStream(file);
+
+			// serialize the map
+			out.writeObject(gameMap);
+
+			// serialize the city class
+			out.writeObject(City.getInstance());
+
+			// write the financial class
+			out.writeObject(FinancialManager.getInstance());
+
+			out.close();
+			file.close();
+		}
+		catch (IOException ex) {
+			System.out.println("IOException during serialization " + ex.getMessage());
 		}
 	}
 }

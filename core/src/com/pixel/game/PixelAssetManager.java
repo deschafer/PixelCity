@@ -135,9 +135,9 @@ public class PixelAssetManager {
 	public static String secondarySchool = "assets/services/secondarySchool.png";
 
 	// SpecificBuilding components
-	public static String blueSkyscraperBase = "assets/specificBuildings/officeSkyBase.png";
-	public static String blueSkyscraperStory = "assets/specificBuildings/officeSkyFloor.png";
-	public static String blueSkyscraperRoof = "assets/specificBuildings/officeSkyRoof.png";
+	//public static String blueSkyscraperBase = "assets/specificBuildings/officeSkyBase.png";
+	//public static String blueSkyscraperStory = "assets/specificBuildings/officeSkyFloor.png";
+	//public static String blueSkyscraperRoof = "assets/specificBuildings/officeSkyRoof.png";
 
 	// UI elements
 	public static String blueBox = "assets/UI/elements/blueCircle.png";
@@ -162,6 +162,9 @@ public class PixelAssetManager {
 	public static String blueRectangle = "assets/UI/elements/blueRectangle.png";
 	public static String statIcon = "assets/UI/elements/statIcon.png";
 	public static String closeButton = "assets/UI/elements/closeButton.png";
+	public static String personIcon = "assets/UI/elements/personIcon.png";
+	public static String grayCheck = "assets/UI/elements/grayCheck.png";
+	public static String grayCross = "assets/UI/elements/grayCross.png";
 
 
 	// skins

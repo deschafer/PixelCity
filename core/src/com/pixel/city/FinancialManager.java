@@ -3,9 +3,10 @@ package com.pixel.city;
 import com.badlogic.gdx.Gdx;
 import com.pixel.city.Financials.Source;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class FinancialManager {
+public class FinancialManager implements Serializable {
 
 	private static FinancialManager instance = new FinancialManager();
 	private float balance = 50000.0f;
@@ -81,6 +82,14 @@ public class FinancialManager {
 		synchronized (this) {
 			balance -= amount;
 		}
+	}
+	public float getRevenue() {
+		float revenue = 0;
+
+		for (Source source : sources) {
+			revenue += source.act();
+		}
+		return revenue;
 	}
 }
 

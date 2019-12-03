@@ -7,7 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
 
-public class BuildingDisplay extends Actor {
+import java.io.Serializable;
+
+public class BuildingDisplay extends Actor implements Serializable {
 
 	// animation-based properties
 	private TextureRegion textureRegion;

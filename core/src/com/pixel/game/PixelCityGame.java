@@ -145,9 +145,9 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.policeStation, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.hospital, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.secondarySchool, Texture.class);
-		PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperBase, Texture.class);
-		PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperStory, Texture.class);
-		PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperRoof, Texture.class);
+		//PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperBase, Texture.class);
+		//PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperStory, Texture.class);
+		//PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperRoof, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.blueBox, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.blueZoningIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.amberZoningIcon, Texture.class);
@@ -170,6 +170,10 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.blueRectangle, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.statIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.closeButton, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.personIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.grayCheck, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.grayCross, Texture.class);
+
 		PixelAssetManager.manager.load(PixelAssetManager.defaultUISkin, Skin.class);
 
 		PixelAssetManager.manager.finishLoading();
@@ -181,7 +185,8 @@ public class PixelCityGame extends AbstractGame
 		menuScene = MenuScene.getInstance();
 
 		// set the main menu by default
-		setActiveScreen(menuScene);
+		//setActiveScreen(menuScene);
+		setActiveScreen(gameScene);
 	}
 
 	public GameScene getGameScene() {

@@ -10,19 +10,19 @@ import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.scene.GameScene;
 import javafx.collections.MapChangeListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Zone {
+public class Zone implements Serializable {
 
 	private Rectangle rectangle;		// defining rectangle for this object
 	private ArrayList<ZoneCell> availableCells = new ArrayList<>();	// cells open for construction
 	private ZoneCell[][] zoneCells;		// references to the cells of the map within this zone
-	private Building[][] buildings;	// the buildings inside this zone
 	private Building.BuildingType zoneType;	// The types of buildings that belong within this zone
 	private Map parentMap = GameScene.getInstance().getGameMap();
 	private boolean empty = true;
-	private final int distanceFromRoad = 4;
+	private static final int distanceFromRoad = 4;
 
 	public static float residentialZonePlacementCost = 25.0f;
 	public static float commercialZonePlacementCost = 50.0f;
@@ -40,7 +40,6 @@ public class Zone {
 
 		// create our arrays
 		zoneCells = new ZoneCell[(int)dimensions.width][(int)dimensions.height];
-		buildings = new Building[(int)dimensions.width][(int)dimensions.height];
 
 		// now we create all our zone cells, the idea is for every cell within this zone we attempt to add a cell
 		// to that location. However, we do not put a zone cell on a cell if there is already some object there
@@ -231,26 +230,17 @@ public class Zone {
 			// now we need to find a position for this building if there is one available
 			// use our findSuitableLocation function from zone to get a placement for this building
 
-			if (zoneType == Building.BuildingType.OFFICE) {
-				int ref = 0;
-			}
-
 			//  if there is a suitable location
 			if (!(suitableCellLocations = findSuitableLocation(building.getDimensions())).isEmpty()) {
 
 				// then we found a suitableCell, and we need to place this object
 				placeBuilding(suitableCellLocations.get(random.nextInt(suitableCellLocations.size())), building);
-				System.out.println("X: " + building.getMapPosition().x + "\nY:" + building.getMapPosition().y);
 			}
 			else {
 				System.out.println("Position not found for building");
 				building.remove();
 			}
 		}
-	}
-
-	public Building[][] getBuildings() {
-		return buildings;
 	}
 
 	public Building.BuildingType getZoneType() {

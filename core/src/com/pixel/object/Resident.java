@@ -2,7 +2,9 @@ package com.pixel.object;
 
 import com.pixel.map.object.building.Building;
 
-public class Resident {
+import java.io.Serializable;
+
+public class Resident implements Serializable {
 
 	private int level = 0;
 	private String name;

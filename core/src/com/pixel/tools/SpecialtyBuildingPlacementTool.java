@@ -94,7 +94,6 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 			valid = false;
 		}
 		if (!checkRoadRequirement()) {
-			System.out.println("No road found");
 			valid = false;
 		}
 		if (!valid) {

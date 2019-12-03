@@ -3,11 +3,23 @@ package com.pixel.city;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.pixel.map.object.building.Building;
+import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.object.Resident;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class City {
+public class City implements Serializable {
+
+	public class Stats {
+		public float wealth;
+		public float education;
+		public float happiness;
+		public float total;
+	}
+
+
+	private final float amountEarnedPerLevel = 0.05f;
 
 	private String name;			// the name of this city
 
@@ -37,9 +49,10 @@ public class City {
 	private int numberExternalWorkers = 0;
 	private float externalWorkerToResidentRatio = 0.1f;
 
-	private static City instance = new City();
+	private static City instance = new City("Default");
 
-	private City() {
+	private City(String name) {
+		this.name = name;
 		unemployedResidents = new ArrayList<>();
 		cityBuildings = new ArrayList<>();
 		vacantBuildings = new ArrayList<>();
@@ -52,8 +65,8 @@ public class City {
 		return instance;
 	}
 
-	public static void reset() {
-		instance = new City();
+	public static void reset(String name) {
+		instance = new City(name);
 	}
 
 	public void update() {
@@ -392,5 +405,67 @@ public class City {
 		synchronized (this) {
 			officeRating -= removal;
 		}
+	}
+
+	public Stats calculateCityStats() {
+
+		Stats stats = new Stats();
+		stats.education = 0;
+		stats.happiness = 0;
+		stats.total = 0;
+		stats.wealth = 0;
+		int numberBuildingsEducated = 0;
+		int totalEducatedCitizens = 0;
+		float grossResidentWealth = 0;
+		float cityWealth = FinancialManager.getInstance().getBalance() + FinancialManager.getInstance().getRevenue();
+		float happiness = 0;
+
+		if (cityBuildings.isEmpty()) {
+			return stats;
+		}
+
+		// we have to visit every building and get information from it
+		for (Building building : cityBuildings) {
+
+			stats.happiness += building.getHappiness();
+
+			// education score calculation
+			// if this building has an education service provided,
+			if (building.hasService(ServiceBuilding.Services.EDUCATION)) {
+				numberBuildingsEducated++;
+			}
+			if (building.getType() == Building.BuildingType.COMMERCIAL) {
+				// then this building only has educated residents, get the number
+				totalEducatedCitizens += building.getActualNumberResidents();
+			}
+
+			// wealth score calculation
+			grossResidentWealth += building.getLevel() * building.getActualNumberResidents();
+
+			// happiness calculation
+			happiness += building.getHappiness();
+		}
+
+		// get the average happiness
+		stats.happiness = happiness / cityBuildings.size();
+
+		// calculate the final educ. score
+		stats.education = totalEducatedCitizens + numberBuildingsEducated / cityBuildings.size();
+
+		// calculate the wealth of the city
+		stats.wealth = cityWealth + grossResidentWealth;
+
+		// calculate our total score
+		stats.total = (stats.happiness / 100) * (stats.education + stats.wealth);
+
+		return stats;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }
