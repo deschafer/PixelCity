@@ -9,11 +9,12 @@ import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
 import com.pixel.scene.GameScene;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class ServiceBuilding extends SpecialtyBuilding {
 
-	public enum Services {
+	public enum Services implements Serializable {
 		FIRE,
 		POLICE,
 		HEALTH,
@@ -24,8 +25,8 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 
 	protected Services serviceType;
 	private Polygon zoneOfInfluence;
-	private float zoneWidth = 2000;
-	private float zoneHeight = 1200;
+	private static float zoneWidth = 2000;
+	private static float zoneHeight = 1200;
 	private final static int numSides = 16;
 	private float updateTimer = 5.0f;
 	private float updateTime = 5.0f;

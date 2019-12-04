@@ -27,6 +27,7 @@ import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
 import com.pixel.object.SimpleActor;
 
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -641,4 +642,19 @@ public class Map extends Group implements Serializable {
 	public int getWidthInCells() { return width; }
 
 	public int getHeightInCells() { return height; }
+
+	public void serialize(ObjectOutputStream out) {
+
+		ArrayList<Serializable> serializables;
+
+		for (int i = 0; i < width; i++) {
+
+			for (int j = 0; j < height; j++) {
+
+
+
+			}
+		}
+
+	}
 }

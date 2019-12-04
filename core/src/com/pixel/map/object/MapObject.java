@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -15,6 +16,7 @@ import com.pixel.behavior.PlacementBehavior;
 import com.pixel.city.FinancialManager;
 import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
+import com.pixel.serialization.MapObjectSerializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -317,5 +319,9 @@ public class MapObject extends Group implements Serializable {
 
 	public float getPlacedownCost() {
 		return placedownCost;
+	}
+
+	public MapObjectSerializable getSerializableObject() {
+		return null;
 	}
 }

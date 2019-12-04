@@ -12,6 +12,8 @@ import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.map.object.building.special.utilities.UtilityManager;
 import com.pixel.object.Resident;
 import com.pixel.scene.GameScene;
+import com.pixel.serialization.BuildingSerializable;
+import com.pixel.serialization.MapObjectSerializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class Building extends MapObject {
 
 	public static final int residentLevelOfficeRequirement = 5;
 
-	protected Rectangle dimensions = new Rectangle();	// refers to the coordinates in the map
+	protected Rectangle dimensions;	// refers to the coordinates in the map
 	private BuildingType type;               // the type of this building
 	private int level;                       // the level of this object
 	private int numberResidents = 0;         // the number of residents
@@ -54,7 +56,7 @@ public class Building extends MapObject {
 	private float buildTime = 1.0f;
 	private boolean containsUnemployed = true;
 	private boolean replacedByUpgrade = false;
-	private boolean specefic = false;
+	private boolean specific = false;
 
 	private boolean fireServiceProvided = false;
 	private boolean policeServiceProvided = false;
@@ -63,12 +65,12 @@ public class Building extends MapObject {
 
 	private float incomePerResident = 0;
 
-	private float powerHappinessRatio = 0.250f;
-	private float waterHappinessRatio = 0.250f;
-	private float fireHappinessRatio = 0.150f;
-	private float policeHappinessRatio = 0.150f;
-	private float educationHappinessRatio = 0.10f;
-	private float healthHappinessRatio = 0.10f;
+	private static final float powerHappinessRatio = 0.250f;
+	private static final float waterHappinessRatio = 0.250f;
+	private static final float fireHappinessRatio = 0.150f;
+	private static final float policeHappinessRatio = 0.150f;
+	private static final float educationHappinessRatio = 0.10f;
+	private static final float healthHappinessRatio = 0.10f;
 
 	private float powerNeeded = 0;
 	private float powerClaimed = 0;
@@ -106,7 +108,7 @@ public class Building extends MapObject {
 		drawableComponents = new ArrayList<>();
 		happiness = 50.0f;
 		this.dimensions = dimensions;
-		this.specefic = specific;
+		this.specific = specific;
 
 		replaceable = false;
 
@@ -541,5 +543,18 @@ public class Building extends MapObject {
 
 	public float getWaterNeeded() {
 		return waterNeeded;
+	}
+
+	@Override
+	public MapObjectSerializable getSerializableObject() {
+
+		BuildingSerializable serializable = new BuildingSerializable();
+		serializable.dimensions = dimensions;
+		serializable.level = level;
+		serializable.name = getName();
+		serializable.type = type;
+		serializable.residents = residents;
+		serializable.position = getMapPosition();
+		return serializable;
 	}
 }

@@ -7,7 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.serialization.CellSerializable;
+import com.pixel.serialization.MapObjectSerializable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //
@@ -116,5 +119,35 @@ public class Cell extends MapObject {
 
 	public void addOccupyingObject(MapObject object) {
 		occupyingObjects.add(object);
+	}
+
+	@Override
+	public MapObjectSerializable getSerializableObject() {
+
+		ArrayList<MapObjectSerializable> occupyingSerializables = new ArrayList<>();
+		ArrayList<MapObjectSerializable> childrenSerializables = new ArrayList<>();
+
+		// get all serializables for the objects within this object
+		for (MapObject object : occupyingObjects) {
+			occupyingSerializables.add(object.getSerializableObject());
+		}
+		for (Actor actor : getChildren()) {
+
+			// if the object is a MapObject
+			if (actor instanceof MapObject) {
+
+				MapObject object = (MapObject)actor;
+
+				childrenSerializables.add(object.getSerializableObject());
+			}
+		}
+
+		CellSerializable cellSerializable = new CellSerializable();
+		cellSerializable.position = getMapPosition();
+		cellSerializable.children = childrenSerializables;
+		cellSerializable.occupyingObjects = occupyingSerializables;
+		cellSerializable.name = getName();
+
+		return cellSerializable;
 	}
 }
