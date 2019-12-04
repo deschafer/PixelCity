@@ -2,6 +2,7 @@ package com.pixel.UI;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
@@ -374,7 +375,7 @@ public class GameSceneUI extends Stage {
 
 	private void resetNameLabel() {
 		cityNameLabel.setText(City.getInstance().getName());
-		float width = cityNameLabel.getText().length * cityNameLabel.getStyle().font.getXHeight();
+		float width = cityNameLabel.getText().length * 19;
 
 		// center this label on the top side
 		cityNameLabel.setPosition(PixelCityGame.width / 2 - width / 2,
