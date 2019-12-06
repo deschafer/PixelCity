@@ -2,6 +2,7 @@ package com.pixel.tools;
 
 import com.pixel.city.FinancialManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.special.ServiceBuilding;
@@ -136,20 +137,20 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	}
 
 	private boolean checkRoadRequirement() {
-		Map.MapCoord southCorner =  currCell.getMapPosition();
+		MapCoord southCorner =  currCell.getMapPosition();
 		Cell checkedCell;
 
 		for (int x = 0, width = (int)savedBuilding.getDimensions().width; x < width; x++) {
 
 			// checking bottom
-			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - x, southCorner.y + 1))) != null) &&
+			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x - x, southCorner.y + 1))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 
 				return true;
 			}
 			// checking top
-			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - x, southCorner.y - (int)savedBuilding.getDimensions().height))) != null) &&
+			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x - x, southCorner.y - (int)savedBuilding.getDimensions().height))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 
@@ -160,14 +161,14 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		for (int y = 0, height = (int)savedBuilding.getDimensions().height; y < height; y++) {
 
 			// checking right
-			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x + 1, southCorner.y - y))) != null) &&
+			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x + 1, southCorner.y - y))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 
 				return true;
 			}
 			// checking left
-			if (((checkedCell = gameMap.getCell(gameMap.new MapCoord(southCorner.x - (int)savedBuilding.getDimensions().width, southCorner.y - y))) != null) &&
+			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x - (int)savedBuilding.getDimensions().width, southCorner.y - y))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 

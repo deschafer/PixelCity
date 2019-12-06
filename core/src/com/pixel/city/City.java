@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.object.Resident;
+import com.pixel.serialization.CitySerializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,9 +46,9 @@ public class City implements Serializable {
 	private float residentialDemandBoostTime = 15.0f;
 
 	private float externalCommercialDemandTimer = 0;
-	private float externalCommercialDemandTime = 5.0f;
+	private static final float externalCommercialDemandTime = 5.0f;
 	private int numberExternalWorkers = 0;
-	private float externalWorkerToResidentRatio = 0.1f;
+	private static final float externalWorkerToResidentRatio = 0.1f;
 
 	private static City instance = new City("Default");
 
@@ -63,6 +64,10 @@ public class City implements Serializable {
 
 	public static City getInstance() {
 		return instance;
+	}
+
+	public static void createFromSerializable(City city) {
+		instance = city;
 	}
 
 	public static void reset(String name) {
@@ -467,5 +472,34 @@ public class City implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public CitySerializable getSerializableObject() {
+
+		CitySerializable serializable = new CitySerializable();
+		serializable.cityHappiness = cityHappiness;
+		serializable.commercialRating = commercialRating;
+		serializable.incomingResidents = incomingResidents;
+		serializable.name = name;
+		serializable.officeRating = officeRating;
+		serializable.residentNumber = residentNumber;
+		serializable.residentialDemandBoostTime = residentialDemandBoostTime;
+		serializable.population = population;
+		serializable.numberExternalWorkers = numberExternalWorkers;
+
+		return serializable;
+	}
+
+	public void createFromSerializable(CitySerializable serializable) {
+
+		name = serializable.name;
+		cityHappiness = serializable.cityHappiness;
+		commercialRating = serializable.commercialRating;
+		incomingResidents = serializable.incomingResidents;
+		officeRating = serializable.officeRating;
+		residentialDemandBoostTime = serializable.residentNumber;
+		residentialDemandBoostTime = serializable.residentialDemandBoostTime;
+		population = serializable.population;
+		numberExternalWorkers = serializable.numberExternalWorkers;
 	}
 }

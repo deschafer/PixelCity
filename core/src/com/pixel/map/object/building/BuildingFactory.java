@@ -2,7 +2,11 @@ package com.pixel.map.object.building;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.building.display.BuildingDisplay;
+import com.pixel.scene.GameScene;
+import com.pixel.serialization.BuildingSerializable;
+import com.pixel.serialization.ResidentSerializable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -133,7 +137,7 @@ public class BuildingFactory {
 		return instance;
 	}
 
-	public Building create(Map.MapCoord position, Building.BuildingType type, int level) {
+	public Building create(MapCoord position, Building.BuildingType type, int level) {
 
 		// needs to return a specific or generic building
 		int chance = (int)(random.nextInt(100));
@@ -165,6 +169,23 @@ public class BuildingFactory {
 		}
 
 		return createGenericBuilding(position, type, level);
+	}
+
+	public Building createFromSerializable(BuildingSerializable serializable) {
+
+		Map map = GameScene.getInstance().getGameMap();
+		MapCoord coord = new MapCoord(serializable.mapPositionX, serializable.mapPositionY);
+
+		// we need to first create a generic building empty of residents
+		Building genericBuilding = createGenericBuilding(coord, serializable.type, serializable.level);
+
+		// then we need to add the saved residents to this object
+		for (ResidentSerializable residentSerializable : serializable.residents) {
+
+		}
+
+
+		return null;
 	}
 
 	public void registerBuildingDisplayBase(BuildingDisplay display, boolean residential, boolean commercial, boolean office) {
@@ -317,7 +338,7 @@ public class BuildingFactory {
 		return null;
 	}
 
-	private Building createGenericBuilding(Map.MapCoord position, Building.BuildingType type, int level) {
+	private Building createGenericBuilding(MapCoord position, Building.BuildingType type, int level) {
 		float happiness = minHappinessRequired + level * happinessRequiredPerLevel;
 		if (happiness > maxHappinessRequired)
 			happiness = maxHappinessRequired;
@@ -371,7 +392,7 @@ public class BuildingFactory {
 		return building;
 	}
 
-	private Building createSpecificBuilding(Map.MapCoord position, Building.BuildingType type, int level) {
+	private Building createSpecificBuilding(MapCoord position, Building.BuildingType type, int level) {
 
 		String buildingName;
 		Rectangle dimensions;
@@ -450,7 +471,7 @@ public class BuildingFactory {
 		return building;
 	}
 
-	private Building createSpecificBuilding(String buildingName, Map.MapCoord position, Building.BuildingType type, int level) {
+	private Building createSpecificBuilding(String buildingName, MapCoord position, Building.BuildingType type, int level) {
 
 		Rectangle dimensions;
 		float incomePerResident;

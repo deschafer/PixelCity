@@ -3,6 +3,7 @@ package com.pixel.map.object.zoning;
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.city.Demand;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
@@ -63,7 +64,7 @@ public class Zone implements Serializable {
 
 	private boolean isCellNearRoad(Cell cell) {
 
-		Map.MapCoord coord = cell.getMapPosition();
+		MapCoord coord = cell.getMapPosition();
 
 		for (int i = 1; i < distanceFromRoad + 1; i++) {
 			Cell checkedCell = parentMap.getCell((int) coord.x + i, (int) coord.y);
@@ -99,15 +100,15 @@ public class Zone implements Serializable {
 		return false;
 	}
 
-	protected ArrayList<Map.MapCoord> findSuitableLocation(Rectangle dimensions) {
+	protected ArrayList<MapCoord> findSuitableLocation(Rectangle dimensions) {
 
-		ArrayList<Map.MapCoord> locations = new ArrayList<>();
+		ArrayList<MapCoord> locations = new ArrayList<>();
 
 		for (int i = 0; i < rectangle.width && i < zoneCells.length; i++) {
 			for (int j = 0; j <rectangle.height && j < zoneCells[i].length; j++) {
 
 				if (checkZoneCell(zoneCells[i][j], i, j, dimensions)) {
-					locations.add(parentMap.new MapCoord(i, j));
+					locations.add(new MapCoord(i, j));
 				}
 			}
 		}
@@ -150,7 +151,7 @@ public class Zone implements Serializable {
 		return false;
 	}
 
-	protected void placeBuilding(Map.MapCoord zoneCellLocation, Building building) {
+	protected void placeBuilding(MapCoord zoneCellLocation, Building building) {
 
 		// since we know that the object can be placed without any issues, just place it
 		Rectangle dimensions = building.getDimensions();
@@ -223,9 +224,9 @@ public class Zone implements Serializable {
 
 			// get a building from the BuildingFactory
 			Building building =
-				   BuildingFactory.getInstance().create(parentMap.new MapCoord(0,0), zoneType, 0);
+				   BuildingFactory.getInstance().create(new MapCoord(0,0), zoneType, 0);
 
-			ArrayList<Map.MapCoord> suitableCellLocations;
+			ArrayList<MapCoord> suitableCellLocations;
 
 			// now we need to find a position for this building if there is one available
 			// use our findSuitableLocation function from zone to get a placement for this building

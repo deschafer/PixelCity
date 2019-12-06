@@ -3,6 +3,7 @@ package com.pixel.map.object.building.special.utilities.water;
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.MapObject;
 
 public class WaterTank extends WaterUtility {
@@ -12,7 +13,7 @@ public class WaterTank extends WaterUtility {
 	private static final float textureWidth = 132;
 	private static final float textureHeight = 118;
 
-	public WaterTank(float x, float y, Map.MapCoord coord, boolean placedOnMap) {
+	public WaterTank(float x, float y, MapCoord coord, boolean placedOnMap) {
 		super(x, y, (int)textureWidth, (int)textureHeight, widthInCells, heightInCells, coord, "WaterTank", 490000000, placedOnMap);
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.waterTank), PixelAssetManager.waterTank);
@@ -24,7 +25,7 @@ public class WaterTank extends WaterUtility {
 		}
 	}
 
-	public WaterTank(float x, float y, Map.MapCoord coord) {
+	public WaterTank(float x, float y, MapCoord coord) {
 		super(x, y, (int)textureWidth, (int)textureHeight, widthInCells, heightInCells, coord, "WaterTank", 490000000, true);
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.waterTank), PixelAssetManager.waterTank);

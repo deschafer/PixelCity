@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.serialization.CellSerializable;
 import com.pixel.serialization.MapObjectSerializable;
 
@@ -23,7 +24,7 @@ public class Cell extends MapObject {
 
 	private ArrayList<MapObject> occupyingObjects = new ArrayList<>();
 
-	public Cell(float x, float y, float width, float height, Map.MapCoord coord) {
+	public Cell(float x, float y, float width, float height, MapCoord coord) {
 		super(x, y, width,height, coord, "Cell");
 
 		// This cell has a basic texture within it
@@ -143,7 +144,8 @@ public class Cell extends MapObject {
 		}
 
 		CellSerializable cellSerializable = new CellSerializable();
-		cellSerializable.position = getMapPosition();
+		cellSerializable.mapPositionX = getMapPosition().x;
+		cellSerializable.mapPositionY = getMapPosition().y;
 		cellSerializable.children = childrenSerializables;
 		cellSerializable.occupyingObjects = occupyingSerializables;
 		cellSerializable.name = getName();

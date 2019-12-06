@@ -2,6 +2,8 @@ package com.pixel.city;
 
 import com.badlogic.gdx.Gdx;
 import com.pixel.city.Financials.Source;
+import com.pixel.serialization.FinancialSerializable;
+import com.pixel.serialization.SourceSerializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ public class FinancialManager implements Serializable {
 	private ArrayList<Source> sources;
 
 	private float updateTimer = 0;
-	private float updateTime = 1.0f;
+	private static float updateTime = 1.0f;
 
 	private FinancialManager() {
 		sources = new ArrayList<>();
@@ -21,6 +23,10 @@ public class FinancialManager implements Serializable {
 
 	public static FinancialManager getInstance() {
 		return instance;
+	}
+
+	public static void createFromSerializable(FinancialManager manager) {
+		instance = manager;
 	}
 
 	public static void reset() {
@@ -90,6 +96,24 @@ public class FinancialManager implements Serializable {
 			revenue += source.act();
 		}
 		return revenue;
+	}
+
+	public FinancialSerializable getSerializableObject() {
+
+		FinancialSerializable serializable = new FinancialSerializable();
+		serializable.balance = balance;
+
+		// we do not replicate the sources because we need to get them from the buildings
+
+
+		return serializable;
+	}
+
+	public void createFromSerializable(FinancialSerializable serializable) {
+
+		balance = serializable.balance;
+
+		// we do not replicate the sources because we need to get them from the buildings
 	}
 }
 

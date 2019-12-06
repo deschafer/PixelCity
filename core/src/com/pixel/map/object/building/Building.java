@@ -5,6 +5,7 @@ import com.pixel.city.City;
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.display.BuildingDisplay;
@@ -89,7 +90,7 @@ public class Building extends MapObject {
 	private boolean levelTimerActive = false;	// indicates if we counting down to level up
 	private float happinessRequired;		// happiness required to start level up timer
 
-	public Building(Map.MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
+	public Building(MapCoord coord, String ID, BuildingType type, int level, int numberResidents,
 				 float happinessRequired, float levelUpTime, float buildTime, float incomePerResident,
 				 float powerNeeded, float waterNeeded, Rectangle dimensions, boolean specific) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
@@ -553,8 +554,13 @@ public class Building extends MapObject {
 		serializable.level = level;
 		serializable.name = getName();
 		serializable.type = type;
-		serializable.residents = residents;
-		serializable.position = getMapPosition();
+		serializable.residents = new ArrayList<>();
+		for (Resident resident : residents) {
+			serializable.residents.add(resident.getSerializableObject());
+		}
+		serializable.mapPositionX = getMapPosition().x;
+		serializable.mapPositionY = getMapPosition().y;
+
 		return serializable;
 	}
 }

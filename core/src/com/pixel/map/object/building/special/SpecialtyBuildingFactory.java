@@ -1,6 +1,8 @@
 package com.pixel.map.object.building.special;
 
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
+
 import java.util.HashMap;
 
 public class SpecialtyBuildingFactory {
@@ -22,7 +24,7 @@ public class SpecialtyBuildingFactory {
 		}
 	}
 
-	public SpecialtyBuilding create(String objectName, Map.MapCoord position) {
+	public SpecialtyBuilding create(String objectName, MapCoord position) {
 
 		synchronized (this) {
 			if (registeredObjects.containsKey(objectName)) {

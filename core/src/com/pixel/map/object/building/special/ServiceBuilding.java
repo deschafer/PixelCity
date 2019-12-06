@@ -4,10 +4,13 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
 import com.pixel.scene.GameScene;
+import com.pixel.serialization.MapObjectSerializable;
+import com.pixel.serialization.ServiceBuildingSerializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,7 +36,7 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 
 	public static boolean placedOnMap = true;
 
-	public ServiceBuilding(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID) {
+	public ServiceBuilding(float x, float y, float width, float height, int widthInCells, int heightInCells, MapCoord coord, String ID) {
 		super(x, y, width, height, widthInCells, heightInCells, coord, ID);
 	}
 
@@ -131,5 +134,18 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 			}
 		}
 		return super.remove();
+	}
+
+	@Override
+	public MapObjectSerializable getSerializableObject() {
+		ServiceBuildingSerializable serializable = new ServiceBuildingSerializable();
+		serializable.name = getName();
+		serializable.mapPositionX = getMapPosition().x;
+		serializable.mapPositionY = getMapPosition().y;
+		serializable.serviceType = serviceType;
+		serializable.dimensions = dimensions;
+		serializable.occupyingCells = occupyingCells;
+
+		return serializable;
 	}
 }

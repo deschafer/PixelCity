@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -16,17 +15,18 @@ import com.pixel.behavior.PlacementBehavior;
 import com.pixel.city.FinancialManager;
 import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.serialization.MapObjectSerializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MapObject extends Group implements Serializable {
+public abstract class MapObject extends Group implements Serializable {
 
 	//private ArrayList<ObjectBehavior> behaviors;	// holds a list of added ObjectBehaviors
 
 	// General map-based properties
-	protected Map.MapCoord mapPosition;			// holds the current position of this object
+	protected MapCoord mapPosition;			// holds the current position of this object
 	private float timeSpeed;
 	protected boolean replaceable = false;		// flag indicating if this object can be replaced with another object
 
@@ -48,7 +48,7 @@ public class MapObject extends Group implements Serializable {
 	private boolean prototypeObject = false;		// this means this object is only used for copying, never actually added to the map
 
 
-	public MapObject(float x, float y, float width, float height, Map.MapCoord coord, String ID)
+	public MapObject(float x, float y, float width, float height, MapCoord coord, String ID)
 	{
 		setX(x);
 		setY(y);
@@ -206,7 +206,7 @@ public class MapObject extends Group implements Serializable {
 		return Intersector.overlapConvexPolygons( poly1, poly2 );
 	}
 
-	public Map.MapCoord getMapPosition() {
+	public MapCoord getMapPosition() {
 		return mapPosition;
 	}
 
@@ -217,7 +217,7 @@ public class MapObject extends Group implements Serializable {
 		mapPosition.y = y;
 	}
 
-	public void setMapPosition(Map.MapCoord coord) {
+	public void setMapPosition(MapCoord coord) {
 		setMapPosition(coord.x, coord.y);
 	}
 
@@ -321,7 +321,5 @@ public class MapObject extends Group implements Serializable {
 		return placedownCost;
 	}
 
-	public MapObjectSerializable getSerializableObject() {
-		return null;
-	}
+	public abstract MapObjectSerializable getSerializableObject();
 }

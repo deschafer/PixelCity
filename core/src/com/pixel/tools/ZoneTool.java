@@ -3,6 +3,7 @@ package com.pixel.tools;
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.city.FinancialManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
@@ -157,7 +158,7 @@ public class ZoneTool extends MapTool {
 
 	private boolean checkRoadRequirement(Cell cell) {
 
-		Map.MapCoord coord = cell.getMapPosition();
+		MapCoord coord = cell.getMapPosition();
 
 		for (int i = 1; i < distanceFromRoad + 1; i++) {
 			Cell checkedCell = gameMap.getCell((int) coord.x + i, (int) coord.y);

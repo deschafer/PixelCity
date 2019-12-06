@@ -27,38 +27,31 @@ import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
 import com.pixel.object.SimpleActor;
 
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+
 public class Map extends Group implements Serializable {
 
-	public class MapCoord implements Serializable {
-
-		public int x;
-		public int y;
-
-		public MapCoord(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
-	}
 	public static MapCoord zeroCoordinate;
 
-	private int width;                   	 // width of the map array in cells
-	private int height;                   	 // height ...
+	private int width;                     // width of the map array in cells
+	private int height;                     // height ...
 	private float widthPixels;               // width of the map in pixels
-	private float heightPixels;         	 // height of the map in pixels
+	private float heightPixels;           // height of the map in pixels
 	private Cell[][] mapArray;
-	public static final int cellWidth = 132;     	// width of the cell in pixels
+	public static final int cellWidth = 132;          // width of the cell in pixels
 	public static final int cellHeight = 102;     // height of the cell in pixels
 	public static final int cellBuildingBaseWidth = 132;
 	public static final int cellBuildingBaseHeight = 127;
 	public static final int cellStoryWidth = 99;
 	public static final int cellStoryHeight = 85;
 	public static final float cellRowWidth = 132;
-	public static final float cellRowHeight = 2.0f/3.0f * 101.0f;
+	public static final float cellRowHeight = 2.0f / 3.0f * 101.0f;
 	private Vector2 topOfMap;
 	private ArrayList<Zone> residentialZones = new ArrayList<>();
 	private ArrayList<Zone> commercialZones = new ArrayList<>();
@@ -81,7 +74,7 @@ public class Map extends Group implements Serializable {
 		setStage(stage);
 		widthPixels = width * cellRowWidth;
 		heightPixels = height * cellRowHeight;
-		zeroCoordinate = new MapCoord(0,0);
+		zeroCoordinate = new MapCoord(0, 0);
 		stage.addActor(this);
 
 		generateArray();
@@ -165,20 +158,20 @@ public class Map extends Group implements Serializable {
 		VisualizerFactory.getInstance().registerMapObject(
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.OFFICE, null));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new CoalPowerPlant(0,0, new MapCoord(0,0), false));
+			   new CoalPowerPlant(0, 0, new MapCoord(0, 0), false));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new WaterTank(0,0, new MapCoord(0,0), false));
+			   new WaterTank(0, 0, new MapCoord(0, 0), false));
 
 		// since these are service buildings, they attempt to connect to the map. Prevent this in the class
 		ServiceBuilding.placedOnMap = false;
 		VisualizerFactory.getInstance().registerMapObject(
-			   new FireStation(0,0, new MapCoord(0,0)));
+			   new FireStation(0, 0, new MapCoord(0, 0)));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new PoliceStation(0,0, new MapCoord(0,0)));
+			   new PoliceStation(0, 0, new MapCoord(0, 0)));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new Hospital(0,0, new MapCoord(0,0)));
+			   new Hospital(0, 0, new MapCoord(0, 0)));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new SecondarySchool(0,0, new MapCoord(0,0)));
+			   new SecondarySchool(0, 0, new MapCoord(0, 0)));
 
 
 		// set up all of our building displays
@@ -389,23 +382,23 @@ public class Map extends Group implements Serializable {
 
 		// register our specialty buildings
 		CoalPowerPlant coalPowerPlant;
-		SpecialtyBuildingFactory.getInstance().registerObject( coalPowerPlant =
-			   new CoalPowerPlant(0,0, new MapCoord(0,0), false), coalPowerPlant.getName());
+		SpecialtyBuildingFactory.getInstance().registerObject(coalPowerPlant =
+			   new CoalPowerPlant(0, 0, new MapCoord(0, 0), false), coalPowerPlant.getName());
 		WaterTank waterTank;
-		SpecialtyBuildingFactory.getInstance().registerObject( waterTank =
-			   new WaterTank(0,0, new MapCoord(0,0), false), waterTank.getName());
+		SpecialtyBuildingFactory.getInstance().registerObject(waterTank =
+			   new WaterTank(0, 0, new MapCoord(0, 0), false), waterTank.getName());
 		FireStation fireStation;
-		SpecialtyBuildingFactory.getInstance().registerObject( fireStation =
-			   new FireStation(0,0, new MapCoord(0,0)), fireStation.getName());
+		SpecialtyBuildingFactory.getInstance().registerObject(fireStation =
+			   new FireStation(0, 0, new MapCoord(0, 0)), fireStation.getName());
 		PoliceStation policeStation;
-		SpecialtyBuildingFactory.getInstance().registerObject( policeStation =
-			   new PoliceStation(0,0, new MapCoord(0,0)), policeStation.getName());
+		SpecialtyBuildingFactory.getInstance().registerObject(policeStation =
+			   new PoliceStation(0, 0, new MapCoord(0, 0)), policeStation.getName());
 		Hospital hospital;
-		SpecialtyBuildingFactory.getInstance().registerObject( hospital =
-			   new Hospital(0,0, new MapCoord(0,0)), hospital.getName());
+		SpecialtyBuildingFactory.getInstance().registerObject(hospital =
+			   new Hospital(0, 0, new MapCoord(0, 0)), hospital.getName());
 		SecondarySchool school;
-		SpecialtyBuildingFactory.getInstance().registerObject( school =
-			   new SecondarySchool(0,0, new MapCoord(0,0)), school.getName());
+		SpecialtyBuildingFactory.getInstance().registerObject(school =
+			   new SecondarySchool(0, 0, new MapCoord(0, 0)), school.getName());
 
 		// Reset it back to normal
 		ServiceBuilding.placedOnMap = true;
@@ -424,21 +417,21 @@ public class Map extends Group implements Serializable {
 	private void updateResidentialZones() {
 
 		residentialTimer += Gdx.graphics.getDeltaTime();
-		if(residentialTimer >= residentialTime && !residentialZones.isEmpty()) {
+		if (residentialTimer >= residentialTime && !residentialZones.isEmpty()) {
 
 			int index = random.nextInt(residentialZones.size());
 			Zone zone = null;
 
-			if((zone = residentialZones.get(index)).isZoneFull()) {
-				for(Zone resZone : residentialZones) {
-					if(!resZone.isZoneFull()) {
+			if ((zone = residentialZones.get(index)).isZoneFull()) {
+				for (Zone resZone : residentialZones) {
+					if (!resZone.isZoneFull()) {
 						zone = resZone;
 						break;
 					}
 				}
 			}
 
-			if(zone != null) {
+			if (zone != null) {
 				zone.update();
 			}
 
@@ -448,21 +441,21 @@ public class Map extends Group implements Serializable {
 
 	private void updateCommercialZones() {
 		commericalTimer += Gdx.graphics.getDeltaTime();
-		if(commericalTimer >= commercialTime && !commercialZones.isEmpty()) {
+		if (commericalTimer >= commercialTime && !commercialZones.isEmpty()) {
 
 			int index = random.nextInt(commercialZones.size());
 			Zone zone = null;
 
-			if((zone = commercialZones.get(index)).isZoneFull()) {
-				for(Zone resZone : commercialZones) {
-					if(!resZone.isZoneFull()) {
+			if ((zone = commercialZones.get(index)).isZoneFull()) {
+				for (Zone resZone : commercialZones) {
+					if (!resZone.isZoneFull()) {
 						zone = resZone;
 						break;
 					}
 				}
 			}
 
-			if(zone != null) {
+			if (zone != null) {
 				zone.update();
 			}
 
@@ -472,21 +465,21 @@ public class Map extends Group implements Serializable {
 
 	private void updateOfficeZones() {
 		officeTimer += Gdx.graphics.getDeltaTime();
-		if(officeTimer >= officeTime && !officeZones.isEmpty()) {
+		if (officeTimer >= officeTime && !officeZones.isEmpty()) {
 
 			int index = random.nextInt(officeZones.size());
 			Zone zone = null;
 
-			if((zone = officeZones.get(index)).isZoneFull()) {
-				for(Zone offZone : officeZones) {
-					if(!offZone.isZoneFull()) {
+			if ((zone = officeZones.get(index)).isZoneFull()) {
+				for (Zone offZone : officeZones) {
+					if (!offZone.isZoneFull()) {
 						zone = offZone;
 						break;
 					}
 				}
 			}
 
-			if(zone != null) {
+			if (zone != null) {
 				zone.update();
 			}
 
@@ -540,21 +533,21 @@ public class Map extends Group implements Serializable {
 		Actor actor = getStage().hit(x, y, true);
 		Cell cell = null;
 		Cell otherCell = null;
-		Map.MapCoord cellCoord;
+		MapCoord cellCoord;
 
-		if(actor == null)
+		if (actor == null)
 			return null;
 
-		if(actor.getName() == "Cell") {
-			cell = (Cell)actor;
+		if (actor.getName() == "Cell") {
+			cell = (Cell) actor;
 		} else {
-			MapObject object = (MapObject)actor.getParent();
+			MapObject object = (MapObject) actor.getParent();
 			cell = getCell(object.getMapPosition());
 		}
 
 		if (cell != null) {
 
-			Vector2 centerCellPosition = new Vector2(cell.getX() + cell.getWidth() / 2, cell.getY() + + 2*cell.getHeight()/3);
+			Vector2 centerCellPosition = new Vector2(cell.getX() + cell.getWidth() / 2, cell.getY() + +2 * cell.getHeight() / 3);
 			cellCoord = cell.getMapPosition();
 
 			// we need to find the next closest cell, and determine if this click is
@@ -583,10 +576,9 @@ public class Map extends Group implements Serializable {
 				}
 			}
 
-			if(otherCell != null)
-			{
+			if (otherCell != null) {
 				// Then get center positions for each of these two cells
-				Vector2 centerOtherCellPosition = new Vector2(otherCell.getX() + otherCell.getWidth() / 2, otherCell.getY() + 2*otherCell.getHeight()/3);
+				Vector2 centerOtherCellPosition = new Vector2(otherCell.getX() + otherCell.getWidth() / 2, otherCell.getY() + 2 * otherCell.getHeight() / 3);
 
 				// then find the distance from the center of each cell to the point of interest
 				Vector2 position = new Vector2(x, y);
@@ -597,8 +589,7 @@ public class Map extends Group implements Serializable {
 
 				// return the cell assoc with the smallest distance
 				return (distance1 > distance2) ? otherCell : cell;
-			}
-			else return cell;
+			} else return cell;
 		}
 
 		return null;
@@ -606,11 +597,11 @@ public class Map extends Group implements Serializable {
 
 	public void addZone(Zone zone) {
 
-		if(zone.getZoneType() == Building.BuildingType.RESIDENTIAL)
+		if (zone.getZoneType() == Building.BuildingType.RESIDENTIAL)
 			residentialZones.add(zone);
-		else if(zone.getZoneType() == Building.BuildingType.COMMERCIAL)
+		else if (zone.getZoneType() == Building.BuildingType.COMMERCIAL)
 			commercialZones.add(zone);
-		else if(zone.getZoneType() == Building.BuildingType.OFFICE)
+		else if (zone.getZoneType() == Building.BuildingType.OFFICE)
 			officeZones.add(zone);
 	}
 
@@ -639,22 +630,34 @@ public class Map extends Group implements Serializable {
 		return cellRowHeight;
 	}
 
-	public int getWidthInCells() { return width; }
+	public int getWidthInCells() {
+		return width;
+	}
 
-	public int getHeightInCells() { return height; }
+	public int getHeightInCells() {
+		return height;
+	}
 
 	public void serialize(ObjectOutputStream out) {
 
-		ArrayList<Serializable> serializables;
+		ArrayList<Serializable> serializables = new ArrayList<>();
 
+		// we get all of our serializables first
 		for (int i = 0; i < width; i++) {
-
 			for (int j = 0; j < height; j++) {
 
-
-
+				serializables.add(mapArray[i][j].getSerializableObject());
 			}
 		}
 
+		// then since each of these are serializable, we write them using the ObjectOutputStream
+		for (Serializable serializable : serializables) {
+			try {
+				out.writeObject(serializable);
+			} catch (IOException ex) {
+				System.out.println("IOException during game map serialization " + ex.getMessage());
+			}
+		}
 	}
 }
+

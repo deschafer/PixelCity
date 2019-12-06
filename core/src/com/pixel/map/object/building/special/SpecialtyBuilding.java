@@ -2,8 +2,11 @@ package com.pixel.map.object.building.special;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
+import com.pixel.serialization.MapObjectSerializable;
+import com.pixel.serialization.SpecialtyBuildingSerializable;
 
 import java.util.ArrayList;
 
@@ -11,9 +14,9 @@ public abstract class SpecialtyBuilding extends MapObject {
 
 	protected Rectangle dimensions = new Rectangle();	// refers to the coordinates in the map
 	public static final int isometricCorrection = 35;
-	private ArrayList<Cell> occupyingCells = new ArrayList<>();
+	protected ArrayList<Cell> occupyingCells = new ArrayList<>();
 
-	public SpecialtyBuilding(float x, float y, float width, float height, int widthInCells, int heightInCells, Map.MapCoord coord, String ID) {
+	public SpecialtyBuilding(float x, float y, float width, float height, int widthInCells, int heightInCells, MapCoord coord, String ID) {
 		super(x, y, width, height, coord, ID);
 
 		// this object cannot be replaced

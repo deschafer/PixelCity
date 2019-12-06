@@ -12,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.pixel.UI.dialog.NewGameDialog;
 import com.pixel.game.PixelCityGame;
 import com.pixel.game.styles.Styles;
+import com.pixel.serialization.SerializationManager;
+
 import java.util.ArrayList;
 
 public class MenuScene extends Scene {
@@ -51,7 +53,8 @@ public class MenuScene extends Scene {
 				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
 					   return false;
 				   }
-				   System.out.println("Load Game Button");
+
+				   SerializationManager.getInstance().deserialize("");
 				   return true;
 			   }
 		);

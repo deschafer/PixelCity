@@ -3,6 +3,7 @@ package com.pixel.tools;
 import com.badlogic.gdx.math.Vector2;
 import com.pixel.city.FinancialManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.roads.Road;
@@ -44,7 +45,7 @@ public class RoadTool extends MapTool {
 		if(begCell == null)
 			return false;
 
-		Map.MapCoord begCoord = begCell.getMapPosition();
+		MapCoord begCoord = begCell.getMapPosition();
 		float currCellX = currCell.getX();
 		float currCellY = currCell.getY();
 		float begCellX = begCell.getX();

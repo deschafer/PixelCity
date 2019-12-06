@@ -6,8 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.pixel.behavior.ReplaceBehavior;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
+import com.pixel.serialization.MapObjectSerializable;
+import com.pixel.serialization.ZoneCellSerializable;
 
 public class ZoneCell extends MapObject {
 
@@ -15,7 +18,7 @@ public class ZoneCell extends MapObject {
 	private Zone parentZone;
 	private boolean valid = true;
 
-	public ZoneCell(float width, float height, Map.MapCoord coord, Building.BuildingType type, Zone parentZone) {
+	public ZoneCell(float width, float height, MapCoord coord, Building.BuildingType type, Zone parentZone) {
 		super(0, 0, width, height, coord, type.getZoneName());
 
 		Texture texture = PixelAssetManager.manager.get(type.getZoneTexture());
@@ -38,5 +41,18 @@ public class ZoneCell extends MapObject {
 		valid = false;
 
 		return super.remove();
+	}
+
+	@Override
+	public MapObjectSerializable getSerializableObject() {
+
+		ZoneCellSerializable serializable = new ZoneCellSerializable();
+		serializable.name = getName();
+		serializable.mapPositionX = mapPosition.x;
+		serializable.mapPositionY = mapPosition.y;
+		serializable.type = type;
+		serializable.valid = valid;
+
+		return serializable;
 	}
 }

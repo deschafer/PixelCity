@@ -1,15 +1,18 @@
 package com.pixel.map.object.building.special.utilities.power;
 
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.building.special.SpecialtyBuilding;
 import com.pixel.map.object.building.special.utilities.UtilityManager;
+import com.pixel.serialization.MapObjectSerializable;
+import com.pixel.serialization.PowerUtilitySerializable;
 
 public class PowerUtility extends SpecialtyBuilding {
 
 	private float powerSupplied = 0;
 
 	public PowerUtility(float x, float y, float width, float height, int widthInCells, int heightInCells,
-					Map.MapCoord coord, String ID, float powerSupplied, boolean placedOnMap) {
+					MapCoord coord, String ID, float powerSupplied, boolean placedOnMap) {
 		super(x, y, width, height, widthInCells, heightInCells, coord, ID + "Utility");
 
 		if (placedOnMap) {
@@ -30,4 +33,19 @@ public class PowerUtility extends SpecialtyBuilding {
 	public float getPowerSupplied() {
 		return powerSupplied;
 	}
+
+	@Override
+	public MapObjectSerializable getSerializableObject() {
+
+		PowerUtilitySerializable serializable = new PowerUtilitySerializable();
+		serializable.name = getName();
+		serializable.mapPositionX = getMapPosition().x;
+		serializable.mapPositionY = getMapPosition().y;
+		serializable.powerSupplied = powerSupplied;
+		serializable.dimensions = dimensions;
+		serializable.occupyingCells = occupyingCells;
+
+		return serializable;
+	}
+
 }

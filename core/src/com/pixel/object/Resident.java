@@ -1,6 +1,7 @@
 package com.pixel.object;
 
 import com.pixel.map.object.building.Building;
+import com.pixel.serialization.ResidentSerializable;
 
 import java.io.Serializable;
 
@@ -65,6 +66,15 @@ public class Resident implements Serializable {
 
 	public void setHappiness(float happiness) {
 		this.happiness = happiness;
+	}
+
+	public ResidentSerializable getSerializableObject() {
+		ResidentSerializable serializable = new ResidentSerializable();
+		serializable.educated = educated;
+		serializable.level = level;
+		serializable.name = name;
+
+		return serializable;
 	}
 }
 

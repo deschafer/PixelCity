@@ -6,20 +6,23 @@ import com.pixel.behavior.*;
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.scene.GameScene;
+import com.pixel.serialization.MapObjectSerializable;
+import com.pixel.serialization.RoadSerializable;
 
 import java.util.ArrayList;
 
 public class Road extends MapObject {
 
 	protected RoadFactory.RoadType type;     // the actual type assoc with this object
-	protected Road northernRoad;               // references to surrounding and connected roads
-	protected Road easternRoad;               // references to surrounding and connected roads
-	protected Road southernRoad;               // references to surrounding and connected roads
-	protected Road westernRoad;               // references to surrounding and connected roads
-	protected RoadPlacement placementBehavior;
+	private Road northernRoad;               // references to surrounding and connected roads
+	private Road easternRoad;               // references to surrounding and connected roads
+	private Road southernRoad;               // references to surrounding and connected roads
+	private Road westernRoad;               // references to surrounding and connected roads
+	private RoadPlacement placementBehavior;
 
 	public static boolean roadsNeedToUpdate = false;
 	private static Boolean updateMutex = new Boolean(false);
@@ -28,7 +31,7 @@ public class Road extends MapObject {
 	private static float upkeepCost = -0.10f;
 	public static float cost = 50.0f;
 
-	public Road(float x, float y, Map.MapCoord coord, RoadFactory.RoadType type) {
+	public Road(float x, float y, MapCoord coord, RoadFactory.RoadType type) {
 		super(x, y, Map.cellWidth, Map.cellHeight, coord, type.getName());
 
 		this.type = type;
@@ -123,7 +126,7 @@ public class Road extends MapObject {
 		}
 	}
 
-	public Road(float x, float y, float width, float height, Map.MapCoord coord, String ID) {
+	public Road(float x, float y, float width, float height, MapCoord coord, String ID) {
 		super(x, y, width, height, coord, ID);
 
 		replaceable = true;
@@ -139,7 +142,7 @@ public class Road extends MapObject {
 		}
 	}
 
-	public Road(float x, float y, float width, float height, Map.MapCoord coord, String ID, boolean prototype) {
+	public Road(float x, float y, float width, float height, MapCoord coord, String ID, boolean prototype) {
 		super(x, y, width, height, coord, ID);
 
 		setPrototypeObject(prototype);
@@ -184,7 +187,7 @@ public class Road extends MapObject {
 			southernRoad = null;
 
 			if (hasParent()) {
-				Map.MapCoord position = ((Cell) getParent()).getMapPosition();
+				MapCoord position = ((Cell) getParent()).getMapPosition();
 
 				// check the northern direction
 				if (northernRoad == null) {
@@ -450,5 +453,16 @@ public class Road extends MapObject {
 	@Override
 	public MapObject copy() {
 		return new Road(getX(), getY(), getMapPosition(), type);
+	}
+
+	@Override
+	public MapObjectSerializable getSerializableObject() {
+		RoadSerializable serializable = new RoadSerializable();
+		serializable.mapPositionX = getMapPosition().x;
+		serializable.mapPositionY = getMapPosition().y;
+		serializable.name = getName();
+		serializable.type = type;
+
+		return serializable;
 	}
 }

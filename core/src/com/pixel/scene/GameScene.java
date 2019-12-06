@@ -348,31 +348,4 @@ public class GameScene extends Scene {
 				break;
 		}
 	}
-
-	public void serialize(String filename) {
-
-		// Serialization
-		try {
-
-			filename += ".txt";
-
-			FileOutputStream file = new FileOutputStream(filename);
-			ObjectOutputStream out = new ObjectOutputStream(file);
-
-			// serialize the map
-			out.writeObject(gameMap);
-
-			// serialize the city class
-			out.writeObject(City.getInstance());
-
-			// write the financial class
-			out.writeObject(FinancialManager.getInstance());
-
-			out.close();
-			file.close();
-		}
-		catch (IOException ex) {
-			System.out.println("IOException during serialization " + ex.getMessage());
-		}
-	}
 }

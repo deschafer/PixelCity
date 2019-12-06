@@ -3,6 +3,7 @@ package com.pixel.map.object.building.special.health;
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.special.ServiceBuilding;
 
@@ -13,7 +14,7 @@ public class Hospital extends ServiceBuilding {
 	private static final float textureWidth = 132 * widthInCells;
 	private static final float textureHeight = 112 * heightInCells;
 
-	public Hospital(float x, float y, Map.MapCoord coord) {
+	public Hospital(float x, float y, MapCoord coord) {
 		super(x, isometricCorrection, textureWidth, textureHeight, widthInCells, heightInCells, coord, "Hospital");
 
 		// we need to load our texture here

@@ -10,6 +10,7 @@ import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
 import com.pixel.scene.GameScene;
 import com.pixel.scene.MenuScene;
+import com.pixel.serialization.SerializationManager;
 
 public class PauseDialog extends PDialog {
 
@@ -24,7 +25,7 @@ public class PauseDialog extends PDialog {
 				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
 					   return false;
 				   }
-				   GameScene.getInstance().serialize(City.getInstance().getName());
+				   SerializationManager.getInstance().serialize(City.getInstance().getName());
 				   return true;
 			   }
 		);

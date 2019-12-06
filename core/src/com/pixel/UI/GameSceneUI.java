@@ -59,7 +59,6 @@ public class GameSceneUI extends Stage {
 
 	public void reset() {
 
-
 		resetNameLabel();
 	}
 

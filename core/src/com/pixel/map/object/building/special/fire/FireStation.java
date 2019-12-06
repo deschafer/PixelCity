@@ -3,6 +3,7 @@ package com.pixel.map.object.building.special.fire;
 import com.pixel.city.Financials.Source;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.special.ServiceBuilding;
 
@@ -13,7 +14,7 @@ public class FireStation extends ServiceBuilding {
 	private static final float textureWidth = 132 * widthInCells;
 	private static final float textureHeight = 83 * heightInCells;
 
-	public FireStation(float x, float y, Map.MapCoord coord) {
+	public FireStation(float x, float y, MapCoord coord) {
 		super(x, isometricCorrection, textureWidth, textureHeight, widthInCells, heightInCells, coord, "FireStation");
 
 		// we need to load our texture here

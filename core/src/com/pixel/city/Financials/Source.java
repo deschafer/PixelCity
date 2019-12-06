@@ -1,6 +1,7 @@
 package com.pixel.city.Financials;
 
 import com.pixel.map.object.MapObject;
+import com.pixel.serialization.SourceSerializable;
 
 import java.io.Serializable;
 
@@ -53,5 +54,15 @@ public class Source implements Serializable {
 		synchronized (this) {
 			valid = false;
 		}
+	}
+
+	public SourceSerializable getSerializableObject() {
+
+		SourceSerializable sourceSerializable = new SourceSerializable();
+		sourceSerializable.change = change;
+		sourceSerializable.expense = expense;
+		sourceSerializable.valid = valid;
+
+		return sourceSerializable;
 	}
 }
