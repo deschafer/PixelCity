@@ -1,6 +1,8 @@
 package com.pixel.serialization;
 
+import com.pixel.map.object.MapObject;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public abstract class MapObjectSerializable implements Serializable {
 
@@ -11,6 +13,10 @@ public abstract class MapObjectSerializable implements Serializable {
 	public float width;
 	public float height;
 	public String name;
+	public ArrayList<SourceSerializable> sources;
 
-	public abstract MapObjectSerializable getNonSerializableObject();
+	// TODO: we should probably store sources in the map object class and then add them to the financial class once
+	// serialization is complete.
+
+	public abstract MapObject getNonSerializableObject();
 }

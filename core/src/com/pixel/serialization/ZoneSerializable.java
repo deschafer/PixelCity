@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 public class ZoneSerializable {
 
-	public ArrayList<ZoneCellSerializable> zoneCells;
-	public ArrayList<ZoneCellSerializable> availableCells;
 	public Rectangle dimensions;
 	public boolean empty;
 	public boolean zoneFull;

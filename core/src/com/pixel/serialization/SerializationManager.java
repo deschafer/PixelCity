@@ -33,6 +33,12 @@ public class SerializationManager {
 			// write the financial class
 			//out.writeObject(FinancialManager.getInstance());
 
+			// Process description
+			//
+			// first save the city and financial classes
+			//
+			// then we save the game map and all associated objects
+
 			out.close();
 			file.close();
 		} catch (IOException ex) {
@@ -47,6 +53,24 @@ public class SerializationManager {
 		// Deserialization
 		try
 		{
+
+
+			// Process description
+			//
+			// first load in the city and financial classes
+			// add the list of loaded in residents to another list that we can access later
+			//
+			// then we need to load in the game map
+			// after this step is completed, we need to access a list of saved zonecells that need to be assigned
+			// to their respective zones
+			// and we also need to then assign the residents back to their buildings
+
+			// where are these lists going to reside?
+			// the loaded in residents can reside in the city class
+			// the loaded in zone cells that need to be assigned can be located in the map class
+
+
+
 			// Reading the object from a file
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);

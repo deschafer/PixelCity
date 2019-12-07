@@ -2,52 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05fdd495-9b0b-42fe-b267-3cc5a59f5536" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/map/MapCoord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/CitySerializable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/FinancialSerializable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/ResidentSerializable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/RoadSerializable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/SourceSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PixelCity.iws" beforeDir="false" afterPath="$PROJECT_DIR$/PixelCity.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PauseDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PauseDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/city/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/city/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/city/FinancialManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/city/FinancialManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/city/Financials/Source.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/city/Financials/Source.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/ServiceBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/ServiceBuilding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuilding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuildingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuildingFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/education/SecondarySchool.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/education/SecondarySchool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/fire/FireStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/fire/FireStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/health/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/health/Hospital.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/police/PoliceStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/police/PoliceStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/object/Resident.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/object/Resident.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/scene/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/scene/MenuScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/BuildingSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/BuildingSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/CellSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/CellSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/MapObjectSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/MapObjectSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/PowerUtilitySerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/PowerUtilitySerializable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/RoadSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/RoadSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/SpecialtyBuildingSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/SpecialtyBuildingSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/WaterUtilitySerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/WaterUtilitySerialization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneCellSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneCellSerializable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/tools/SpecialtyBuildingPlacementTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/tools/SpecialtyBuildingPlacementTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneSerializable.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -97,106 +62,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="22" />
-              <folding>
-                <element signature="e#294#295#0" expanded="true" />
-                <element signature="e#312#313#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/WaterUtilitySerialization.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="22" />
-              <folding>
-                <element signature="e#216#217#0" expanded="true" />
-                <element signature="e#234#235#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="160" column="10" selection-start-line="160" selection-start-column="10" selection-end-line="160" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/SpecialtyBuildingPlacementTool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="170" column="55" selection-start-line="170" selection-start-column="55" selection-end-line="170" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="153" column="34" selection-start-line="153" selection-start-column="34" selection-end-line="153" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/PowerUtilitySerializable.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+            <state relative-caret-position="314">
+              <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="27" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuildingFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuilding.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -212,7 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>could not all</find>
       <find>Sys</find>
       <find>Position not</find>
       <find>dimensions</find>
@@ -242,6 +114,7 @@
       <find>new CoalPower</find>
       <find>getNonSer</find>
       <find>new Cell</find>
+      <find>sources</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -256,7 +129,6 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/display/BuildingDisplay.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" />
@@ -264,21 +136,15 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/PixelSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/object/Resident.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ResidentSerializable.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneCellSerializable.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/RoadSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/scene/MenuScene.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/city/Financials/Source.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/CitySerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/city/City.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/SourceSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/city/FinancialManager.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/BuildingSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/SpecialtyBuildingSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/FinancialSerializable.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/MapObjectSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/MapCoord.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/CellSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" />
@@ -286,7 +152,6 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/Cell.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/ServiceBuilding.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/police/PoliceStation.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java" />
@@ -295,15 +160,23 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/fire/FireStation.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/health/Hospital.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/RoadTool.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/WaterUtilitySerialization.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/SpecialtyBuildingPlacementTool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/Building.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuildingFactory.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuilding.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/CellSerializable.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/BuildingSerializable.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneCellSerializable.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneSerializable.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/MapObjectSerializable.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/PowerUtilitySerializable.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/WaterUtilitySerialization.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/RoadSerializable.java" />
       </list>
     </option>
   </component>
@@ -324,8 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -446,6 +317,16 @@
               <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="zoning" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
               <item name="object" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -476,6 +357,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -532,6 +415,15 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
@@ -545,18 +437,18 @@
       <window_info id="Build Variants" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21885157" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.21885157" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.20260021" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.21885157" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.23943663" />
       <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.18336888" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.15618336" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32995737" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Maven" order="4" weight="0.32995737" />
@@ -621,13 +513,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java</url>
-          <line>65</line>
+          <line>89</line>
           <properties />
           <option name="timeStamp" value="347" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java</url>
-          <line>64</line>
+          <line>88</line>
           <properties />
           <option name="timeStamp" value="348" />
         </line-breakpoint>
@@ -697,17 +589,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/scenes/scene2d/ui/Label.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="358" column="28" selection-start-line="358" selection-start-column="28" selection-end-line="358" selection-end-column="28" />
-          <folding>
-            <element signature="e#10746#10747#0" expanded="true" />
-            <element signature="e#10770#10771#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -763,27 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneCellSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="e#283#284#0" expanded="true" />
-            <element signature="e#301#302#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/dialog/BuildingStatDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1683">
@@ -824,13 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/SourceSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/city/FinancialManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="603">
@@ -866,62 +719,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/BuildingSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/CitySerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/FinancialSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/RoadSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#313#314#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/MapObjectSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/MapCoord.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/CellSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -936,31 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
-          <folding>
-            <element signature="e#29919#29920#0" expanded="true" />
-            <element signature="e#29938#29939#0" expanded="true" />
-            <element signature="e#29972#29973#0" expanded="true" />
-            <element signature="e#29992#29993#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-825">
-          <caret line="219" column="32" selection-start-line="219" selection-start-column="32" selection-end-line="219" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7673#7674#0" expanded="true" />
-            <element signature="e#7691#7692#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -989,13 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="14" column="108" selection-start-line="14" selection-start-column="108" selection-end-line="14" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1059,39 +828,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="e#294#295#0" expanded="true" />
-            <element signature="e#312#313#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/WaterUtilitySerialization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="22" />
-          <folding>
-            <element signature="e#216#217#0" expanded="true" />
-            <element signature="e#234#235#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/ZoneTool.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="160" column="10" selection-start-line="160" selection-start-column="10" selection-end-line="160" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/SpecialtyBuildingPlacementTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="170" column="55" selection-start-line="170" selection-start-column="55" selection-end-line="170" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -1119,17 +859,158 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/tools/SpecialtyBuildingPlacementTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="170" column="55" selection-start-line="170" selection-start-column="55" selection-end-line="170" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/CitySerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/CellSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="293" column="10" selection-start-line="293" selection-start-column="10" selection-end-line="293" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="55" column="45" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/BuildingSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/FinancialSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/SourceSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneCellSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="153" column="34" selection-start-line="153" selection-start-column="34" selection-end-line="153" selection-end-column="34" />
+        <state relative-caret-position="102">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/ZoneSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/ZoneCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/MapObjectSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/PowerUtilitySerializable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        <state relative-caret-position="187">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/WaterUtilitySerialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding>
+            <element signature="e#216#217#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/RoadSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/serialization/SerializationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="27" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
