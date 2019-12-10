@@ -22,6 +22,9 @@ public class PixelCityGame extends AbstractGame
 
 	public void create()
 	{
+		System.out.println("Working Directory = " +
+			   System.getProperty("user.dir"));
+
 		// initialize all game assets
 
 		// so far, we need the road texture and we need the grass texture

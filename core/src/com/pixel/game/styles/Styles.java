@@ -27,7 +27,7 @@ public class Styles {
 
 		// parameters for generating a custom bitmap font
 		FreeTypeFontGenerator fontGenerator =
-			   new FreeTypeFontGenerator(Gdx.files.internal("assets/kenneyFonts/Fonts/Kenney Blocks.ttf"));
+			   new FreeTypeFontGenerator(Gdx.files.internal("kenneyFonts/Fonts/Kenney Blocks.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter fontParameters = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameters.size = 24;
 		fontParameters.color = Color.WHITE;
@@ -43,7 +43,7 @@ public class Styles {
 		balanceLabelStyle.font = customFont;
 
 		fontGenerator =
-			   new FreeTypeFontGenerator(Gdx.files.internal("assets/kenneyFonts/Fonts/Kenney High.ttf"));
+			   new FreeTypeFontGenerator(Gdx.files.internal("kenneyFonts/Fonts/Kenney High.ttf"));
 		fontParameters = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameters.size = 28;
 		fontParameters.color = Color.WHITE;
