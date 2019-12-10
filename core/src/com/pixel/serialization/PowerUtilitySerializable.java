@@ -22,8 +22,6 @@ public class PowerUtilitySerializable extends SpecialtyBuildingSerializable {
 			return null;
 		}
 
-
-
 		return null;
 	}
 }

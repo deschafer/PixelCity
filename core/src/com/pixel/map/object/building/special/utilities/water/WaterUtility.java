@@ -1,12 +1,13 @@
 package com.pixel.map.object.building.special.utilities.water;
 
-import com.pixel.map.Map;
+import com.pixel.city.Financials.Source;
 import com.pixel.map.MapCoord;
 import com.pixel.map.object.building.special.SpecialtyBuilding;
 import com.pixel.map.object.building.special.utilities.UtilityManager;
 import com.pixel.serialization.MapObjectSerializable;
-import com.pixel.serialization.PowerUtilitySerializable;
-import com.pixel.serialization.WaterUtilitySerialization;
+import com.pixel.serialization.WaterUtilitySerializable;
+
+import java.util.ArrayList;
 
 public class WaterUtility extends SpecialtyBuilding {
 
@@ -38,13 +39,22 @@ public class WaterUtility extends SpecialtyBuilding {
 	@Override
 	public MapObjectSerializable getSerializableObject() {
 
-		WaterUtilitySerialization serializable = new WaterUtilitySerialization();
+		WaterUtilitySerializable serializable = new WaterUtilitySerializable();
 		serializable.name = getName();
 		serializable.mapPositionX = getMapPosition().x;
 		serializable.mapPositionY = getMapPosition().y;
+		serializable.x = getX();
+		serializable.y = getY();
+		serializable.width = getWidth();
+		serializable.height = getHeight();
 		serializable.waterSupplied = waterSupplied;
 		serializable.dimensions = dimensions;
-		serializable.occupyingCells = occupyingCells;
+
+		// this object will have sources assoc with it
+		serializable.sources = new ArrayList<>();
+		for (Source source : sources) {
+			serializable.sources.add(source.getSerializableObject());
+		}
 
 		return serializable;
 	}

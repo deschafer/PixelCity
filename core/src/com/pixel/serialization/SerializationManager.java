@@ -1,5 +1,6 @@
 package com.pixel.serialization;
 
+import com.pixel.UI.GameSceneUI;
 import com.pixel.city.City;
 import com.pixel.city.FinancialManager;
 import com.pixel.scene.GameScene;
@@ -24,20 +25,20 @@ public class SerializationManager {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
 
-			// serialize the map
-			GameScene.getInstance().getGameMap().serialize(out);
-
 			// serialize the city class
-			//out.writeObject(City.getInstance());
+			out.writeObject(City.getInstance().getSerializableObject());
 
 			// write the financial class
-			//out.writeObject(FinancialManager.getInstance());
+			out.writeObject(FinancialManager.getInstance().getSerializableObject());
 
 			// Process description
 			//
 			// first save the city and financial classes
 			//
 			// then we save the game map and all associated objects
+
+			// serialize the map
+			GameScene.getInstance().getGameMap().serialize(out);
 
 			out.close();
 			file.close();
@@ -48,7 +49,7 @@ public class SerializationManager {
 
 	public void deserialize(String filename) {
 
-		filename = "city.city";
+		filename = "test.city";
 
 		// Deserialization
 		try
@@ -76,12 +77,18 @@ public class SerializationManager {
 			ObjectInputStream in = new ObjectInputStream(file);
 
 			// Method for deserialization of object
-			City city = (City) in.readObject();
-			City.createFromSerializable(city);
+			CitySerializable city = (CitySerializable) in.readObject();
+			City.getInstance().createFromSerializable(city);
+
+			// then we reset the UI to reflect the change
+			GameSceneUI.getInstance().reset();
 
 			// Method for deserialization of object
-			FinancialManager financialManager = (FinancialManager) in.readObject();
-			FinancialManager.createFromSerializable(financialManager);
+			FinancialSerializable financialSerializable = (FinancialSerializable) in.readObject();
+			FinancialManager.getInstance().createFromSerializable(financialSerializable);
+
+			// then load in the game map
+			GameScene.getInstance().getGameMap().deserialize(in);
 
 			in.close();
 			file.close();

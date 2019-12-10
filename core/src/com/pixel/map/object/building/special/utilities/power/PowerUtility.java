@@ -1,11 +1,14 @@
 package com.pixel.map.object.building.special.utilities.power;
 
+import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
 import com.pixel.map.MapCoord;
 import com.pixel.map.object.building.special.SpecialtyBuilding;
 import com.pixel.map.object.building.special.utilities.UtilityManager;
 import com.pixel.serialization.MapObjectSerializable;
 import com.pixel.serialization.PowerUtilitySerializable;
+
+import java.util.ArrayList;
 
 public class PowerUtility extends SpecialtyBuilding {
 
@@ -39,11 +42,20 @@ public class PowerUtility extends SpecialtyBuilding {
 
 		PowerUtilitySerializable serializable = new PowerUtilitySerializable();
 		serializable.name = getName();
+		serializable.x = getX();
+		serializable.y = getY();
+		serializable.width = getWidth();
+		serializable.height = getHeight();
 		serializable.mapPositionX = getMapPosition().x;
 		serializable.mapPositionY = getMapPosition().y;
 		serializable.powerSupplied = powerSupplied;
 		serializable.dimensions = dimensions;
-		serializable.occupyingCells = occupyingCells;
+
+		// this object will have sources assoc with it
+		serializable.sources = new ArrayList<>();
+		for (Source source : sources) {
+			serializable.sources.add(source.getSerializableObject());
+		}
 
 		return serializable;
 	}

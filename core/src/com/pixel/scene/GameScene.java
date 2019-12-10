@@ -64,8 +64,7 @@ public class GameScene extends Scene {
 	@Override
 	public void initialize() {
 
-		gameSceneUI = new GameSceneUI(PixelCityGame.width, PixelCityGame.height);
-		uiStage = gameSceneUI;
+		uiStage = gameSceneUI = GameSceneUI.getInstance();
 
 		if (gameMap == null) {
 			setNewGame("Default");

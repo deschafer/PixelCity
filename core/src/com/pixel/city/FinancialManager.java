@@ -105,7 +105,6 @@ public class FinancialManager implements Serializable {
 
 		// we do not replicate the sources because we need to get them from the buildings
 
-
 		return serializable;
 	}
 

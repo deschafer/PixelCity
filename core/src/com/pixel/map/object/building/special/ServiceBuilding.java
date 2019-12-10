@@ -142,9 +142,12 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 		serializable.name = getName();
 		serializable.mapPositionX = getMapPosition().x;
 		serializable.mapPositionY = getMapPosition().y;
+		serializable.x = getX();
+		serializable.y = getY();
+		serializable.width = getWidth();
+		serializable.height = getHeight();
 		serializable.serviceType = serviceType;
 		serializable.dimensions = dimensions;
-		serializable.occupyingCells = occupyingCells;
 
 		return serializable;
 	}

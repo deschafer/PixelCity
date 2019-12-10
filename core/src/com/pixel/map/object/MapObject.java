@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.Array;
 import com.pixel.behavior.PlacementBehavior;
 import com.pixel.city.FinancialManager;
 import com.pixel.city.Financials.Source;
-import com.pixel.map.Map;
 import com.pixel.map.MapCoord;
 import com.pixel.serialization.MapObjectSerializable;
 

@@ -25,9 +25,16 @@ import com.pixel.map.object.building.special.utilities.water.WaterTank;
 import com.pixel.map.object.roads.*;
 import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
+import com.pixel.object.Resident;
 import com.pixel.object.SimpleActor;
+import com.pixel.serialization.CellSerializable;
+import com.pixel.serialization.MapObjectSerializable;
+import com.pixel.serialization.MapSerializable;
+import com.pixel.serialization.ZoneSerializable;
+import sun.nio.ch.IOStatus;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -640,6 +647,7 @@ public class Map extends Group implements Serializable {
 
 	public void serialize(ObjectOutputStream out) {
 
+		// we handle all of our cells and serializable map objects
 		ArrayList<Serializable> serializables = new ArrayList<>();
 
 		// we get all of our serializables first
@@ -650,12 +658,106 @@ public class Map extends Group implements Serializable {
 			}
 		}
 
+		// then we need to serialize all of our zones, and our width and height of this map
+		// create a map serializable for this
+		MapSerializable serializable = new MapSerializable();
+		serializable.height = height;
+		serializable.width = width;
+		serializable.topOfMap = topOfMap;
+		serializable.heightPixels = heightPixels;
+		serializable.widthPixels = widthPixels;
+
+		if (!residentialZones.isEmpty()) {
+			serializable.residentialZones = new ArrayList<>();
+			for (Zone zone : residentialZones) {
+				serializable.residentialZones.add(zone.getSerializableObject());
+			}
+		}
+		if (!commercialZones.isEmpty()) {
+			serializable.commercialZones = new ArrayList<>();
+			for (Zone zone : commercialZones) {
+				serializable.commercialZones.add(zone.getSerializableObject());
+			}
+		}
+		if (!officeZones.isEmpty()) {
+			serializable.officeZones = new ArrayList<>();
+			for (Zone zone : officeZones) {
+				serializable.officeZones.add(zone.getSerializableObject());
+			}
+		}
+
+		// then we write out this object
+		try {
+			out.writeObject(serializable);
+		} catch (IOException ex) {
+			System.out.println("IOException during game map MapSerializable serialization " + ex.getMessage());
+		}
+
 		// then since each of these are serializable, we write them using the ObjectOutputStream
-		for (Serializable serializable : serializables) {
+		for (Serializable serial : serializables) {
 			try {
-				out.writeObject(serializable);
+				out.writeObject(serial);
 			} catch (IOException ex) {
 				System.out.println("IOException during game map serialization " + ex.getMessage());
+			}
+		}
+	}
+
+	public void deserialize(ObjectInputStream input) {
+
+		MapSerializable mapSerializable = null;
+
+		try {
+			mapSerializable = (MapSerializable)input.readObject();
+		} catch (IOException ex) {
+			System.out.println("IOException during game map serialization " + ex.getMessage());
+
+		} catch (ClassNotFoundException ex) {
+			System.out.println("ClassNotFoundException during game map serialization " + ex.getMessage());
+		}
+
+		if (mapSerializable != null) {
+
+			// transfer data from this file to this map
+			width = mapSerializable.width;
+			height = mapSerializable.height;
+			widthPixels = mapSerializable.widthPixels;
+			heightPixels = mapSerializable.heightPixels;
+			topOfMap = mapSerializable.topOfMap;
+
+			if (!mapSerializable.residentialZones.isEmpty()) {
+				for (ZoneSerializable zone : mapSerializable.residentialZones) {
+					residentialZones.add(new Zone(zone));
+				}
+			}
+			if (!mapSerializable.commercialZones.isEmpty()) {
+				for (ZoneSerializable zone : mapSerializable.commercialZones) {
+					commercialZones.add(new Zone(zone));
+				}
+			}
+			if (!mapSerializable.officeZones.isEmpty()) {
+				for (ZoneSerializable zone : mapSerializable.officeZones) {
+					officeZones.add(new Zone(zone));
+				}
+			}
+		}
+
+		// then based off the data we just received, we can go ahead and load in the cells as well
+
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				try {
+					CellSerializable serializable = (CellSerializable)input.readObject();
+
+					// create a cell from this cell
+					mapArray[i][j] = (Cell)serializable.getNonSerializableObject();
+
+				} catch (IOException ex) {
+					System.out.println("IOException during game map serialization " + ex.getMessage());
+
+				} catch (ClassNotFoundException ex) {
+					System.out.println("ClassNotFoundException during game map serialization " + ex.getMessage());
+				}
 			}
 		}
 	}

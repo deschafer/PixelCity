@@ -9,13 +9,14 @@ import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.scene.GameScene;
+import com.pixel.serialization.ZoneSerializable;
 import javafx.collections.MapChangeListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Zone implements Serializable {
+public class Zone {
 
 	private Rectangle rectangle;		// defining rectangle for this object
 	private ArrayList<ZoneCell> availableCells = new ArrayList<>();	// cells open for construction
@@ -29,7 +30,7 @@ public class Zone implements Serializable {
 	public static float commercialZonePlacementCost = 50.0f;
 	public static float officeZonePlacementCost = 75.0f;
 
-	private Random random = new Random();
+	private static Random random = new Random();
 	private boolean zoneFull = false;
 
 	public Zone(Rectangle dimensions, Building.BuildingType type) {
@@ -60,6 +61,19 @@ public class Zone implements Serializable {
 				}
 			}
 		}
+	}
+
+	public Zone(ZoneSerializable serializable) {
+
+		rectangle = serializable.dimensions;
+		empty = serializable.empty;
+		zoneFull = serializable.zoneFull;
+		zoneType = serializable.zoneType;
+
+		// create our arrays
+		zoneCells = new ZoneCell[(int)rectangle.width][(int)rectangle.height];
+
+		// we will not load in zone cells yet
 	}
 
 	private boolean isCellNearRoad(Cell cell) {
@@ -259,5 +273,15 @@ public class Zone implements Serializable {
 	public void removeZoneCell(ZoneCell zoneCell) {
 
 		availableCells.remove(zoneCell);
+	}
+
+	public ZoneSerializable getSerializableObject() {
+		ZoneSerializable serializable = new ZoneSerializable();
+		serializable.dimensions = rectangle;
+		serializable.empty = empty;
+		serializable.zoneFull = zoneFull;
+		serializable.zoneType = zoneType;
+
+		return serializable;
 	}
 }

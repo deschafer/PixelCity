@@ -54,6 +54,10 @@ public class MenuScene extends Scene {
 					   return false;
 				   }
 
+				   // needs to move into the gamescene first
+			        PixelCityGame.setActiveScreen(GameScene.getInstance());
+
+				   // then load into this game scene
 				   SerializationManager.getInstance().deserialize("");
 				   return true;
 			   }

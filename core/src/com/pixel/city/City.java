@@ -19,7 +19,6 @@ public class City implements Serializable {
 		public float total;
 	}
 
-
 	private final float amountEarnedPerLevel = 0.05f;
 
 	private String name;			// the name of this city

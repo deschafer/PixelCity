@@ -460,8 +460,18 @@ public class Road extends MapObject {
 		RoadSerializable serializable = new RoadSerializable();
 		serializable.mapPositionX = getMapPosition().x;
 		serializable.mapPositionY = getMapPosition().y;
+		serializable.x = getX();
+		serializable.y = getY();
+		serializable.width = getWidth();
+		serializable.height = getHeight();
 		serializable.name = getName();
-		serializable.type = type;
+		serializable.type = type.getValue();
+
+		// since there are expenses associated with this object
+		serializable.sources = new ArrayList<>();
+		for (Source source : sources) {
+			serializable.sources.add(source.getSerializableObject());
+		}
 
 		return serializable;
 	}

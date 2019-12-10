@@ -146,6 +146,10 @@ public class Cell extends MapObject {
 		CellSerializable cellSerializable = new CellSerializable();
 		cellSerializable.mapPositionX = getMapPosition().x;
 		cellSerializable.mapPositionY = getMapPosition().y;
+		cellSerializable.x = getX();
+		cellSerializable.y = getY();
+		cellSerializable.width = getWidth();
+		cellSerializable.height = getHeight();
 		cellSerializable.children = childrenSerializables;
 		cellSerializable.occupyingObjects = occupyingSerializables;
 		cellSerializable.name = getName();

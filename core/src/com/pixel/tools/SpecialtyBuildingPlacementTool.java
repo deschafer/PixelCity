@@ -107,7 +107,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	@Override
 	public boolean onTouchUp(float x, float y) {
 
-		if (super.onTouchUp(x, y) && valid) {
+		if (super.onTouchUp(x, y) && valid && currCell != null) {
 
 			// create our new building
 			SpecialtyBuilding building =

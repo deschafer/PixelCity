@@ -50,6 +50,10 @@ public class ZoneCell extends MapObject {
 		serializable.name = getName();
 		serializable.mapPositionX = mapPosition.x;
 		serializable.mapPositionY = mapPosition.y;
+		serializable.x = getX();
+		serializable.y = getY();
+		serializable.width = getWidth();
+		serializable.height = getHeight();
 		serializable.type = type;
 		serializable.valid = valid;
 

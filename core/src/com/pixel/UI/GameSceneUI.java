@@ -40,10 +40,15 @@ public class GameSceneUI extends Stage {
 	private float horizPadding = 10;
 	private float verticalPadding = 10;
 
+	private static GameSceneUI instance = new GameSceneUI();
+
 	// contain all UI element including Icons and Labels
 
-	public GameSceneUI(float width, float height) {
+	private GameSceneUI() {
 		super();
+
+		float width = PixelCityGame.width;
+		float height = PixelCityGame.height;
 
 		InputMultiplexer im = (InputMultiplexer) Gdx.input.getInputProcessor();
 		im.addProcessor(this);
@@ -51,15 +56,24 @@ public class GameSceneUI extends Stage {
 		this.width = width;
 		this.height = height;
 
-		initLeftSideIcons();
-		initRightSideIcons();
-		initLabels();
 
 	}
 
+	public static GameSceneUI getInstance() {
+		return instance;
+	}
+
+
 	public void reset() {
 
+		if (cityNameLabel == null) {
+			initLeftSideIcons();
+			initRightSideIcons();
+			initLabels();
+		}
+
 		resetNameLabel();
+		resetPopLabel();
 	}
 
 	private void initLeftSideIcons() {

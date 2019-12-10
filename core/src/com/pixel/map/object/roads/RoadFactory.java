@@ -44,6 +44,40 @@ public class RoadFactory {
 		return instance;
 	}
 
+	public RoadType getRoadTypeFromValue(int value) {
+		if (RoadType.ROADWAY_NS.value == value) {
+			return RoadType.ROADWAY_NS;
+		} else if (RoadType.ROADWAY_EW.value == value) {
+			return RoadType.ROADWAY_EW;
+		} else if (RoadType.INTERSECT_4.value == value) {
+			return RoadType.INTERSECT_4;
+		} else if (RoadType.INTERSECT_3_N.value == value) {
+			return RoadType.INTERSECT_3_N;
+		} else if (RoadType.INTERSECT_3_E.value == value) {
+			return RoadType.INTERSECT_3_E;
+		} else if (RoadType.INTERSECT_3_S.value == value) {
+			return RoadType.INTERSECT_3_S;
+		} else if (RoadType.INTERSECT_3_W.value == value) {
+			return RoadType.INTERSECT_3_W;
+		} else if (RoadType.END_N.value == value) {
+			return RoadType.END_N;
+		} else if (RoadType.END_E.value == value) {
+			return RoadType.END_E;
+		} else if (RoadType.END_S.value == value) {
+			return RoadType.END_S;
+		} else if (RoadType.END_W.value == value) {
+			return RoadType.END_W;
+		} else if (RoadType.CORNER_EN.value == value) {
+			return RoadType.CORNER_EN;
+		} else if (RoadType.CORNER_NE.value == value) {
+			return RoadType.CORNER_NE;
+		} else if (RoadType.CORNER_WN.value == value) {
+			return RoadType.CORNER_WN;
+		} else if (RoadType.CORNER_NW.value == value) {
+			return RoadType.CORNER_NW;
+		} else return null;
+	}
+
 	public void registerRoadType(RoadType type, Road road) {
 		int position = type.value;
 		road.setPrototypeObject(true);

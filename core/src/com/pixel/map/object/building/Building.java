@@ -560,6 +560,16 @@ public class Building extends MapObject {
 		}
 		serializable.mapPositionX = getMapPosition().x;
 		serializable.mapPositionY = getMapPosition().y;
+		serializable.x = getX();
+		serializable.y = getY();
+		serializable.width = getWidth();
+		serializable.height = getHeight();
+
+		// this object will have sources assoc. with it
+		serializable.sources = new ArrayList<>();
+		for (Source source : sources) {
+			serializable.sources.add(source.getSerializableObject());
+		}
 
 		return serializable;
 	}
