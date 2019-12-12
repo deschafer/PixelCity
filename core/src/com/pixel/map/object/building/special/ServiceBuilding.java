@@ -3,6 +3,7 @@ package com.pixel.map.object.building.special;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
+import com.pixel.city.Financials.Source;
 import com.pixel.map.Map;
 import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
@@ -131,6 +132,7 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 				// then we add this service
 				Building building = (Building)object;
 				building.removeService(serviceType);
+				building.setOpacity(0);
 			}
 		}
 		return super.remove();
@@ -148,6 +150,11 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 		serializable.height = getHeight();
 		serializable.serviceType = serviceType;
 		serializable.dimensions = dimensions;
+
+		serializable.sources = new ArrayList<>();
+		for (Source source : sources) {
+			serializable.sources.add(source.getSerializableObject());
+		}
 
 		return serializable;
 	}

@@ -34,6 +34,8 @@ public class City implements Serializable {
 	private ArrayList<Building> hiringCommercialBuildings;	// commercial buildings that have jobs available
 	private ArrayList<Building> hiringOfficeBuildings;	// office buildings that have jobs available
 
+	private ArrayList<Resident> loadedInResidents;
+
 	private int commercialRating = 0;
 	private int officeRating = 0;
 
@@ -59,6 +61,7 @@ public class City implements Serializable {
 		hiringCommercialBuildings = new ArrayList<>();
 		hiringOfficeBuildings = new ArrayList<>();
 		unemployedEducatedResidents = new ArrayList<>();
+		loadedInResidents = new ArrayList<>();
 	}
 
 	public static City getInstance() {
@@ -471,6 +474,10 @@ public class City implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void addLoadedInResident(Resident resident) {
+		loadedInResidents.add(resident);
 	}
 
 	public CitySerializable getSerializableObject() {

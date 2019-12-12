@@ -121,7 +121,7 @@ public class Zone {
 		for (int i = 0; i < rectangle.width && i < zoneCells.length; i++) {
 			for (int j = 0; j <rectangle.height && j < zoneCells[i].length; j++) {
 
-				if (checkZoneCell(zoneCells[i][j], i, j, dimensions)) {
+				if (checkCell(zoneCells[i][j])) {
 					locations.add(new MapCoord(i, j));
 				}
 			}
@@ -129,86 +129,16 @@ public class Zone {
 		return locations;
 	}
 
-	private boolean checkZoneCell(ZoneCell zoneCell, int x, int y, Rectangle dimensions) {
-
-		// only proceed if this cell is not null
-		if (zoneCell != null) {
-
-			if (dimensions.height == 1 && dimensions.width == 1) {
-				return checkCell(zoneCell);
-			} else {
-
-				// TODO: this section below does not work and has been removed.
-
-				/*
-
-				// use these outside of the loop so we can use them later
-				int i = x;
-				int j = y;
-
-				// depending on the dimensions, we need to check to the left and up
-				for (; i > (x - dimensions.width) && i >= 0; i--) {
-					for (j = y; j > (y - dimensions.height) && j >= 0; j--) {
-						if (!checkCell(zoneCells[i][j])) {
-							return false;
-						}
-					}
-				}
-
-				// if i or j is negative, then we know we have checked off the map, and therefore this is not a
-				// suitable location
-				if (i >= 0 && j >= 0) {
-					return true;
-				}*/
-			}
-		}
-		return false;
-	}
-
-	protected void placeBuilding(MapCoord zoneCellLocation, Building building) {
+	protected void placeBuilding(ZoneCell zoneCell, Building building) {
 
 		// since we know that the object can be placed without any issues, just place it
 		Rectangle dimensions = building.getDimensions();
-		ZoneCell zoneCell = zoneCells[zoneCellLocation.x][zoneCellLocation.y];
 		Cell cell = parentMap.getCell(zoneCell.getMapPosition());
 
 		// we add this building to the desired zone cell as a child actor
 		// Offset the image to center the building in the cell grid
 		cell.addMapObject(building);
 		building.setMapPosition(cell.getMapPosition().x, cell.getMapPosition().y);
-		//zoneCell.setColor(1,0,0,1);
-
-		// TODO: this section below is not working, needs to be redone
-		/*
-		if (building.getDimensions().width > 1 || building.getDimensions().height > 1) {
-
-			// TODO: follow our sheet, calc the size variable, then offset it with those equations
-			float sizeInCells = building.getDimensions().width * 0.5f + building.getDimensions().height * 0.5f;
-			float widthPixels = sizeInCells * Map.cellWidth;
-			float heightPixels = sizeInCells * Map.cellRowHeight;
-
-			//float xOffset = zoneCellLocation.x + widthPixels / 2 - building.getWidth() / 2;
-			//float yOffset = zoneCellLocation.y + heightPixels / 2 - building.getHeight() / 2;
-			float xOffset = Map.cellWidth / 2.0f - building.getWidth() / 2;
-			float yOffset = building.getHeight();
-
-			building.setX(xOffset);
-			//building.setY();
-
-			// then we need to add this object as an occupying object to all cells underneath this one
-			// depending on the dimensions, we need to check to the left and up
-			for (int i = zoneCellLocation.x; i >= (zoneCellLocation.x - dimensions.width) && i >= 0; i--) {
-				for (int j = zoneCellLocation.y; j >= (zoneCellLocation.y - dimensions.height) && j >= 0; j--) {
-
-					if (zoneCell != zoneCells[i][j] && zoneCells[i][j] != null) {
-						cell = (Cell) zoneCells[i][j].getParent();
-						cell.addOccupyingObject(building);
-						availableCells.remove(zoneCells[i][j]);
-					}
-				}
-			}
-		}
-		 */
 
 		availableCells.remove(zoneCell);
 	}
@@ -245,15 +175,13 @@ public class Zone {
 			// now we need to find a position for this building if there is one available
 			// use our findSuitableLocation function from zone to get a placement for this building
 
-			//  if there is a suitable location
-			if (!(suitableCellLocations = findSuitableLocation(building.getDimensions())).isEmpty()) {
-
-				// then we found a suitableCell, and we need to place this object
-				placeBuilding(suitableCellLocations.get(random.nextInt(suitableCellLocations.size())), building);
+			if (findSuitableLocation(building.getDimensions()).isEmpty()) {
+				System.out.println("");
 			}
-			else {
-				System.out.println("Position not found for building");
-				building.remove();
+
+			if (!availableCells.isEmpty()) {
+				ZoneCell zoneCell = availableCells.get(random.nextInt(availableCells.size()));
+				placeBuilding(zoneCell, building);
 			}
 		}
 	}
@@ -270,6 +198,10 @@ public class Zone {
 		return zoneFull;
 	}
 
+	public Rectangle getRectangle() {
+		return rectangle;
+	}
+
 	public void removeZoneCell(ZoneCell zoneCell) {
 
 		availableCells.remove(zoneCell);
@@ -283,5 +215,27 @@ public class Zone {
 		serializable.zoneType = zoneType;
 
 		return serializable;
+	}
+
+	public void addAvailableZoneCell(ZoneCell zoneCell) {
+		availableCells.add(zoneCell);
+	}
+
+	public void addZoneCell(ZoneCell zoneCell) {
+
+		int x = zoneCell.getMapPosition().x;
+		int y = zoneCell.getMapPosition().y;
+
+		if (rectangle.contains(x, y)) {
+			// translate to our array
+			x -= rectangle.x;
+			y -= rectangle.y;
+
+			try {
+				zoneCells[x][y] = zoneCell;
+			} catch (ArrayIndexOutOfBoundsException ex) {
+				System.out.println("Exception");
+			}
+		}
 	}
 }

@@ -171,23 +171,6 @@ public class BuildingFactory {
 		return createGenericBuilding(position, type, level);
 	}
 
-	public Building createFromSerializable(BuildingSerializable serializable) {
-
-		Map map = GameScene.getInstance().getGameMap();
-		MapCoord coord = new MapCoord(serializable.mapPositionX, serializable.mapPositionY);
-
-		// we need to first create a generic building empty of residents
-		Building genericBuilding = createGenericBuilding(coord, serializable.type, serializable.level);
-
-		// then we need to add the saved residents to this object
-		for (ResidentSerializable residentSerializable : serializable.residents) {
-
-		}
-
-
-		return null;
-	}
-
 	public void registerBuildingDisplayBase(BuildingDisplay display, boolean residential, boolean commercial, boolean office) {
 
 		if(residential) {

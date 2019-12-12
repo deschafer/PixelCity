@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.pixel.UI.dialog.LoadDialog;
 import com.pixel.UI.dialog.NewGameDialog;
 import com.pixel.game.PixelCityGame;
 import com.pixel.game.styles.Styles;
@@ -54,11 +55,18 @@ public class MenuScene extends Scene {
 					   return false;
 				   }
 
+				   // create our load game dialog
+			        Dialog dialog = new LoadDialog();
+			        dialog.show(uiStage);
+
+				   /*
 				   // needs to move into the gamescene first
 			        PixelCityGame.setActiveScreen(GameScene.getInstance());
 
 				   // then load into this game scene
 				   SerializationManager.getInstance().deserialize("");
+
+				    */
 				   return true;
 			   }
 		);

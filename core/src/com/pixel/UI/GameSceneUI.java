@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.pixel.UI.dialog.DemandDialog;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 
 public class GameSceneUI extends Stage {
 
+
 	private float width;
 	private float height;
 
@@ -36,6 +38,35 @@ public class GameSceneUI extends Stage {
 	private Label populationLabel;
 	private SimpleActor populationPersonIcon;
 	private SimpleActor populationBackground;
+	private Label toolSelectedLabel;
+
+	private static final int selectedIconWidth = 48;
+	private static final int selectedIconHeight = 48;
+
+	private static SimpleActor selectedToolFire =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedFire", PixelAssetManager.fireIcon);
+	private static SimpleActor selectedToolPolice =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedPolice", PixelAssetManager.policeIcon);
+	private static SimpleActor selectedToolEd =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedEd", PixelAssetManager.educationIcon);
+	private static SimpleActor selectedToolHealth =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedHealth", PixelAssetManager.healthIcon);
+	private static SimpleActor selectedToolWater =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedWater", PixelAssetManager.waterUtilityIcon);
+	private static SimpleActor selectedToolPower =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedPower", PixelAssetManager.powerPlantIcon);
+	private static SimpleActor selectedToolRoad =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedRoad", PixelAssetManager.roadIcon);
+	private static SimpleActor selectedToolDelete =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedDelete", PixelAssetManager.deleteIcon);
+	private static SimpleActor selectedToolResZone =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedRZone", PixelAssetManager.greenZoningIcon);
+	private static SimpleActor selectedToolCommZone =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedCZone", PixelAssetManager.blueZoningIcon);
+	private static SimpleActor selectedToolOffZone =
+		   new SimpleActor(0, 0, selectedIconWidth, selectedIconHeight, "UISelectedOZone", PixelAssetManager.amberZoningIcon);
+	private static SimpleActor selectedToolBackground =
+		   new SimpleActor(0, 0, selectedIconWidth + 10, selectedIconHeight + 10, "UISelectedBg", PixelAssetManager.blueBox);
 
 	private float horizPadding = 10;
 	private float verticalPadding = 10;
@@ -96,6 +127,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.ROAD);
+				   selectedToolChanged(GameScene.Tools.ROAD);
 				   return true;
 			   }
 		);
@@ -131,6 +163,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.RES_ZONING);
+				   selectedToolChanged(GameScene.Tools.RES_ZONING);
 				   return true;
 			   }
 		);
@@ -144,6 +177,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.COMM_ZONING);
+				   selectedToolChanged(GameScene.Tools.COMM_ZONING);
 				   return true;
 			   }
 		);
@@ -157,6 +191,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.OFF_ZONING);
+				   selectedToolChanged(GameScene.Tools.OFF_ZONING);
 				   return true;
 			   }
 		);
@@ -194,6 +229,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.FIRE);
+				   selectedToolChanged(GameScene.Tools.FIRE);
 				   return true;
 			   }
 		);
@@ -207,6 +243,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.POLICE);
+				   selectedToolChanged(GameScene.Tools.POLICE);
 				   return true;
 			   }
 		);
@@ -220,6 +257,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.ED);
+				   selectedToolChanged(GameScene.Tools.ED);
 				   return true;
 			   }
 		);
@@ -233,6 +271,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.HEALTH);
+				   selectedToolChanged(GameScene.Tools.HEALTH);
 				   return true;
 			   }
 		);
@@ -270,6 +309,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.WATER);
+				   selectedToolChanged(GameScene.Tools.WATER);
 				   return true;
 			   }
 		);
@@ -283,6 +323,7 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.POWER);
+				   selectedToolChanged(GameScene.Tools.POWER);
 				   return true;
 			   }
 		);
@@ -303,22 +344,56 @@ public class GameSceneUI extends Stage {
 				   }
 				   // set the new tool
 				   GameScene.getInstance().setActiveTool(GameScene.Tools.DELETE);
+				   selectedToolChanged(GameScene.Tools.DELETE);
 				   return true;
 			   }
 		);
 		// add the icon to the left list
 		leftIconList.addIcon(deleteIcon);
+
+		// add all of our selected tool images to the same location, set them all as invisible for now
+		float positionX = horizPadding;
+		float positionY = 200;
+
+		addActor(selectedToolBackground);
+		selectedToolBackground.setPosition(positionX - 5, positionY - 5);
+		addActor(selectedToolFire);
+		selectedToolFire.setPosition(positionX, positionY);
+		addActor(selectedToolPolice);
+		selectedToolPolice.setPosition(positionX, positionY);
+		addActor(selectedToolEd);
+		selectedToolEd.setPosition(positionX, positionY);
+		addActor(selectedToolHealth);
+		selectedToolHealth.setPosition(positionX, positionY);
+		addActor(selectedToolWater);
+		selectedToolWater.setPosition(positionX, positionY);
+		addActor(selectedToolPower);
+		selectedToolPower.setPosition(positionX, positionY);
+		addActor(selectedToolRoad);
+		selectedToolRoad.setPosition(positionX, positionY);
+		addActor(selectedToolDelete);
+		selectedToolDelete.setPosition(positionX, positionY);
+		addActor(selectedToolResZone);
+		selectedToolResZone.setPosition(positionX, positionY);
+		addActor(selectedToolCommZone);
+		selectedToolCommZone.setPosition(positionX, positionY);
+		addActor(selectedToolOffZone);
+		selectedToolOffZone.setPosition(positionX, positionY);
+
+
+		// set all the not visible
+		clearSelectedTool();
 	}
 
 	private void initBalanceLabel() {
 
 		// set up the background
 		balanceLabelBackground =
-			   new SimpleActor(horizPadding / 2,verticalPadding / 2, 250, 42, "BalanceLabelBg", PixelAssetManager.blueRectangle);
+			   new SimpleActor(horizPadding / 2, verticalPadding / 2, 250, 42, "BalanceLabelBg", PixelAssetManager.blueRectangle);
 		addActor(balanceLabelBackground);
 
 		balanceLabel = new Label("$" + FinancialManager.getInstance().getBalance(), Styles.balanceLabelStyle);
-		balanceLabel.setPosition(horizPadding,verticalPadding);
+		balanceLabel.setPosition(horizPadding, verticalPadding);
 		addActor(balanceLabel);
 	}
 
@@ -351,6 +426,8 @@ public class GameSceneUI extends Stage {
 				   Dialog dialog =
 						 new StatsDialog();
 				   dialog.show(this);
+				   dialog.setPosition(statsIcon.getRelativeX() - dialog.getWidth() - horizPadding,
+						 statsIcon.getRelativeY() + statsIcon.getHeight() - dialog.getHeight());
 				   return true;
 			   }
 		);
@@ -365,6 +442,8 @@ public class GameSceneUI extends Stage {
 				   Dialog dialog =
 						 new DemandDialog();
 				   dialog.show(this);
+				   dialog.setPosition(demandIcon.getRelativeX() - dialog.getWidth() - horizPadding,
+						 demandIcon.getRelativeY() + demandIcon.getHeight() - dialog.getHeight());
 				   return true;
 			   }
 		);
@@ -402,9 +481,9 @@ public class GameSceneUI extends Stage {
 	private void initPopLabel() {
 		populationLabel = new Label(City.getInstance().getPopulation() + "", Styles.balanceLabelStyle);
 
-		populationBackground = new SimpleActor(0,0,0, 0, "PopLabelBg", PixelAssetManager.blueRectangle);
+		populationBackground = new SimpleActor(0, 0, 0, 0, "PopLabelBg", PixelAssetManager.blueRectangle);
 
-		populationPersonIcon = new SimpleActor(0,0, 32,
+		populationPersonIcon = new SimpleActor(0, 0, 32,
 			   32, "PopLabelPersonIcon", PixelAssetManager.personIcon);
 
 		addActor(populationBackground);
@@ -430,7 +509,7 @@ public class GameSceneUI extends Stage {
 
 	private void clearIconLists(Icon toggledIcon) {
 		for (Icon icon : icons) {
-			if(icon != toggledIcon) {
+			if (icon != toggledIcon) {
 				icon.setIconListVisible(false);
 			}
 		}
@@ -439,16 +518,16 @@ public class GameSceneUI extends Stage {
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
 		Rectangle rectangle = new Rectangle();
-		screenY = (int)height - screenY;
+		screenY = (int) height - screenY;
 		for (Icon icon : icons) {
 			rectangle.x = icon.getRelativeX();
 			rectangle.y = icon.getRelativeY();
 			rectangle.width = icon.getWidth();
 			rectangle.height = icon.getHeight();
 			if (rectangle.contains(screenX, screenY) && icon.isVisible()) {
-				icon.setColor(0.9f,0.9f,0.9f,1);
+				icon.setColor(0.9f, 0.9f, 0.9f, 1);
 			} else {
-				icon.setColor(1,1,1,1);
+				icon.setColor(1, 1, 1, 1);
 			}
 		}
 		return super.mouseMoved(screenX, screenY);
@@ -474,5 +553,60 @@ public class GameSceneUI extends Stage {
 		Dialog dialog =
 			   new PauseDialog();
 		dialog.show(this);
+	}
+
+	public void clearSelectedTool() {
+		selectedToolFire.addAction(Actions.fadeOut(0.2f));
+		selectedToolPolice.addAction(Actions.fadeOut(0.2f));
+		selectedToolEd.addAction(Actions.fadeOut(0.2f));
+		selectedToolHealth.addAction(Actions.fadeOut(0.2f));
+		selectedToolWater.addAction(Actions.fadeOut(0.2f));
+		selectedToolPower.addAction(Actions.fadeOut(0.2f));
+		selectedToolRoad.addAction(Actions.fadeOut(0.2f));
+		selectedToolDelete.addAction(Actions.fadeOut(0.2f));
+		selectedToolResZone.addAction(Actions.fadeOut(0.2f));
+		selectedToolCommZone.addAction(Actions.fadeOut(0.2f));
+		selectedToolOffZone.addAction(Actions.fadeOut(0.2f));
+		selectedToolBackground.addAction(Actions.fadeOut(0.2f));
+	}
+
+	public void selectedToolChanged(GameScene.Tools tools) {
+
+		clearSelectedTool();
+		selectedToolBackground.addAction(Actions.fadeIn(0.2f));
+
+		if (tools == GameScene.Tools.RES_ZONING) {
+			selectedToolResZone.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.COMM_ZONING) {
+			selectedToolCommZone.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.OFF_ZONING) {
+			selectedToolOffZone.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.POLICE) {
+			selectedToolPolice.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.FIRE) {
+			selectedToolFire.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.ED) {
+			selectedToolEd.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.HEALTH) {
+			selectedToolHealth.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.WATER) {
+			selectedToolWater.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.POWER) {
+			selectedToolPower.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.ROAD) {
+			selectedToolRoad.addAction(Actions.fadeIn(0.2f));
+
+		} else if (tools == GameScene.Tools.DELETE) {
+			selectedToolDelete.addAction(Actions.fadeIn(0.2f));
+		}
 	}
 }

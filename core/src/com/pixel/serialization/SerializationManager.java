@@ -1,5 +1,8 @@
 package com.pixel.serialization;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.pixel.UI.GameSceneUI;
 import com.pixel.city.City;
 import com.pixel.city.FinancialManager;
@@ -17,11 +20,20 @@ public class SerializationManager {
 		return instance;
 	}
 
-	public void serialize(String filename) {
+	public void serialize(String name) {
+
+		String filename = GameScene.savedGamesDirPath + name + ".city";
+
+		// then we add the new city name to the saved games atlas file
+		FileHandle atlasFile = Gdx.files.local(GameScene.savedGamesAtlasPath);
+
+		// and we also need to verify that this string is not already in the list
+		String string = atlasFile.readString();
+		if (!string.contains(name))
+			atlasFile.writeString(name + '\n', true);
+
 		// Serialization
 		try {
-			filename += ".city";
-
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
 
@@ -47,15 +59,14 @@ public class SerializationManager {
 		}
 	}
 
-	public void deserialize(String filename) {
+	public boolean deserialize(String name) {
 
-		filename = "test.city";
+		// add the path to the filename
+		String filename = GameScene.savedGamesDirPath + name + ".city";
 
 		// Deserialization
 		try
 		{
-
-
 			// Process description
 			//
 			// first load in the city and financial classes
@@ -93,19 +104,17 @@ public class SerializationManager {
 			in.close();
 			file.close();
 
-			City.getInstance();
-			FinancialManager.getInstance();
+			return true;
 		}
 
 		catch(IOException ex)
 		{
 			System.out.println("IOException during deserialization " + ex.getMessage());
 		}
-
 		catch(ClassNotFoundException ex)
 		{
 			System.out.println("ClassNotFoundException is caught");
 		}
+		return false;
 	}
-
 }

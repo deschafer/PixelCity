@@ -5,10 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -71,8 +69,16 @@ public class Icon extends Group {
 	}
 
 	public void setIconListVisible(boolean visible) {
-		if (additionalList != null)
-			additionalList.setVisible(visible);
+		if (additionalList != null) {
+			if (visible) {
+				additionalList.setVisible(visible);
+				additionalList.setColor(1, 1, 1, 0);
+				additionalList.addAction(Actions.fadeIn(0.1f));
+			} else {
+				additionalList.addAction(Actions.fadeOut(0.1f));
+				additionalList.addAction(Actions.after(Actions.hide()));
+			}
+		}
 	}
 	public boolean isIconListVisible() {
 		if (additionalList != null) {
@@ -85,18 +91,6 @@ public class Icon extends Group {
 		addActor(iconList);
 
 		iconList.setX(iconButton.getWidth() + iconList.getPadding());
-	}
-
-	public void showAdditionalList() {
-		if (additionalList != null) {
-			additionalList.setVisible(true);
-		}
-	}
-
-	public void hideAdditionalList() {
-		if (additionalList != null) {
-			additionalList.setVisible(false);
-		}
 	}
 
 	public IconList getParentList() {

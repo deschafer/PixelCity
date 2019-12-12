@@ -130,7 +130,8 @@ public class Cell extends MapObject {
 
 		// get all serializables for the objects within this object
 		for (MapObject object : occupyingObjects) {
-			occupyingSerializables.add(object.getSerializableObject());
+			if (!getChildren().contains(object, true) && !getChildren().contains(object, false) );
+				occupyingSerializables.add(object.getSerializableObject());
 		}
 		for (Actor actor : getChildren()) {
 

@@ -16,17 +16,31 @@ public class CellSerializable extends MapObjectSerializable{
 
 		// create a new cell from this serializable
 		Cell cell = new Cell(x, y, width, height, new MapCoord(mapPositionX, mapPositionY));
+		ArrayList<String> objectNames = new ArrayList<>();
 
-		// then we need to get non serializables from all the serializables stored in this object
-		for (MapObjectSerializable serializable : occupyingObjects) {
-			cell.addOccupyingObject(serializable.getNonSerializableObject());
+
+		if (!children.isEmpty() && !occupyingObjects.isEmpty()) {
+			System.out.println("");
 		}
 
-		// then we do the same for the children objects
+		// we first get the children, since all children in this case will be an occupying object
 		for (MapObjectSerializable serializable : children) {
-			cell.addActor(serializable.getNonSerializableObject());
+
+			MapObject object = serializable.getNonSerializableObject();
+			if (object != null) {
+				// this will add to occupying and children lists
+				cell.addMapObject(object);
+				objectNames.add(object.getName());
+			}
 		}
 
-		return null;
+		// then we do the same for the objects we have not already saved
+		for (MapObjectSerializable serializable : occupyingObjects) {
+			if (!children.contains(serializable) && !objectNames.contains(serializable.name)) {
+				cell.addOccupyingObject(serializable.getNonSerializableObject());
+			}
+		}
+
+		return cell;
 	}
 }

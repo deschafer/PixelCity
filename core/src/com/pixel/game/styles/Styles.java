@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -21,6 +22,8 @@ public class Styles {
 	public static Label.LabelStyle mapToolCostLabelStyle;
 	public static ImageButton.ImageButtonStyle closeButtonImageButtonStyle;
 	public static TextButton.TextButtonStyle mainMenuTextButtonStyle;
+	public static Label.LabelStyle highlightedLabelStyle;
+	public static TextButton.TextButtonStyle dialogButtonStyle;
 
 
 	public static void initialize() {
@@ -76,6 +79,28 @@ public class Styles {
 		customFont = fontGenerator.generateFont(fontParameters);
 		mainMenuTextButtonStyle.font      = customFont;
 		mainMenuTextButtonStyle.fontColor = Color.WHITE;
+
+		dialogButtonStyle = new TextButton.TextButtonStyle();
+		buttonTex   = PixelAssetManager.manager.get(PixelAssetManager.blueRectangle);
+		buttonPatch = new NinePatch(buttonTex, 5,5,5,5);
+		dialogButtonStyle.up = new NinePatchDrawable( buttonPatch );
+		fontParameters.size = 20;
+		fontParameters.borderWidth = 1;
+		customFont = fontGenerator.generateFont(fontParameters);
+		dialogButtonStyle.font      = customFont;
+		dialogButtonStyle.fontColor = Color.WHITE;
+
+		fontGenerator =
+			   new FreeTypeFontGenerator(Gdx.files.internal("assets/fonts/OpenSans.ttf"));
+		fontParameters = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		fontParameters.size = 18;
+		fontParameters.color = Color.WHITE;
+		fontParameters.borderWidth = 1;
+		fontParameters.borderColor = Color.BLACK;
+
+		customFont = fontGenerator.generateFont(fontParameters);
+		highlightedLabelStyle = new Label.LabelStyle();
+		highlightedLabelStyle.font = customFont;
 
 	}
 

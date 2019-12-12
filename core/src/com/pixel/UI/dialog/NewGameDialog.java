@@ -1,7 +1,11 @@
 package com.pixel.UI.dialog;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -40,12 +44,35 @@ public class NewGameDialog extends PDialog {
 		getContentTable().row();
 		getContentTable().add(createButton).center().pad(5,5,5,5).width(100);
 		getContentTable().row();
+
+	}
+
+	@Override
+	public Dialog show(Stage stage) {
+
+		Dialog dialog = super.show(stage);
+
+		stage.setKeyboardFocus(nameField);
+		nameField.getOnscreenKeyboard().show(true);
+
+		return dialog;
+	}
+
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+
+		if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+			acceptInput();
+		}
 	}
 
 	private void acceptInput() {
 
 		String input = nameField.getText();
 		if (input != null && input.length() > 0) {
+
+			GameScene.reset();
 
 			// first, set the correct scene
 			PixelCityGame.setActiveScreen(GameScene.getInstance());

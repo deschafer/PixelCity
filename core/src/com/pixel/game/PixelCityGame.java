@@ -185,8 +185,8 @@ public class PixelCityGame extends AbstractGame
 		menuScene = MenuScene.getInstance();
 
 		// set the main menu by default
-		setActiveScreen(menuScene);
-		//setActiveScreen(gameScene);
+		//setActiveScreen(menuScene);
+		setActiveScreen(gameScene);
 	}
 
 	public GameScene getGameScene() {

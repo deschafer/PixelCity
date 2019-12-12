@@ -64,6 +64,11 @@ public class Map extends Group implements Serializable {
 	private ArrayList<Zone> commercialZones = new ArrayList<>();
 	private ArrayList<Zone> officeZones = new ArrayList<>();
 
+	private ArrayList<ZoneCell> loadedInResidentialZoneCells;
+	private ArrayList<ZoneCell> loadedInCommercialZoneCells;
+	private ArrayList<ZoneCell> loadedInOfficeZoneCells;
+	private ArrayList<ServiceBuilding> loadedServiceBuildings;
+
 	private static float residentialTimer = 0;
 	private static float residentialTime = 1.0f;
 	private static float commericalTimer = 0;
@@ -83,6 +88,11 @@ public class Map extends Group implements Serializable {
 		heightPixels = height * cellRowHeight;
 		zeroCoordinate = new MapCoord(0, 0);
 		stage.addActor(this);
+
+		loadedInCommercialZoneCells = new ArrayList<>();
+		loadedInOfficeZoneCells = new ArrayList<>();
+		loadedInResidentialZoneCells = new ArrayList<>();
+		loadedServiceBuildings = new ArrayList<>();
 
 		generateArray();
 	}
@@ -645,6 +655,20 @@ public class Map extends Group implements Serializable {
 		return height;
 	}
 
+	public void addLoadedInZoneCell(ZoneCell cell, Building.BuildingType type) {
+		if (type == Building.BuildingType.RESIDENTIAL) {
+			loadedInResidentialZoneCells.add(cell);
+		} else if (type == Building.BuildingType.COMMERCIAL) {
+			loadedInCommercialZoneCells.add(cell);
+		} else if (type == Building.BuildingType.OFFICE) {
+			loadedInOfficeZoneCells.add(cell);
+		}
+	}
+
+	public void addLoadedServiceBuilding(ServiceBuilding building) {
+		loadedServiceBuildings.add(building);
+	}
+
 	public void serialize(ObjectOutputStream out) {
 
 		// we handle all of our cells and serializable map objects
@@ -710,10 +734,10 @@ public class Map extends Group implements Serializable {
 		try {
 			mapSerializable = (MapSerializable)input.readObject();
 		} catch (IOException ex) {
-			System.out.println("IOException during game map serialization " + ex.getMessage());
+			System.out.println("IOException during game map deserialization " + ex.getMessage());
 
 		} catch (ClassNotFoundException ex) {
-			System.out.println("ClassNotFoundException during game map serialization " + ex.getMessage());
+			System.out.println("ClassNotFoundException during game map deserialization " + ex.getMessage());
 		}
 
 		if (mapSerializable != null) {
@@ -725,19 +749,25 @@ public class Map extends Group implements Serializable {
 			heightPixels = mapSerializable.heightPixels;
 			topOfMap = mapSerializable.topOfMap;
 
-			if (!mapSerializable.residentialZones.isEmpty()) {
-				for (ZoneSerializable zone : mapSerializable.residentialZones) {
-					residentialZones.add(new Zone(zone));
+			if (mapSerializable.residentialZones != null) {
+				if (!mapSerializable.residentialZones.isEmpty()) {
+					for (ZoneSerializable zone : mapSerializable.residentialZones) {
+						residentialZones.add(new Zone(zone));
+					}
 				}
 			}
-			if (!mapSerializable.commercialZones.isEmpty()) {
-				for (ZoneSerializable zone : mapSerializable.commercialZones) {
-					commercialZones.add(new Zone(zone));
+			if (mapSerializable.commercialZones != null) {
+				if (!mapSerializable.commercialZones.isEmpty()) {
+					for (ZoneSerializable zone : mapSerializable.commercialZones) {
+						commercialZones.add(new Zone(zone));
+					}
 				}
 			}
-			if (!mapSerializable.officeZones.isEmpty()) {
-				for (ZoneSerializable zone : mapSerializable.officeZones) {
-					officeZones.add(new Zone(zone));
+			if (mapSerializable.officeZones != null) {
+				if (!mapSerializable.officeZones.isEmpty()) {
+					for (ZoneSerializable zone : mapSerializable.officeZones) {
+						officeZones.add(new Zone(zone));
+					}
 				}
 			}
 		}
@@ -749,17 +779,68 @@ public class Map extends Group implements Serializable {
 				try {
 					CellSerializable serializable = (CellSerializable)input.readObject();
 
+					// remove the last cell from this map
+					removeActor(mapArray[i][j]);
+
 					// create a cell from this cell
-					mapArray[i][j] = (Cell)serializable.getNonSerializableObject();
+					addActor(mapArray[i][j] = (Cell)serializable.getNonSerializableObject());
 
 				} catch (IOException ex) {
-					System.out.println("IOException during game map serialization " + ex.getMessage());
+					System.out.println("IOException during game map deserialization " + ex.getMessage());
 
 				} catch (ClassNotFoundException ex) {
-					System.out.println("ClassNotFoundException during game map serialization " + ex.getMessage());
+					System.out.println("ClassNotFoundException during game map deserialization " + ex.getMessage());
 				}
 			}
 		}
+
+		// initialize all our service buildings once all objects have been added to the array
+		for (ServiceBuilding building : loadedServiceBuildings) {
+			building.initialize();
+		}
+
+		for (ZoneCell zoneCell : loadedInResidentialZoneCells) {
+			for (Zone zone : residentialZones) {
+				if (zone.getRectangle().equals(zoneCell.getParentZoneDimensions())) {
+					zone.addZoneCell(zoneCell);
+
+					// if this zonecell is available, then it also gets added as an available cell
+					if (zoneCell.isAvailable()) {
+						zone.addAvailableZoneCell(zoneCell);
+					}
+					break;
+				}
+			}
+		}
+		for (ZoneCell zoneCell : loadedInCommercialZoneCells) {
+			for (Zone zone : commercialZones) {
+				if (zone.getRectangle().equals(zoneCell.getParentZoneDimensions())) {
+					zone.addZoneCell(zoneCell);
+
+					// if this zonecell is available, then it also gets added as an available cell
+					if (zoneCell.isAvailable()) {
+						zone.addAvailableZoneCell(zoneCell);
+					}
+					break;
+				}
+			}
+		}
+		for (ZoneCell zoneCell : loadedInOfficeZoneCells) {
+			for (Zone zone : officeZones) {
+				if (zone.getRectangle().equals(zoneCell.getParentZoneDimensions())) {
+					zone.addZoneCell(zoneCell);
+
+					// if this zonecell is available, then it also gets added as an available cell
+					if (zoneCell.isAvailable()) {
+						zone.addAvailableZoneCell(zoneCell);
+					}
+					break;
+				}
+			}
+		}
+
+		// then we also need to handle all references to residents
+
 	}
 }
 

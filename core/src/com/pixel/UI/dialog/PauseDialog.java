@@ -18,6 +18,7 @@ public class PauseDialog extends PDialog {
 		super("In-Game Menu", PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 
 		setModal(true);
+		closeOnEscape = false;
 
 		TextButton saveButton =
 			   new TextButton("Save", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));

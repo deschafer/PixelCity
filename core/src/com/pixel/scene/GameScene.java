@@ -2,6 +2,7 @@ package com.pixel.scene;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -26,6 +27,7 @@ public class GameScene extends Scene {
 
 	private Map gameMap;     // our actual game map
 	private static GameScene instance = new GameScene();
+	private Vector2 placementVector = new Vector2(0,0);
 
 	// Tools
 	private Tool activeTool;
@@ -38,6 +40,8 @@ public class GameScene extends Scene {
 	private GameSceneUI gameSceneUI;
 	public static final int mapWidth = 50;
 	public static final int mapHeight = 50;
+	public static final String savedGamesAtlasPath = "assets/savedGames/atlas.txt";
+	public static final String savedGamesDirPath = "assets/savedGames/";
 
 	public enum Tools {
 		RES_ZONING,
@@ -59,6 +63,10 @@ public class GameScene extends Scene {
 
 	public static GameScene getInstance() {
 		return instance;
+	}
+
+	public static void reset() {
+		instance = new GameScene();
 	}
 
 	@Override
@@ -147,66 +155,14 @@ public class GameScene extends Scene {
 				activeTool.cancel();
 				activeTool.switchOut();
 				activeTool = null;
+				GameSceneUI.getInstance().clearSelectedTool();
 			}
 			// otherwise open the in game menu dialog from the UI
 			else {
 				gameSceneUI.openInGameDialog();
 			}
-		} else if (keycode == Input.Keys.R) {
-			System.out.println("Road tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = roadTool;
-		} else if (keycode == Input.Keys.NUM_1) {
-			System.out.println("Zone tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = residentialZoneTool;
-		} else if (keycode == Input.Keys.NUM_2) {
-			System.out.println("Zone tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = commercialZoneTool;
-		} else if (keycode == Input.Keys.NUM_3) {
-			if (activeTool != null) activeTool.switchOut();
-			System.out.println("Zone tool selected");
-			activeTool = officeZoneTool;
-		} else if (keycode == Input.Keys.B) {
-			System.out.println("Deletion tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = deleteTool;
-		} else if (keycode == Input.Keys.L) {
-			Demand.getInstance().print();
 		} else if (keycode == Input.Keys.M) {
-			FinancialManager.getInstance().addFunds(10000);
-		} else if (keycode == Input.Keys.C) {
-			System.out.println("Specialty Building tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = specialtyBuildingPlacementTool;
-			specialtyBuildingPlacementTool.setPlaceableObject("CoalPowerPlantUtility");
-
-		} else if (keycode == Input.Keys.V) {
-			System.out.println("Specialty Building tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = specialtyBuildingPlacementTool;
-			specialtyBuildingPlacementTool.setPlaceableObject("FireStation");
-		} else if (keycode == Input.Keys.P) {
-			System.out.println("Specialty Building tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = specialtyBuildingPlacementTool;
-			specialtyBuildingPlacementTool.setPlaceableObject("PoliceStation");
-		} else if (keycode == Input.Keys.H) {
-			System.out.println("Specialty Building tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = specialtyBuildingPlacementTool;
-			specialtyBuildingPlacementTool.setPlaceableObject("Hospital");
-		} else if (keycode == Input.Keys.E) {
-			System.out.println("Specialty Building tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = specialtyBuildingPlacementTool;
-			specialtyBuildingPlacementTool.setPlaceableObject("SecondarySchool");
-		} else if (keycode == Input.Keys.T) {
-			System.out.println("Specialty Building tool selected");
-			if (activeTool != null) activeTool.switchOut();
-			activeTool = specialtyBuildingPlacementTool;
-			specialtyBuildingPlacementTool.setPlaceableObject("WaterTankUtility");
+			FinancialManager.getInstance().addFunds(1000000);
 		}
 
 		return false;
@@ -234,6 +190,8 @@ public class GameScene extends Scene {
 
 	private void handleBuildingSelection(Vector2 coords) {
 
+
+
 		// get the actor at this position
 		Actor actor = mainStage.hit(coords.x, coords.y, false);
 		if (actor != null && (actor.getName().contains("Base") || actor.getName().contains("Story") || actor.getName().contains("Roof"))) {
@@ -243,11 +201,17 @@ public class GameScene extends Scene {
 				Building selectedBuilding = (Building)display.getParent();
 				System.out.println("X: " + selectedBuilding.getMapPosition().x + " Y: " + selectedBuilding.getMapPosition().y);
 
+
+
 				// now we need to create a new dialog to look at this building
 				// this will be a non-modal dialog
 				BuildingStatDialog dialog = new BuildingStatDialog();
 				dialog.setBuilding(selectedBuilding);
 				dialog.show(gameSceneUI);
+				placementVector.x = Gdx.input.getX();
+				placementVector.y = Gdx.input.getY();
+				dialog.setX(Gdx.input.getX());
+				dialog.setY(PixelCityGame.height - Gdx.input.getY());
 			}
 		}
 	}

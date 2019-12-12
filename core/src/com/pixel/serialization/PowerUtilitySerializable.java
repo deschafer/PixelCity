@@ -1,8 +1,10 @@
 package com.pixel.serialization;
 
+import com.pixel.map.MapCoord;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
 import com.pixel.map.object.building.special.utilities.power.CoalPowerPlant;
+import com.pixel.map.object.building.special.utilities.water.WaterTank;
 
 public class PowerUtilitySerializable extends SpecialtyBuildingSerializable {
 
@@ -11,17 +13,17 @@ public class PowerUtilitySerializable extends SpecialtyBuildingSerializable {
 	@Override
 	public MapObject getNonSerializableObject() {
 
-		// since we only have the one power utility at the moment, we can go ahead
-		// and create the coal power plant utility from the data in this object
-
 		// use the SpecialtyObjectFactory to create an empty object of this type
-		CoalPowerPlant powerPlant = (CoalPowerPlant)SpecialtyBuildingFactory.getInstance().createEmpty(name);
+		CoalPowerPlant powerPlant = (CoalPowerPlant) SpecialtyBuildingFactory.getInstance().createEmpty(name);
+
+		powerPlant.setX(x);
+		powerPlant.setY(y);
+		powerPlant.setMapPosition(new MapCoord(mapPositionX, mapPositionY));
+		powerPlant.setName(name);
 
 		if (powerPlant == null) {
-			System.out.println("power plant was null");
-			return null;
+			System.out.println("water plant was null");
 		}
-
-		return null;
+		return powerPlant;
 	}
 }

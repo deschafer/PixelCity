@@ -1,6 +1,8 @@
 package com.pixel.UI.dialog;
 
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -12,6 +14,7 @@ import com.pixel.game.styles.Styles;
 public class PDialog extends Dialog {
 
 	protected ImageButton closeButton;
+	protected boolean closeOnEscape = true;
 
 	public PDialog(String title, Skin skin) {
 		super(title, skin);
@@ -37,5 +40,17 @@ public class PDialog extends Dialog {
 				   return true;
 			   }
 		);
+	}
+
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+
+		if (closeOnEscape) {
+			if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+				addAction(Actions.fadeOut(0.30f));
+				addAction(Actions.after(Actions.removeActor()));
+			}
+		}
 	}
 }
