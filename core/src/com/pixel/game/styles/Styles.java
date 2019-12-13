@@ -23,6 +23,8 @@ public class Styles {
 	public static ImageButton.ImageButtonStyle closeButtonImageButtonStyle;
 	public static TextButton.TextButtonStyle mainMenuTextButtonStyle;
 	public static Label.LabelStyle highlightedLabelStyle;
+	public static Label.LabelStyle greenBalanceLabelStyle;
+	public static Label.LabelStyle redBalanceLabelStyle;
 	public static TextButton.TextButtonStyle dialogButtonStyle;
 
 
@@ -101,6 +103,24 @@ public class Styles {
 		customFont = fontGenerator.generateFont(fontParameters);
 		highlightedLabelStyle = new Label.LabelStyle();
 		highlightedLabelStyle.font = customFont;
+
+		fontParameters = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		fontParameters.color = Color.GREEN;
+		fontParameters.borderWidth = 1;
+		fontParameters.borderColor = Color.BLACK;
+
+		customFont = fontGenerator.generateFont(fontParameters);
+		greenBalanceLabelStyle = new Label.LabelStyle();
+		greenBalanceLabelStyle.font = customFont;
+
+		fontParameters = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		fontParameters.color = Color.RED;
+		fontParameters.borderWidth = 1;
+		fontParameters.borderColor = Color.BLACK;
+
+		customFont = fontGenerator.generateFont(fontParameters);
+		redBalanceLabelStyle = new Label.LabelStyle();
+		redBalanceLabelStyle.font = customFont;
 
 	}
 

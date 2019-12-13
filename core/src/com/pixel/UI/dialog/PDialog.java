@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.pixel.game.styles.Styles;
 
 public class PDialog extends Dialog {
@@ -30,16 +31,16 @@ public class PDialog extends Dialog {
 		getTitleTable().add().expandX();
 		getTitleTable().add(closeButton);
 
-		closeButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
+		closeButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent e, float x, float y) {
+				if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 
-				   addAction(Actions.fadeOut(0.30f));
-				   addAction(Actions.after(Actions.removeActor()));
-				   return true;
-			   }
-		);
+					addAction(Actions.fadeOut(0.30f));
+					addAction(Actions.after(Actions.removeActor()));
+				}
+			}
+		});
 	}
 
 	@Override
@@ -52,5 +53,10 @@ public class PDialog extends Dialog {
 				addAction(Actions.after(Actions.removeActor()));
 			}
 		}
+	}
+
+	public void close() {
+		addAction(Actions.fadeOut(0.30f));
+		addAction(Actions.after(Actions.removeActor()));
 	}
 }

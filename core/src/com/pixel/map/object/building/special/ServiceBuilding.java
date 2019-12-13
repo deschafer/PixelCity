@@ -132,7 +132,6 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 				// then we add this service
 				Building building = (Building)object;
 				building.removeService(serviceType);
-				building.setOpacity(0);
 			}
 		}
 		return super.remove();

@@ -1,8 +1,11 @@
 package com.pixel.serialization;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.pixel.map.MapCoord;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
+import com.pixel.map.object.building.special.SpecialtyBuilding;
+import com.pixel.scene.GameScene;
 
 import java.util.ArrayList;
 
@@ -30,16 +33,25 @@ public class CellSerializable extends MapObjectSerializable{
 			if (object != null) {
 				// this will add to occupying and children lists
 				cell.addMapObject(object);
+
+				if (object instanceof SpecialtyBuilding) {
+					// we add this object to the map's list
+					GameScene.getInstance().getGameMap().addLoadedSpecBuilding((SpecialtyBuilding)object);
+				}
+
 				objectNames.add(object.getName());
 			}
 		}
 
-		// then we do the same for the objects we have not already saved
+		// NOTE: Since occupying objects refer to existing objects, we cannot instantiate new objects from these
+		// serializables.
+		/*
 		for (MapObjectSerializable serializable : occupyingObjects) {
 			if (!children.contains(serializable) && !objectNames.contains(serializable.name)) {
-				cell.addOccupyingObject(serializable.getNonSerializableObject());
+				//cell.addOccupyingObject(serializable.getNonSerializableObject());
 			}
 		}
+		*/
 
 		return cell;
 	}

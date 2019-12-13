@@ -2,7 +2,6 @@ package com.pixel.scene;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -18,10 +17,6 @@ import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.tools.*;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 public class GameScene extends Scene {
 
@@ -159,10 +154,14 @@ public class GameScene extends Scene {
 			}
 			// otherwise open the in game menu dialog from the UI
 			else {
-				gameSceneUI.openInGameDialog();
+				gameSceneUI.openPauseDialog();
 			}
 		} else if (keycode == Input.Keys.M) {
 			FinancialManager.getInstance().addFunds(1000000);
+		} else if (keycode == Input.Keys.V) {
+			for (Building building : City.getInstance().getCityBuildings()) {
+				building.setVisible(false);
+			}
 		}
 
 		return false;

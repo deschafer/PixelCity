@@ -1,9 +1,1 @@
-newCity
-open
-dope
-dopeTwo
-dopeFour
-dopeThrhee
-dopet
-ghfgh
-Default
+Schafer City

@@ -1,6 +1,7 @@
 package com.pixel.map.object.building;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.pixel.city.City;
 import com.pixel.map.Map;
 import com.pixel.map.MapCoord;
 import com.pixel.map.object.building.display.BuildingDisplay;
@@ -371,6 +372,8 @@ public class BuildingFactory {
 		// then we can get our roof
 		BuildingDisplay roof = roofs.get(random.nextInt(roofs.size())).copy();
 		building.addBuildingDisplay(roof);
+
+		building.setVisible(City.getInstance().isBuildingsVisible());
 
 		return building;
 	}

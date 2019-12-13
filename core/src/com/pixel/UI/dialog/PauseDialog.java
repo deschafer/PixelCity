@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.pixel.city.City;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
@@ -22,37 +23,39 @@ public class PauseDialog extends PDialog {
 
 		TextButton saveButton =
 			   new TextButton("Save", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
-		saveButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   SerializationManager.getInstance().serialize(City.getInstance().getName());
-				   return true;
-			   }
+		saveButton.addListener(new ClickListener() {
+								@Override
+								public void clicked(InputEvent e, float x, float y) {
+									if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+										SerializationManager.getInstance().serialize(City.getInstance().getName());
+									}
+								}
+							}
 		);
 
 		TextButton mainMenuButton =
 			   new TextButton("Go to Main Menu", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
-		mainMenuButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-
-				   PixelCityGame.setActiveScreen(MenuScene.getInstance());
-				   remove();
-				   return true;
-			   }
+		mainMenuButton.addListener(new ClickListener() {
+							   @Override
+							   public void clicked(InputEvent e, float x, float y) {
+								   if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									   PixelCityGame.setActiveScreen(MenuScene.getInstance());
+									   remove();
+								   }
+							   }
+						   }
 		);
 
 		TextButton quitButton =
 			   new TextButton("Quit to Desktop", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
-		quitButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   Gdx.app.exit();
-				   return true;
-			   }
+		quitButton.addListener(new ClickListener() {
+								  @Override
+								  public void clicked(InputEvent e, float x, float y) {
+									  if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+										  Gdx.app.exit();
+									  }
+								  }
+							  }
 		);
 
 		getButtonTable().pad(15,15,15,15);

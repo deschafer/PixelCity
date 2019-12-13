@@ -2,16 +2,13 @@ package com.pixel.UI;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.pixel.UI.dialog.DemandDialog;
-import com.pixel.UI.dialog.PauseDialog;
-import com.pixel.UI.dialog.StatsDialog;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.pixel.UI.dialog.*;
 import com.pixel.UI.element.Icon;
 import com.pixel.UI.element.IconList;
 import com.pixel.city.City;
@@ -38,7 +35,15 @@ public class GameSceneUI extends Stage {
 	private Label populationLabel;
 	private SimpleActor populationPersonIcon;
 	private SimpleActor populationBackground;
-	private Label toolSelectedLabel;
+	private boolean buildingsVisible = true;
+
+	private Icon statsIcon;
+	private Icon demandIcon;
+
+	private PDialog statsDialog;
+	private PDialog demandDialog;
+	private PDialog pauseDialog;
+	private PDialog balanceDialog;
 
 	private static final int selectedIconWidth = 48;
 	private static final int selectedIconHeight = 48;
@@ -121,15 +126,17 @@ public class GameSceneUI extends Stage {
 		Icon roadIcon = new Icon(PixelAssetManager.roadIcon, PixelAssetManager.blueBox, buttonSize, leftIconList);
 		icons.add(roadIcon);
 		leftIconList.addIcon(roadIcon);
-		roadIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.ROAD);
-				   selectedToolChanged(GameScene.Tools.ROAD);
-				   return true;
-			   }
+		roadIcon.addListener(new ClickListener() {
+								 @Override
+								 public void clicked(InputEvent e, float x, float y) {
+									 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+
+										 // set the new tool
+										 GameScene.getInstance().setActiveTool(GameScene.Tools.ROAD);
+										 selectedToolChanged(GameScene.Tools.ROAD);
+									 }
+								 }
+							 }
 		);
 
 		// Then we add icons to this list
@@ -139,14 +146,16 @@ public class GameSceneUI extends Stage {
 
 		// also need to add a listener to this icon
 		// this listener will open the next list within
-		zoningIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   clearIconLists(zoningIcon);
-				   zoningIcon.setIconListVisible(!zoningIcon.isIconListVisible());
-				   return true;
-			   }
+		zoningIcon.addListener(new ClickListener() {
+							 @Override
+							 public void clicked(InputEvent e, float x, float y) {
+								 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+
+									 clearIconLists(zoningIcon);
+									 zoningIcon.setIconListVisible(!zoningIcon.isIconListVisible());
+								 }
+							 }
+						 }
 		);
 
 		// creating the zoning icon sub list
@@ -157,43 +166,46 @@ public class GameSceneUI extends Stage {
 		Icon resIcon = new Icon(PixelAssetManager.greenZoningIcon, PixelAssetManager.blueBox, buttonSize, zoningIconList);
 		icons.add(resIcon);
 		zoningIconList.addIcon(resIcon);
-		resIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.RES_ZONING);
-				   selectedToolChanged(GameScene.Tools.RES_ZONING);
-				   return true;
-			   }
+		resIcon.addListener(new ClickListener() {
+							   @Override
+							   public void clicked(InputEvent e, float x, float y) {
+								   if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+								   	   // set the new tool
+									   GameScene.getInstance().setActiveTool(GameScene.Tools.RES_ZONING);
+									   selectedToolChanged(GameScene.Tools.RES_ZONING);
+								   }
+							   }
+						   }
 		);
 		// creating a commercial zoning icon
 		Icon commIcon = new Icon(PixelAssetManager.blueZoningIcon, PixelAssetManager.blueBox, buttonSize, zoningIconList);
 		icons.add(commIcon);
 		zoningIconList.addIcon(commIcon);
-		commIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.COMM_ZONING);
-				   selectedToolChanged(GameScene.Tools.COMM_ZONING);
-				   return true;
-			   }
+		commIcon.addListener(new ClickListener() {
+							@Override
+							public void clicked(InputEvent e, float x, float y) {
+								if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									// set the new tool
+									GameScene.getInstance().setActiveTool(GameScene.Tools.COMM_ZONING);
+									selectedToolChanged(GameScene.Tools.COMM_ZONING);
+								}
+							}
+						}
 		);
 		// creating an office zoning tool
 		Icon offIcon = new Icon(PixelAssetManager.amberZoningIcon, PixelAssetManager.blueBox, buttonSize, zoningIconList);
 		icons.add(offIcon);
 		zoningIconList.addIcon(offIcon);
-		offIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.OFF_ZONING);
-				   selectedToolChanged(GameScene.Tools.OFF_ZONING);
-				   return true;
-			   }
+		offIcon.addListener(new ClickListener() {
+							 @Override
+							 public void clicked(InputEvent e, float x, float y) {
+								 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									 // set the new tool
+									 GameScene.getInstance().setActiveTool(GameScene.Tools.OFF_ZONING);
+									 selectedToolChanged(GameScene.Tools.OFF_ZONING);
+								 }
+							 }
+						 }
 		);
 		zoningIcon.addIconList(zoningIconList);
 		// add the icon to the left list
@@ -205,15 +217,16 @@ public class GameSceneUI extends Stage {
 		icons.add(serviceIcon);
 		// also need to add a listener to this icon
 		// this listener will open the next list within
-		serviceIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   clearIconLists(serviceIcon);
-				   serviceIcon.setIconListVisible(!serviceIcon.isIconListVisible());
-				   System.out.println("Service Button");
-				   return true;
-			   }
+		serviceIcon.addListener(new ClickListener() {
+							@Override
+							public void clicked(InputEvent e, float x, float y) {
+								if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									clearIconLists(serviceIcon);
+									serviceIcon.setIconListVisible(!serviceIcon.isIconListVisible());
+									System.out.println("Service Button");
+								}
+							}
+						}
 		);
 
 		// add the additional list for this icon
@@ -223,22 +236,23 @@ public class GameSceneUI extends Stage {
 		Icon fireIcon = new Icon(PixelAssetManager.fireIcon, PixelAssetManager.blueBox, buttonSize, serviceList);
 		icons.add(fireIcon);
 		serviceList.addIcon(fireIcon);
-		fireIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.FIRE);
-				   selectedToolChanged(GameScene.Tools.FIRE);
-				   return true;
-			   }
+		fireIcon.addListener(new ClickListener() {
+							    @Override
+							    public void clicked(InputEvent e, float x, float y) {
+								    if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									    // set the new tool
+									    GameScene.getInstance().setActiveTool(GameScene.Tools.FIRE);
+									    selectedToolChanged(GameScene.Tools.FIRE);
+								    }
+							    }
+						    }
 		);
 		// creating an icon for police services
 		Icon policeIcon = new Icon(PixelAssetManager.policeIcon, PixelAssetManager.blueBox, buttonSize, serviceList);
 		icons.add(policeIcon);
 		serviceList.addIcon(policeIcon);
 		policeIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
+				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchUp)) {
 					   return false;
 				   }
 				   // set the new tool
@@ -247,33 +261,46 @@ public class GameSceneUI extends Stage {
 				   return true;
 			   }
 		);
+		policeIcon.addListener(new ClickListener() {
+							 @Override
+							 public void clicked(InputEvent e, float x, float y) {
+								 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									 // set the new tool
+									 GameScene.getInstance().setActiveTool(GameScene.Tools.POLICE);
+									 selectedToolChanged(GameScene.Tools.POLICE);
+								 }
+							 }
+						 }
+		);
 		// creating an icon for education services
 		Icon educationIcon = new Icon(PixelAssetManager.educationIcon, PixelAssetManager.blueBox, buttonSize, serviceList);
 		icons.add(educationIcon);
 		serviceList.addIcon(educationIcon);
-		educationIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.ED);
-				   selectedToolChanged(GameScene.Tools.ED);
-				   return true;
-			   }
+		educationIcon.addListener(new ClickListener() {
+							   @Override
+							   public void clicked(InputEvent e, float x, float y) {
+								   if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									   // set the new tool
+									   GameScene.getInstance().setActiveTool(GameScene.Tools.ED);
+									   selectedToolChanged(GameScene.Tools.ED);
+								   }
+							   }
+						   }
 		);
 		// creating an icon for health services
 		Icon healthIcon = new Icon(PixelAssetManager.healthIcon, PixelAssetManager.blueBox, buttonSize, serviceList);
 		icons.add(healthIcon);
 		serviceList.addIcon(healthIcon);
-		healthIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.HEALTH);
-				   selectedToolChanged(GameScene.Tools.HEALTH);
-				   return true;
-			   }
+		healthIcon.addListener(new ClickListener() {
+								 @Override
+								 public void clicked(InputEvent e, float x, float y) {
+									 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+										 // set the new tool
+										 GameScene.getInstance().setActiveTool(GameScene.Tools.HEALTH);
+										 selectedToolChanged(GameScene.Tools.HEALTH);
+									 }
+								 }
+							 }
 		);
 		// adding the list to the icon
 		serviceIcon.addIconList(serviceList);
@@ -285,15 +312,15 @@ public class GameSceneUI extends Stage {
 		icons.add(utilityIcon);
 		// also need to add a listener to this icon
 		// this listener will open the next list within
-		utilityIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   clearIconLists(utilityIcon);
-				   utilityIcon.setIconListVisible(!utilityIcon.isIconListVisible());
-				   System.out.println("Utility Button");
-				   return true;
-			   }
+		utilityIcon.addListener(new ClickListener() {
+							   @Override
+							   public void clicked(InputEvent e, float x, float y) {
+								   if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									   clearIconLists(utilityIcon);
+									   utilityIcon.setIconListVisible(!utilityIcon.isIconListVisible());
+								   }
+							   }
+						   }
 		);
 
 		// add the additional list for this icon
@@ -303,29 +330,32 @@ public class GameSceneUI extends Stage {
 		Icon waterIcon = new Icon(PixelAssetManager.waterUtilityIcon, PixelAssetManager.blueBox, buttonSize, utilityList);
 		icons.add(waterIcon);
 		utilityList.addIcon(waterIcon);
-		waterIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.WATER);
-				   selectedToolChanged(GameScene.Tools.WATER);
-				   return true;
-			   }
+		waterIcon.addListener(new ClickListener() {
+							    @Override
+							    public void clicked(InputEvent e, float x, float y) {
+								    if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									    // set the new tool
+									    GameScene.getInstance().setActiveTool(GameScene.Tools.WATER);
+									    selectedToolChanged(GameScene.Tools.WATER);
+								    }
+							    }
+						    }
 		);
+
 		// creating an icon for power utilities
 		Icon powerIcon = new Icon(PixelAssetManager.powerPlantIcon, PixelAssetManager.blueBox, buttonSize, utilityList);
 		icons.add(powerIcon);
 		utilityList.addIcon(powerIcon);
-		powerIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.POWER);
-				   selectedToolChanged(GameScene.Tools.POWER);
-				   return true;
-			   }
+		powerIcon.addListener(new ClickListener() {
+							  @Override
+							  public void clicked(InputEvent e, float x, float y) {
+								  if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									  // set the new tool
+									  GameScene.getInstance().setActiveTool(GameScene.Tools.POWER);
+									  selectedToolChanged(GameScene.Tools.POWER);
+								  }
+							  }
+						  }
 		);
 
 		// adding the list to the icon
@@ -338,16 +368,18 @@ public class GameSceneUI extends Stage {
 		Icon deleteIcon = new Icon(PixelAssetManager.deleteIcon, PixelAssetManager.blueBox, buttonSize, leftIconList);
 		icons.add(deleteIcon);
 		utilityList.addIcon(deleteIcon);
-		deleteIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // set the new tool
-				   GameScene.getInstance().setActiveTool(GameScene.Tools.DELETE);
-				   selectedToolChanged(GameScene.Tools.DELETE);
-				   return true;
-			   }
+		deleteIcon.addListener(new ClickListener() {
+							  @Override
+							  public void clicked(InputEvent e, float x, float y) {
+								  if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									  // set the new tool
+									  GameScene.getInstance().setActiveTool(GameScene.Tools.DELETE);
+									  selectedToolChanged(GameScene.Tools.DELETE);
+								  }
+							  }
+						  }
 		);
+
 		// add the icon to the left list
 		leftIconList.addIcon(deleteIcon);
 
@@ -394,6 +426,15 @@ public class GameSceneUI extends Stage {
 
 		balanceLabel = new Label("$" + FinancialManager.getInstance().getBalance(), Styles.balanceLabelStyle);
 		balanceLabel.setPosition(horizPadding, verticalPadding);
+		balanceLabel.addListener(new ClickListener() {
+							 @Override
+							 public void clicked(InputEvent e, float x, float y) {
+								 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									 openBalanceLabel();
+								 }
+							 }
+						 }
+		);
 		addActor(balanceLabel);
 	}
 
@@ -407,46 +448,55 @@ public class GameSceneUI extends Stage {
 		Icon menuIcon = new Icon(PixelAssetManager.pauseIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
 		icons.add(menuIcon);
 		rightIconList.addIcon(menuIcon);
-		menuIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   openInGameDialog();
-				   return true;
-			   }
+		menuIcon.addListener(new ClickListener() {
+							   @Override
+							   public void clicked(InputEvent e, float x, float y) {
+								   if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									   openPauseDialog();
+								   }
+							   }
+						   }
 		);
 
-		Icon statsIcon = new Icon(PixelAssetManager.statIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
+		statsIcon = new Icon(PixelAssetManager.statIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
 		icons.add(statsIcon);
 		rightIconList.addIcon(statsIcon);
-		statsIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   Dialog dialog =
-						 new StatsDialog();
-				   dialog.show(this);
-				   dialog.setPosition(statsIcon.getRelativeX() - dialog.getWidth() - horizPadding,
-						 statsIcon.getRelativeY() + statsIcon.getHeight() - dialog.getHeight());
-				   return true;
-			   }
+		statsIcon.addListener(new ClickListener() {
+							 @Override
+							 public void clicked(InputEvent e, float x, float y) {
+								 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									 openStatsDialog();
+								 }
+							 }
+						 }
 		);
 
-		Icon demandIcon = new Icon(PixelAssetManager.demandIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
+		demandIcon = new Icon(PixelAssetManager.demandIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
 		icons.add(demandIcon);
 		rightIconList.addIcon(demandIcon);
-		demandIcon.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   Dialog dialog =
-						 new DemandDialog();
-				   dialog.show(this);
-				   dialog.setPosition(demandIcon.getRelativeX() - dialog.getWidth() - horizPadding,
-						 demandIcon.getRelativeY() + demandIcon.getHeight() - dialog.getHeight());
-				   return true;
-			   }
+		demandIcon.addListener(new ClickListener() {
+							   @Override
+							   public void clicked(InputEvent e, float x, float y) {
+								   if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									   openDemandDialog();
+								   }
+							   }
+						   }
 		);
+
+		Icon opacityIcon = new Icon(PixelAssetManager.fireIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
+		icons.add(opacityIcon);
+		rightIconList.addIcon(opacityIcon);
+		opacityIcon.addListener(new ClickListener() {
+							    @Override
+							    public void clicked(InputEvent e, float x, float y) {
+								    if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									    toggleBuildingOpacity();
+								    }
+							    }
+						    }
+		);
+
 	}
 
 	private void initLabels() {
@@ -549,12 +599,6 @@ public class GameSceneUI extends Stage {
 		resetPopLabel();
 	}
 
-	public void openInGameDialog() {
-		Dialog dialog =
-			   new PauseDialog();
-		dialog.show(this);
-	}
-
 	public void clearSelectedTool() {
 		selectedToolFire.addAction(Actions.fadeOut(0.2f));
 		selectedToolPolice.addAction(Actions.fadeOut(0.2f));
@@ -608,5 +652,51 @@ public class GameSceneUI extends Stage {
 		} else if (tools == GameScene.Tools.DELETE) {
 			selectedToolDelete.addAction(Actions.fadeIn(0.2f));
 		}
+	}
+
+	public void openStatsDialog() {
+
+		if (statsDialog != null) {
+			statsDialog.close();
+			statsDialog = null;
+		} else {
+			statsDialog =
+				   new StatsDialog();
+			statsDialog.show(this);
+			statsDialog.setPosition(statsIcon.getRelativeX() - statsDialog.getWidth() - horizPadding,
+				   statsIcon.getRelativeY() + statsIcon.getHeight() - statsDialog.getHeight());
+		}
+	}
+
+	public void openDemandDialog() {
+
+		if (demandDialog != null) {
+			demandDialog.close();
+			demandDialog = null;
+		} else {
+			demandDialog =
+				   new DemandDialog();
+			demandDialog.show(this);
+			demandDialog.setPosition(demandIcon.getRelativeX() - demandDialog.getWidth() - horizPadding,
+				   demandIcon.getRelativeY() + demandIcon.getHeight() - demandDialog.getHeight());
+		}
+	}
+
+	public void openPauseDialog() {
+
+		pauseDialog =
+			   new PauseDialog();
+		pauseDialog.show(this);
+
+	}
+
+	public void openBalanceLabel() {
+		balanceDialog = new BalanceDialog();
+		balanceDialog.show(this);
+	}
+
+	private void toggleBuildingOpacity() {
+
+		City.getInstance().toggleBuildingsVisible();
 	}
 }

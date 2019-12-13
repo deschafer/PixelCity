@@ -41,7 +41,8 @@ public abstract class SpecialtyBuilding extends MapObject {
 	@Override
 	public boolean remove() {
 		for (Cell cell : occupyingCells) {
-			cell.removeOccupyingObject(this);
+			if (cell != null)
+				cell.removeOccupyingObject(this);
 		}
 		return super.remove();
 	}

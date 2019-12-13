@@ -16,6 +16,8 @@ public class FinancialManager implements Serializable {
 
 	private float updateTimer = 0;
 	private static float updateTime = 1.0f;
+	private float income;
+	private float expenses;
 
 	private FinancialManager() {
 		sources = new ArrayList<>();
@@ -41,6 +43,8 @@ public class FinancialManager implements Serializable {
 
 			if (updateTimer >= updateTime) {
 
+				expenses = 0;
+				income = 0;
 				ArrayList<Source> invalidSources = new ArrayList<>();
 
 				for (Source source : sources) {
@@ -51,7 +55,15 @@ public class FinancialManager implements Serializable {
 					}
 					// otherwise, grab the value of the source
 					else {
-						balance += source.act();
+
+						float action = source.act();
+
+						if (action < 0) {
+							expenses += action;
+						} else {
+							income += action;
+						}
+						balance += action;
 					}
 				}
 
@@ -113,6 +125,14 @@ public class FinancialManager implements Serializable {
 		balance = serializable.balance;
 
 		// we do not replicate the sources because we need to get them from the buildings
+	}
+
+	public float getExpenses() {
+		return expenses;
+	}
+
+	public float getIncome() {
+		return income;
 	}
 }
 

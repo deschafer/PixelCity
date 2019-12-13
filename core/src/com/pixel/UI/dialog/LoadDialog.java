@@ -87,7 +87,7 @@ public class LoadDialog extends PDialog {
 			});
 
 			// add the label to the table
-			table.add(newLabel).size(200, 20);
+			table.add(newLabel).size(200, 20).padLeft(5);
 			table.add().expandX();
 			table.row();
 		}
@@ -101,30 +101,31 @@ public class LoadDialog extends PDialog {
 		getContentTable().row();
 
 		loadButton = new TextButton("Load Selected File", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
-		loadButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
+		loadButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent e, float x, float y) {
+				if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 
-				   // then we attempt to load the file selected
-				   loadSelectedFile();
-				   System.out.println("Load Button");
-				   return true;
-			   }
-		);
+					// then we attempt to load the file selected
+					loadSelectedFile();
+					System.out.println("Load Button");
+				}
+			}
+		});
+
 
 		deleteButton = new TextButton("Delete Selected File",  (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
-		deleteButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
+		deleteButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent e, float x, float y) {
+				if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 
-				   // then we attempt to delete the file selected
-			        deleteSelectedFile();
-			        System.out.println("Delete Button");
-				   return true;
-			   }
-		);
+					// then we attempt to delete the file selected
+					deleteSelectedFile();
+					System.out.println("Delete Button");
+				}
+			}
+		});
 		getContentTable().add(loadButton);
 		getContentTable().row();
 		getContentTable().add(deleteButton).padTop(2);

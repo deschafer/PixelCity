@@ -51,6 +51,8 @@ public class City implements Serializable {
 	private int numberExternalWorkers = 0;
 	private static final float externalWorkerToResidentRatio = 0.1f;
 
+	private boolean buildingsVisible = true;
+
 	private static City instance = new City("Default");
 
 	private City(String name) {
@@ -507,5 +509,25 @@ public class City implements Serializable {
 		residentialDemandBoostTime = serializable.residentialDemandBoostTime;
 		population = serializable.population;
 		numberExternalWorkers = serializable.numberExternalWorkers;
+	}
+
+	public ArrayList<Building> getCityBuildings() {
+		return cityBuildings;
+	}
+
+	public ArrayList<Resident> getLoadedInResidents() {
+		return loadedInResidents;
+	}
+
+	public void toggleBuildingsVisible() {
+
+		buildingsVisible = !buildingsVisible;
+		for (Building building : cityBuildings) {
+			building.setVisible(buildingsVisible);
+		}
+	}
+
+	public boolean isBuildingsVisible() {
+		return buildingsVisible;
 	}
 }

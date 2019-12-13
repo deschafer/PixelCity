@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.pixel.UI.dialog.LoadDialog;
 import com.pixel.UI.dialog.NewGameDialog;
 import com.pixel.game.PixelCityGame;
@@ -39,55 +40,57 @@ public class MenuScene extends Scene {
 
 		titleLabel = new Label("Pixel City", Styles.mainMenuTitleLabelStyle);
 		newGameButton = new TextButton("New Game", Styles.mainMenuTextButtonStyle);
-		newGameButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   // create our new game dialog
-			        Dialog dialog = new NewGameDialog();
-				   dialog.show(uiStage);
-				   return true;
-			   }
+		newGameButton.addListener(new ClickListener() {
+								 @Override
+								 public void clicked(InputEvent e, float x, float y) {
+									 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+
+										 // create our new game dialog
+										 Dialog dialog = new NewGameDialog();
+										 dialog.show(uiStage);
+									 }
+								 }
+							 }
 		);
+
 		loadGameButton = new TextButton("Load Game", Styles.mainMenuTextButtonStyle);
-		loadGameButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
+		loadGameButton.addListener(new ClickListener() {
+								 @Override
+								 public void clicked(InputEvent e, float x, float y) {
+									 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 
-				   // create our load game dialog
-			        Dialog dialog = new LoadDialog();
-			        dialog.show(uiStage);
-
-				   /*
-				   // needs to move into the gamescene first
-			        PixelCityGame.setActiveScreen(GameScene.getInstance());
-
-				   // then load into this game scene
-				   SerializationManager.getInstance().deserialize("");
-
-				    */
-				   return true;
-			   }
+										 // create our load game dialog
+										 Dialog dialog = new LoadDialog();
+										 dialog.show(uiStage);
+									 }
+								 }
+							 }
 		);
+
 		tutorialButton = new TextButton("Tutorials", Styles.mainMenuTextButtonStyle);
-		tutorialButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   System.out.println("Tutorial Button");
-				   return true;
-			   }
+		tutorialButton.addListener(new ClickListener() {
+								  @Override
+								  public void clicked(InputEvent e, float x, float y) {
+									  if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+
+										  System.out.println("Tutorial Button");
+									  }
+								  }
+							  }
 		);
+
 		quitButton = new TextButton("Quit", Styles.mainMenuTextButtonStyle);
-		quitButton.addListener((Event e) -> {
-				   if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(InputEvent.Type.touchDown)) {
-					   return false;
-				   }
-				   Gdx.app.exit();
-				   return true;
-			   }
+		quitButton.addListener(new ClickListener() {
+								  @Override
+								  public void clicked(InputEvent e, float x, float y) {
+									  if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+
+										  Gdx.app.exit();
+									  }
+								  }
+							  }
 		);
+
 		elements = new ArrayList<>();
 
 		uiTable.add(titleLabel).center().padBottom(96);

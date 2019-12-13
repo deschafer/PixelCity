@@ -346,6 +346,8 @@ public class Building extends MapObject {
 		// remove the claimed water and power of this old building
 		UtilityManager.getInstance().returnPowerClaimed(powerClaimed);
 		UtilityManager.getInstance().returnWaterClaimed(waterClaimed);
+
+		levelledBuilding.setVisible(isVisible());
 	}
 
 	//

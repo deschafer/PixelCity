@@ -41,7 +41,6 @@ public class BuildingSerializable extends MapObjectSerializable {
 				Resident resident = residentSerializable.getNonSerializableObject();
 				building.addResident(resident);
 				resident.setResidence(building);
-				City.getInstance().addLoadedInResident(resident);
 
 				if (resident.isUnemployed()) {
 					if (resident.isEducated()) {
@@ -49,6 +48,8 @@ public class BuildingSerializable extends MapObjectSerializable {
 					} else {
 						City.getInstance().addUnemployedResident(resident);
 					}
+				} else {
+					City.getInstance().addLoadedInResident(resident);
 				}
 			}
 		}

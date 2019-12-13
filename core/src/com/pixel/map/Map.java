@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.pixel.city.City;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
 import com.pixel.map.object.Cell;
@@ -15,6 +16,7 @@ import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.map.object.building.BuildingFactory;
 import com.pixel.map.object.building.special.ServiceBuilding;
+import com.pixel.map.object.building.special.SpecialtyBuilding;
 import com.pixel.map.object.building.special.SpecialtyBuildingFactory;
 import com.pixel.map.object.building.special.education.SecondarySchool;
 import com.pixel.map.object.building.special.fire.FireStation;
@@ -27,6 +29,7 @@ import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
 import com.pixel.object.Resident;
 import com.pixel.object.SimpleActor;
+import com.pixel.scene.GameScene;
 import com.pixel.serialization.CellSerializable;
 import com.pixel.serialization.MapObjectSerializable;
 import com.pixel.serialization.MapSerializable;
@@ -68,6 +71,7 @@ public class Map extends Group implements Serializable {
 	private ArrayList<ZoneCell> loadedInCommercialZoneCells;
 	private ArrayList<ZoneCell> loadedInOfficeZoneCells;
 	private ArrayList<ServiceBuilding> loadedServiceBuildings;
+	private ArrayList<SpecialtyBuilding> loadedSpecialtyBuildings;
 
 	private static float residentialTimer = 0;
 	private static float residentialTime = 1.0f;
@@ -93,6 +97,7 @@ public class Map extends Group implements Serializable {
 		loadedInOfficeZoneCells = new ArrayList<>();
 		loadedInResidentialZoneCells = new ArrayList<>();
 		loadedServiceBuildings = new ArrayList<>();
+		loadedSpecialtyBuildings = new ArrayList<>();
 
 		generateArray();
 	}
@@ -669,6 +674,10 @@ public class Map extends Group implements Serializable {
 		loadedServiceBuildings.add(building);
 	}
 
+	public void addLoadedSpecBuilding(SpecialtyBuilding building) {
+		loadedSpecialtyBuildings.add(building);
+	}
+
 	public void serialize(ObjectOutputStream out) {
 
 		// we handle all of our cells and serializable map objects
@@ -799,6 +808,31 @@ public class Map extends Group implements Serializable {
 			building.initialize();
 		}
 
+		for (SpecialtyBuilding specialtyBuilding : loadedSpecialtyBuildings) {
+
+			int x = specialtyBuilding.getMapPosition().x;
+			int y = specialtyBuilding.getMapPosition().y;
+			int w = (int)specialtyBuilding.getDimensions().width;
+			int h = (int)specialtyBuilding.getDimensions().height;
+
+			// due to how the spec building is placed, the bottom right corner is what is added to the map itself
+			int startX = x - w + 1;
+			int startY = y - h + 1;
+
+			for (int i = startX; i < startX + w; i++) {
+				for (int j = startY; j < startY + h; j++) {
+					try {
+						mapArray[i][j].addOccupyingObject(specialtyBuilding);
+					} catch (IndexOutOfBoundsException e) {
+						System.out.println("Loaded Spec. Buildings index out of bounds " + e.getMessage());
+					} catch (NullPointerException e) {
+						System.out.println("Loaded Spec. Buildings nullptr " + e.getMessage());
+					}
+					specialtyBuilding.addOccupyingCell(mapArray[i][j]);
+				}
+			}
+		}
+
 		for (ZoneCell zoneCell : loadedInResidentialZoneCells) {
 			for (Zone zone : residentialZones) {
 				if (zone.getRectangle().equals(zoneCell.getParentZoneDimensions())) {
@@ -840,7 +874,12 @@ public class Map extends Group implements Serializable {
 		}
 
 		// then we also need to handle all references to residents
-
+		for (Resident resident : City.getInstance().getLoadedInResidents()) {
+			Building building =
+				   (Building)mapArray[resident.getEmployerMapPosition().x][resident.getEmployerMapPosition().y].getTopObject();
+			resident.setEmployer(building);
+			building.addResident(resident);
+		}
 	}
 }
 

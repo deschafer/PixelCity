@@ -20,13 +20,13 @@ public class ServiceBuildingSerializable extends SpecialtyBuildingSerializable {
 
 		// depending on the service type, we create a new service building
 		if (serviceType == ServiceBuilding.Services.FIRE) {
-			building = SpecialtyBuildingFactory.getInstance().create("FireStation", new MapCoord(mapPositionX, mapPositionY));
+			building = SpecialtyBuildingFactory.getInstance().createEmpty("FireStation");
 		} else if (serviceType == ServiceBuilding.Services.HEALTH) {
-			building = SpecialtyBuildingFactory.getInstance().create("Hospital", new MapCoord(mapPositionX, mapPositionY));
+			building = SpecialtyBuildingFactory.getInstance().createEmpty("Hospital");
 		} else if (serviceType == ServiceBuilding.Services.EDUCATION) {
-			building = SpecialtyBuildingFactory.getInstance().create("SecondarySchool", new MapCoord(mapPositionX, mapPositionY));
+			building = SpecialtyBuildingFactory.getInstance().createEmpty("SecondarySchool");
 		} else if (serviceType == ServiceBuilding.Services.POLICE) {
-			building = SpecialtyBuildingFactory.getInstance().create("PoliceStation", new MapCoord(mapPositionX, mapPositionY));
+			building = SpecialtyBuildingFactory.getInstance().createEmpty("PoliceStation");
 		}
 
 		building.setX(x);
