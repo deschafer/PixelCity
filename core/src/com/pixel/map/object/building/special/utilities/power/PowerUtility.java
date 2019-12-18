@@ -59,5 +59,4 @@ public class PowerUtility extends SpecialtyBuilding {
 
 		return serializable;
 	}
-
 }

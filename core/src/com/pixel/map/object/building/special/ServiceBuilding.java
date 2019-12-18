@@ -33,7 +33,7 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 	private static float zoneHeight = 1200;
 	private final static int numSides = 16;
 	private float updateTimer = 5.0f;
-	private float updateTime = 5.0f;
+	private float updateTime = 2.0f;
 
 	public static boolean placedOnMap = true;
 

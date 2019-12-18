@@ -46,9 +46,12 @@ public abstract class MapObject extends Group implements Serializable {
 	protected ArrayList<Source> sources;			// all the sources associated with this object
 	private boolean prototypeObject = false;		// this means this object is only used for copying, never actually added to the map
 
+	protected String displayName;				// the name that the user may see, so it should be formatted better
+
 
 	public MapObject(float x, float y, float width, float height, MapCoord coord, String ID)
 	{
+		displayName = "";
 		setX(x);
 		setY(y);
 		setWidth(width);
@@ -321,4 +324,8 @@ public abstract class MapObject extends Group implements Serializable {
 	}
 
 	public abstract MapObjectSerializable getSerializableObject();
+
+	public String getDisplayName() {
+		return displayName;
+	}
 }

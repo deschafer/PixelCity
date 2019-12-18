@@ -12,6 +12,7 @@ import com.pixel.UI.dialog.BuildingStatDialog;
 import com.pixel.city.City;
 import com.pixel.city.Demand;
 import com.pixel.city.FinancialManager;
+import com.pixel.event.EventManager;
 import com.pixel.game.PixelCityGame;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
@@ -118,6 +119,9 @@ public class GameScene extends Scene {
 
 		// update our demand object
 		Demand.getInstance().update();
+
+		// update our event system
+		EventManager.getInstance().update();
 
 		// update our map object
 		gameMap.update();

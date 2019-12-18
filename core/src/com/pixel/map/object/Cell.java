@@ -24,13 +24,19 @@ public class Cell extends MapObject {
 
 	private ArrayList<MapObject> occupyingObjects = new ArrayList<>();
 
-	public Cell(float x, float y, float width, float height, MapCoord coord) {
+	public Cell(float x, float y, float width, float height, MapCoord coord, boolean hasTexture) {
 		super(x, y, width,height, coord, "Cell");
 
-		// This cell has a basic texture within it
-		Texture texture = PixelAssetManager.manager.get(PixelAssetManager.grass);
-		loadTexture(texture, PixelAssetManager.grass);
 		setSize(width, height);
+
+		// This cell has a basic texture within it
+		if (hasTexture) {
+			Texture texture = PixelAssetManager.manager.get(PixelAssetManager.grass);
+			loadTexture(texture, PixelAssetManager.grass);
+		} else {
+			setBoundaryRectangle();
+		}
+
 
 		// since we want this to be hit with Stage.hit()
 		setTouchable(Touchable.enabled);
@@ -47,7 +53,6 @@ public class Cell extends MapObject {
 		}
 
 		if(!hasChildren()) return null;
-
 
 		SnapshotArray<Actor> actors = getChildren();
 		MapObject object = null;
@@ -125,14 +130,8 @@ public class Cell extends MapObject {
 	@Override
 	public MapObjectSerializable getSerializableObject() {
 
-		ArrayList<MapObjectSerializable> occupyingSerializables = new ArrayList<>();
 		ArrayList<MapObjectSerializable> childrenSerializables = new ArrayList<>();
 
-		// get all serializables for the objects within this object
-		for (MapObject object : occupyingObjects) {
-			if (!getChildren().contains(object, true) && !getChildren().contains(object, false) );
-				occupyingSerializables.add(object.getSerializableObject());
-		}
 		for (Actor actor : getChildren()) {
 
 			// if the object is a MapObject
@@ -152,7 +151,6 @@ public class Cell extends MapObject {
 		cellSerializable.width = getWidth();
 		cellSerializable.height = getHeight();
 		cellSerializable.children = childrenSerializables;
-		cellSerializable.occupyingObjects = occupyingSerializables;
 		cellSerializable.name = getName();
 
 		return cellSerializable;

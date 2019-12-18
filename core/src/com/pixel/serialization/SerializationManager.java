@@ -28,8 +28,9 @@ public class SerializationManager {
 		FileHandle atlasFile = Gdx.files.local(GameScene.savedGamesAtlasPath);
 
 		// and we also need to verify that this string is not already in the list
+		// TODO: fix this so it works, needs to test strings between newlines
 		String string = atlasFile.readString();
-		if (!string.contains(name))
+		if (!string.contains(name + '\n'))
 			atlasFile.writeString(name + '\n', true);
 
 		// Serialization

@@ -17,6 +17,8 @@ public class PoliceStation extends ServiceBuilding {
 	public PoliceStation(float x, float y, MapCoord coord) {
 		super(x, isometricCorrection, textureWidth, textureHeight, widthInCells, heightInCells, coord, "PoliceStation");
 
+		displayName = "Police Station";
+
 		// we need to load our texture here
 		// and set the width and height of it
 

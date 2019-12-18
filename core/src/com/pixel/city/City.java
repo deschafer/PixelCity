@@ -2,6 +2,7 @@ package com.pixel.city;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
+import com.pixel.event.EventManager;
 import com.pixel.map.object.building.Building;
 import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.object.Resident;
@@ -10,7 +11,7 @@ import com.pixel.serialization.CitySerializable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class City implements Serializable {
+public class City {
 
 	public class Stats {
 		public float wealth;
@@ -30,6 +31,12 @@ public class City implements Serializable {
 	private ArrayList<Resident> unemployedEducatedResidents; // residents waiting for an office job
 
 	private ArrayList<Building> cityBuildings;
+	private ArrayList<Building> buildingsNeedPower;
+	private ArrayList<Building> buildingsNeedWater;
+	private ArrayList<Building> buildingsNeedFire;
+	private ArrayList<Building> buildingsNeedPolice;
+	private ArrayList<Building> buildingsNeedEd;
+	private ArrayList<Building> buildingsNeedHealth;
 	private ArrayList<Building> vacantBuildings;			// buildings that are open for residents
 	private ArrayList<Building> hiringCommercialBuildings;	// commercial buildings that have jobs available
 	private ArrayList<Building> hiringOfficeBuildings;	// office buildings that have jobs available
@@ -64,6 +71,12 @@ public class City implements Serializable {
 		hiringOfficeBuildings = new ArrayList<>();
 		unemployedEducatedResidents = new ArrayList<>();
 		loadedInResidents = new ArrayList<>();
+		buildingsNeedPower = new ArrayList<>();
+		buildingsNeedWater = new ArrayList<>();
+		buildingsNeedHealth = new ArrayList<>();
+		buildingsNeedPolice = new ArrayList<>();
+		buildingsNeedFire = new ArrayList<>();
+		buildingsNeedEd = new ArrayList<>();
 	}
 
 	public static City getInstance() {
@@ -317,7 +330,8 @@ public class City implements Serializable {
 	}
 	public void decrementPopulation(int amount) {
 		synchronized (this) {
-			population -= amount;
+			if (population - amount >= 0)
+				population -= amount;
 		}
 	}
 	public int getPopulation() {
@@ -529,5 +543,82 @@ public class City implements Serializable {
 
 	public boolean isBuildingsVisible() {
 		return buildingsVisible;
+	}
+
+	public void addBuildingNeedsService(EventManager.Categories category, Building building) {
+
+		if (category == EventManager.Categories.FIRE) {
+			buildingsNeedFire.add(building);
+		} else if (category == EventManager.Categories.POLICE) {
+			buildingsNeedPolice.add(building);
+		} else if (category == EventManager.Categories.HEALTH) {
+			buildingsNeedHealth.add(building);
+		} else if (category == EventManager.Categories.ED) {
+			buildingsNeedEd.add(building);
+		} else if (category == EventManager.Categories.POWER) {
+			buildingsNeedPower.add(building);
+		} else if (category == EventManager.Categories.WATER) {
+			buildingsNeedWater.add(building);
+		}
+	}
+
+	public void removeBuildingNeedsService(EventManager.Categories category, Building building) {
+
+		if (category == EventManager.Categories.FIRE) {
+			buildingsNeedFire.remove(building);
+		} else if (category == EventManager.Categories.POLICE) {
+			buildingsNeedPolice.remove(building);
+		} else if (category == EventManager.Categories.HEALTH) {
+			buildingsNeedHealth.remove(building);
+		} else if (category == EventManager.Categories.ED) {
+			buildingsNeedEd.remove(building);
+		} else if (category == EventManager.Categories.POWER) {
+			buildingsNeedPower.remove(building);
+		} else if (category == EventManager.Categories.WATER) {
+			buildingsNeedWater.remove(building);
+		}
+	}
+
+	public boolean buildingNeedsService(EventManager.Categories category) {
+
+		if (category == EventManager.Categories.FIRE) {
+			return !buildingsNeedFire.isEmpty();
+		} else if (category == EventManager.Categories.POLICE) {
+			return !buildingsNeedPolice.isEmpty();
+		} else if (category == EventManager.Categories.HEALTH) {
+			return !buildingsNeedHealth.isEmpty();
+		} else if (category == EventManager.Categories.ED) {
+			return !buildingsNeedEd.isEmpty();
+		} else if (category == EventManager.Categories.POWER) {
+			return !buildingsNeedPower.isEmpty();
+		} else if (category == EventManager.Categories.WATER) {
+			return !buildingsNeedWater.isEmpty();
+		} else {
+			return false;
+		}
+	}
+
+	public ArrayList<Building> getBuildingsNeedFire() {
+		return buildingsNeedFire;
+	}
+
+	public ArrayList<Building> getBuildingsNeedPolice() {
+		return buildingsNeedPolice;
+	}
+
+	public ArrayList<Building> getBuildingsNeedEd() {
+		return buildingsNeedEd;
+	}
+
+	public ArrayList<Building> getBuildingsNeedHealth() {
+		return buildingsNeedHealth;
+	}
+
+	public ArrayList<Building> getBuildingsNeedPower() {
+		return buildingsNeedPower;
+	}
+
+	public ArrayList<Building> getBuildingsNeedWater() {
+		return buildingsNeedWater;
 	}
 }

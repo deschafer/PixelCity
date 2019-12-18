@@ -173,6 +173,12 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.personIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.grayCheck, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.grayCross, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.buildingOpacityIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.notificationIcon, Texture.class);
+		for (int i = 0; i < PixelAssetManager.fireAnimation.length; i++) {
+			PixelAssetManager.manager.load(PixelAssetManager.fireAnimation[i], Texture.class);
+		}
+		PixelAssetManager.manager.load(PixelAssetManager.explosion, Texture.class);
 
 		PixelAssetManager.manager.load(PixelAssetManager.defaultUISkin, Skin.class);
 

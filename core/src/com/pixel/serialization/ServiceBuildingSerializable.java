@@ -36,11 +36,6 @@ public class ServiceBuildingSerializable extends SpecialtyBuildingSerializable {
 		building.setHeight(height);
 		building.setName(name);
 
-		for (SourceSerializable sourceSerializable : sources) {
-			Source source = sourceSerializable.getNonSerializableObject(building);
-			FinancialManager.getInstance().addSource(source);
-		}
-
 		GameScene.getInstance().getGameMap().addLoadedServiceBuilding((ServiceBuilding)building);
 
 		return building;

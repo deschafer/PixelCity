@@ -18,13 +18,8 @@ public class CellSerializable extends MapObjectSerializable{
 	public MapObject getNonSerializableObject() {
 
 		// create a new cell from this serializable
-		Cell cell = new Cell(x, y, width, height, new MapCoord(mapPositionX, mapPositionY));
+		Cell cell = new Cell(x, y, width, height, new MapCoord(mapPositionX, mapPositionY), false);
 		ArrayList<String> objectNames = new ArrayList<>();
-
-
-		if (!children.isEmpty() && !occupyingObjects.isEmpty()) {
-			System.out.println("");
-		}
 
 		// we first get the children, since all children in this case will be an occupying object
 		for (MapObjectSerializable serializable : children) {

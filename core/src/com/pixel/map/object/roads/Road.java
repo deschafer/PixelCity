@@ -35,6 +35,7 @@ public class Road extends MapObject {
 		super(x, y, Map.cellWidth, Map.cellHeight, coord, type.getName());
 
 		this.type = type;
+		displayName = "Roadway";
 
 		// only replaceable by other roads, however
 		replaceable = true;

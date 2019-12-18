@@ -13,9 +13,12 @@ import com.pixel.UI.element.Icon;
 import com.pixel.UI.element.IconList;
 import com.pixel.city.City;
 import com.pixel.city.FinancialManager;
+import com.pixel.event.EventManager;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
 import com.pixel.game.styles.Styles;
+import com.pixel.map.object.building.Building;
+import com.pixel.object.AnimatedActor;
 import com.pixel.object.SimpleActor;
 import com.pixel.scene.GameScene;
 
@@ -39,11 +42,13 @@ public class GameSceneUI extends Stage {
 
 	private Icon statsIcon;
 	private Icon demandIcon;
+	private Icon notificationIcon;
 
 	private PDialog statsDialog;
 	private PDialog demandDialog;
 	private PDialog pauseDialog;
 	private PDialog balanceDialog;
+	private PDialog notificationDialog;
 
 	private static final int selectedIconWidth = 48;
 	private static final int selectedIconHeight = 48;
@@ -412,7 +417,6 @@ public class GameSceneUI extends Stage {
 		addActor(selectedToolOffZone);
 		selectedToolOffZone.setPosition(positionX, positionY);
 
-
 		// set all the not visible
 		clearSelectedTool();
 	}
@@ -484,7 +488,7 @@ public class GameSceneUI extends Stage {
 						   }
 		);
 
-		Icon opacityIcon = new Icon(PixelAssetManager.fireIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
+		Icon opacityIcon = new Icon(PixelAssetManager.buildingOpacityIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
 		icons.add(opacityIcon);
 		rightIconList.addIcon(opacityIcon);
 		opacityIcon.addListener(new ClickListener() {
@@ -492,6 +496,19 @@ public class GameSceneUI extends Stage {
 							    public void clicked(InputEvent e, float x, float y) {
 								    if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 									    toggleBuildingOpacity();
+								    }
+							    }
+						    }
+		);
+
+		notificationIcon = new Icon(PixelAssetManager.notificationIcon, PixelAssetManager.blueBox, buttonSize, rightIconList);
+		icons.add(notificationIcon);
+		rightIconList.addIcon(notificationIcon);
+		notificationIcon.addListener(new ClickListener() {
+							    @Override
+							    public void clicked(InputEvent e, float x, float y) {
+								    if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
+									    openNotificationDialog();
 								    }
 							    }
 						    }
@@ -612,6 +629,8 @@ public class GameSceneUI extends Stage {
 		selectedToolCommZone.addAction(Actions.fadeOut(0.2f));
 		selectedToolOffZone.addAction(Actions.fadeOut(0.2f));
 		selectedToolBackground.addAction(Actions.fadeOut(0.2f));
+
+		Building.clearVisualizedCategory();
 	}
 
 	public void selectedToolChanged(GameScene.Tools tools) {
@@ -630,21 +649,27 @@ public class GameSceneUI extends Stage {
 
 		} else if (tools == GameScene.Tools.POLICE) {
 			selectedToolPolice.addAction(Actions.fadeIn(0.2f));
+			Building.setVisualizeSelectedCategory(EventManager.Categories.POLICE);
 
 		} else if (tools == GameScene.Tools.FIRE) {
 			selectedToolFire.addAction(Actions.fadeIn(0.2f));
+			Building.setVisualizeSelectedCategory(EventManager.Categories.FIRE);
 
 		} else if (tools == GameScene.Tools.ED) {
 			selectedToolEd.addAction(Actions.fadeIn(0.2f));
+			Building.setVisualizeSelectedCategory(EventManager.Categories.ED);
 
 		} else if (tools == GameScene.Tools.HEALTH) {
 			selectedToolHealth.addAction(Actions.fadeIn(0.2f));
+			Building.setVisualizeSelectedCategory(EventManager.Categories.HEALTH);
 
 		} else if (tools == GameScene.Tools.WATER) {
 			selectedToolWater.addAction(Actions.fadeIn(0.2f));
+			Building.setVisualizeSelectedCategory(EventManager.Categories.WATER);
 
 		} else if (tools == GameScene.Tools.POWER) {
 			selectedToolPower.addAction(Actions.fadeIn(0.2f));
+			Building.setVisualizeSelectedCategory(EventManager.Categories.POWER);
 
 		} else if (tools == GameScene.Tools.ROAD) {
 			selectedToolRoad.addAction(Actions.fadeIn(0.2f));
@@ -665,6 +690,19 @@ public class GameSceneUI extends Stage {
 			statsDialog.show(this);
 			statsDialog.setPosition(statsIcon.getRelativeX() - statsDialog.getWidth() - horizPadding,
 				   statsIcon.getRelativeY() + statsIcon.getHeight() - statsDialog.getHeight());
+		}
+	}
+
+	public void openNotificationDialog() {
+
+		if (notificationDialog != null) {
+			notificationDialog.close();
+			notificationDialog = null;
+		} else {
+			notificationDialog = new NotificationDialog();
+			notificationDialog.show(this);
+			notificationDialog.setPosition(notificationIcon.getRelativeX() - notificationDialog.getWidth() - horizPadding,
+				   notificationIcon.getRelativeY() + notificationIcon.getHeight() - notificationDialog.getHeight());
 		}
 	}
 
@@ -698,5 +736,14 @@ public class GameSceneUI extends Stage {
 	private void toggleBuildingOpacity() {
 
 		City.getInstance().toggleBuildingsVisible();
+	}
+
+	public NotificationDialog getNotificationDialog() {
+		return (NotificationDialog)notificationDialog;
+	}
+
+	@Override
+	public void draw() {
+		super.draw();
 	}
 }

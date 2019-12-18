@@ -173,15 +173,14 @@ public class Zone {
 			ArrayList<MapCoord> suitableCellLocations;
 
 			// now we need to find a position for this building if there is one available
-			// use our findSuitableLocation function from zone to get a placement for this building
-
-			if (findSuitableLocation(building.getDimensions()).isEmpty()) {
-				System.out.println("");
-			}
-
 			if (!availableCells.isEmpty()) {
 				ZoneCell zoneCell = availableCells.get(random.nextInt(availableCells.size()));
-				placeBuilding(zoneCell, building);
+				if (zoneCell.hasParent() && zoneCell.getParent() instanceof Cell) {
+					Cell cell = (Cell)zoneCell.getParent();
+					if (cell.getTopObject() instanceof ZoneCell) {
+						placeBuilding(zoneCell, building);
+					}
+				}
 			}
 		}
 	}

@@ -65,4 +65,8 @@ public class Source implements Serializable {
 
 		return sourceSerializable;
 	}
+
+	public MapObject getSourceObject() {
+		return sourceObject;
+	}
 }

@@ -2,14 +2,12 @@ package com.pixel.map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pixel.city.City;
 import com.pixel.game.PixelAssetManager;
-import com.pixel.game.PixelCityGame;
 import com.pixel.map.object.Cell;
 import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.Building;
@@ -28,13 +26,9 @@ import com.pixel.map.object.roads.*;
 import com.pixel.map.object.zoning.*;
 import com.pixel.map.visualizer.VisualizerFactory;
 import com.pixel.object.Resident;
-import com.pixel.object.SimpleActor;
-import com.pixel.scene.GameScene;
 import com.pixel.serialization.CellSerializable;
-import com.pixel.serialization.MapObjectSerializable;
 import com.pixel.serialization.MapSerializable;
 import com.pixel.serialization.ZoneSerializable;
-import sun.nio.ch.IOStatus;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -45,7 +39,7 @@ import java.util.Random;
 
 
 
-public class Map extends Group implements Serializable {
+public class Map extends Group {
 
 	public static MapCoord zeroCoordinate;
 
@@ -53,7 +47,8 @@ public class Map extends Group implements Serializable {
 	private int height;                     // height ...
 	private float widthPixels;               // width of the map in pixels
 	private float heightPixels;           // height of the map in pixels
-	private Cell[][] mapArray;
+	private Cell[][] mapObjectArray;
+	private Cell[][] mapCellArray;
 	public static final int cellWidth = 132;          // width of the cell in pixels
 	public static final int cellHeight = 102;     // height of the cell in pixels
 	public static final int cellBuildingBaseWidth = 132;
@@ -182,7 +177,7 @@ public class Map extends Group implements Serializable {
 		VisualizerFactory.getInstance().registerMapObject(
 			   new CoalPowerPlant(0, 0, new MapCoord(0, 0), false));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new WaterTank(0, 0, new MapCoord(0, 0), false));
+			   new WaterTank(0, 0, new MapCoord(0, 0)));
 
 		// since these are service buildings, they attempt to connect to the map. Prevent this in the class
 		ServiceBuilding.placedOnMap = false;
@@ -515,7 +510,8 @@ public class Map extends Group implements Serializable {
 	//
 	private void generateArray() {
 		// initialize our array of objects
-		mapArray = new Cell[width][height];
+		mapObjectArray = new Cell[width][height];
+		mapCellArray = new Cell[width][height];
 
 		int middleWidth = MathUtils.round(widthPixels / 2.0f);
 		int middleHeight = MathUtils.round(heightPixels / 2.0f);
@@ -530,17 +526,50 @@ public class Map extends Group implements Serializable {
 		topOfMap = new Vector2(topPositionX, topPositionY);
 
 		for (int countX = 0; countX < width; countX++) {
-			for (int countY = 0; countY < width; countY++) {
+			for (int countY = 0; countY < height; countY++) {
 				// we move diagonally, so it makes sense we move both vertically and horizontally each instance
 				float currentPositionX = topPositionX - countY * stepX;
 				float currentPositionY = topPositionY - countY * stepY;
 
-				addActor(mapArray[countX][countY] =
-					   new Cell(currentPositionX, currentPositionY, cellWidth, cellHeight, new MapCoord(countX, countY)));
+				// first we create all the objects
+				// these will be the object layer objects
+				mapObjectArray[countX][countY] =
+					   new Cell(currentPositionX, currentPositionY, cellWidth, cellHeight, new MapCoord(countX, countY), false);
+
+				// then we create our base cell layer
+				addActor(mapCellArray[countX][countY] =
+					   new Cell(currentPositionX, currentPositionY, cellWidth, cellHeight, new MapCoord(countX, countY), true));
 			}
 
 			topPositionX += stepX;
 			topPositionY -= stepY;
+		}
+
+		// then we add them to the stage in a special order so it is drawn accordingly.
+		// we must add diagonally, moving left to right, and downwards across the screen
+		for (int i = 0; i < width; i++){
+			for (int x = i, y = 0; x >= 0; x--, y++) {
+
+				try {
+					addActor(mapObjectArray[x][y]);
+				} catch (NullPointerException e) {
+					System.out.println("Add map cell to stage nullptr error " + e.getMessage());
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("Add map cell to stage IndexOutOfBoundsException error " + e.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i < height; i++){
+			for (int x = width - 1, y = i; x >= 0 && y < height; x--, y++) {
+
+				try {
+					addActor(mapObjectArray[x][y]);
+				} catch (NullPointerException e) {
+					System.out.println("Add map cell to stage nullptr error " + e.getMessage());
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("Add map cell to stage IndexOutOfBoundsException error " + e.getMessage());
+				}
+			}
 		}
 	}
 
@@ -631,13 +660,25 @@ public class Map extends Group implements Serializable {
 
 		if (x >= 0 && x < width &&
 			   y >= 0 && y < height) {
-			return mapArray[x][y];
+			return mapObjectArray[x][y];
 		}
 		return null;
 	}
 
 	public Cell getCell(MapCoord coord) {
 		return getCell(coord.x, coord.y);
+	}
+
+	public Cell getBaseCell(MapCoord coord) {
+		return getBaseCell(coord.x, coord.y);
+	}
+
+	public Cell getBaseCell(int x, int y) {
+		if (x >= 0 && x < width &&
+			   y >= 0 && y < height) {
+			return mapCellArray[x][y];
+		}
+		return null;
 	}
 
 	public int getCellWidth() {
@@ -683,11 +724,17 @@ public class Map extends Group implements Serializable {
 		// we handle all of our cells and serializable map objects
 		ArrayList<Serializable> serializables = new ArrayList<>();
 
-		// we get all of our serializables first
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-
-				serializables.add(mapArray[i][j].getSerializableObject());
+		// get all of our serializable cells
+		for (int i = 0; i < width; i++){
+			for (int x = i, y = 0; x >= 0; x--, y++) {
+				CellSerializable cellSerializable = (CellSerializable) mapObjectArray[x][y].getSerializableObject();
+				serializables.add(cellSerializable);
+			}
+		}
+		for (int i = 0; i < height; i++){
+			for (int x = width - 1, y = i; x >= 0 && y < height; x--, y++) {
+				CellSerializable cellSerializable = (CellSerializable) mapObjectArray[x][y].getSerializableObject();
+				serializables.add(cellSerializable);
 			}
 		}
 
@@ -734,6 +781,8 @@ public class Map extends Group implements Serializable {
 				System.out.println("IOException during game map serialization " + ex.getMessage());
 			}
 		}
+
+		System.out.println("Total serializables: " + serializables.size());
 	}
 
 	public void deserialize(ObjectInputStream input) {
@@ -782,17 +831,35 @@ public class Map extends Group implements Serializable {
 		}
 
 		// then based off the data we just received, we can go ahead and load in the cells as well
-
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
+		for (int i = 0; i < width; i++){
+			for (int x = i, y = 0; x >= 0; x--, y++) {
 				try {
 					CellSerializable serializable = (CellSerializable)input.readObject();
 
 					// remove the last cell from this map
-					removeActor(mapArray[i][j]);
+					removeActor(mapObjectArray[x][y]);
 
 					// create a cell from this cell
-					addActor(mapArray[i][j] = (Cell)serializable.getNonSerializableObject());
+					addActor(mapObjectArray[x][y] = (Cell)serializable.getNonSerializableObject());
+
+				} catch (IOException ex) {
+					System.out.println("IOException during game map deserialization " + ex.getMessage());
+
+				} catch (ClassNotFoundException ex) {
+					System.out.println("ClassNotFoundException during game map deserialization " + ex.getMessage());
+				}
+			}
+		}
+		for (int i = 0; i < height; i++){
+			for (int x = width - 1, y = i; x >= 0 && y < height; x--, y++) {
+				try {
+					CellSerializable serializable = (CellSerializable)input.readObject();
+
+					// remove the last cell from this map
+					removeActor(mapObjectArray[x][y]);
+
+					// create a cell from this cell
+					addActor(mapObjectArray[x][y] = (Cell)serializable.getNonSerializableObject());
 
 				} catch (IOException ex) {
 					System.out.println("IOException during game map deserialization " + ex.getMessage());
@@ -804,10 +871,6 @@ public class Map extends Group implements Serializable {
 		}
 
 		// initialize all our service buildings once all objects have been added to the array
-		for (ServiceBuilding building : loadedServiceBuildings) {
-			building.initialize();
-		}
-
 		for (SpecialtyBuilding specialtyBuilding : loadedSpecialtyBuildings) {
 
 			int x = specialtyBuilding.getMapPosition().x;
@@ -822,15 +885,18 @@ public class Map extends Group implements Serializable {
 			for (int i = startX; i < startX + w; i++) {
 				for (int j = startY; j < startY + h; j++) {
 					try {
-						mapArray[i][j].addOccupyingObject(specialtyBuilding);
+						mapObjectArray[i][j].addOccupyingObject(specialtyBuilding);
 					} catch (IndexOutOfBoundsException e) {
 						System.out.println("Loaded Spec. Buildings index out of bounds " + e.getMessage());
 					} catch (NullPointerException e) {
 						System.out.println("Loaded Spec. Buildings nullptr " + e.getMessage());
 					}
-					specialtyBuilding.addOccupyingCell(mapArray[i][j]);
+					specialtyBuilding.addOccupyingCell(mapObjectArray[i][j]);
 				}
 			}
+		}
+		for (ServiceBuilding building : loadedServiceBuildings) {
+			building.initialize();
 		}
 
 		for (ZoneCell zoneCell : loadedInResidentialZoneCells) {
@@ -876,7 +942,7 @@ public class Map extends Group implements Serializable {
 		// then we also need to handle all references to residents
 		for (Resident resident : City.getInstance().getLoadedInResidents()) {
 			Building building =
-				   (Building)mapArray[resident.getEmployerMapPosition().x][resident.getEmployerMapPosition().y].getTopObject();
+				   (Building) mapObjectArray[resident.getEmployerMapPosition().x][resident.getEmployerMapPosition().y].getTopObject();
 			resident.setEmployer(building);
 			building.addResident(resident);
 		}

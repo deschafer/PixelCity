@@ -134,6 +134,10 @@ public class FinancialManager implements Serializable {
 	public float getIncome() {
 		return income;
 	}
+
+	public ArrayList<Source> getSources() {
+		return sources;
+	}
 }
 
 

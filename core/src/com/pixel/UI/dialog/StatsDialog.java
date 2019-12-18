@@ -41,10 +41,10 @@ public class StatsDialog extends PDialog {
 	private void setLabels() {
 		City.Stats stats = City.getInstance().calculateCityStats();
 
-		wealthLabel.setText("Wealth: " + stats.wealth);
-		educationLabel.setText("Education: " + stats.education);
-		happinessLabel.setText("Happiness: " + stats.happiness);
-		totalLabel.setText("Total Score: " + stats.total);
+		wealthLabel.setText("Wealth: " + (int)stats.wealth);
+		educationLabel.setText("Education: " + (int)stats.education);
+		happinessLabel.setText("Happiness: " + (int)stats.happiness);
+		totalLabel.setText("Total Score: " + (int)stats.total);
 	}
 
 	@Override

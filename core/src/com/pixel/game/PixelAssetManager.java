@@ -165,6 +165,15 @@ public class PixelAssetManager {
 	public static String personIcon = "assets/UI/elements/personIcon.png";
 	public static String grayCheck = "assets/UI/elements/grayCheck.png";
 	public static String grayCross = "assets/UI/elements/grayCross.png";
+	public static String buildingOpacityIcon = "assets/UI/elements/buildingOpacityIcon.png";
+	public static String notificationIcon = "assets/UI/elements/notification.png";
+
+
+	public static String[] fireAnimation = {"assets/fire/fire1_ 01.png", "assets/fire/fire1_ 02.png",
+		   "assets/fire/fire1_ 03.png", "assets/fire/fire1_ 04.png", "assets/fire/fire1_ 05.png", "assets/fire/fire1_ 06.png",
+		   "assets/fire/fire1_ 07.png", "assets/fire/fire1_ 08.png", "assets/fire/fire1_ 09.png", "assets/fire/fire1_ 10.png",
+		   "assets/fire/fire1_ 11.png", "assets/fire/fire1_ 12.png", "assets/fire/fire1_ 13.png"};
+	public static String explosion = "assets/explosion/explosion.png";
 
 
 	// skins

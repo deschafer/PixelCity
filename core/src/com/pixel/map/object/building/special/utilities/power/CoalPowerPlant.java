@@ -17,6 +17,8 @@ public class CoalPowerPlant extends PowerUtility {
 		super(x, isometricCorrection, (int) textureWidth, (int) textureHeight, widthInCells, heightInCells, coord,
 			   "CoalPowerPlant", 490000000, true);
 
+		displayName = "Coal Power Plant";
+
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.coalPowerPlant), PixelAssetManager.coalPowerPlant);
 		placedownCost = 50000;
 
@@ -25,7 +27,7 @@ public class CoalPowerPlant extends PowerUtility {
 
 	public CoalPowerPlant(float x, float y, MapCoord coord, boolean placedOnMap) {
 		super(x, isometricCorrection, (int) textureWidth, (int) textureHeight, widthInCells, heightInCells, coord,
-			   "CoalPowerPlant", 490000000, placedOnMap);
+			   "CoalPowerPlant", 0, placedOnMap);
 
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.coalPowerPlant), PixelAssetManager.coalPowerPlant);
 

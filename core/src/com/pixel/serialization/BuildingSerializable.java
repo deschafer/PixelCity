@@ -18,17 +18,14 @@ public class BuildingSerializable extends MapObjectSerializable {
 	public Building.BuildingType type;               // the type of this building
 	public int level;                       // the level of this object
 	public ArrayList<ResidentSerializable> residents;   // list of people assoc'd with this object
+	public float buildTimer;				// saves the current build time of this building
 
 	@Override
 	public MapObject getNonSerializableObject() {
 
 		// create a new building of the desired level and type
 		Building building = BuildingFactory.getInstance().create(new MapCoord(mapPositionX, mapPositionY), type, level);
-
-		for (SourceSerializable sourceSerializable : sources) {
-			Source source = sourceSerializable.getNonSerializableObject(building);
-			FinancialManager.getInstance().addSource(source);
-		}
+		building.setBuildingTimer(buildTimer);
 
 		// then we add the residents to this object
 		for (ResidentSerializable residentSerializable : residents) {
@@ -53,8 +50,6 @@ public class BuildingSerializable extends MapObjectSerializable {
 				}
 			}
 		}
-
-		City.getInstance().addCityBuilding(building);
 
 		// adding this object to city building classes
 		if (type == Building.BuildingType.RESIDENTIAL && !building.isFull()) {

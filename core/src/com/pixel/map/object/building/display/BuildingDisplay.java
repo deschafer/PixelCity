@@ -4,12 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
 
 import java.io.Serializable;
 
-public class BuildingDisplay extends Actor implements Serializable {
+public class BuildingDisplay extends Group {
 
 	// animation-based properties
 	private TextureRegion textureRegion;

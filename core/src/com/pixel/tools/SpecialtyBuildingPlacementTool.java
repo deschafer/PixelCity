@@ -21,21 +21,22 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	private boolean valid = false;
 	private ArrayList<Cell> placingCells = new ArrayList<>();
 	private SpecialtyBuilding savedBuilding;
+	private Cell parentCell = null;
 
-	
+
 	public void setPlaceableObject(String buildingName) {
 		this.buildingName = buildingName;
 
 		clearVisualizers();
-
-		visualizer = VisualizerFactory.getInstance().createVisualizer(buildingName);
-		visualizer.setX(-visualizer.getWidth() + visualizer.getWidth() / 2 + cellWidth / 2);
 
 		// create our new building
 		ServiceBuilding.placedOnMap = false;
 		savedBuilding = SpecialtyBuildingFactory.getInstance().createEmpty(buildingName);
 		totalCost = savedBuilding.getPlacedownCost();
 		ServiceBuilding.placedOnMap = true;
+
+		visualizer = VisualizerFactory.getInstance().createVisualizer(buildingName);
+		visualizer.setX(-visualizer.getWidth() + visualizer.getWidth() / 2 + cellWidth / 2);
 	}
 
 	@Override
@@ -50,6 +51,21 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 			return false;
 		}
 
+		// also check the positions of the cell placement
+		float width = savedBuilding.getDimensions().width;
+		float height = savedBuilding.getDimensions().height;
+		int widthInCells = (int)width;
+		int heightInCells = (int)height;
+		Cell cell;
+
+		// get the correct cell
+		parentCell = gameMap.getCell(currCell.getMapPosition().x - ((int)width - 1), currCell.getMapPosition().y);
+
+		// verify that this cell is not null
+		if (parentCell == null) {
+			return false;
+		}
+
 		// update the position of the visualizer
 		visualizer.remove();
 		currCell.addActor(visualizer);
@@ -58,24 +74,17 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 		visualizer.setType(Visualizer.VisualizerType.GREEN);
 		placingCells.clear();
 
-		// also check the positions of the cell placement
-		float width = savedBuilding.getDimensions().width;
-		float height = savedBuilding.getDimensions().height;
-		int widthInCells = (int)width;
-		int heightInCells = (int)height;
-		Cell cell;
-
-		int currentX = currCell.getMapPosition().x;
-		int currentY = currCell.getMapPosition().y;
+		int currentX = parentCell.getMapPosition().x;
+		int currentY = parentCell.getMapPosition().y;
 
 		// checking each cell to verify that this object can be placed
 		for (int i = 0; i < widthInCells; i++) {
 			for (int j = 0; j < heightInCells; j++) {
 
 				// if the cell is null, obviously cannot place this object as its off the map
-				if ((cell = gameMap.getCell(currentX - i, currentY - j)) == null) {
+				if ((cell = gameMap.getCell(currentX + i, currentY - j)) == null) {
 					valid = false;
-				} else {
+				} else if (parentCell != cell) {
 
 					placingCells.add(cell);
 
@@ -107,7 +116,7 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	@Override
 	public boolean onTouchUp(float x, float y) {
 
-		if (super.onTouchUp(x, y) && valid && currCell != null) {
+		if (super.onTouchUp(x, y) && valid && parentCell != null) {
 
 			// create our new building
 			SpecialtyBuilding building =
@@ -119,13 +128,23 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 			}
 
 			// Offset the image to center the building in the cell grid
-			building.setX(-building.getDimensions().width * cellWidth + building.getWidth() / 2 + cellWidth / 2);
+			if (building.getDimensions().width > 1) {
+				building.setY(-((savedBuilding.getDimensions().height - 2) * cellHeight / 2));
+			}
+
+			// we need to call the placement of the object below
+			if (parentCell.getTopObject() != null) {
+				parentCell.getTopObject().placeOverObject(building);
+			}
 
 			// since we know that the object can be placed without any issues, just place it
-			currCell.addMapObject(building);
+			parentCell.addMapObject(building);
 
 			// setting each cell as occupied
 			for (Cell cell : placingCells) {
+				if (cell.getTopObject() != null) {
+					cell.getTopObject().placeOverObject(building);
+				}
 				cell.addOccupyingObject(building);
 				building.addOccupyingCell(cell);
 			}
@@ -137,20 +156,20 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 	}
 
 	private boolean checkRoadRequirement() {
-		MapCoord southCorner =  currCell.getMapPosition();
+		MapCoord westCorner =  parentCell.getMapPosition();
 		Cell checkedCell;
 
 		for (int x = 0, width = (int)savedBuilding.getDimensions().width; x < width; x++) {
 
 			// checking bottom
-			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x - x, southCorner.y + 1))) != null) &&
+			if (((checkedCell = gameMap.getCell(new MapCoord(westCorner.x + x, westCorner.y + 1))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 
 				return true;
 			}
 			// checking top
-			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x - x, southCorner.y - (int)savedBuilding.getDimensions().height))) != null) &&
+			if (((checkedCell = gameMap.getCell(new MapCoord(westCorner.x + x, westCorner.y - (int)savedBuilding.getDimensions().height))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 
@@ -160,15 +179,15 @@ public class SpecialtyBuildingPlacementTool extends MapTool {
 
 		for (int y = 0, height = (int)savedBuilding.getDimensions().height; y < height; y++) {
 
-			// checking right
-			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x + 1, southCorner.y - y))) != null) &&
+			// checking left
+			if (((checkedCell = gameMap.getCell(new MapCoord(westCorner.x - 1, westCorner.y - y))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 
 				return true;
 			}
-			// checking left
-			if (((checkedCell = gameMap.getCell(new MapCoord(southCorner.x - (int)savedBuilding.getDimensions().width, southCorner.y - y))) != null) &&
+			// checking right
+			if (((checkedCell = gameMap.getCell(new MapCoord(westCorner.x + (int)savedBuilding.getDimensions().width, westCorner.y - y))) != null) &&
 				   checkedCell.containsMapObject() &&
 				   checkedCell.getTopObject().getName().contains("Road")) {
 

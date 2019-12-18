@@ -3,6 +3,7 @@ package com.pixel.map.object.building;
 import com.badlogic.gdx.math.Rectangle;
 import com.pixel.city.City;
 import com.pixel.city.Financials.Source;
+import com.pixel.event.EventManager;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
 import com.pixel.map.MapCoord;
@@ -11,6 +12,8 @@ import com.pixel.map.object.MapObject;
 import com.pixel.map.object.building.display.BuildingDisplay;
 import com.pixel.map.object.building.special.ServiceBuilding;
 import com.pixel.map.object.building.special.utilities.UtilityManager;
+import com.pixel.map.object.zoning.Zone;
+import com.pixel.map.object.zoning.ZoneCell;
 import com.pixel.object.Resident;
 import com.pixel.scene.GameScene;
 import com.pixel.serialization.BuildingSerializable;
@@ -18,6 +21,7 @@ import com.pixel.serialization.MapObjectSerializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Building extends MapObject {
 
@@ -58,11 +62,17 @@ public class Building extends MapObject {
 	private boolean containsUnemployed = true;
 	private boolean replacedByUpgrade = false;
 	private boolean specific = false;
+	private boolean canLevelUp = true;
 
 	private boolean fireServiceProvided = false;
 	private boolean policeServiceProvided = false;
 	private boolean healthServiceProvided = false;
 	private boolean educationServiceProvided = false;
+
+	private static EventManager.Categories visualizedCategory;
+	private static boolean visualizeSelectedCategory = false;
+
+	private Random random = new Random();
 
 	private float incomePerResident = 0;
 
@@ -95,6 +105,14 @@ public class Building extends MapObject {
 				 float powerNeeded, float waterNeeded, Rectangle dimensions, boolean specific) {
 		super(0, 0, GameScene.getInstance().getGameMap().getCellWidth(),
 			   GameScene.getInstance().getGameMap().getCellHeight(), coord, ID);
+
+		if (type == BuildingType.RESIDENTIAL) {
+			displayName = "Residential Home";
+		} else if (type == BuildingType.COMMERCIAL) {
+			displayName = "Commercial Property";
+		} else if (type == BuildingType.OFFICE) {
+			displayName = "Office Property";
+		}
 
 		this.type = type;
 		this.level = level;
@@ -132,10 +150,14 @@ public class Building extends MapObject {
 		if (UtilityManager.getInstance().claimPower(powerNeeded)) {
 			powerClaimed = powerNeeded;
 			powerProvided = true;
+		} else {
+			City.getInstance().addBuildingNeedsService(EventManager.Categories.POWER, this);
 		}
 		if (UtilityManager.getInstance().claimWater(waterNeeded)) {
 			waterClaimed = waterNeeded;
 			waterProvided = true;
+		} else {
+			City.getInstance().addBuildingNeedsService(EventManager.Categories.WATER, this);
 		}
 
 		// then also add it to the list of all buildings
@@ -210,6 +232,56 @@ public class Building extends MapObject {
 
 		synchronized (this) {
 
+			if (visualizeSelectedCategory) {
+				switch (visualizedCategory) {
+
+					case FIRE:
+						if (!fireServiceProvided) {
+							setColor(1,0,0,1);
+						} else {
+							setColor(0,1,0,1);
+						}
+						break;
+					case POLICE:
+						if (!policeServiceProvided) {
+							setColor(1, 0, 0, 1);
+						} else {
+							setColor(0,1,0,1);
+						}
+						break;
+					case HEALTH:
+						if (!healthServiceProvided) {
+							setColor(1,0,0,1);
+						} else {
+							setColor(0,1,0,1);
+						}
+						break;
+					case ED:
+						if (!educationServiceProvided) {
+							setColor(1,0,0,1);
+						} else {
+							setColor(0,1,0,1);
+						}
+						break;
+					case POWER:
+						if (!powerProvided) {
+							setColor(1,0,0,1);
+						} else {
+							setColor(0,1,0,1);
+						}
+						break;
+					case WATER:
+						if (!waterProvided) {
+							setColor(1,0,0,1);
+						} else {
+							setColor(0,1,0,1);
+						}
+						break;
+				}
+			} else {
+				setColor(1,1,1,1);
+			}
+
 			// If we are in the build state
 			if (building) {
 
@@ -222,6 +294,16 @@ public class Building extends MapObject {
 
 					// we are no longer building
 					building = false;
+
+					// since we are done building, we can determine if we have services or not
+					if (!fireServiceProvided)
+						City.getInstance().addBuildingNeedsService(EventManager.Categories.FIRE, this);
+					if (!policeServiceProvided)
+						City.getInstance().addBuildingNeedsService(EventManager.Categories.POLICE, this);
+					if (!educationServiceProvided)
+						City.getInstance().addBuildingNeedsService(EventManager.Categories.ED, this);
+					if (!healthServiceProvided)
+					City.getInstance().addBuildingNeedsService(EventManager.Categories.HEALTH, this);
 
 					// This building is built, so visualize it normally
 					setOpacity(1);
@@ -236,6 +318,7 @@ public class Building extends MapObject {
 						waterClaimed = waterNeeded;
 						waterProvided = true;
 						updateHappiness();
+						City.getInstance().removeBuildingNeedsService(EventManager.Categories.WATER, this);
 					}
 				}
 
@@ -244,6 +327,7 @@ public class Building extends MapObject {
 						powerClaimed = powerNeeded;
 						powerProvided = true;
 						updateHappiness();
+						City.getInstance().removeBuildingNeedsService(EventManager.Categories.POWER, this);
 					}
 				}
 
@@ -258,7 +342,7 @@ public class Building extends MapObject {
 				// this building must be full
 				// all employees must have jobs
 				if (happiness >= happinessRequired && isFull() &&
-					   !containsUnemployedResidents()) {
+					   !containsUnemployedResidents() && canLevelUp) {
 
 					// then we can start our timer
 					levelTimerActive = true;
@@ -454,6 +538,40 @@ public class Building extends MapObject {
 			City.getInstance().removeCityBuilding(this);
 		}
 
+		if (!fireServiceProvided) {
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.FIRE, this);
+		}
+		if (!policeServiceProvided) {
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.POLICE, this);
+		}
+		if (!educationServiceProvided) {
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.ED, this);
+		}
+		if (!healthServiceProvided) {
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.HEALTH, this);
+		}
+		if (!powerProvided) {
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.POWER, this);
+		}
+		if (!waterProvided) {
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.WATER, this);
+		}
+
+		Cell cell = GameScene.getInstance().getGameMap().getCell(mapPosition);
+		if (cell != null) {
+			cell.removeActor(this);
+			setDeleted(true);
+
+			if (cell.getTopObject() != null && cell.getTopObject() instanceof ZoneCell) {
+				Zone zone;
+				ZoneCell zoneCell = (ZoneCell)cell.getTopObject();
+				if ((zone = zoneCell.getParentZone()) != null) {
+					zone.addAvailableZoneCell(zoneCell);
+				}
+			}
+
+		}
+
 		return super.remove();
 	}
 
@@ -465,18 +583,22 @@ public class Building extends MapObject {
 			if (!fireServiceProvided)
 				changed = true;
 			fireServiceProvided = true;
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.FIRE, this);
 		} else if (service == ServiceBuilding.Services.POLICE) {
 			if (!policeServiceProvided)
 				changed = true;
 			policeServiceProvided = true;
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.POLICE, this);
 		} else if (service == ServiceBuilding.Services.HEALTH) {
 			if (!healthServiceProvided)
 				changed = true;
 			healthServiceProvided = true;
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.HEALTH, this);
 		} else if (service == ServiceBuilding.Services.EDUCATION) {
 			if (!educationServiceProvided)
 				changed = true;
 			educationServiceProvided = true;
+			City.getInstance().removeBuildingNeedsService(EventManager.Categories.ED, this);
 		}
 
 		if (changed)
@@ -491,18 +613,22 @@ public class Building extends MapObject {
 			if (fireServiceProvided)
 				changed = true;
 			fireServiceProvided = false;
+			City.getInstance().addBuildingNeedsService(EventManager.Categories.FIRE, this);
 		} else if (service == ServiceBuilding.Services.POLICE) {
 			if (policeServiceProvided)
 				changed = true;
 			policeServiceProvided = false;
+			City.getInstance().addBuildingNeedsService(EventManager.Categories.POLICE, this);
 		} else if (service == ServiceBuilding.Services.HEALTH) {
 			if (healthServiceProvided)
 				changed = true;
 			healthServiceProvided = false;
+			City.getInstance().addBuildingNeedsService(EventManager.Categories.HEALTH, this);
 		} else if (service == ServiceBuilding.Services.EDUCATION) {
 			if (educationServiceProvided)
 				changed = true;
 			educationServiceProvided = false;
+			City.getInstance().addBuildingNeedsService(EventManager.Categories.ED, this);
 		}
 
 		if (changed)
@@ -566,13 +692,60 @@ public class Building extends MapObject {
 		serializable.y = getY();
 		serializable.width = getWidth();
 		serializable.height = getHeight();
+		serializable.buildTimer = buildingTimer;
 
 		// this object will have sources assoc. with it
 		serializable.sources = new ArrayList<>();
 		for (Source source : sources) {
 			serializable.sources.add(source.getSerializableObject());
 		}
-
 		return serializable;
+	}
+
+	public void setBuildingTimer(float buildingTimer) {
+		this.buildingTimer = buildingTimer;
+	}
+
+	public static void setVisualizeSelectedCategory(EventManager.Categories category) {
+		visualizedCategory = category;
+		Building.visualizeSelectedCategory = true;
+	}
+
+	public static void clearVisualizedCategory() {
+		visualizeSelectedCategory = false;
+	}
+
+	public void removeResident() {
+		// we need to remove a resident
+		if (!residents.isEmpty()) {
+			Resident resident = residents.get(random.nextInt(residents.size()));
+
+			// if this resident is unemployed, then we need to remove it from the city classes
+			if (resident.isUnemployed()) {
+				if (resident.getLevel() >= Building.residentLevelOfficeRequirement) {
+					City.getInstance().removeUnemployedEducatedResident(resident);
+				} else {
+					City.getInstance().removeUnemployedResident(resident);
+				}
+			}
+			// remove the resident from its employer
+			else if (resident.getEmployer() != null) {
+				resident.getEmployer().residents.remove(resident);
+			}
+
+			// remove from the population
+			City.getInstance().decrementPopulation(1);
+
+			// remove from this object
+			residents.remove(resident);
+
+			// set other references as null
+			resident.setEmployer(null);
+			resident.setResidence(null);
+		}
+	}
+
+	public void setCanLevelUp(boolean canLevelUp) {
+		this.canLevelUp = canLevelUp;
 	}
 }

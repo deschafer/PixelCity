@@ -17,6 +17,8 @@ public class SecondarySchool extends ServiceBuilding {
 	public SecondarySchool(float x, float y, MapCoord coord) {
 		super(x, isometricCorrection, textureWidth, textureHeight, widthInCells, heightInCells, coord, "SecondarySchool");
 
+		displayName = "Secondary School";
+
 		// we need to load our texture here
 		// and set the width and height of it
 

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.pixel.behavior.RemoveBehavior;
 import com.pixel.behavior.ReplaceBehavior;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.Map;
@@ -32,7 +33,7 @@ public class ZoneCell extends MapObject {
 		this.parentZone = parentZone;
 
 		replaceable = true;
-		placementBehaviors.add(new ReplaceBehavior(this));
+		placementBehaviors.add(new RemoveBehavior(this));
 	}
 
 	public void setValid(boolean valid) {
@@ -89,5 +90,9 @@ public class ZoneCell extends MapObject {
 			}
 		}
 		return false;
+	}
+
+	public Zone getParentZone() {
+		return parentZone;
 	}
 }
