@@ -13,16 +13,10 @@ public class WaterUtility extends SpecialtyBuilding {
 
 	private float waterSupplied = 0;
 
-	public WaterUtility(float x, float y, float width, float height, int widthInCells, int heightInCells, MapCoord coord, String ID, float waterSupplied, boolean placedOnMap) {
+	public WaterUtility(float x, float y, float width, float height, int widthInCells, int heightInCells, MapCoord coord, String ID, float waterSupplied) {
 		super(x, y, width, height, widthInCells, heightInCells, coord, ID + "Utility");
 
-		if (placedOnMap) {
-
-			this.waterSupplied = waterSupplied;
-
-			// add this utility to the manager
-			UtilityManager.getInstance().addWaterUtility(this);
-		}
+		this.waterSupplied = waterSupplied;
 	}
 
 	@Override
@@ -57,5 +51,12 @@ public class WaterUtility extends SpecialtyBuilding {
 		}
 
 		return serializable;
+	}
+
+	@Override
+	public void initialize() {
+		// add this utility to the manager
+		UtilityManager.getInstance().addWaterUtility(this);
+		sources.add(new Source(this, -20));
 	}
 }

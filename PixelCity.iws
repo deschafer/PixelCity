@@ -2,952 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05fdd495-9b0b-42fe-b267-3cc5a59f5536" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/DemandTutorialDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/FinancesTutorialDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/GettingStartedDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/LevelUpDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/OverviewDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/SpecBuildingDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/UtilityTutorialDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/tutorial/ZoningDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/element/PButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/element/PTextButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PixelCity.iws" beforeDir="false" afterPath="$PROJECT_DIR$/PixelCity.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Font/kenvector_future.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Font/kenvector_future_thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/blue_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/dropdownBottom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/dropdownMid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/dropdownTop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/green_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_arrowDownGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_arrowDownWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_arrowUpGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_arrowUpWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_box.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_button15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_checkmarkGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_checkmarkWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_crossGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_crossWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_sliderEnd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_sliderHorizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_sliderVertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_tickGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/grey_tickWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/red_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/PNG/yellow_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/blueSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/blueSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/greenSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/greenSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/greySheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/greySheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/redSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/redSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/yellowSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Spritesheet/yellowSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Vector/UIpack_vector.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/Vector/UIpack_vector.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/elements/Button-White.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/elements/grayCircle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/elements/old_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/UI/sample.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/Donate.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/Facebook.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/PNG/buildingTiles_122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/Preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/Sample.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/Spritesheet/buildingTiles_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/buildings/Spritesheet/buildingTiles_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Details/cityDetails_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Donate.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Facebook.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_028.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_029.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_032.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_034.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_039.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_041.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_042.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_044.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_045.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_047.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_051.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_052.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_054.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_055.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_056.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_057.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_058.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_059.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_060.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_061.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_062.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_063.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_064.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_065.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_068.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_069.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_070.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_071.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_074.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_075.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_076.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_077.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_079.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_080.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_082.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_091.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_094.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_098.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_099.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_107.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_109.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_115.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_118.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_123.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/PNG/cityTiles_127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityDetails_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityDetails_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityTiles_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/city/Spritesheet/cityTiles_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/firestation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometricCity.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/isometricCityTwo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/kenneyFonts/Fonts/Fonts - Shortcut.lnk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/kenneyFonts/Fonts/Kenney Future Narrow.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/kenneyFonts/Fonts/Kenney Future.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/kenneyFonts/Fonts/Kenney Mini Square.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/kenneyFonts/Fonts/Kenney Mini.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/kenneyFonts/Fonts/Kenney Rocket Square.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/kenneyFonts/Fonts/Kenney Rocket.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/Donate.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/Facebook.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_028.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_029.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_032.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_034.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_039.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_041.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_042.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_044.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_045.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_047.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_051.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_052.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_054.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_055.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_056.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_057.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_058.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_059.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_060.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_061.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_062.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_063.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_064.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_065.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_068.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_069.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_070.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_071.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_073.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_074.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_076.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_077.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_079.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_080.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_081.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_082.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_088.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_089.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_091.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_094.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_095.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_096.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_098.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_099.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_103.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_104.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_107.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_109.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_110.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_111.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_115.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_116.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_118.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_123.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_124.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_125.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_126.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/PNG/landscapeTiles_127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/Preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/Spritesheet/landscapeTiles_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/landscape/Spritesheet/landscapeTiles_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/specificBuildings/officeSkyBase.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/specificBuildings/officeSkyFloor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/specificBuildings/officeSkyRoof.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/BalanceDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/BalanceDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/DemandDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/DemandDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/LoadDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/LoadDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/NewGameDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/NewGameDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/NotificationDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/NotificationDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PauseDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PauseDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/StatsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/StatsDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/UI/element/Icon.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/UI/element/Icon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/event/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/event/EventManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/game/PixelAssetManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/game/PixelCityGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/game/styles/Styles.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/game/styles/Styles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/roads/Road.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/scene/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/scene/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/scene/MenuScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Font/kenvector_future.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Font/kenvector_future_thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/blue_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/dropdownBottom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/dropdownMid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/dropdownTop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/green_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_arrowDownGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_arrowDownWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_arrowUpGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_arrowUpWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_box.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_button15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_checkmarkGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_checkmarkWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_crossGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_crossWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_sliderEnd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_sliderHorizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_sliderVertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_tickGrey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/grey_tickWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/red_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_boxCheckmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_boxCross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_boxTick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_button13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_panel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_sliderDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_sliderLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_sliderRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_sliderUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/PNG/yellow_tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/blueSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/blueSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/greenSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/greenSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/greySheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/greySheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/redSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/redSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/yellowSheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Spritesheet/yellowSheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Vector/UIpack_vector.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/Vector/UIpack_vector.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/elements/Button-White.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/elements/grayCircle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/elements/old_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/UI/sample.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/Donate.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/Facebook.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/PNG/buildingTiles_122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/Preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/Sample.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/Spritesheet/buildingTiles_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/buildings/Spritesheet/buildingTiles_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Details/cityDetails_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Donate.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Facebook.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_028.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_029.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_032.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_034.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_039.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_041.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_042.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_044.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_045.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_047.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_051.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_052.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_054.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_055.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_056.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_057.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_058.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_059.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_060.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_061.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_062.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_063.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_064.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_065.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_068.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_069.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_070.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_071.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_074.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_075.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_076.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_077.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_079.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_080.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_082.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_091.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_094.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_098.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_099.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_107.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_109.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_115.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_118.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_123.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/PNG/cityTiles_127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Spritesheet/cityDetails_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Spritesheet/cityDetails_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Spritesheet/cityTiles_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/city/Spritesheet/cityTiles_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/firestation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometricCity.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/isometricCityTwo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/kenneyFonts/Fonts/Fonts - Shortcut.lnk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/kenneyFonts/Fonts/Kenney Future Narrow.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/kenneyFonts/Fonts/Kenney Future.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/kenneyFonts/Fonts/Kenney Mini Square.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/kenneyFonts/Fonts/Kenney Mini.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/kenneyFonts/Fonts/Kenney Rocket Square.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/kenneyFonts/Fonts/Kenney Rocket.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/Donate.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/Facebook.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_028.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_029.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_032.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_034.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_039.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_041.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_042.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_044.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_045.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_047.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_051.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_052.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_054.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_055.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_056.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_057.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_058.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_059.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_060.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_061.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_062.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_063.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_064.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_065.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_068.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_069.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_070.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_071.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_073.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_074.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_076.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_077.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_079.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_080.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_081.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_082.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_088.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_089.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_091.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_094.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_095.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_096.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_098.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_099.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_103.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_104.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_107.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_109.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_110.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_111.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_115.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_116.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_118.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_123.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_124.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_125.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_126.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/PNG/landscapeTiles_127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/Preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/Spritesheet/landscapeTiles_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/landscape/Spritesheet/landscapeTiles_sheet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/specificBuildings/officeSkyBase.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/specificBuildings/officeSkyFloor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/specificBuildings/officeSkyRoof.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/out/production/resources/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -1002,71 +61,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/dialog/NotificationDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/dialog/StatsDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/dialog/DemandDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="46" column="56" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/dialog/BalanceDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="773">
-              <caret line="131" column="57" selection-start-line="131" selection-start-column="57" selection-end-line="131" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="750" column="6" lean-forward="true" selection-start-line="750" selection-start-column="6" selection-end-line="750" selection-end-column="6" />
+            <state relative-caret-position="374">
+              <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
               <folding>
-                <element signature="e#26635#26636#0" expanded="true" />
-                <element signature="e#26674#26675#0" expanded="true" />
-                <element signature="e#26698#26699#0" expanded="true" />
-                <element signature="e#26724#26725#0" expanded="true" />
-                <element signature="e#26759#26760#0" expanded="true" />
-                <element signature="e#26784#26785#0" expanded="true" />
-                <element signature="e#26826#26827#0" expanded="true" />
-                <element signature="e#26858#26859#0" expanded="true" />
+                <element signature="e#994#995#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-297">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+              <folding>
+                <element signature="e#996#997#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="176" column="60" lean-forward="true" selection-start-line="176" selection-start-column="60" selection-end-line="176" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuilding.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="16" column="66" lean-forward="true" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+              <folding>
+                <element signature="e#1063#1064#0" expanded="true" />
+                <element signature="e#1087#1088#0" expanded="true" />
+                <element signature="e#1131#1132#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#1024#1025#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="884">
+              <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+              <folding>
+                <element signature="e#965#966#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1130,11 +191,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/fire/FireStation.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/education/SecondarySchool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/MapObject.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/ServiceBuildingSerializable.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/serialization/BuildingSerializable.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/BuildingFactory.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/zoning/Zone.java" />
@@ -1143,9 +202,6 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/tools/SpecialtyBuildingPlacementTool.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/behavior/RemoveBehavior.java" />
         <option value="$PROJECT_DIR$/desktop/src/com/pixel/game/desktop/DesktopLauncher.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java" />
-        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/display/BuildingDisplay.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/ServiceBuilding.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/city/City.java" />
@@ -1181,6 +237,11 @@
         <option value="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/StatsDialog.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/NotificationDialog.java" />
         <option value="$PROJECT_DIR$/core/src/com/pixel/UI/dialog/PDialog.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/Map.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java" />
+        <option value="$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java" />
       </list>
     </option>
   </component>
@@ -1243,6 +304,65 @@
               <item name="pixel" type="462c0819:PsiDirectoryNode" />
               <item name="map" type="462c0819:PsiDirectoryNode" />
               <item name="object" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="building" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="building" type="462c0819:PsiDirectoryNode" />
+              <item name="special" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="building" type="462c0819:PsiDirectoryNode" />
+              <item name="special" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="building" type="462c0819:PsiDirectoryNode" />
+              <item name="special" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
+              <item name="power" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PixelCity" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pixel" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="object" type="462c0819:PsiDirectoryNode" />
+              <item name="building" type="462c0819:PsiDirectoryNode" />
+              <item name="special" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
+              <item name="water" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PixelCity" type="b2602c69:ProjectViewProjectNode" />
@@ -1390,7 +510,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.22101842" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.22210184" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.22210184" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -1398,7 +518,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5010661" side_tool="true" weight="0.22101842" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32936078" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.2383532" />
+      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.2383532" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" content_ui="combo" x="1249" y="88" width="339" height="923" id="Project" order="1" visible="true" weight="0.14392324" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.18976545" />
@@ -1553,47 +673,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="179" column="56" selection-start-line="179" selection-start-column="56" selection-end-line="179" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuildingFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="32" column="103" selection-start-line="32" selection-start-column="103" selection-end-line="32" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuilding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding>
-            <element signature="e#1063#1064#0" expanded="true" />
-            <element signature="e#1087#1088#0" expanded="true" />
-            <element signature="e#1131#1132#0" expanded="true" />
-            <element signature="e#1162#1163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/object/Resident.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1633,13 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="312" column="31" selection-start-line="312" selection-start-column="31" selection-end-line="312" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -1999,8 +1071,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/pixel/UI/GameSceneUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="750" column="6" lean-forward="true" selection-start-line="750" selection-start-column="6" selection-end-line="750" selection-end-column="6" />
+        <state relative-caret-position="-9">
+          <caret line="722" column="11" lean-forward="true" selection-start-line="722" selection-start-column="11" selection-end-line="722" selection-end-column="11" />
           <folding>
             <element signature="e#26635#26636#0" expanded="true" />
             <element signature="e#26674#26675#0" expanded="true" />
@@ -2010,6 +1082,66 @@
             <element signature="e#26784#26785#0" expanded="true" />
             <element signature="e#26826#26827#0" expanded="true" />
             <element signature="e#26858#26859#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="176" column="60" lean-forward="true" selection-start-line="176" selection-start-column="60" selection-end-line="176" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterTank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#1024#1025#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/water/WaterUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+          <folding>
+            <element signature="e#965#966#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/SpecialtyBuilding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="16" column="66" lean-forward="true" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+          <folding>
+            <element signature="e#1063#1064#0" expanded="true" />
+            <element signature="e#1087#1088#0" expanded="true" />
+            <element signature="e#1131#1132#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/PowerUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-297">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="e#996#997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/pixel/map/object/building/special/utilities/power/CoalPowerPlant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
+          <folding>
+            <element signature="e#994#995#0" expanded="true" />
           </folding>
         </state>
       </provider>

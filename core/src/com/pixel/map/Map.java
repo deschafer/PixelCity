@@ -175,7 +175,7 @@ public class Map extends Group {
 		VisualizerFactory.getInstance().registerMapObject(
 			   new ZoneCell(cellWidth, cellHeight, new MapCoord(0, 0), Building.BuildingType.OFFICE, null));
 		VisualizerFactory.getInstance().registerMapObject(
-			   new CoalPowerPlant(0, 0, new MapCoord(0, 0), false));
+			   new CoalPowerPlant(0, 0, new MapCoord(0, 0)));
 		VisualizerFactory.getInstance().registerMapObject(
 			   new WaterTank(0, 0, new MapCoord(0, 0)));
 
@@ -400,10 +400,10 @@ public class Map extends Group {
 		// register our specialty buildings
 		CoalPowerPlant coalPowerPlant;
 		SpecialtyBuildingFactory.getInstance().registerObject(coalPowerPlant =
-			   new CoalPowerPlant(0, 0, new MapCoord(0, 0), false), coalPowerPlant.getName());
+			   new CoalPowerPlant(0, 0, new MapCoord(0, 0)), coalPowerPlant.getName());
 		WaterTank waterTank;
 		SpecialtyBuildingFactory.getInstance().registerObject(waterTank =
-			   new WaterTank(0, 0, new MapCoord(0, 0), false), waterTank.getName());
+			   new WaterTank(0, 0, new MapCoord(0, 0)), waterTank.getName());
 		FireStation fireStation;
 		SpecialtyBuildingFactory.getInstance().registerObject(fireStation =
 			   new FireStation(0, 0, new MapCoord(0, 0)), fireStation.getName());

@@ -15,15 +15,10 @@ public class PowerUtility extends SpecialtyBuilding {
 	private float powerSupplied = 0;
 
 	public PowerUtility(float x, float y, float width, float height, int widthInCells, int heightInCells,
-					MapCoord coord, String ID, float powerSupplied, boolean placedOnMap) {
+					MapCoord coord, String ID, float powerSupplied) {
 		super(x, y, width, height, widthInCells, heightInCells, coord, ID + "Utility");
 
-		if (placedOnMap) {
-			this.powerSupplied = powerSupplied;
-
-			// add this utility to the manager
-			UtilityManager.getInstance().addPowerUtility(this);
-		}
+		this.powerSupplied = powerSupplied;
 	}
 
 	@Override
@@ -58,5 +53,12 @@ public class PowerUtility extends SpecialtyBuilding {
 		}
 
 		return serializable;
+	}
+
+	@Override
+	public void initialize() {
+
+		// add this utility to the manager
+		UtilityManager.getInstance().addPowerUtility(this);
 	}
 }
