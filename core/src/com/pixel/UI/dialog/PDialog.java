@@ -10,11 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.pixel.UI.element.PButton;
 import com.pixel.game.styles.Styles;
 
 public class PDialog extends Dialog {
 
-	protected ImageButton closeButton;
+	protected PButton closeButton;
 	protected boolean closeOnEscape = true;
 
 	public PDialog(String title, Skin skin) {
@@ -27,7 +28,7 @@ public class PDialog extends Dialog {
 		//skin.add("default-font", newDefaultFont, BitmapFont.class);
 
 		// set up a close button in the top right position to allow closing this dialog
-		closeButton = new ImageButton(Styles.closeButtonImageButtonStyle);
+		closeButton = new PButton(Styles.closeButtonImageButtonStyle);
 		getTitleTable().add().expandX();
 		getTitleTable().add(closeButton);
 
@@ -36,8 +37,7 @@ public class PDialog extends Dialog {
 			public void clicked(InputEvent e, float x, float y) {
 				if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 
-					addAction(Actions.fadeOut(0.30f));
-					addAction(Actions.after(Actions.removeActor()));
+					close();
 				}
 			}
 		});
@@ -59,4 +59,6 @@ public class PDialog extends Dialog {
 		addAction(Actions.fadeOut(0.30f));
 		addAction(Actions.after(Actions.removeActor()));
 	}
+
+
 }

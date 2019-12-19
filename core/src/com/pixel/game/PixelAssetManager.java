@@ -126,6 +126,14 @@ public class PixelAssetManager {
 	public static String officeStory23 = "assets/buildings/PNG/buildingTiles_023.png";
 	public static String officeStory31 = "assets/buildings/PNG/buildingTiles_031.png";
 
+	// Tutorial images
+	public static String demandImage = "assets/tutorial/demandImage.jpg";
+	public static String zoningImage = "assets/tutorial/zoningImage.jpg";
+	public static String utilityImage = "assets/tutorial/utilityImage.jpg";
+	public static String serviceImage = "assets/tutorial/serviceImage.jpg";
+	public static String roadImage = "assets/tutorial/roadImage.jpg";
+	public static String balanceImage = "assets/tutorial/balanceImage.jpg";
+
 	// Specialty and Service Buildings
 	public static String coalPowerPlant = "assets/services/coalPowerPlant.png";
 	public static String waterTank = "assets/services/waterTank.png";
@@ -133,11 +141,6 @@ public class PixelAssetManager {
 	public static String policeStation = "assets/services/policeStation.png";
 	public static String hospital = "assets/services/hospital.png";
 	public static String secondarySchool = "assets/services/secondarySchool.png";
-
-	// SpecificBuilding components
-	//public static String blueSkyscraperBase = "assets/specificBuildings/officeSkyBase.png";
-	//public static String blueSkyscraperStory = "assets/specificBuildings/officeSkyFloor.png";
-	//public static String blueSkyscraperRoof = "assets/specificBuildings/officeSkyRoof.png";
 
 	// UI elements
 	public static String blueBox = "assets/UI/elements/blueCircle.png";
@@ -149,7 +152,6 @@ public class PixelAssetManager {
 	public static String demandIcon = "assets/UI/elements/demandIcon.png";
 	public static String educationIcon = "assets/UI/elements/educationIcon.png";
 	public static String fireIcon = "assets/UI/elements/fireIcon.png";
-	public static String grayCircle = "assets/UI/elements/grayCircle.png";
 	public static String healthIcon = "assets/UI/elements/healthIcon.png";
 	public static String policeIcon = "assets/UI/elements/policeIcon.png";
 	public static String powerPlantIcon = "assets/UI/elements/powerPlantIcon.png";
@@ -167,6 +169,14 @@ public class PixelAssetManager {
 	public static String grayCross = "assets/UI/elements/grayCross.png";
 	public static String buildingOpacityIcon = "assets/UI/elements/buildingOpacityIcon.png";
 	public static String notificationIcon = "assets/UI/elements/notification.png";
+
+	// sound and music
+	public static String menuMusic = "assets/music/Canon in D Major.mp3";
+	public static String gameMusic = "assets/music/Gymnopedie No 1.ogg";
+	public static String clickOne = "assets/effects/click.ogg";
+	public static String clickTwo = "assets/effects/clickTwo.wav";
+	public static String explosionSound = "assets/effects/explosion.ogg";
+	public static String fireSound = "assets/effects/fireloop.ogg";
 
 
 	public static String[] fireAnimation = {"assets/fire/fire1_ 01.png", "assets/fire/fire1_ 02.png",

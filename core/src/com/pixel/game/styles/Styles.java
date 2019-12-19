@@ -26,6 +26,7 @@ public class Styles {
 	public static Label.LabelStyle greenBalanceLabelStyle;
 	public static Label.LabelStyle redBalanceLabelStyle;
 	public static TextButton.TextButtonStyle dialogButtonStyle;
+	public static Label.LabelStyle dialogLabelStyle;
 
 
 	public static void initialize() {
@@ -92,6 +93,8 @@ public class Styles {
 		dialogButtonStyle.font      = customFont;
 		dialogButtonStyle.fontColor = Color.WHITE;
 
+
+
 		fontGenerator =
 			   new FreeTypeFontGenerator(Gdx.files.internal("assets/fonts/OpenSans.ttf"));
 		fontParameters = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -103,6 +106,12 @@ public class Styles {
 		customFont = fontGenerator.generateFont(fontParameters);
 		highlightedLabelStyle = new Label.LabelStyle();
 		highlightedLabelStyle.font = customFont;
+
+		fontParameters.borderWidth = 0;
+		fontParameters.size = 18;
+		customFont = fontGenerator.generateFont(fontParameters);
+		dialogLabelStyle = new Label.LabelStyle();
+		dialogLabelStyle.font = customFont;
 
 		fontParameters = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameters.color = Color.GREEN;

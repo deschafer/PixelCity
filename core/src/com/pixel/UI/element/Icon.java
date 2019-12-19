@@ -16,7 +16,7 @@ import com.pixel.object.SimpleActor;
 
 public class Icon extends Group {
 
-	private Button iconButton;
+	private PButton iconButton;
 	private SimpleActor foregroundImage;
 	private IconList additionalList;
 	private IconList parentList;
@@ -44,7 +44,7 @@ public class Icon extends Group {
 		style.up = new NinePatchDrawable(buttonPatch);
 
 		// create the button and set its size
-		iconButton = new Button(style);
+		iconButton = new PButton(style);
 		iconButton.setSize(buttonSize.x, buttonSize.y);
 
 		// add the button to this object
@@ -56,6 +56,7 @@ public class Icon extends Group {
 			   "IconFgImage", fgTextureName);
 		foregroundImage.setSize(buttonSize.x * 0.60f, buttonSize.y * 0.60f);
 		addActor(foregroundImage);
+		foregroundImage.setTouchable(Touchable.disabled);
 
 		// then finally, the foreground image must be centered on the background image
 		foregroundImage.setX(iconButton.getWidth() / 2 - foregroundImage.getWidth() / 2);

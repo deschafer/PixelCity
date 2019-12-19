@@ -1,9 +1,11 @@
 package com.pixel.event;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.pixel.UI.GameSceneUI;
+import com.pixel.UI.dialog.NotificationDialog;
 import com.pixel.city.City;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.map.object.building.Building;
@@ -143,17 +145,20 @@ public class EventManager {
 				}
 			}
 
+			// play a sound effect
+			Sound fireSound = PixelAssetManager.manager.get(PixelAssetManager.fireSound);
+			fireSound.play(0.3f);
+
 			// we create an explosion actor, and we place one at every child of the building
 			// then we add an action to the building so it despawns after a period of time
 			selectedBuilding.addAction(Actions.delay(5));
-			selectedBuilding.addAction(Actions.after(Actions.fadeOut(1.5f)));
 			selectedBuilding.addAction(Actions.after(Actions.removeActor()));
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A building is on fire");
+			NotificationDialog.getInstance().addMessage("A building is on fire");
 		} else if (selectedEvent == Events.DISSATISFIED) {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen left due to no fire protection");
+			NotificationDialog.getInstance().addMessage("A citizen left due to no fire protection");
 		}
 	}
 
@@ -183,22 +188,26 @@ public class EventManager {
 				}
 			}
 
+			// play a sound effect
+			Sound explosionSound = PixelAssetManager.manager.get(PixelAssetManager.explosionSound);
+			explosionSound.play();
+
 			// we create an explosion actor, and we place one at every child of the building
 			// then we add an action to the building so it despawns after a period of time
 			selectedBuilding.addAction(Actions.delay(0.72f));
 			selectedBuilding.addAction(Actions.after(Actions.removeActor()));
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("Domestic terrorists destroyed a building");
+			NotificationDialog.getInstance().addMessage("Domestic terrorists destroyed a building");
 		} else if (selectedEvent == Events.SHOOTING) {
 			// remove a citizen from one of the buildings
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A shooting resulted in a fatality");
+			NotificationDialog.getInstance().addMessage("A shooting resulted in a fatality");
 		} else if (selectedEvent == Events.DISSATISFIED) {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen left due to no police service");
+			NotificationDialog.getInstance().addMessage("A citizen left due to no police service");
 		}
 	}
 
@@ -226,17 +235,17 @@ public class EventManager {
 				selectedBuilding.removeResident();
 			}
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A disease broke out killing " + numberRemoved + " citizens");
+			NotificationDialog.getInstance().addMessage("A disease broke out killing " + numberRemoved + " citizens");
 		} else if (selectedEvent == Events.HEALTH_DEATH) {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen died due to poor health");
+			NotificationDialog.getInstance().addMessage("A citizen died due to poor health");
 		} else if (selectedEvent == Events.DISSATISFIED) {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen left due to no health services");
+			NotificationDialog.getInstance().addMessage("A citizen left due to no health services");
 		}
 	}
 
@@ -254,7 +263,7 @@ public class EventManager {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen left due to no education services");
+			NotificationDialog.getInstance().addMessage("A citizen left due to no education services");
 		}
 	}
 
@@ -272,12 +281,12 @@ public class EventManager {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen left due to no power services");
+			NotificationDialog.getInstance().addMessage("A citizen left due to no power services");
 		} else if (selectedEvent == Events.POWER_DEATH) {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen died by falling in the dark");
+			NotificationDialog.getInstance().addMessage("A citizen died by falling in the dark");
 		}
 	}
 
@@ -295,7 +304,7 @@ public class EventManager {
 			// remove a citizen from this building
 			selectedBuilding.removeResident();
 
-			GameSceneUI.getInstance().getNotificationDialog().addMessage("A citizen left due to no water services");
+			NotificationDialog.getInstance().addMessage("A citizen left due to no water services");
 		}
 	}
 }

@@ -2,6 +2,7 @@ package com.pixel.UI;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
@@ -435,6 +436,8 @@ public class GameSceneUI extends Stage {
 							 public void clicked(InputEvent e, float x, float y) {
 								 if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 									 openBalanceLabel();
+									 Sound sound = PixelAssetManager.manager.get(PixelAssetManager.clickOne);
+									 sound.play();
 								 }
 							 }
 						 }
@@ -699,7 +702,7 @@ public class GameSceneUI extends Stage {
 			notificationDialog.close();
 			notificationDialog = null;
 		} else {
-			notificationDialog = new NotificationDialog();
+			notificationDialog = NotificationDialog.getInstance();
 			notificationDialog.show(this);
 			notificationDialog.setPosition(notificationIcon.getRelativeX() - notificationDialog.getWidth() - horizPadding,
 				   notificationIcon.getRelativeY() + notificationIcon.getHeight() - notificationDialog.getHeight());
@@ -729,17 +732,35 @@ public class GameSceneUI extends Stage {
 	}
 
 	public void openBalanceLabel() {
-		balanceDialog = new BalanceDialog();
-		balanceDialog.show(this);
+		if (demandDialog != null) {
+			balanceDialog.close();
+			balanceDialog = null;
+		} else {
+			balanceDialog =
+				   new DemandDialog();
+			balanceDialog.show(this);
+		}
+	}
+
+	public void clearBalanceDialog() {
+		balanceDialog = null;
+	}
+
+	public void clearDemandDialog() {
+		demandDialog = null;
+	}
+
+	public void clearStatsDialog() {
+		statsDialog = null;
+	}
+
+	public void clearNotificationDialog() {
+		notificationDialog = null;
 	}
 
 	private void toggleBuildingOpacity() {
 
 		City.getInstance().toggleBuildingsVisible();
-	}
-
-	public NotificationDialog getNotificationDialog() {
-		return (NotificationDialog)notificationDialog;
 	}
 
 	@Override

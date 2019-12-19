@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.pixel.UI.element.PTextButton;
 import com.pixel.UI.label.PLabel;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
@@ -22,8 +23,8 @@ import java.util.ArrayList;
 
 public class LoadDialog extends PDialog {
 
-	private TextButton loadButton;
-	private TextButton deleteButton;
+	private PTextButton loadButton;
+	private PTextButton deleteButton;
 	private ScrollPane scrollPane;
 	private PLabel selectedLabel;
 	private Table scrollTable = new Table();
@@ -100,7 +101,7 @@ public class LoadDialog extends PDialog {
 		getContentTable().add(scrollPane).size(250, 300).pad(10,2,5,2).center();
 		getContentTable().row();
 
-		loadButton = new TextButton("Load Selected File", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+		loadButton = new PTextButton("Load Selected File", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 		loadButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent e, float x, float y) {
@@ -114,7 +115,7 @@ public class LoadDialog extends PDialog {
 		});
 
 
-		deleteButton = new TextButton("Delete Selected File",  (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+		deleteButton = new PTextButton("Delete Selected File",  (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 		deleteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent e, float x, float y) {

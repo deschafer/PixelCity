@@ -1,6 +1,8 @@
 package com.pixel.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pixel.game.styles.Styles;
@@ -145,9 +147,6 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.policeStation, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.hospital, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.secondarySchool, Texture.class);
-		//PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperBase, Texture.class);
-		//PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperStory, Texture.class);
-		//PixelAssetManager.manager.load(PixelAssetManager.blueSkyscraperRoof, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.blueBox, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.blueZoningIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.amberZoningIcon, Texture.class);
@@ -159,7 +158,6 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.healthIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.fireIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.policeIcon, Texture.class);
-		PixelAssetManager.manager.load(PixelAssetManager.grayCircle, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.powerPlantIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.utilityIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.waterUtilityIcon, Texture.class);
@@ -175,12 +173,26 @@ public class PixelCityGame extends AbstractGame
 		PixelAssetManager.manager.load(PixelAssetManager.grayCross, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.buildingOpacityIcon, Texture.class);
 		PixelAssetManager.manager.load(PixelAssetManager.notificationIcon, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.demandImage, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.zoningImage, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.serviceImage, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.utilityImage, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.roadImage, Texture.class);
+		PixelAssetManager.manager.load(PixelAssetManager.balanceImage, Texture.class);
 		for (int i = 0; i < PixelAssetManager.fireAnimation.length; i++) {
 			PixelAssetManager.manager.load(PixelAssetManager.fireAnimation[i], Texture.class);
 		}
 		PixelAssetManager.manager.load(PixelAssetManager.explosion, Texture.class);
 
 		PixelAssetManager.manager.load(PixelAssetManager.defaultUISkin, Skin.class);
+
+		PixelAssetManager.manager.load(PixelAssetManager.menuMusic, Music.class);
+		PixelAssetManager.manager.load(PixelAssetManager.gameMusic, Music.class);
+		PixelAssetManager.manager.load(PixelAssetManager.clickOne, Sound.class);
+		PixelAssetManager.manager.load(PixelAssetManager.clickTwo, Sound.class);
+		PixelAssetManager.manager.load(PixelAssetManager.explosionSound, Sound.class);
+		PixelAssetManager.manager.load(PixelAssetManager.fireSound, Sound.class);
+
 
 		PixelAssetManager.manager.finishLoading();
 		Styles.initialize();

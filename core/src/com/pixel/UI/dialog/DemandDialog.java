@@ -1,6 +1,7 @@
 package com.pixel.UI.dialog;
 
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.pixel.UI.GameSceneUI;
 import com.pixel.city.Demand;
 import com.pixel.game.PixelAssetManager;
 
@@ -38,5 +39,11 @@ public class DemandDialog extends PDialog {
 		resDemandLabel.setText("Residential: " + Demand.getInstance().getResidentialDemand());
 		commDemandLabel.setText("Commercial: " + Demand.getInstance().getCommercialDemand());
 		offDemandLabel.setText("Office: " + Demand.getInstance().getOfficeDemand());
+	}
+
+	@Override
+	public void close() {
+		super.close();
+		GameSceneUI.getInstance().clearDemandDialog();
 	}
 }

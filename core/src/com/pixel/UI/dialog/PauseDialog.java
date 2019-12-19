@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.pixel.UI.element.PTextButton;
 import com.pixel.city.City;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
@@ -21,8 +22,8 @@ public class PauseDialog extends PDialog {
 		setModal(true);
 		closeOnEscape = false;
 
-		TextButton saveButton =
-			   new TextButton("Save", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+		PTextButton saveButton =
+			   new PTextButton("Save", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 		saveButton.addListener(new ClickListener() {
 								@Override
 								public void clicked(InputEvent e, float x, float y) {
@@ -33,8 +34,8 @@ public class PauseDialog extends PDialog {
 							}
 		);
 
-		TextButton mainMenuButton =
-			   new TextButton("Go to Main Menu", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+		PTextButton mainMenuButton =
+			   new PTextButton("Go to Main Menu", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 		mainMenuButton.addListener(new ClickListener() {
 							   @Override
 							   public void clicked(InputEvent e, float x, float y) {
@@ -46,8 +47,8 @@ public class PauseDialog extends PDialog {
 						   }
 		);
 
-		TextButton quitButton =
-			   new TextButton("Quit to Desktop", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+		PTextButton quitButton =
+			   new PTextButton("Quit to Desktop", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 		quitButton.addListener(new ClickListener() {
 								  @Override
 								  public void clicked(InputEvent e, float x, float y) {

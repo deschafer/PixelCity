@@ -2,6 +2,7 @@ package com.pixel.UI.dialog;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.pixel.UI.GameSceneUI;
 import com.pixel.game.PixelAssetManager;
 
 public class NotificationDialog extends PDialog {
@@ -12,7 +13,13 @@ public class NotificationDialog extends PDialog {
 	public Label entryFourLabel;
 	public Label entryFiveLabel;
 
-	public NotificationDialog() {
+	private static NotificationDialog instance = new NotificationDialog();
+
+	public static NotificationDialog getInstance() {
+		return instance;
+	}
+
+	private NotificationDialog() {
 		super("Notification Log", PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 
 		// create our labels
@@ -44,6 +51,13 @@ public class NotificationDialog extends PDialog {
 		entryThreeLabel.setText(entryTwoLabel.getText());
 		entryTwoLabel.setText(entryOneLabel.getText());
 		entryOneLabel.setText(message);
+	}
 
+
+
+	@Override
+	public void close() {
+		super.close();
+		GameSceneUI.getInstance().clearNotificationDialog();
 	}
 }

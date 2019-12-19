@@ -127,38 +127,6 @@ public class Road extends MapObject {
 		}
 	}
 
-	public Road(float x, float y, float width, float height, MapCoord coord, String ID) {
-		super(x, y, width, height, coord, ID);
-
-		replaceable = true;
-
-		// every road has an upkeep cost associated with it
-		addSource(new Source(this, upkeepCost));
-
-		// this object also has a placedown cost
-		placedownCost = cost;
-
-		synchronized (updateMutex) {
-			activeRoads.add(this);
-		}
-	}
-
-	public Road(float x, float y, float width, float height, MapCoord coord, String ID, boolean prototype) {
-		super(x, y, width, height, coord, ID);
-
-		setPrototypeObject(prototype);
-		replaceable = true;
-
-		// every road has an upkeep cost associated with it
-		addSource(new Source(this, upkeepCost));
-
-		// this object also has a placedown cost
-		placedownCost = 50.0f;
-
-		// For each derived object, we will need to set neighbors if they exist,
-		// and we will need to set the type correctly
-	}
-
 	private static void setRoadsToBeUpdated() {
 		synchronized (updateMutex) {
 			roadsNeedToUpdate = true;
@@ -350,25 +318,6 @@ public class Road extends MapObject {
 			}
 
 			return true;
-		}
-	}
-
-	@Override
-	public boolean remove() {
-
-		synchronized (this) {
-
-			boolean result = super.remove();
-
-			// if this object was deleted, then roads need to be updated to have the correct texture
-			if (deleted) {
-				setRoadsToBeUpdated();
-			}
-
-			synchronized (updateMutex) {
-				activeRoads.remove(this);
-			}
-			return result;
 		}
 	}
 

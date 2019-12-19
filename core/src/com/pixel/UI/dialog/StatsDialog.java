@@ -2,6 +2,7 @@ package com.pixel.UI.dialog;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.pixel.UI.GameSceneUI;
 import com.pixel.city.City;
 import com.pixel.game.PixelAssetManager;
 
@@ -56,5 +57,11 @@ public class StatsDialog extends PDialog {
 			timer = 0;
 			setLabels();
 		}
+	}
+
+	@Override
+	public void close() {
+		super.close();
+		GameSceneUI.getInstance().clearStatsDialog();
 	}
 }

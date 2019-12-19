@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.pixel.UI.element.PButton;
+import com.pixel.UI.element.PTextButton;
 import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
 import com.pixel.scene.GameScene;
@@ -17,7 +19,7 @@ import com.pixel.scene.GameScene;
 public class NewGameDialog extends PDialog {
 
 	TextField nameField;
-	TextButton createButton;
+	PTextButton createButton;
 
 	public NewGameDialog() {
 		super("Create a New Game", PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
@@ -31,7 +33,7 @@ public class NewGameDialog extends PDialog {
 
 		// then we need to set up a create button
 		createButton =
-			   new TextButton("Create", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+			   new PTextButton("Create", (Skin)PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 		createButton.addListener(new ClickListener() {
 							   @Override
 							   public void clicked(InputEvent e, float x, float y) {

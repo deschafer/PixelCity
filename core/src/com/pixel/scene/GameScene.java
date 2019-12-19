@@ -2,6 +2,7 @@ package com.pixel.scene;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,6 +14,7 @@ import com.pixel.city.City;
 import com.pixel.city.Demand;
 import com.pixel.city.FinancialManager;
 import com.pixel.event.EventManager;
+import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
 import com.pixel.map.Map;
 import com.pixel.map.object.building.Building;
@@ -24,6 +26,8 @@ public class GameScene extends Scene {
 	private Map gameMap;     // our actual game map
 	private static GameScene instance = new GameScene();
 	private Vector2 placementVector = new Vector2(0,0);
+
+	private Music gameMusic;
 
 	// Tools
 	private Tool activeTool;
@@ -69,6 +73,7 @@ public class GameScene extends Scene {
 	public void initialize() {
 
 		uiStage = gameSceneUI = GameSceneUI.getInstance();
+		gameMusic = PixelAssetManager.manager.get(PixelAssetManager.gameMusic);
 
 		if (gameMap == null) {
 			setNewGame("Default");
@@ -313,5 +318,18 @@ public class GameScene extends Scene {
 				activeTool = roadTool;
 				break;
 		}
+	}
+
+	@Override
+	public void show() {
+		super.show();
+		gameMusic.play();
+		gameMusic.setLooping(true);
+	}
+
+	@Override
+	public void hide() {
+		super.hide();
+		gameMusic.stop();
 	}
 }

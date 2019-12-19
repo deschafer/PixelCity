@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
+import com.pixel.UI.GameSceneUI;
 import com.pixel.city.City;
 import com.pixel.city.FinancialManager;
 import com.pixel.city.Financials.Source;
@@ -123,5 +124,11 @@ public class BalanceDialog extends PDialog {
 		scrollPaneIncomeTable.row();
 		scrollPaneExpenseTable.add().size(10, 5);
 		scrollPaneExpenseTable.row();
+	}
+
+	@Override
+	public void close() {
+		super.close();
+		GameSceneUI.getInstance().clearBalanceDialog();
 	}
 }

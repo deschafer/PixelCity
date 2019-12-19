@@ -1,6 +1,7 @@
 package com.pixel.scene;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -12,6 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.pixel.UI.dialog.LoadDialog;
 import com.pixel.UI.dialog.NewGameDialog;
+import com.pixel.UI.dialog.PDialog;
+import com.pixel.UI.dialog.tutorial.OverviewDialog;
+import com.pixel.UI.element.PTextButton;
+import com.pixel.game.PixelAssetManager;
 import com.pixel.game.PixelCityGame;
 import com.pixel.game.styles.Styles;
 import com.pixel.serialization.SerializationManager;
@@ -20,12 +25,13 @@ import java.util.ArrayList;
 
 public class MenuScene extends Scene {
 
-	private TextButton newGameButton;
-	private TextButton loadGameButton;
-	private TextButton tutorialButton;
-	private TextButton quitButton;
+	private PTextButton newGameButton;
+	private PTextButton loadGameButton;
+	private PTextButton tutorialButton;
+	private PTextButton quitButton;
 	private Label titleLabel;
 	private ArrayList<Actor> elements;
+	private Music menuMusic;
 
 	private static MenuScene instance = new MenuScene();
 
@@ -38,8 +44,10 @@ public class MenuScene extends Scene {
 	@Override
 	public void initialize() {
 
+		menuMusic = PixelAssetManager.manager.get(PixelAssetManager.menuMusic);
+
 		titleLabel = new Label("Pixel City", Styles.mainMenuTitleLabelStyle);
-		newGameButton = new TextButton("New Game", Styles.mainMenuTextButtonStyle);
+		newGameButton = new PTextButton("New Game", Styles.mainMenuTextButtonStyle);
 		newGameButton.addListener(new ClickListener() {
 								 @Override
 								 public void clicked(InputEvent e, float x, float y) {
@@ -53,7 +61,7 @@ public class MenuScene extends Scene {
 							 }
 		);
 
-		loadGameButton = new TextButton("Load Game", Styles.mainMenuTextButtonStyle);
+		loadGameButton = new PTextButton("Load Game", Styles.mainMenuTextButtonStyle);
 		loadGameButton.addListener(new ClickListener() {
 								 @Override
 								 public void clicked(InputEvent e, float x, float y) {
@@ -67,19 +75,20 @@ public class MenuScene extends Scene {
 							 }
 		);
 
-		tutorialButton = new TextButton("Tutorials", Styles.mainMenuTextButtonStyle);
+		tutorialButton = new PTextButton("Tutorials", Styles.mainMenuTextButtonStyle);
 		tutorialButton.addListener(new ClickListener() {
 								  @Override
 								  public void clicked(InputEvent e, float x, float y) {
 									  if (e != null && e.getType().equals(InputEvent.Type.touchUp)) {
 
-										  System.out.println("Tutorial Button");
+										  PDialog dialog = new OverviewDialog();
+										  dialog.show(uiStage);
 									  }
 								  }
 							  }
 		);
 
-		quitButton = new TextButton("Quit", Styles.mainMenuTextButtonStyle);
+		quitButton = new PTextButton("Quit", Styles.mainMenuTextButtonStyle);
 		quitButton.addListener(new ClickListener() {
 								  @Override
 								  public void clicked(InputEvent e, float x, float y) {
@@ -134,5 +143,18 @@ public class MenuScene extends Scene {
 				actor.setColor(1,1,1,1);
 			}
 		}
+	}
+
+	@Override
+	public void show() {
+		super.show();
+		menuMusic.play();
+		menuMusic.setLooping(true);
+	}
+
+	@Override
+	public void hide() {
+		super.hide();
+		menuMusic.stop();
 	}
 }
