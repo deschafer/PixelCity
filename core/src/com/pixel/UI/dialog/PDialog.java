@@ -10,8 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.pixel.UI.GameSceneUI;
 import com.pixel.UI.element.PButton;
 import com.pixel.game.styles.Styles;
+import com.pixel.scene.GameScene;
 
 public class PDialog extends Dialog {
 
@@ -47,12 +49,6 @@ public class PDialog extends Dialog {
 	public void act(float delta) {
 		super.act(delta);
 
-		if (closeOnEscape) {
-			if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-				addAction(Actions.fadeOut(0.30f));
-				addAction(Actions.after(Actions.removeActor()));
-			}
-		}
 	}
 
 	public void close() {

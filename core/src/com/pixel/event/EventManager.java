@@ -20,8 +20,8 @@ public class EventManager {
 
 	private float updateTimer = 0;
 	private float updateTime = 0;
-	private int updateTimerLowerBound = 1;
-	private int updateTimerUpperBound = 2;
+	private int updateTimerLowerBound = 5;
+	private int updateTimerUpperBound = 45;
 	private Random random = new Random();
 	private ArrayList<Categories> categories;
 
@@ -71,8 +71,7 @@ public class EventManager {
 			categories.clear();
 
 			// reset the time
-			//updateTime = random.nextInt(updateTimerUpperBound) + updateTimerLowerBound;
-			updateTime = 0.25f;
+			updateTime = random.nextInt(updateTimerUpperBound) + updateTimerLowerBound;
 			// reset the timer
 			updateTimer = 0;
 

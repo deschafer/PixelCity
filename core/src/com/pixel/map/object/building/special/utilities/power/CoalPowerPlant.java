@@ -15,7 +15,7 @@ public class CoalPowerPlant extends PowerUtility {
 
 	public CoalPowerPlant(float x, float y, MapCoord coord) {
 		super(x, isometricCorrection, (int) textureWidth, (int) textureHeight, widthInCells, heightInCells, coord,
-			   "CoalPowerPlant", 50000);
+			   "CoalPowerPlant", 100000);
 
 		displayName = "Coal Power Plant";
 		loadTexture(PixelAssetManager.manager.get(PixelAssetManager.coalPowerPlant), PixelAssetManager.coalPowerPlant);
@@ -29,7 +29,7 @@ public class CoalPowerPlant extends PowerUtility {
 
 	@Override
 	public void initialize() {
-		sources.add(new Source(this, -800));
+		sources.add(new Source(this, -100));
 		super.initialize();
 	}
 }

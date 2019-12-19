@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 public class GameSceneUI extends Stage {
 
-
 	private float width;
 	private float height;
 
@@ -39,7 +38,7 @@ public class GameSceneUI extends Stage {
 	private Label populationLabel;
 	private SimpleActor populationPersonIcon;
 	private SimpleActor populationBackground;
-	private boolean buildingsVisible = true;
+	private boolean toolSelected = false;
 
 	private Icon statsIcon;
 	private Icon demandIcon;
@@ -620,6 +619,8 @@ public class GameSceneUI extends Stage {
 	}
 
 	public void clearSelectedTool() {
+		toolSelected = false;
+
 		selectedToolFire.addAction(Actions.fadeOut(0.2f));
 		selectedToolPolice.addAction(Actions.fadeOut(0.2f));
 		selectedToolEd.addAction(Actions.fadeOut(0.2f));
@@ -680,6 +681,8 @@ public class GameSceneUI extends Stage {
 		} else if (tools == GameScene.Tools.DELETE) {
 			selectedToolDelete.addAction(Actions.fadeIn(0.2f));
 		}
+
+		toolSelected = true;
 	}
 
 	public void openStatsDialog() {
@@ -737,7 +740,7 @@ public class GameSceneUI extends Stage {
 			balanceDialog = null;
 		} else {
 			balanceDialog =
-				   new DemandDialog();
+				   new BalanceDialog();
 			balanceDialog.show(this);
 		}
 	}
@@ -766,5 +769,9 @@ public class GameSceneUI extends Stage {
 	@Override
 	public void draw() {
 		super.draw();
+	}
+
+	public boolean isToolSelected() {
+		return toolSelected;
 	}
 }

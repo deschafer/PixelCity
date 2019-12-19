@@ -22,6 +22,7 @@ public class BuildingStatDialog extends PDialog {
 	private Label powerClaimedLabel;
 	private Label waterNeededLabel;
 	private Label waterClaimedLabel;
+	private Label populationLabel;
 	private Label buildingTypeLabel;
 	private Label happinessLabel;
 
@@ -50,7 +51,8 @@ public class BuildingStatDialog extends PDialog {
 		buildingTypeLabel = new Label("", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 		happinessLabel = new Label("Happiness ", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 
-		servicesNeeded = new Label("dfgdf", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+		servicesNeeded = new Label("", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
+		populationLabel = new Label("", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin));
 
 		getContentTable().add(new Label("Services Needed", (Skin) PixelAssetManager.manager.get(PixelAssetManager.defaultUISkin))).align(Align.left);
 		getContentTable().add().expandX();
@@ -74,6 +76,9 @@ public class BuildingStatDialog extends PDialog {
 		getContentTable().add().expandX();
 		getContentTable().row();
 		getContentTable().add(waterClaimedLabel).padLeft(10).align(Align.left);
+		getContentTable().add().expandX();
+		getContentTable().row();
+		getContentTable().add(populationLabel).padLeft(10).align(Align.left);
 		getContentTable().add().expandX();
 		getContentTable().row();
 		getContentTable().add(happinessLabel).align(Align.left);
@@ -131,5 +136,8 @@ public class BuildingStatDialog extends PDialog {
 		waterNeededLabel.setText("Water needed " + (int)building.getWaterNeeded() + "CCF");
 		waterClaimedLabel.setText("Water claimed: " + (int)building.getWaterClaimed() + "CCF");
 		happinessLabel.setText("Happiness " + (int)building.getHappiness() +"%");
+
+		String string = (building.getType() == Building.BuildingType.RESIDENTIAL) ? " residents" : " workers";
+		populationLabel.setText(building.getActualNumberResidents() + " out of " + building.getNumberResidents() + string);
 	}
 }

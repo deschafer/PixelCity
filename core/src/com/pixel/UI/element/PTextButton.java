@@ -15,7 +15,6 @@ public class PTextButton extends TextButton {
 		super(text, skin);
 	}
 
-
 	{
 		addListener(new ClickListener() {
 			@Override

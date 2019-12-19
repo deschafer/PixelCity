@@ -1,8 +1,10 @@
 package com.pixel.tools;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.pixel.game.PixelAssetManager;
 import com.pixel.game.styles.Styles;
 import com.pixel.map.Map;
 import com.pixel.map.object.Cell;
@@ -94,6 +96,9 @@ public class MapTool extends Tool {
 		// get the last cell corresponding to the location
 		endCell = gameMap.checkPosition(x,y);
 		costLabel.setVisible(false);
+
+		Sound sound = PixelAssetManager.manager.get(PixelAssetManager.clickOne);
+		sound.play();
 
 		return true;
 	}

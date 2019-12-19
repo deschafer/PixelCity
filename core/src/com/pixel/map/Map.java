@@ -381,22 +381,6 @@ public class Map extends Group {
 		BuildingFactory.getInstance().registerBuildingDisplayStory(
 			   new BuildingDisplay(PixelAssetManager.officeStory31), false, false, true);
 
-		/*
-		// register our specific, RCO buildings
-		BuildingFactory.getInstance().registerSpeceficBuildingDisplayBase(
-			   new BuildingDisplay((PixelAssetManager.blueSkyscraperBase), true),
-			   BuildingFactory.SpecificBuildingTypes.BLUE_SKYSCRAPER.getName(),
-			   Building.BuildingType.RESIDENTIAL, new Rectangle(0,0,2,2));
-		BuildingFactory.getInstance().registerSpeceficBuildingDisplayStory(
-			   new BuildingDisplay((PixelAssetManager.blueSkyscraperStory)),
-			   BuildingFactory.SpecificBuildingTypes.BLUE_SKYSCRAPER.getName(),
-			   Building.BuildingType.RESIDENTIAL);
-		BuildingFactory.getInstance().registerSpeceficBuildingDisplayRoof(
-			   new BuildingDisplay((PixelAssetManager.blueSkyscraperRoof)),
-			   BuildingFactory.SpecificBuildingTypes.BLUE_SKYSCRAPER.getName(),
-			   Building.BuildingType.RESIDENTIAL);
-		 */
-
 		// register our specialty buildings
 		CoalPowerPlant coalPowerPlant;
 		SpecialtyBuildingFactory.getInstance().registerObject(coalPowerPlant =

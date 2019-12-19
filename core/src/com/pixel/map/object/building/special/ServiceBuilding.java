@@ -29,8 +29,8 @@ public abstract class ServiceBuilding extends SpecialtyBuilding {
 
 	protected Services serviceType;
 	private Polygon zoneOfInfluence;
-	private static float zoneWidth = 2000;
-	private static float zoneHeight = 1200;
+	private static float zoneWidth = 4000;
+	private static float zoneHeight = 2400;
 	private final static int numSides = 16;
 	private float updateTimer = 5.0f;
 	private float updateTime = 2.0f;
