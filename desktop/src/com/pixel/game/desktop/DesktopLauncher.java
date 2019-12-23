@@ -8,7 +8,7 @@ import com.pixel.game.PixelCityGame;
 
 public class DesktopLauncher {
 
-	static final float divider = 1.5f;
+	static final float divider = 1.2f;
 
 	public static void main(String[] args) {
 
